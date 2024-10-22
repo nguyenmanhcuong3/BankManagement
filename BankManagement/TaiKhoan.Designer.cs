@@ -76,6 +76,7 @@
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.LightGray;
             this.panel2.Controls.Add(this.btnThoat);
             this.panel2.Controls.Add(this.dateNgayMo);
             this.panel2.Controls.Add(this.btnCapNhat);
@@ -265,11 +266,11 @@
             // dgvTaiKhoan
             // 
             this.dgvTaiKhoan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTaiKhoan.Location = new System.Drawing.Point(12, 529);
+            this.dgvTaiKhoan.Location = new System.Drawing.Point(12, 524);
             this.dgvTaiKhoan.Name = "dgvTaiKhoan";
             this.dgvTaiKhoan.RowHeadersWidth = 51;
             this.dgvTaiKhoan.RowTemplate.Height = 24;
-            this.dgvTaiKhoan.Size = new System.Drawing.Size(1257, 210);
+            this.dgvTaiKhoan.Size = new System.Drawing.Size(1257, 215);
             this.dgvTaiKhoan.TabIndex = 2;
             this.dgvTaiKhoan.Click += new System.EventHandler(this.dgvTaiKhoan_Click);
             // 

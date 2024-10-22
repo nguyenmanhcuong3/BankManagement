@@ -31,6 +31,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnThongTin = new System.Windows.Forms.Button();
             this.btnNhanVien = new System.Windows.Forms.Button();
             this.btnKhoanVay = new System.Windows.Forms.Button();
@@ -53,6 +54,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1282, 100);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label1
             // 
@@ -67,6 +69,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Silver;
+            this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.btnThongTin);
             this.panel2.Controls.Add(this.btnNhanVien);
             this.panel2.Controls.Add(this.btnKhoanVay);
@@ -81,10 +84,21 @@
             this.panel2.Size = new System.Drawing.Size(334, 684);
             this.panel2.TabIndex = 1;
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(61, 615);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(194, 43);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Thoát";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // btnThongTin
             // 
             this.btnThongTin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThongTin.Location = new System.Drawing.Point(61, 563);
+            this.btnThongTin.Location = new System.Drawing.Point(61, 543);
             this.btnThongTin.Name = "btnThongTin";
             this.btnThongTin.Size = new System.Drawing.Size(194, 50);
             this.btnThongTin.TabIndex = 7;
@@ -95,7 +109,7 @@
             // btnNhanVien
             // 
             this.btnNhanVien.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNhanVien.Location = new System.Drawing.Point(61, 494);
+            this.btnNhanVien.Location = new System.Drawing.Point(61, 474);
             this.btnNhanVien.Name = "btnNhanVien";
             this.btnNhanVien.Size = new System.Drawing.Size(194, 50);
             this.btnNhanVien.TabIndex = 6;
@@ -106,7 +120,7 @@
             // btnKhoanVay
             // 
             this.btnKhoanVay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnKhoanVay.Location = new System.Drawing.Point(61, 426);
+            this.btnKhoanVay.Location = new System.Drawing.Point(61, 409);
             this.btnKhoanVay.Name = "btnKhoanVay";
             this.btnKhoanVay.Size = new System.Drawing.Size(194, 50);
             this.btnKhoanVay.TabIndex = 5;
@@ -117,7 +131,7 @@
             // btnGiaoDich
             // 
             this.btnGiaoDich.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGiaoDich.Location = new System.Drawing.Point(61, 355);
+            this.btnGiaoDich.Location = new System.Drawing.Point(61, 343);
             this.btnGiaoDich.Name = "btnGiaoDich";
             this.btnGiaoDich.Size = new System.Drawing.Size(194, 50);
             this.btnGiaoDich.TabIndex = 4;
@@ -128,7 +142,7 @@
             // btnTaiKhoan
             // 
             this.btnTaiKhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTaiKhoan.Location = new System.Drawing.Point(61, 283);
+            this.btnTaiKhoan.Location = new System.Drawing.Point(61, 278);
             this.btnTaiKhoan.Name = "btnTaiKhoan";
             this.btnTaiKhoan.Size = new System.Drawing.Size(194, 50);
             this.btnTaiKhoan.TabIndex = 3;
@@ -201,5 +215,6 @@
         private System.Windows.Forms.Button btnGiaoDich;
         private System.Windows.Forms.Button btnTaiKhoan;
         private System.Windows.Forms.Button btnKhachHang;
+        private System.Windows.Forms.Button button1;
     }
 }

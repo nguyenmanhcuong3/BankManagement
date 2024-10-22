@@ -31,6 +31,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnThoat = new System.Windows.Forms.Button();
             this.btnCapNhat = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
@@ -57,12 +58,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnTaiAnh = new System.Windows.Forms.Button();
-            this.pictureKhachHang = new System.Windows.Forms.PictureBox();
             this.dgvKhachHang = new System.Windows.Forms.DataGridView();
+            this.pictureKhachHang = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureKhachHang)).BeginInit();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKhachHang)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureKhachHang)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -88,7 +90,9 @@
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.LightGray;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Controls.Add(this.btnThoat);
             this.panel2.Controls.Add(this.btnCapNhat);
             this.panel2.Controls.Add(this.btnXoa);
@@ -115,11 +119,20 @@
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.btnTaiAnh);
-            this.panel2.Controls.Add(this.pictureKhachHang);
             this.panel2.Location = new System.Drawing.Point(12, 117);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1249, 402);
             this.panel2.TabIndex = 1;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.pictureKhachHang);
+            this.groupBox1.Location = new System.Drawing.Point(1006, 24);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(200, 273);
+            this.groupBox1.TabIndex = 28;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Ảnh khách hàng";
             // 
             // btnThoat
             // 
@@ -357,25 +370,26 @@
             this.btnTaiAnh.UseVisualStyleBackColor = true;
             this.btnTaiAnh.Click += new System.EventHandler(this.btnTaiAnh_Click);
             // 
+            // dgvKhachHang
+            // 
+            this.dgvKhachHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvKhachHang.Location = new System.Drawing.Point(12, 520);
+            this.dgvKhachHang.Name = "dgvKhachHang";
+            this.dgvKhachHang.RowHeadersWidth = 51;
+            this.dgvKhachHang.RowTemplate.Height = 24;
+            this.dgvKhachHang.Size = new System.Drawing.Size(1258, 227);
+            this.dgvKhachHang.TabIndex = 2;
+            this.dgvKhachHang.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKhachHang_CellContentClick);
+            this.dgvKhachHang.Click += new System.EventHandler(this.dgvKhachHang_Click);
+            // 
             // pictureKhachHang
             // 
-            this.pictureKhachHang.Location = new System.Drawing.Point(1024, 36);
+            this.pictureKhachHang.BackColor = System.Drawing.Color.Silver;
+            this.pictureKhachHang.Location = new System.Drawing.Point(6, 21);
             this.pictureKhachHang.Name = "pictureKhachHang";
             this.pictureKhachHang.Size = new System.Drawing.Size(188, 245);
             this.pictureKhachHang.TabIndex = 0;
             this.pictureKhachHang.TabStop = false;
-            // 
-            // dgvKhachHang
-            // 
-            this.dgvKhachHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvKhachHang.Location = new System.Drawing.Point(3, 513);
-            this.dgvKhachHang.Name = "dgvKhachHang";
-            this.dgvKhachHang.RowHeadersWidth = 51;
-            this.dgvKhachHang.RowTemplate.Height = 24;
-            this.dgvKhachHang.Size = new System.Drawing.Size(1258, 213);
-            this.dgvKhachHang.TabIndex = 2;
-            this.dgvKhachHang.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKhachHang_CellContentClick);
-            this.dgvKhachHang.Click += new System.EventHandler(this.dgvKhachHang_Click);
             // 
             // KhachHang
             // 
@@ -392,8 +406,9 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureKhachHang)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvKhachHang)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureKhachHang)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -431,5 +446,6 @@
         private System.Windows.Forms.TextBox txtMaKhachHang;
         private System.Windows.Forms.DataGridView dgvKhachHang;
         private System.Windows.Forms.Button btnThoat;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
