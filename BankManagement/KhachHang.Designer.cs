@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pictureKhachHang = new System.Windows.Forms.PictureBox();
             this.btnThoat = new System.Windows.Forms.Button();
             this.btnCapNhat = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
@@ -59,12 +60,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnTaiAnh = new System.Windows.Forms.Button();
             this.dgvKhachHang = new System.Windows.Forms.DataGridView();
-            this.pictureKhachHang = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvKhachHang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureKhachHang)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvKhachHang)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -119,7 +119,7 @@
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.btnTaiAnh);
-            this.panel2.Location = new System.Drawing.Point(12, 117);
+            this.panel2.Location = new System.Drawing.Point(12, 112);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1249, 402);
             this.panel2.TabIndex = 1;
@@ -133,6 +133,15 @@
             this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ảnh khách hàng";
+            // 
+            // pictureKhachHang
+            // 
+            this.pictureKhachHang.BackColor = System.Drawing.Color.Silver;
+            this.pictureKhachHang.Location = new System.Drawing.Point(6, 21);
+            this.pictureKhachHang.Name = "pictureKhachHang";
+            this.pictureKhachHang.Size = new System.Drawing.Size(188, 245);
+            this.pictureKhachHang.TabIndex = 0;
+            this.pictureKhachHang.TabStop = false;
             // 
             // btnThoat
             // 
@@ -382,15 +391,6 @@
             this.dgvKhachHang.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKhachHang_CellContentClick);
             this.dgvKhachHang.Click += new System.EventHandler(this.dgvKhachHang_Click);
             // 
-            // pictureKhachHang
-            // 
-            this.pictureKhachHang.BackColor = System.Drawing.Color.Silver;
-            this.pictureKhachHang.Location = new System.Drawing.Point(6, 21);
-            this.pictureKhachHang.Name = "pictureKhachHang";
-            this.pictureKhachHang.Size = new System.Drawing.Size(188, 245);
-            this.pictureKhachHang.TabIndex = 0;
-            this.pictureKhachHang.TabStop = false;
-            // 
             // KhachHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -401,14 +401,15 @@
             this.Controls.Add(this.panel1);
             this.Name = "KhachHang";
             this.Text = "KhachHang";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.KhachHang_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvKhachHang)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureKhachHang)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvKhachHang)).EndInit();
             this.ResumeLayout(false);
 
         }

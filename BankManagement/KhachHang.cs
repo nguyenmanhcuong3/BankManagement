@@ -100,7 +100,7 @@ namespace BankManagement
                     return;
                 }
 
-                int maKhachHang = int.Parse(txtMaKhachHang.Text);
+                string maKhachHang = txtMaKhachHang.Text;
                 string tenKhachHang = txttenKhachHang.Text;
                 string soCCCD = txtSoCCCD.Text;
                 string soDienThoai = txtSoDienThoai.Text;

@@ -64,12 +64,6 @@
     <Compile Include="KhachHang.Designer.cs">
       <DependentUpon>KhachHang.cs</DependentUpon>
     </Compile>
-    <Compile Include="KhoanVay.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="KhoanVay.Designer.cs">
-      <DependentUpon>KhoanVay.cs</DependentUpon>
-    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,9 +99,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="KhachHang.resx">
       <DependentUpon>KhachHang.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="KhoanVay.resx">
-      <DependentUpon>KhoanVay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>

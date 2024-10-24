@@ -34,12 +34,12 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnThongTin = new System.Windows.Forms.Button();
             this.btnNhanVien = new System.Windows.Forms.Button();
-            this.btnKhoanVay = new System.Windows.Forms.Button();
             this.btnGiaoDich = new System.Windows.Forms.Button();
             this.btnTaiKhoan = new System.Windows.Forms.Button();
             this.btnKhachHang = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.panelMain = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -72,7 +72,6 @@
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.btnThongTin);
             this.panel2.Controls.Add(this.btnNhanVien);
-            this.panel2.Controls.Add(this.btnKhoanVay);
             this.panel2.Controls.Add(this.btnGiaoDich);
             this.panel2.Controls.Add(this.btnTaiKhoan);
             this.panel2.Controls.Add(this.btnKhachHang);
@@ -87,7 +86,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(61, 615);
+            this.button1.Location = new System.Drawing.Point(61, 531);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(194, 43);
             this.button1.TabIndex = 8;
@@ -98,7 +97,7 @@
             // btnThongTin
             // 
             this.btnThongTin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThongTin.Location = new System.Drawing.Point(61, 543);
+            this.btnThongTin.Location = new System.Drawing.Point(61, 475);
             this.btnThongTin.Name = "btnThongTin";
             this.btnThongTin.Size = new System.Drawing.Size(194, 50);
             this.btnThongTin.TabIndex = 7;
@@ -109,24 +108,13 @@
             // btnNhanVien
             // 
             this.btnNhanVien.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNhanVien.Location = new System.Drawing.Point(61, 474);
+            this.btnNhanVien.Location = new System.Drawing.Point(61, 409);
             this.btnNhanVien.Name = "btnNhanVien";
             this.btnNhanVien.Size = new System.Drawing.Size(194, 50);
             this.btnNhanVien.TabIndex = 6;
             this.btnNhanVien.Text = "Nhân viên";
             this.btnNhanVien.UseVisualStyleBackColor = true;
             this.btnNhanVien.Click += new System.EventHandler(this.btnNhanVien_Click);
-            // 
-            // btnKhoanVay
-            // 
-            this.btnKhoanVay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnKhoanVay.Location = new System.Drawing.Point(61, 409);
-            this.btnKhoanVay.Name = "btnKhoanVay";
-            this.btnKhoanVay.Size = new System.Drawing.Size(194, 50);
-            this.btnKhoanVay.TabIndex = 5;
-            this.btnKhoanVay.Text = "Khoản vay";
-            this.btnKhoanVay.UseVisualStyleBackColor = true;
-            this.btnKhoanVay.Click += new System.EventHandler(this.btnKhoanVay_Click);
             // 
             // btnGiaoDich
             // 
@@ -181,6 +169,14 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "KasikornBank";
             // 
+            // panelMain
+            // 
+            this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelMain.Location = new System.Drawing.Point(334, 100);
+            this.panelMain.Name = "panelMain";
+            this.panelMain.Size = new System.Drawing.Size(948, 684);
+            this.panelMain.TabIndex = 2;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -188,10 +184,12 @@
             this.BackgroundImage = global::BankManagement.Properties.Resources.pngtree_business_finance_rising_stock_market_dollar_sign_background_image_906548;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1282, 784);
+            this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "frmMain";
             this.Text = "Main";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -211,10 +209,10 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnThongTin;
         private System.Windows.Forms.Button btnNhanVien;
-        private System.Windows.Forms.Button btnKhoanVay;
         private System.Windows.Forms.Button btnGiaoDich;
         private System.Windows.Forms.Button btnTaiKhoan;
         private System.Windows.Forms.Button btnKhachHang;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panelMain;
     }
 }

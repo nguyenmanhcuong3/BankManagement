@@ -16,10 +16,13 @@ namespace BankManagement
         ProcessDatabase dbtk = new ProcessDatabase();
         void ResetValue()
         {
-            txtLoaiTaiKhoan.Text = "";
+            cbbLoaiTaiKhoan.Text = "";
             txtSoTien.Text = "";
             txtMaTaiKhoan.Text = "";
-            txtTenKhachHang.Text = "";;
+            txtTenKhachHang.Text = "";
+            txtMaKhachHang.Text = "";
+            txtSoTienGui.Text = "";
+            txtSoTienVay.Text = "";
             btnCapNhat.Enabled = false;
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
@@ -67,14 +70,20 @@ namespace BankManagement
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            txtLoaiTaiKhoan.Text = "";
+            cbbLoaiTaiKhoan.Text = "";
             txtSoTien.Text = "";
             txtMaTaiKhoan.Text = "";
             txtTenKhachHang.Text = "";
-            txtLoaiTaiKhoan.Focus();
+            txtSoTienGui.Text = "";
+            txtSoTienVay.Text = "";
+            txtMaKhachHang.Text = "";
             txtSoTien.Focus();
             txtMaTaiKhoan.Focus();
             txtTenKhachHang.Focus();
+            txtMaTaiKhoan.Focus();
+            txtSoTienGui.Focus();
+            txtSoTienVay.Focus();
+            txtMaKhachHang.Focus();
             btnCapNhat.Enabled = true;
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
@@ -97,7 +106,7 @@ namespace BankManagement
         private void btnSua_Click(object sender, EventArgs e)
         {
             txtMaTaiKhoan.Text = dgvTaiKhoan.CurrentRow.Cells["MaTaiKhoan"].Value.ToString();
-            txtLoaiTaiKhoan.Text = dgvTaiKhoan.CurrentRow.Cells["LoaiTaiKhoan"].Value.ToString();
+            cbbLoaiTaiKhoan.Text = dgvTaiKhoan.CurrentRow.Cells["LoaiTaiKhoan"].Value.ToString();
             txtSoTien.Text = dgvTaiKhoan.CurrentRow.Cells["SoTien"].Value.ToString();
             string ngayMostr = dgvTaiKhoan.CurrentRow.Cells["ThoiGianMo"].Value?.ToString();
             if (!string.IsNullOrEmpty(ngayMostr) && DateTime.TryParse(ngayMostr, out DateTime ngaymo))
@@ -141,8 +150,8 @@ namespace BankManagement
                     return;
                 }
 
-                int maTaiKhoan = int.Parse(txtMaTaiKhoan.Text);
-                string loaiTaiKhoan = txtLoaiTaiKhoan.Text;
+                string maTaiKhoan = txtMaTaiKhoan.Text;
+                string loaiTaiKhoan = cbbLoaiTaiKhoan.Text;
 
                 DateTime ngayMo = dateNgayMo.Value;
                 int soTien = int.Parse(txtSoTien.Text);
@@ -187,7 +196,7 @@ namespace BankManagement
             {
 
                 txtMaTaiKhoan.Text = dgvTaiKhoan.CurrentRow.Cells["MaTaiKhoan"].Value.ToString();
-                txtLoaiTaiKhoan.Text = dgvTaiKhoan.CurrentRow.Cells["LoaiTaiKhoan"].Value.ToString();
+                cbbLoaiTaiKhoan.Text = dgvTaiKhoan.CurrentRow.Cells["LoaiTaiKhoan"].Value.ToString();
                 txtSoTien.Text = dgvTaiKhoan.CurrentRow.Cells["SoTien"].Value.ToString();
                 string ngayMostr = dgvTaiKhoan.CurrentRow.Cells["ThoiGianMo"].Value?.ToString();
                 if (!string.IsNullOrEmpty(ngayMostr) && DateTime.TryParse(ngayMostr, out DateTime ngaymo))
@@ -201,6 +210,11 @@ namespace BankManagement
             btnThem.Enabled = true;
             btnSua.Enabled = true;
             btnThoat.Enabled = true;
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
