@@ -27,7 +27,7 @@ namespace BankManagement
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
             btnThem.Enabled = true;
-            btnThoat.Enabled = true;
+
         }
         public TaiKhoan()
         {
@@ -87,7 +87,7 @@ namespace BankManagement
             btnCapNhat.Enabled = true;
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
-            btnThoat.Enabled = true;
+
         }
 
         private void TaiKhoan_Load(object sender, EventArgs e)
@@ -100,7 +100,7 @@ namespace BankManagement
             btnTim.Enabled = true;
             btnThem.Enabled = true;
             btnXoa.Enabled = false;
-            btnThoat.Enabled = true;
+
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -119,7 +119,6 @@ namespace BankManagement
               txtMaTaiKhoan.Text + "'", null);
             dgvTaiKhoan.DataSource = dbtk.DocBang("Select * from KhachHang");
 
-            btnThoat.Enabled = true;
             btnCapNhat.Enabled = true;
 
         }
@@ -137,7 +136,7 @@ namespace BankManagement
                 MessageBox.Show("Xóa tài khoản thành công !");
                 ResetValue();
             }
-            btnThoat.Enabled = true;
+
         }
 
         private void btnCapNhat_Click(object sender, EventArgs e)
@@ -177,7 +176,7 @@ namespace BankManagement
             {
                 MessageBox.Show("Có lỗi xảy ra: " + ex.Message);
             }
-            btnThoat.Enabled = true;
+
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -209,7 +208,7 @@ namespace BankManagement
             btnXoa.Enabled = true;
             btnThem.Enabled = true;
             btnSua.Enabled = true;
-            btnThoat.Enabled = true;
+
         }
 
         private void label7_Click(object sender, EventArgs e)

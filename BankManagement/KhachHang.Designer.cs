@@ -33,7 +33,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureKhachHang = new System.Windows.Forms.PictureBox();
-            this.btnThoat = new System.Windows.Forms.Button();
             this.btnCapNhat = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
@@ -93,7 +92,6 @@
             this.panel2.BackColor = System.Drawing.Color.LightGray;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.groupBox1);
-            this.panel2.Controls.Add(this.btnThoat);
             this.panel2.Controls.Add(this.btnCapNhat);
             this.panel2.Controls.Add(this.btnXoa);
             this.panel2.Controls.Add(this.btnSua);
@@ -143,21 +141,10 @@
             this.pictureKhachHang.TabIndex = 0;
             this.pictureKhachHang.TabStop = false;
             // 
-            // btnThoat
-            // 
-            this.btnThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThoat.Location = new System.Drawing.Point(828, 329);
-            this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(125, 48);
-            this.btnThoat.TabIndex = 27;
-            this.btnThoat.Text = "Thoát";
-            this.btnThoat.UseVisualStyleBackColor = true;
-            this.btnThoat.Click += new System.EventHandler(this.button1_Click);
-            // 
             // btnCapNhat
             // 
             this.btnCapNhat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCapNhat.Location = new System.Drawing.Point(631, 328);
+            this.btnCapNhat.Location = new System.Drawing.Point(700, 329);
             this.btnCapNhat.Name = "btnCapNhat";
             this.btnCapNhat.Size = new System.Drawing.Size(124, 49);
             this.btnCapNhat.TabIndex = 26;
@@ -168,7 +155,7 @@
             // btnXoa
             // 
             this.btnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoa.Location = new System.Drawing.Point(439, 328);
+            this.btnXoa.Location = new System.Drawing.Point(492, 326);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(130, 49);
             this.btnXoa.TabIndex = 25;
@@ -179,7 +166,7 @@
             // btnSua
             // 
             this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSua.Location = new System.Drawing.Point(248, 329);
+            this.btnSua.Location = new System.Drawing.Point(262, 325);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(134, 48);
             this.btnSua.TabIndex = 24;
@@ -446,7 +433,6 @@
         private System.Windows.Forms.TextBox txttenKhachHang;
         private System.Windows.Forms.TextBox txtMaKhachHang;
         private System.Windows.Forms.DataGridView dgvKhachHang;
-        private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.GroupBox groupBox1;
     }
 }

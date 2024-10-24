@@ -37,7 +37,7 @@ namespace BankManagement
             btnTaiAnh.Enabled = false;
             btnThem.Enabled = false;
             btnXoa.Enabled = false;
-            btnThoat.Enabled = true;
+
         }
         private void KhachHang_Load(object sender, EventArgs e)
         {
@@ -49,7 +49,7 @@ namespace BankManagement
             btnTaiAnh.Enabled = false;
             btnThem.Enabled = true;
             btnXoa.Enabled = false;
-            btnThoat.Enabled = true;
+
         }
         private string imageFilePath = "";
         private void btnTaiAnh_Click(object sender, EventArgs e)
@@ -65,7 +65,7 @@ namespace BankManagement
                 pictureKhachHang.Image = Image.FromFile(imageFilePath);
                 pictureKhachHang.SizeMode = PictureBoxSizeMode.StretchImage;
             }
-            btnThoat.Enabled = true;
+
         }
         private void btnThem_Click(object sender, EventArgs e)
         {
@@ -87,7 +87,7 @@ namespace BankManagement
             btnTaiAnh.Enabled = true;
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
-            btnThoat.Enabled = true;
+
         }
 
         private void btnCapNhat_Click(object sender, EventArgs e)
@@ -150,7 +150,7 @@ namespace BankManagement
             {
                 MessageBox.Show("Có lỗi xảy ra: " + ex.Message);
             }
-            btnThoat.Enabled = true;
+      
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -212,7 +212,7 @@ namespace BankManagement
             dgvKhachHang.DataSource = db.DocBang("Select * from KhachHang");
 
             btnTaiAnh.Enabled = true;
-            btnThoat.Enabled = true;
+            
             btnCapNhat.Enabled = true;
 
         }
@@ -231,7 +231,7 @@ namespace BankManagement
 
                 ResetValue();
             }
-            btnThoat.Enabled = true;
+            
         }
 
         private void dgvKhachHang_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -297,7 +297,7 @@ namespace BankManagement
             btnXoa.Enabled = true;
             btnThem.Enabled = true;
             btnSua.Enabled = true;
-            btnThoat.Enabled = true;
+
         }
 
         private void button1_Click(object sender, EventArgs e)
