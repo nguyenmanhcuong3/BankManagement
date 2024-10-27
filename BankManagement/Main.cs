@@ -13,6 +13,7 @@ namespace BankManagement
 {
     public partial class frmMain : Form
     {
+       
         public frmMain()
         {
             InitializeComponent();
@@ -85,6 +86,8 @@ namespace BankManagement
             btnThongTin.Enabled = true;
 
 
+            // bổ sung
+            
             GiaoDich tk = new GiaoDich();
             tk.TopLevel = false;
             tk.FormBorderStyle = FormBorderStyle.None;
@@ -183,6 +186,11 @@ namespace BankManagement
             {
                 Application.Exit(); 
             }
+        }
+
+        private void panelMain_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

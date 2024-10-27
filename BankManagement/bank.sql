@@ -1,4 +1,5 @@
-﻿
+﻿CREATE DATABASE QLBank
+use QLBank
 -- Bảng KhachHang
 CREATE TABLE KhachHang (
     MaKhachHang nvarchar(20) PRIMARY KEY ,
@@ -30,19 +31,6 @@ CREATE TABLE TaiKhoan (
     FOREIGN KEY (MaKhachHang) REFERENCES KhachHang(MaKhachHang)
 );
 
--- Bảng GiaoDich
-CREATE TABLE GiaoDich (
-    MaGiaoDich nvarchar(20) PRIMARY KEY,
-    LoaiGiaoDich NVARCHAR(50),
-    MaNhanVien nvarchar(20),
-    TenKhachHang NVARCHAR(100),
-    MaKhachHang nvarchar(20),
-    ThoiGianGiaoDich DATETIME,
-    SoTienGiaoDich int,
-    FOREIGN KEY (MaKhachHang) REFERENCES KhachHang(MaKhachHang),
-    FOREIGN KEY (MaNhanVien) REFERENCES NhanVien(MaNhanVien)
-);
-
 -- Bảng NhanVien
 CREATE TABLE NhanVien (
     MaNhanVien nvarchar(20) PRIMARY KEY,
@@ -57,6 +45,21 @@ CREATE TABLE NhanVien (
     Email NVARCHAR(100)
 );
 
+
+-- Bảng GiaoDich
+CREATE TABLE GiaoDich (
+    MaGiaoDich nvarchar(20) PRIMARY KEY,
+    LoaiGiaoDich NVARCHAR(50),
+    MaNhanVien nvarchar(20),
+    TenKhachHang NVARCHAR(100),
+    MaKhachHang nvarchar(20),
+    ThoiGianGiaoDich DATETIME,
+    SoTienGiaoDich int,
+    FOREIGN KEY (MaKhachHang) REFERENCES KhachHang(MaKhachHang),
+    FOREIGN KEY (MaNhanVien) REFERENCES NhanVien(MaNhanVien)
+);
+
+
 -- Bảng login
 CREATE TABLE Login (
     MaNhanVien nvarchar(20) PRIMARY KEY,
@@ -64,27 +67,55 @@ CREATE TABLE Login (
     password NVARCHAR(255),
     FOREIGN KEY (MaNhanVien) REFERENCES NhanVien(MaNhanVien)
 );
-INSERT INTO KhachHang (MaKhachHang, TenKhachHang, SoCCCD, SoDienThoai, GioiTinh, NgaySinh, Email, DiaChi, NgheNghiep, AnhDaiDien)
-VALUES 
-('KH001', 'Nguyen Van A', '123456789012', '0901234567', 'Nam', '1990-01-01', 'nguyenvana@example.com', '123 Duong ABC, Quan 1', 'Ky su', 'anh1.jpg'),
-('KH002', 'Tran Thi B', '234567890123', '0912345678', 'Nu', '1995-05-05', 'tranthib@example.com', '456 Duong DEF, Quan 2', 'Giao vien', 'anh2.jpg');
-INSERT INTO AnhKhachHang (MaKhachHang, AnhDaiDien)
-VALUES 
-('KH001', 'anh1.jpg'),
-('KH002', 'anh2.jpg');
-INSERT INTO NhanVien (MaNhanVien, TenNhanVien, ChucVu, NgayVaoLam, NgaySinh, GioiTinh, DiaChi, SoCCCD, SoDienThoai, Email)
-VALUES 
-('NV001', 'Le Van C', 'Quan ly', '2020-01-01', '1985-02-02', 'Nam', '789 Duong GHI, Quan 3', '345678901234', '0923456789', 'levanc@example.com'),
-('NV002', 'Nguyen Thi D', 'Nhan vien', '2021-05-15', '1990-08-08', 'Nu', '321 Duong JKL, Quan 4', '456789012345', '0934567890', 'nguyenthid@example.com');
-INSERT INTO TaiKhoan (MaTaiKhoan, LoaiTaiKhoan, SoTien, ThoiGianMo, MaKhachHang, SoTienGuiTietKiem, SoTienVay)
-VALUES 
-('TK001', 'Tiet kiem', 10000.00, '2022-01-01', 'KH001', 5000, 0),
-('TK002', 'Vay tin chap', 5000.00, '2023-03-01', 'KH002', 0, 2000);
-INSERT INTO GiaoDich (MaGiaoDich, LoaiGiaoDich, MaNhanVien, TenKhachHang, MaKhachHang, ThoiGianGiaoDich, SoTienGiaoDich)
-VALUES 
-('GD001', 'Rut tien', 'NV001', 'Nguyen Van A', 'KH001', '2024-01-10', 2000),
-('GD002', 'Gui tien', 'NV002', 'Tran Thi B', 'KH002', '2024-02-15', 3000);
-INSERT INTO Login (MaNhanVien, username, password)
-VALUES 
-('NV001', 'admin', '123'),
-('NV002', 'admin', '456');
+-- Thêm 6 bản ghi vào bảng KhachHang
+INSERT INTO KhachHang VALUES 
+('KH001', 'Nguyen Van A', '012345678901', '0901234567', 'Nam', '1990-01-01', 'vana@example.com', 'Ha Noi', 'Lap trinh vien', 'KH001.jpg'),
+('KH002', 'Le Thi B', '012345678902', '0902234567', 'Nu', '1992-02-02', 'bthi@example.com', 'Hai Phong', 'Nhan vien ke toan', 'KH002.jpg'),
+('KH003', 'Tran Van C', '012345678903', '0903234567', 'Nam', '1994-03-03', 'vanc@example.com', 'Da Nang', 'Kinh doanh', 'KH003.jpg'),
+('KH004', 'Pham Thi D', '012345678904', '0904234567', 'Nu', '1996-04-04', 'thid@example.com', 'Ho Chi Minh', 'Ban hang', 'KH004.jpg'),
+('KH005', 'Nguyen Van E', '012345678905', '0905234567', 'Nam', '1998-05-05', 'vane@example.com', 'Can Tho', 'Giao vien', 'KH005.jpg'),
+('KH006', 'Le Van F', '012345678906', '0906234567', 'Nam', '2000-06-06', 'vaf@example.com', 'Quang Ninh', 'Ky su', 'KH006.jpg');
+INSERT INTO AnhKhachHang VALUES 
+('KH001', 'KH001.jpg'),
+('KH002', 'KH002.jpg'),
+('KH003', 'KH003.jpg'),
+('KH004', 'KH004.jpg'),
+('KH005', 'KH005.jpg'),
+('KH006', 'KH006.jpg');
+-- Thêm 6 bản ghi vào bảng NhanVien
+INSERT INTO NhanVien VALUES 
+('NV001', 'Tran Van A', 'Giam Doc', '2020-01-01', '1980-01-01', 'Nam', 'Ha Noi', '012345678901', '0901234561', 'vana@bank.com'),
+('NV002', 'Nguyen Thi B', 'Truong Phong', '2020-02-01', '1982-02-02', 'Nu', 'Hai Phong', '012345678902', '0902234561', 'thib@bank.com'),
+('NV003', 'Pham Van C', 'Nhan Vien', '2020-03-01', '1984-03-03', 'Nam', 'Da Nang', '012345678903', '0903234561', 'vanc@bank.com'),
+('NV004', 'Le Thi D', 'Nhan Vien', '2020-04-01', '1986-04-04', 'Nu', 'Ho Chi Minh', '012345678904', '0904234561', 'thid@bank.com'),
+('NV005', 'Bui Van E', 'Nhan Vien', '2020-05-01', '1988-05-05', 'Nam', 'Can Tho', '012345678905', '0905234561', 'vane@bank.com'),
+('NV006', 'Dang Thi F', 'Nhan Vien', '2020-06-01', '1990-06-06', 'Nu', 'Quang Ninh', '012345678906', '0906234561', 'thif@bank.com');
+
+-- Thêm 6 bản ghi vào bảng TaiKhoan
+INSERT INTO TaiKhoan VALUES 
+('TK001', 'ThanhToan', 1000000, '2023-01-01', 'KH001', 200000, 500000),
+('TK002', 'TietKiem', 5000000, '2023-02-01', 'KH002', 300000, 1000000),
+('TK003', 'VayVon', 2000000, '2023-03-01', 'KH003', 150000, 3000000),
+('TK004', 'ThanhToan', 3000000, '2023-04-01', 'KH004', 500000, 1500000),
+('TK005', 'TietKiem', 1000000, '2023-05-01', 'KH005', 700000, 2000000),
+('TK006', 'VayVon', 4000000, '2023-06-01', 'KH006', 600000, 2500000);
+
+-- Thêm 6 bản ghi vào bảng GiaoDich
+INSERT INTO GiaoDich VALUES 
+('GD001', 'Nhan Tien', 'NV001', 'Nguyen Van A', 'KH001', '2023-01-15', 500000),
+('GD002', 'Chuyen Tien', 'NV002', 'Le Thi B', 'KH002', '2023-02-15', 1000000),
+('GD003', 'Gui Tiet Kiem', 'NV003', 'Tran Van C', 'KH003', '2023-03-15', 1500000),
+('GD004', 'Rut Tien Tiet Kiem', 'NV004', 'Pham Thi D', 'KH004', '2023-04-15', 2000000),
+('GD005', 'Vay Von', 'NV005', 'Nguyen Van E', 'KH005', '2023-05-15', 2500000),
+('GD006', 'Tra No', 'NV006', 'Le Van F', 'KH006', '2023-06-15', 3000000);
+
+
+-- Thêm 6 bản ghi vào bảng Login
+INSERT INTO Login VALUES 
+('NV001', 'tranvana', 'pass123'),
+('NV002', 'nguyenthib', 'pass123'),
+('NV003', 'phamvanc', 'pass123'),
+('NV004', 'lethid', 'pass123'),
+('NV005', 'buivane', 'pass123'),
+('NV006', 'dangthif', 'pass123');
+

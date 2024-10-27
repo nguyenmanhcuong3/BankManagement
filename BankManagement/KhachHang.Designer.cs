@@ -121,6 +121,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1249, 402);
             this.panel2.TabIndex = 1;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // groupBox1
             // 
@@ -137,7 +138,8 @@
             this.pictureKhachHang.BackColor = System.Drawing.Color.Silver;
             this.pictureKhachHang.Location = new System.Drawing.Point(6, 21);
             this.pictureKhachHang.Name = "pictureKhachHang";
-            this.pictureKhachHang.Size = new System.Drawing.Size(188, 245);
+            this.pictureKhachHang.Size = new System.Drawing.Size(160, 160);
+            this.pictureKhachHang.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureKhachHang.TabIndex = 0;
             this.pictureKhachHang.TabStop = false;
             // 
@@ -432,7 +434,7 @@
         private System.Windows.Forms.TextBox txtSoCCCD;
         private System.Windows.Forms.TextBox txttenKhachHang;
         private System.Windows.Forms.TextBox txtMaKhachHang;
-        private System.Windows.Forms.DataGridView dgvKhachHang;
         private System.Windows.Forms.GroupBox groupBox1;
+        public System.Windows.Forms.DataGridView dgvKhachHang;
     }
 }

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -152,6 +153,8 @@ namespace BankManagement
             }
       
         }
+       
+
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -279,9 +282,15 @@ namespace BankManagement
                 string anhDaiDien = dgvKhachHang.CurrentRow.Cells["AnhDaiDien"].Value?.ToString(); 
                 if (!string.IsNullOrEmpty(anhDaiDien))
                 {
+                    // code cập nhật
+                    // Ghép đường dẫn thư mục đầu ra với đường dẫn tương đối của ảnh
+                    string fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, anhDaiDien);
+                    // code cập nhật
                     try
                     {
-                        pictureKhachHang.Image = Image.FromFile(anhDaiDien); 
+                        //pictureKhachHang.Image = Image.FromFile(anhDaiDien);
+                        // cập nhật
+                        pictureKhachHang.Image = Image.FromFile(fullPath);
                     }
                     catch (Exception ex)
                     {
@@ -303,6 +312,11 @@ namespace BankManagement
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
