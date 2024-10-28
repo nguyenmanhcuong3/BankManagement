@@ -51,8 +51,9 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1282, 100);
+            this.panel1.Size = new System.Drawing.Size(1442, 125);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -60,9 +61,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(427, 29);
+            this.label1.Location = new System.Drawing.Point(480, 36);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(416, 54);
+            this.label1.Size = new System.Drawing.Size(511, 65);
             this.label1.TabIndex = 0;
             this.label1.Text = "Quản lý ngân hàng";
             // 
@@ -78,17 +79,19 @@
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 100);
+            this.panel2.Location = new System.Drawing.Point(0, 125);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(334, 684);
+            this.panel2.Size = new System.Drawing.Size(376, 855);
             this.panel2.TabIndex = 1;
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(61, 531);
+            this.button1.Location = new System.Drawing.Point(69, 678);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(194, 43);
+            this.button1.Size = new System.Drawing.Size(218, 54);
             this.button1.TabIndex = 8;
             this.button1.Text = "Thoát";
             this.button1.UseVisualStyleBackColor = true;
@@ -97,9 +100,10 @@
             // btnThongTin
             // 
             this.btnThongTin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThongTin.Location = new System.Drawing.Point(61, 475);
+            this.btnThongTin.Location = new System.Drawing.Point(69, 594);
+            this.btnThongTin.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnThongTin.Name = "btnThongTin";
-            this.btnThongTin.Size = new System.Drawing.Size(194, 50);
+            this.btnThongTin.Size = new System.Drawing.Size(218, 62);
             this.btnThongTin.TabIndex = 7;
             this.btnThongTin.Text = "Thông tin";
             this.btnThongTin.UseVisualStyleBackColor = true;
@@ -108,9 +112,10 @@
             // btnNhanVien
             // 
             this.btnNhanVien.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNhanVien.Location = new System.Drawing.Point(61, 409);
+            this.btnNhanVien.Location = new System.Drawing.Point(69, 511);
+            this.btnNhanVien.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnNhanVien.Name = "btnNhanVien";
-            this.btnNhanVien.Size = new System.Drawing.Size(194, 50);
+            this.btnNhanVien.Size = new System.Drawing.Size(218, 62);
             this.btnNhanVien.TabIndex = 6;
             this.btnNhanVien.Text = "Nhân viên";
             this.btnNhanVien.UseVisualStyleBackColor = true;
@@ -119,9 +124,10 @@
             // btnGiaoDich
             // 
             this.btnGiaoDich.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGiaoDich.Location = new System.Drawing.Point(61, 343);
+            this.btnGiaoDich.Location = new System.Drawing.Point(69, 429);
+            this.btnGiaoDich.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnGiaoDich.Name = "btnGiaoDich";
-            this.btnGiaoDich.Size = new System.Drawing.Size(194, 50);
+            this.btnGiaoDich.Size = new System.Drawing.Size(218, 62);
             this.btnGiaoDich.TabIndex = 4;
             this.btnGiaoDich.Text = "Giao dịch";
             this.btnGiaoDich.UseVisualStyleBackColor = true;
@@ -130,9 +136,10 @@
             // btnTaiKhoan
             // 
             this.btnTaiKhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTaiKhoan.Location = new System.Drawing.Point(61, 278);
+            this.btnTaiKhoan.Location = new System.Drawing.Point(69, 348);
+            this.btnTaiKhoan.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnTaiKhoan.Name = "btnTaiKhoan";
-            this.btnTaiKhoan.Size = new System.Drawing.Size(194, 50);
+            this.btnTaiKhoan.Size = new System.Drawing.Size(218, 62);
             this.btnTaiKhoan.TabIndex = 3;
             this.btnTaiKhoan.Text = "Tài khoản";
             this.btnTaiKhoan.UseVisualStyleBackColor = true;
@@ -141,9 +148,10 @@
             // btnKhachHang
             // 
             this.btnKhachHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnKhachHang.Location = new System.Drawing.Point(61, 213);
+            this.btnKhachHang.Location = new System.Drawing.Point(69, 266);
+            this.btnKhachHang.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnKhachHang.Name = "btnKhachHang";
-            this.btnKhachHang.Size = new System.Drawing.Size(194, 49);
+            this.btnKhachHang.Size = new System.Drawing.Size(218, 61);
             this.btnKhachHang.TabIndex = 2;
             this.btnKhachHang.Text = "Khách hàng";
             this.btnKhachHang.UseVisualStyleBackColor = true;
@@ -152,9 +160,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::BankManagement.Properties.Resources.png_clipart_siam_commercial_bank_money_kasikornbank_payment_bank_logo_grass;
-            this.pictureBox1.Location = new System.Drawing.Point(81, 56);
+            this.pictureBox1.Location = new System.Drawing.Point(91, 70);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(161, 128);
+            this.pictureBox1.Size = new System.Drawing.Size(181, 160);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -163,31 +172,33 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(76, 13);
+            this.label2.Location = new System.Drawing.Point(86, 16);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(161, 29);
+            this.label2.Size = new System.Drawing.Size(190, 32);
             this.label2.TabIndex = 0;
             this.label2.Text = "KasikornBank";
             // 
             // panelMain
             // 
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelMain.Location = new System.Drawing.Point(334, 100);
+            this.panelMain.Location = new System.Drawing.Point(376, 125);
+            this.panelMain.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(948, 684);
+            this.panelMain.Size = new System.Drawing.Size(1066, 855);
             this.panelMain.TabIndex = 2;
             this.panelMain.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMain_Paint);
             // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::BankManagement.Properties.Resources.pngtree_business_finance_rising_stock_market_dollar_sign_background_image_906548;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1282, 784);
+            this.ClientSize = new System.Drawing.Size(1442, 980);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmMain";
             this.Text = "Main";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

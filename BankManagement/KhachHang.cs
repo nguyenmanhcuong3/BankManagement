@@ -15,6 +15,7 @@ namespace BankManagement
     public partial class KhachHang : Form
     {
         ProcessDatabase db= new ProcessDatabase();
+        private string imageFilePath = "";
         public KhachHang()
         {
             InitializeComponent();
@@ -38,6 +39,9 @@ namespace BankManagement
             btnTaiAnh.Enabled = false;
             btnThem.Enabled = false;
             btnXoa.Enabled = false;
+            
+
+
 
         }
         private void KhachHang_Load(object sender, EventArgs e)
@@ -52,7 +56,7 @@ namespace BankManagement
             btnXoa.Enabled = false;
 
         }
-        private string imageFilePath = "";
+        
         private void btnTaiAnh_Click(object sender, EventArgs e)
         {
           
@@ -77,22 +81,25 @@ namespace BankManagement
             txtSoCCCD.Text = "";
             txtSoDienThoai.Text = "";
             txttenKhachHang.Text = "";
-            txtDiaChi.Focus();
-            txtEmail.Focus();
             txtMaKhachHang.Focus();
-            txtNgheNghiep.Focus();
-            txtSoCCCD.Focus();
-            txtSoDienThoai.Focus();
-            txttenKhachHang.Focus();
             btnCapNhat.Enabled = true;
             btnTaiAnh.Enabled = true;
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
+            btnTaiAnh.Image = null;
+            pictureKhachHang.Image = null;
+            radioKhac.Checked = true;
 
         }
-
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
+            string maKhachHang = txtMaKhachHang.Text;
+            string tenKhachHang = txttenKhachHang.Text;
+            string soCCCD = txtSoCCCD.Text;
+            string soDienThoai = txtSoDienThoai.Text;
+            string diaChi = txtDiaChi.Text;
+            string ngheNghiep = txtNgheNghiep.Text;
+            string duongDanAnh = null;
             try
             {
                 if (string.IsNullOrEmpty(txtMaKhachHang.Text))
@@ -101,19 +108,47 @@ namespace BankManagement
                     return;
                 }
 
-                string maKhachHang = txtMaKhachHang.Text;
-                string tenKhachHang = txttenKhachHang.Text;
-                string soCCCD = txtSoCCCD.Text;
-                string soDienThoai = txtSoDienThoai.Text;
+                // Kiểm tra điều kiện số điện thoại
+                if (!System.Text.RegularExpressions.Regex.IsMatch(soDienThoai, @"^0\d{9}$"))
+                {
+                    MessageBox.Show("Số điện thoại phải có 10 chữ số và bắt đầu bằng số 0!");
+                    return;
+                }
+
+                // Kiểm tra điều kiện số CCCD (phải có 12 chữ số)
+                if (!System.Text.RegularExpressions.Regex.IsMatch(soCCCD, @"^\d{12}$"))
+                {
+                    MessageBox.Show("Số CCCD phải có đúng 12 chữ số!");
+                    return;
+                }
+
                 string gioiTinh = radioNam.Checked ? "Nam" : radioNu.Checked ? "Nữ" : "Khác";
                 DateTime ngaySinh = dateNgaySinh.Value;
                 string email = txtEmail.Text;
-                string diaChi = txtDiaChi.Text;
-                string ngheNghiep = txtNgheNghiep.Text;
-                string duongDanAnh = string.IsNullOrEmpty(imageFilePath) ? null : imageFilePath;
 
-                string query = "INSERT INTO KhachHang (MaKhachHang, TenKhachHang, SoCCCD, SoDienThoai, GioiTinh, NgaySinh, Email, DiaChi, NgheNghiep, AnhDaiDien) " +
-                               "VALUES (@MaKhachHang, @TenKhachHang, @SoCCCD, @SoDienThoai, @GioiTinh, @NgaySinh, @Email, @DiaChi, @NgheNghiep, @DuongDanAnh)";
+                // Kiểm tra điều kiện email (phải có đuôi @gmail.com)
+                if (!System.Text.RegularExpressions.Regex.IsMatch(email, @"^[\w\.-]+@gmail\.com$"))
+                {
+                    MessageBox.Show("Email phải có định dạng hợp lệ và có đuôi @gmail.com!");
+                    return;
+                }
+
+                if (!string.IsNullOrEmpty(imageFilePath))
+                {
+                    string imageFolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "ImagesKhachHang");
+
+                    if (!Directory.Exists(imageFolderPath))
+                    {
+                        Directory.CreateDirectory(imageFolderPath);
+                    }
+
+                    string imageFileName = $"{maKhachHang}{Path.GetExtension(imageFilePath)}";
+                    string saveImagePath = Path.Combine(imageFolderPath, imageFileName);
+
+                    File.Copy(imageFilePath, saveImagePath, true);
+
+                    duongDanAnh = imageFileName;
+                }
 
                 SqlParameter[] parameters = {
             new SqlParameter("@MaKhachHang", maKhachHang),
@@ -126,19 +161,20 @@ namespace BankManagement
             new SqlParameter("@DiaChi", diaChi),
             new SqlParameter("@NgheNghiep", ngheNghiep),
             new SqlParameter("@DuongDanAnh", duongDanAnh)
-        };
+                 };
+
+                string query = "INSERT INTO KhachHang (MaKhachHang, TenKhachHang, SoCCCD, SoDienThoai, GioiTinh, NgaySinh, Email, DiaChi, NgheNghiep, AnhDaiDien) " +
+                               "VALUES (@MaKhachHang, @TenKhachHang, @SoCCCD, @SoDienThoai, @GioiTinh, @NgaySinh, @Email, @DiaChi, @NgheNghiep, @DuongDanAnh)";
 
                 db.CapNhatDuLieu(query, parameters);
 
-        
                 if (!string.IsNullOrEmpty(duongDanAnh))
                 {
-                    string queryAnhKhachHang = "INSERT INTO AnhKhachHang ( MaKhachHang, AnhDaiDien) " +
-                                               "VALUES ( @MaKhachHang, @DuongDanAnh)";
-                    SqlParameter[] parametersAnh = { 
+                    string queryAnhKhachHang = "INSERT INTO AnhKhachHang (MaKhachHang, AnhDaiDien) VALUES (@MaKhachHang, @DuongDanAnh)";
+                    SqlParameter[] parametersAnh = {
                 new SqlParameter("@MaKhachHang", maKhachHang),
                 new SqlParameter("@DuongDanAnh", duongDanAnh)
-            };
+                    };
 
                     db.CapNhatDuLieu(queryAnhKhachHang, parametersAnh);
                 }
@@ -151,9 +187,7 @@ namespace BankManagement
             {
                 MessageBox.Show("Có lỗi xảy ra: " + ex.Message);
             }
-      
         }
-       
 
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -163,62 +197,86 @@ namespace BankManagement
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            txtMaKhachHang.Text = dgvKhachHang.CurrentRow.Cells["MaKhachHang"].Value.ToString(); 
-            txttenKhachHang.Text = dgvKhachHang.CurrentRow.Cells["TenKhachHang"].Value.ToString(); 
-            txtSoCCCD.Text = dgvKhachHang.CurrentRow.Cells["SoCCCD"].Value.ToString(); 
-            txtSoDienThoai.Text = dgvKhachHang.CurrentRow.Cells["SoDienThoai"].Value.ToString(); 
-
-            string ngaySinhStr = dgvKhachHang.CurrentRow.Cells["NgaySinh"].Value?.ToString();
-            if (!string.IsNullOrEmpty(ngaySinhStr) && DateTime.TryParse(ngaySinhStr, out DateTime ngaySinh))
+            try
             {
-                dateNgaySinh.Value = ngaySinh; 
-            }
-            string gioiTinh = dgvKhachHang.CurrentRow.Cells["GioiTinh"].Value.ToString();
-            if (gioiTinh == "Nam")
-            {
-                radioNam.Checked = true;
-            }
-            else if (gioiTinh == "Nữ")
-            {
-                radioNu.Checked = true;
-            }
-            else
-            {
-                radioKhac.Checked = true;
-            }
-
-            txtEmail.Text = dgvKhachHang.CurrentRow.Cells["Email"].Value.ToString(); 
-            txtDiaChi.Text = dgvKhachHang.CurrentRow.Cells["DiaChi"].Value.ToString(); 
-            txtNgheNghiep.Text = dgvKhachHang.CurrentRow.Cells["NgheNghiep"].Value.ToString();
-
-
-            string anhDaiDien = dgvKhachHang.CurrentRow.Cells["AnhDaiDien"].Value?.ToString();
-            if (!string.IsNullOrEmpty(anhDaiDien))
-            {
-                try
+                // Kiểm tra mã khách hàng
+                if (string.IsNullOrEmpty(txtMaKhachHang.Text))
                 {
-                    pictureKhachHang.Image = Image.FromFile(anhDaiDien); 
+                    MessageBox.Show("Mã khách hàng không được bỏ trống!");
+                    return;
                 }
-                catch (Exception ex)
+
+                // Lấy thông tin từ các trường nhập liệu
+                string maKhachHang = txtMaKhachHang.Text;
+                string tenKhachHang = txttenKhachHang.Text;
+                string soCCCD = txtSoCCCD.Text;
+                string soDienThoai = txtSoDienThoai.Text;
+                string gioiTinh = radioNam.Checked ? "Nam" : radioNu.Checked ? "Nữ" : "Khác";
+                DateTime ngaySinh = dateNgaySinh.Value;
+                string email = txtEmail.Text;
+                string diaChi = txtDiaChi.Text;
+                string ngheNghiep = txtNgheNghiep.Text;
+
+                string duongDanAnh = null;
+
+                // Kiểm tra ảnh đại diện mới
+                if (!string.IsNullOrEmpty(imageFilePath))
                 {
-                    MessageBox.Show("Không thể tải ảnh: " + ex.Message);
-                    pictureKhachHang.Image = null; 
+                    // Đường dẫn thư mục lưu ảnh
+                    string imageFolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "ImagesKhachHang");
+                    if (!Directory.Exists(imageFolderPath))
+                    {
+                        Directory.CreateDirectory(imageFolderPath);
+                    }
+
+                    // Tạo tên file mới cho ảnh
+                    string imageFileName = $"{maKhachHang}{Path.GetExtension(imageFilePath)}";
+                    string saveImagePath = Path.Combine(imageFolderPath, imageFileName);
+
+                    // Sao chép ảnh vào thư mục
+                    File.Copy(imageFilePath, saveImagePath, true);
+
+                    // Cập nhật đường dẫn ảnh chỉ với tên file
+                    duongDanAnh = imageFileName;
                 }
+                else
+                {
+                    // Nếu không chọn ảnh mới, giữ lại ảnh cũ
+                    duongDanAnh = dgvKhachHang.CurrentRow.Cells["AnhDaiDien"].Value?.ToString();
+                }
+
+                // Cập nhật thông tin khách hàng
+                string queryUpdate = "UPDATE KhachHang SET TenKhachHang = @TenKhachHang, SoCCCD = @SoCCCD, SoDienThoai = @SoDienThoai, " +
+                                     "GioiTinh = @GioiTinh, NgaySinh = @NgaySinh, Email = @Email, DiaChi = @DiaChi, NgheNghiep = @NgheNghiep, " +
+                                     "AnhDaiDien = @DuongDanAnh WHERE MaKhachHang = @MaKhachHang";
+
+                // Khởi tạo các tham số cho truy vấn
+                SqlParameter[] parameters = {
+            new SqlParameter("@MaKhachHang", maKhachHang),
+            new SqlParameter("@TenKhachHang", tenKhachHang),
+            new SqlParameter("@SoCCCD", soCCCD),
+            new SqlParameter("@SoDienThoai", soDienThoai),
+            new SqlParameter("@GioiTinh", gioiTinh),
+            new SqlParameter("@NgaySinh", ngaySinh),
+            new SqlParameter("@Email", email),
+            new SqlParameter("@DiaChi", diaChi),
+            new SqlParameter("@NgheNghiep", ngheNghiep),
+            new SqlParameter("@DuongDanAnh", string.IsNullOrEmpty(duongDanAnh) ? (object)DBNull.Value : duongDanAnh)
+        };
+
+                // Thực hiện cập nhật
+                db.CapNhatDuLieu(queryUpdate, parameters);
+
+                MessageBox.Show("Cập nhật thông tin khách hàng thành công!");
+                dgvKhachHang.DataSource = db.DocBang("SELECT * FROM KhachHang");
+                ResetValue();
             }
-            else
+            catch (Exception ex)
             {
-                pictureKhachHang.Image = null;
+                MessageBox.Show("Có lỗi xảy ra khi cập nhật thông tin: " + ex.Message);
             }
-
-            db.CapNhatDuLieu("delete KhachHang where MaKhachHang='" +
-              txtMaKhachHang.Text + "'", null);
-            dgvKhachHang.DataSource = db.DocBang("Select * from KhachHang");
-
-            btnTaiAnh.Enabled = true;
-            
-            btnCapNhat.Enabled = true;
-
         }
+
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
@@ -243,71 +301,76 @@ namespace BankManagement
         }
 
         private void dgvKhachHang_Click(object sender, EventArgs e)
+{
+    if (dgvKhachHang.CurrentRow != null)
+    {
+        txtMaKhachHang.Text = dgvKhachHang.CurrentRow.Cells["MaKhachHang"].Value.ToString(); 
+        txttenKhachHang.Text = dgvKhachHang.CurrentRow.Cells["TenKhachHang"].Value.ToString(); 
+        txtSoCCCD.Text = dgvKhachHang.CurrentRow.Cells["SoCCCD"].Value.ToString(); 
+        txtSoDienThoai.Text = dgvKhachHang.CurrentRow.Cells["SoDienThoai"].Value.ToString(); 
+
+        string ngaySinhStr = dgvKhachHang.CurrentRow.Cells["NgaySinh"].Value?.ToString(); 
+        if (!string.IsNullOrEmpty(ngaySinhStr) && DateTime.TryParse(ngaySinhStr, out DateTime ngaySinh))
         {
-      
-            if (dgvKhachHang.CurrentRow != null)
+            dateNgaySinh.Value = ngaySinh; 
+        }
+
+        string gioiTinh = dgvKhachHang.CurrentRow.Cells["GioiTinh"].Value.ToString();
+        if (gioiTinh == "Nam")
+        {
+            radioNam.Checked = true;
+        }
+        else if (gioiTinh == "Nữ")
+        {
+            radioNu.Checked = true;
+        }
+        else
+        {
+            radioKhac.Checked = true;
+        }
+
+        txtEmail.Text = dgvKhachHang.CurrentRow.Cells["Email"].Value.ToString(); 
+        txtDiaChi.Text = dgvKhachHang.CurrentRow.Cells["DiaChi"].Value.ToString(); 
+        txtNgheNghiep.Text = dgvKhachHang.CurrentRow.Cells["NgheNghiep"].Value.ToString(); 
+
+        string anhDaiDien = dgvKhachHang.CurrentRow.Cells["AnhDaiDien"].Value?.ToString(); 
+        if (!string.IsNullOrEmpty(anhDaiDien))
+        {
+            string fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "ImagesKhachHang", anhDaiDien);
+
+            try
             {
-            
-                txtMaKhachHang.Text = dgvKhachHang.CurrentRow.Cells["MaKhachHang"].Value.ToString(); 
-                txttenKhachHang.Text = dgvKhachHang.CurrentRow.Cells["TenKhachHang"].Value.ToString(); 
-                txtSoCCCD.Text = dgvKhachHang.CurrentRow.Cells["SoCCCD"].Value.ToString(); 
-                txtSoDienThoai.Text = dgvKhachHang.CurrentRow.Cells["SoDienThoai"].Value.ToString(); 
-
-               
-                string ngaySinhStr = dgvKhachHang.CurrentRow.Cells["NgaySinh"].Value?.ToString(); 
-                if (!string.IsNullOrEmpty(ngaySinhStr) && DateTime.TryParse(ngaySinhStr, out DateTime ngaySinh))
+                // Giải phóng ảnh hiện tại trước khi tải ảnh mới
+                if (pictureKhachHang.Image != null)
                 {
-                    dateNgaySinh.Value = ngaySinh; 
+                    pictureKhachHang.Image.Dispose();
+                    pictureKhachHang.Image = null;
                 }
 
-  
-                string gioiTinh = dgvKhachHang.CurrentRow.Cells["GioiTinh"].Value.ToString();
-                if (gioiTinh == "Nam")
+                // Đọc ảnh từ tệp và tải vào PictureBox thông qua MemoryStream
+                using (var stream = new MemoryStream(File.ReadAllBytes(fullPath)))
                 {
-                    radioNam.Checked = true;
-                }
-                else if (gioiTinh == "Nữ")
-                {
-                    radioNu.Checked = true;
-                }
-                else
-                {
-                    radioKhac.Checked = true;
-                }
-
-                txtEmail.Text = dgvKhachHang.CurrentRow.Cells["Email"].Value.ToString(); 
-                txtDiaChi.Text = dgvKhachHang.CurrentRow.Cells["DiaChi"].Value.ToString(); 
-                txtNgheNghiep.Text = dgvKhachHang.CurrentRow.Cells["NgheNghiep"].Value.ToString(); 
-
-                string anhDaiDien = dgvKhachHang.CurrentRow.Cells["AnhDaiDien"].Value?.ToString(); 
-                if (!string.IsNullOrEmpty(anhDaiDien))
-                {
-                    // code cập nhật
-                    // Ghép đường dẫn thư mục đầu ra với đường dẫn tương đối của ảnh
-                    string fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, anhDaiDien);
-                    // code cập nhật
-                    try
-                    {
-                        //pictureKhachHang.Image = Image.FromFile(anhDaiDien);
-                        // cập nhật
-                        pictureKhachHang.Image = Image.FromFile(fullPath);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Không thể tải ảnh: " + ex.Message);
-                        pictureKhachHang.Image = null; 
-                    }
-                }
-                else
-                {
-                    pictureKhachHang.Image = null; 
+                    pictureKhachHang.Image = Image.FromStream(stream);
                 }
             }
-            btnXoa.Enabled = true;
-            btnThem.Enabled = true;
-            btnSua.Enabled = true;
-
+            catch (Exception ex)
+            {
+                MessageBox.Show("Không thể tải ảnh: " + ex.Message);
+                pictureKhachHang.Image = null; 
+            }
         }
+        else
+        {
+            pictureKhachHang.Image = null; 
+        }
+    }
+
+    btnXoa.Enabled = true;
+    btnThem.Enabled = true;
+    btnSua.Enabled = true;
+    btnTaiAnh.Enabled = true;
+}
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -318,5 +381,12 @@ namespace BankManagement
         {
 
         }
+
+        private void pictureKhachHang_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }

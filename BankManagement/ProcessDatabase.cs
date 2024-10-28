@@ -13,7 +13,7 @@ namespace BankManagement
 {
     internal class ProcessDatabase
     {
-        public string strConnect = "Data Source=LAPTOP-HUNGVIET\\SQLEXPRESS;Initial Catalog=QLBank;Integrated Security=True;Encrypt=False";
+        public string strConnect = "Data Source=MSI\\SQLEXPRESS;Initial Catalog=QLBank;Integrated Security=True";
         SqlConnection sqlConnect = null;
 
         private void KetNoiCSDL()
@@ -21,8 +21,6 @@ namespace BankManagement
             if (sqlConnect == null)
             {
                 sqlConnect = new SqlConnection(strConnect);
-
-           
             }
             if (sqlConnect.State != ConnectionState.Open)
             {
@@ -44,18 +42,14 @@ namespace BankManagement
             DataTable dtBang = new DataTable();
             KetNoiCSDL();
             //SqlDataAdapter sqldataAdapte = new SqlDataAdapter(sql, sqlConnect);
-           // sqldataAdapte.Fill(dtBang);
-            using (SqlCommand cmd = new SqlCommand(sql, sqlConnect))
-            {
+            // sqldataAdapte.Fill(dtBang);
+            SqlCommand cmd = new SqlCommand(sql, sqlConnect);
                 if (parameters != null)
                 {
                     cmd.Parameters.AddRange(parameters);
                 }
-                using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
-                {
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                     adapter.Fill(dtBang);
-                }
-            }
             DongKetNoiCSDL();
             return dtBang;
         }
@@ -68,8 +62,8 @@ namespace BankManagement
                 KetNoiCSDL();
 
                 // Tạo đối tượng SqlCommand
-                using (SqlCommand sqlcommand = new SqlCommand(sql, sqlConnect))
-                {
+                SqlCommand sqlcommand = new SqlCommand(sql, sqlConnect);
+
                     // Thêm các tham số vào câu lệnh nếu có
                     if (parameters != null)
                     {
@@ -78,7 +72,7 @@ namespace BankManagement
 
                     // Thực thi câu lệnh SQL (INSERT, UPDATE, DELETE)
                     sqlcommand.ExecuteNonQuery();
-                }
+                
             }
             catch (Exception ex)
             {
@@ -97,7 +91,7 @@ namespace BankManagement
 
             // Giả sử bạn đã thiết lập kết nối với cơ sở dữ liệu
             string query = "SELECT MaKhachHang FROM KhachHang"; // Điều chỉnh tên bảng nếu cần
-            using (SqlConnection conn = new SqlConnection(strConnect))
+            SqlConnection conn = new SqlConnection(strConnect);
             {
                 SqlCommand cmd = new SqlCommand(query, conn);
                 conn.Open();
@@ -184,5 +178,34 @@ namespace BankManagement
             }
             return ten;
         }
+        public object ThucThiGiaTriDon(string query, SqlParameter[] parameters = null)
+        {
+            object ketQua = null;
+            KetNoiCSDL();
+
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand(query, sqlConnect))
+                {
+                    if (parameters != null)
+                    {
+                        cmd.Parameters.AddRange(parameters);
+                    }
+                    // Thực thi câu truy vấn và trả về giá trị đơn
+                    ketQua = cmd.ExecuteScalar();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi xảy ra: " + ex.Message);
+            }
+            finally
+            {
+                DongKetNoiCSDL();
+            }
+
+            return ketQua;
+        }
+
     }
 }

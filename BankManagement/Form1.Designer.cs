@@ -59,17 +59,18 @@
             this.panelLogin.Controls.Add(this.pictureBox2);
             this.panelLogin.Controls.Add(this.pictureBox1);
             this.panelLogin.Controls.Add(this.label1);
-            this.panelLogin.Location = new System.Drawing.Point(432, 91);
+            this.panelLogin.Location = new System.Drawing.Point(486, 114);
+            this.panelLogin.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelLogin.Name = "panelLogin";
-            this.panelLogin.Size = new System.Drawing.Size(463, 480);
+            this.panelLogin.Size = new System.Drawing.Size(520, 599);
             this.panelLogin.TabIndex = 0;
             // 
             // btnThoat
             // 
             this.btnThoat.AutoSize = true;
-            this.btnThoat.Location = new System.Drawing.Point(345, 369);
+            this.btnThoat.Location = new System.Drawing.Point(388, 461);
             this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(42, 16);
+            this.btnThoat.Size = new System.Drawing.Size(50, 20);
             this.btnThoat.TabIndex = 8;
             this.btnThoat.TabStop = true;
             this.btnThoat.Text = "Thoát";
@@ -79,9 +80,10 @@
             // 
             this.pictureBox4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox4.Image = global::BankManagement.Properties.Resources.images;
-            this.pictureBox4.Location = new System.Drawing.Point(349, 313);
+            this.pictureBox4.Location = new System.Drawing.Point(393, 391);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(38, 38);
+            this.pictureBox4.Size = new System.Drawing.Size(43, 48);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 7;
             this.pictureBox4.TabStop = false;
@@ -90,28 +92,31 @@
             // txtMatKhau
             // 
             this.txtMatKhau.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMatKhau.Location = new System.Drawing.Point(172, 313);
+            this.txtMatKhau.Location = new System.Drawing.Point(194, 391);
+            this.txtMatKhau.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtMatKhau.Multiline = true;
             this.txtMatKhau.Name = "txtMatKhau";
-            this.txtMatKhau.Size = new System.Drawing.Size(215, 40);
+            this.txtMatKhau.Size = new System.Drawing.Size(241, 49);
             this.txtMatKhau.TabIndex = 6;
             // 
             // txtTaiKhoan
             // 
             this.txtTaiKhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTaiKhoan.Location = new System.Drawing.Point(172, 231);
+            this.txtTaiKhoan.Location = new System.Drawing.Point(194, 289);
+            this.txtTaiKhoan.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtTaiKhoan.Multiline = true;
             this.txtTaiKhoan.Name = "txtTaiKhoan";
-            this.txtTaiKhoan.Size = new System.Drawing.Size(215, 40);
+            this.txtTaiKhoan.Size = new System.Drawing.Size(241, 49);
             this.txtTaiKhoan.TabIndex = 5;
             // 
             // btnDangNhap
             // 
             this.btnDangNhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDangNhap.ForeColor = System.Drawing.Color.Blue;
-            this.btnDangNhap.Location = new System.Drawing.Point(172, 412);
+            this.btnDangNhap.Location = new System.Drawing.Point(194, 515);
+            this.btnDangNhap.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDangNhap.Name = "btnDangNhap";
-            this.btnDangNhap.Size = new System.Drawing.Size(126, 41);
+            this.btnDangNhap.Size = new System.Drawing.Size(142, 51);
             this.btnDangNhap.TabIndex = 4;
             this.btnDangNhap.Text = "Đăng nhập";
             this.btnDangNhap.UseVisualStyleBackColor = true;
@@ -120,9 +125,10 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::BankManagement.Properties.Resources.Icons8_Windows_8_Security_Password_2;
-            this.pictureBox3.Location = new System.Drawing.Point(80, 313);
+            this.pictureBox3.Location = new System.Drawing.Point(90, 391);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox3.Size = new System.Drawing.Size(45, 50);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 3;
             this.pictureBox3.TabStop = false;
@@ -130,9 +136,10 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::BankManagement.Properties.Resources.user_icon_150670;
-            this.pictureBox2.Location = new System.Drawing.Point(80, 231);
+            this.pictureBox2.Location = new System.Drawing.Point(90, 289);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox2.Size = new System.Drawing.Size(45, 50);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
@@ -140,9 +147,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::BankManagement.Properties.Resources._0af3c9613761d2d2394d99312aeba397;
-            this.pictureBox1.Location = new System.Drawing.Point(161, 91);
+            this.pictureBox1.Location = new System.Drawing.Point(181, 114);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(150, 107);
+            this.pictureBox1.Size = new System.Drawing.Size(169, 134);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -151,21 +159,23 @@
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(178, 38);
+            this.label1.Location = new System.Drawing.Point(200, 48);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(133, 50);
+            this.label1.Size = new System.Drawing.Size(150, 62);
             this.label1.TabIndex = 0;
             this.label1.Text = "Quản lý";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::BankManagement.Properties.Resources.pngtree_business_finance_rising_stock_market_dollar_sign_background_image_906548;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1282, 640);
+            this.ClientSize = new System.Drawing.Size(1442, 800);
             this.Controls.Add(this.panelLogin);
             this.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Login";
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

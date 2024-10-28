@@ -37,7 +37,7 @@ namespace BankManagement
             khachHangForm = khForm;
         }
 
-        void ResetValue()
+        private void ResetValue()
         {
            txtMaGiaoDich.Text= string.Empty;
            cbbLoaiGiaoDich.Text = string.Empty;

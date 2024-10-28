@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,15 @@ namespace BankManagement
 {
     public partial class ThongTin : Form
     {
+        ProcessDatabase db = new ProcessDatabase();
         public ThongTin()
         {
             InitializeComponent();
+            string query = "SELECT COUNT(*) FROM KhachHang";
+            int soLuongKhachHang = (int)db.ThucThiGiaTriDon(query);
+            lbslkh.Text = soLuongKhachHang.ToString();
+
+
         }
     }
 }
