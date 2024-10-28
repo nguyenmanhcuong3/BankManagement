@@ -13,7 +13,7 @@ namespace BankManagement
 {
     public partial class TaiKhoan : Form
     {
-        ProcessDatabase dbtk = new ProcessDatabase();
+        ProcessDatabase db = new ProcessDatabase();
         void ResetValue()
         {
             cbbLoaiTaiKhoan.Text = "";
@@ -34,11 +34,6 @@ namespace BankManagement
             InitializeComponent();
         }
 
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void txtTim_TextChanged(object sender, EventArgs e)
         {
 
@@ -46,7 +41,7 @@ namespace BankManagement
 
         private void btnTim_Click(object sender, EventArgs e)
         {
-            string searchValue = txtTim.Text.Trim(); 
+            string searchValue = txtTim.Text.Trim();
 
             if (string.IsNullOrEmpty(searchValue))
             {
@@ -54,7 +49,7 @@ namespace BankManagement
                 return;
             }
 
-            DataTable searchResult = dbtk.DocBang($"SELECT * FROM TaiKhoan WHERE MaTaiKhoan LIKE '%{searchValue}%' OR TenKhachHang LIKE '%{searchValue}%'");
+            DataTable searchResult = db.DocBang($"SELECT * FROM TaiKhoan WHERE MaTaiKhoan LIKE '%{searchValue}%' OR MaKhachHang LIKE '%{searchValue}%'");
 
             if (searchResult.Rows.Count > 0)
             {
@@ -64,26 +59,26 @@ namespace BankManagement
             else
             {
                 MessageBox.Show("Không tìm thấy kết quả nào phù hợp!");
-                dgvTaiKhoan.DataSource = null; 
+                dgvTaiKhoan.DataSource = null;
             }
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            cbbLoaiTaiKhoan.Text = "";
-            txtSoTien.Text = "";
-            txtMaTaiKhoan.Text = "";
-            txtTenKhachHang.Text = "";
-            txtSoTienGui.Text = "";
-            txtSoTienVay.Text = "";
-            txtMaKhachHang.Text = "";
+            txtMaTaiKhoan.Enabled = true;
+            cbbLoaiTaiKhoan.Enabled = true;
+            txtSoTien.Enabled = true;
+            txtTenKhachHang.Enabled = true;
+            txtSoTienGui.Enabled = true;
+            txtSoTienVay.Enabled = true;
+            txtMaKhachHang.Enabled = true;
+            dateNgayMo.Enabled = true;
+            ResetValue();
             txtSoTien.Focus();
-            txtMaTaiKhoan.Focus();
-            txtTenKhachHang.Focus();
-            txtMaTaiKhoan.Focus();
+            txtMaKhachHang.Focus();
             txtSoTienGui.Focus();
             txtSoTienVay.Focus();
-            txtMaKhachHang.Focus();
+            txtMaTaiKhoan.Focus();
             btnCapNhat.Enabled = true;
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
@@ -92,7 +87,7 @@ namespace BankManagement
 
         private void TaiKhoan_Load(object sender, EventArgs e)
         {
-            DataTable dbTaiKhoan = dbtk.DocBang("select * from TaiKhoan");
+            DataTable dbTaiKhoan = db.DocBang("select * from TaiKhoan");
             dgvTaiKhoan.DataSource = dbTaiKhoan;
             dbTaiKhoan.Dispose();
             btnCapNhat.Enabled = false;
@@ -100,6 +95,7 @@ namespace BankManagement
             btnTim.Enabled = true;
             btnThem.Enabled = true;
             btnXoa.Enabled = false;
+           // OffValue();
 
         }
 
@@ -113,11 +109,16 @@ namespace BankManagement
             {
                 dateNgayMo.Value = ngaymo;
             }
-            txtTenKhachHang.Text = dgvTaiKhoan.CurrentRow.Cells["TenKhachHang"].Value.ToString();
+            txtMaKhachHang.Text = dgvTaiKhoan.CurrentRow.Cells["MaKhachHang"].Value.ToString();
+            var tenkhachhang = db.DocBang("select TenKhachHang from KhachHang where MaKhachHang like N'" + txtMaKhachHang.Text + "'");
+            string Text = tenkhachhang.Rows[0][0].ToString();
+            txtTenKhachHang.Text = Text;
+            txtSoTienGui.Text = dgvTaiKhoan.CurrentRow.Cells["SoTienGuiTietKiem"].Value.ToString();
+            txtSoTienVay.Text = dgvTaiKhoan.CurrentRow.Cells["SoTienVay"].Value.ToString();
 
-            dbtk.CapNhatDuLieu("delete TaiKhoan where MaTaiKhoan='" +
+            db.CapNhatDuLieu("delete TaiKhoan where MaTaiKhoan='" +
               txtMaTaiKhoan.Text + "'", null);
-            dgvTaiKhoan.DataSource = dbtk.DocBang("Select * from KhachHang");
+            dgvTaiKhoan.DataSource = db.DocBang("Select * from TaiKhoan");
 
             btnCapNhat.Enabled = true;
 
@@ -130,15 +131,26 @@ namespace BankManagement
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==
                     System.Windows.Forms.DialogResult.Yes)
             {
-                dbtk.CapNhatDuLieu("delete TaiKhoan where MaTaiKhoan='" +
+                db.CapNhatDuLieu("delete TaiKhoan where MaTaiKhoan='" +
                txtMaTaiKhoan.Text + "'", null);
-                dgvTaiKhoan.DataSource = dbtk.DocBang("Select * from TaiKhoan");
+                dgvTaiKhoan.DataSource = db.DocBang("Select * from TaiKhoan");
                 MessageBox.Show("Xóa tài khoản thành công !");
                 ResetValue();
             }
+            OffValue();
 
         }
-
+        private void OffValue()
+        {
+            txtMaTaiKhoan.Enabled = false;
+            cbbLoaiTaiKhoan.Enabled = false;
+            txtSoTien.Enabled = false;
+            txtTenKhachHang.Enabled = false;
+            txtSoTienGui.Enabled = false;
+            txtSoTienVay.Enabled = false;
+            txtMaKhachHang.Enabled = false;
+            dateNgayMo.Enabled = false;
+        }
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
             try
@@ -150,26 +162,48 @@ namespace BankManagement
                 }
 
                 string maTaiKhoan = txtMaTaiKhoan.Text;
+                // Kiểm tra xem mã tài khoản đã tồn tại trong cơ sở dữ liệu chưa
+                int checkmaTK = (int)db.DocBang("SELECT COUNT(*) FROM TaiKhoan WHERE MaTaiKhoan like N'" + maTaiKhoan + "' ").Rows[0][0];
+
+                if (checkmaTK > 0)
+                {
+                    MessageBox.Show("Mã tài khoản này đã tồn tại trong cơ sở dữ liệu! Vui lòng nhập mã tài khoản khác.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 string loaiTaiKhoan = cbbLoaiTaiKhoan.Text;
 
-                DateTime ngayMo = dateNgayMo.Value;
+                DateTime ngayMo = dateNgayMo.Value.Date;
                 int soTien = int.Parse(txtSoTien.Text);
-                string tenKhachHang = txtTenKhachHang.Text;
+                string maKhachHang = txtMaKhachHang.Text;
+                int soTienGui = int.Parse(txtSoTienGui.Text);
+                int soTienVay = int.Parse(txtSoTienVay.Text);
+                //kiem tra xem ma khach hang da co tai khoan chua
 
-                string query = "INSERT INTO TaiKhoan (MaTaiKhoan, LoaiTaiKhoan, SoTien, ThoiGianMo, TenKhachHang) " +
-                               "VALUES (@MaTaiKhoan, @LoaiTaiKhoan, @SoTien, @ThoiGianMo, @TenKhachHang)";
+                int accountCount = (int)db.DocBang("SELECT COUNT(*) FROM TaiKhoan WHERE MaKhachHang like N'" + maKhachHang + "'").Rows[0][0];
+
+                if (accountCount > 0)
+                {
+                    MessageBox.Show("Khách hàng này đã có tài khoản. Mỗi khách hàng chỉ được mở một tài khoản!");
+                    return;
+                }
+                //
+                string query = "INSERT INTO TaiKhoan (MaTaiKhoan, LoaiTaiKhoan, SoTien, ThoiGianMo,MaKhachHang,SoTienGuiTietKiem,SoTienVay ) " +
+                               "VALUES (@MaTaiKhoan, @LoaiTaiKhoan, @SoTien, @ThoiGianMo,@MaKhachHang,@SoTienGuiTietKiem,@SoTienVay)";
 
                 SqlParameter[] parameters = {
             new SqlParameter("@MaTaiKhoan", maTaiKhoan),
             new SqlParameter("@LoaiTaiKhoan", loaiTaiKhoan),
             new SqlParameter("@Sotien", soTien),
             new SqlParameter("@ThoiGianMo", ngayMo),
-            new SqlParameter("@TenKhachHang", tenKhachHang),
+            new SqlParameter("@MaKhachHang", maKhachHang),
+            new SqlParameter("@SoTienGuiTietKiem",soTienGui),
+            new SqlParameter("@SoTienVay", soTienVay)
+
             };
 
-                dbtk.CapNhatDuLieu(query, parameters);
-                MessageBox.Show("Cập nhật thông tin tài khoản thành công!");
-                dgvTaiKhoan.DataSource = dbtk.DocBang("SELECT * FROM TaiKhoan");
+                db.CapNhatDuLieu(query, parameters);
+                MessageBox.Show("Thông tin tài khoản đã được cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dgvTaiKhoan.DataSource = db.DocBang("SELECT * FROM TaiKhoan");
                 ResetValue();
             }
             catch (Exception ex)
@@ -202,16 +236,39 @@ namespace BankManagement
                 {
                     dateNgayMo.Value = ngaymo;
                 }
-                txtTenKhachHang.Text = dgvTaiKhoan.CurrentRow.Cells["TenKhachHang"].Value.ToString();
+                txtMaKhachHang.Text = dgvTaiKhoan.CurrentRow.Cells["MaKhachHang"].Value.ToString();
+                var tenkhachhang = db.DocBang("select TenKhachHang from KhachHang where MaKhachHang like N'" + txtMaKhachHang.Text + "'");
+                string Text = tenkhachhang.Rows[0][0].ToString();
+                txtTenKhachHang.Text = Text;
+                txtSoTienGui.Text = dgvTaiKhoan.CurrentRow.Cells["SoTienGuiTietKiem"].Value.ToString();
+                txtSoTienVay.Text = dgvTaiKhoan.CurrentRow.Cells["SoTienVay"].Value.ToString();
+
+
             }
- 
+
             btnXoa.Enabled = true;
             btnThem.Enabled = true;
             btnSua.Enabled = true;
 
         }
 
+
+
         private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+        //Nhap ma khach hang ra ten khach hang
+        private void txtMaKhachHang_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void cbbLoaiTaiKhoan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

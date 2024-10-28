@@ -54,7 +54,7 @@ namespace BankManagement
             return dtBang;
         }
 
-        public void CapNhatDuLieu(string sql, SqlParameter[] parameters)
+        public void CapNhatDuLieu(string sql, SqlParameter[] parameters=null)
         {
             try
             {

@@ -144,6 +144,7 @@
             this.lbslkh.Size = new System.Drawing.Size(35, 38);
             this.lbslkh.TabIndex = 14;
             this.lbslkh.Text = "0";
+            this.lbslkh.Click += new System.EventHandler(this.lbslkh_Click);
             // 
             // lbslnv
             // 

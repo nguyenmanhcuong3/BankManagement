@@ -33,10 +33,10 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureKhachHang = new System.Windows.Forms.PictureBox();
-            this.btnCapNhat = new System.Windows.Forms.Button();
-            this.btnXoa = new System.Windows.Forms.Button();
-            this.btnSua = new System.Windows.Forms.Button();
-            this.btnThem = new System.Windows.Forms.Button();
+            this.btnCapNhatKH = new System.Windows.Forms.Button();
+            this.btnXoaKH = new System.Windows.Forms.Button();
+            this.btnSuaKH = new System.Windows.Forms.Button();
+            this.btnThemKH = new System.Windows.Forms.Button();
             this.txtNgheNghiep = new System.Windows.Forms.TextBox();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -57,7 +57,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnTaiAnh = new System.Windows.Forms.Button();
+            this.btnTaiAnhKH = new System.Windows.Forms.Button();
             this.dgvKhachHang = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -93,10 +93,10 @@
             this.panel2.BackColor = System.Drawing.Color.LightGray;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.groupBox1);
-            this.panel2.Controls.Add(this.btnCapNhat);
-            this.panel2.Controls.Add(this.btnXoa);
-            this.panel2.Controls.Add(this.btnSua);
-            this.panel2.Controls.Add(this.btnThem);
+            this.panel2.Controls.Add(this.btnCapNhatKH);
+            this.panel2.Controls.Add(this.btnXoaKH);
+            this.panel2.Controls.Add(this.btnSuaKH);
+            this.panel2.Controls.Add(this.btnThemKH);
             this.panel2.Controls.Add(this.txtNgheNghiep);
             this.panel2.Controls.Add(this.txtDiaChi);
             this.panel2.Controls.Add(this.txtEmail);
@@ -117,7 +117,7 @@
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.btnTaiAnh);
+            this.panel2.Controls.Add(this.btnTaiAnhKH);
             this.panel2.Location = new System.Drawing.Point(14, 140);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel2.Name = "panel2";
@@ -149,53 +149,53 @@
             this.pictureKhachHang.TabStop = false;
             this.pictureKhachHang.Click += new System.EventHandler(this.pictureKhachHang_Click);
             // 
-            // btnCapNhat
+            // btnCapNhatKH
             // 
-            this.btnCapNhat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCapNhat.Location = new System.Drawing.Point(788, 411);
-            this.btnCapNhat.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnCapNhat.Name = "btnCapNhat";
-            this.btnCapNhat.Size = new System.Drawing.Size(140, 61);
-            this.btnCapNhat.TabIndex = 26;
-            this.btnCapNhat.Text = "Cập nhật";
-            this.btnCapNhat.UseVisualStyleBackColor = true;
-            this.btnCapNhat.Click += new System.EventHandler(this.btnCapNhat_Click);
+            this.btnCapNhatKH.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCapNhatKH.Location = new System.Drawing.Point(788, 411);
+            this.btnCapNhatKH.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnCapNhatKH.Name = "btnCapNhatKH";
+            this.btnCapNhatKH.Size = new System.Drawing.Size(140, 61);
+            this.btnCapNhatKH.TabIndex = 26;
+            this.btnCapNhatKH.Text = "Cập nhật";
+            this.btnCapNhatKH.UseVisualStyleBackColor = true;
+            this.btnCapNhatKH.Click += new System.EventHandler(this.btnCapNhatKH_Click);
             // 
-            // btnXoa
+            // btnXoaKH
             // 
-            this.btnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoa.Location = new System.Drawing.Point(554, 408);
-            this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(146, 61);
-            this.btnXoa.TabIndex = 25;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = true;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            this.btnXoaKH.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXoaKH.Location = new System.Drawing.Point(554, 408);
+            this.btnXoaKH.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnXoaKH.Name = "btnXoaKH";
+            this.btnXoaKH.Size = new System.Drawing.Size(146, 61);
+            this.btnXoaKH.TabIndex = 25;
+            this.btnXoaKH.Text = "Xóa";
+            this.btnXoaKH.UseVisualStyleBackColor = true;
+            this.btnXoaKH.Click += new System.EventHandler(this.btnXoaKH_Click);
             // 
-            // btnSua
+            // btnSuaKH
             // 
-            this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSua.Location = new System.Drawing.Point(295, 406);
-            this.btnSua.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(151, 60);
-            this.btnSua.TabIndex = 24;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.UseVisualStyleBackColor = true;
-            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            this.btnSuaKH.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSuaKH.Location = new System.Drawing.Point(295, 406);
+            this.btnSuaKH.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnSuaKH.Name = "btnSuaKH";
+            this.btnSuaKH.Size = new System.Drawing.Size(151, 60);
+            this.btnSuaKH.TabIndex = 24;
+            this.btnSuaKH.Text = "Sửa";
+            this.btnSuaKH.UseVisualStyleBackColor = true;
+            this.btnSuaKH.Click += new System.EventHandler(this.btnSuaKH_Click);
             // 
-            // btnThem
+            // btnThemKH
             // 
-            this.btnThem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThem.Location = new System.Drawing.Point(54, 409);
-            this.btnThem.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(156, 60);
-            this.btnThem.TabIndex = 23;
-            this.btnThem.Text = "Thêm";
-            this.btnThem.UseVisualStyleBackColor = true;
-            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            this.btnThemKH.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThemKH.Location = new System.Drawing.Point(54, 409);
+            this.btnThemKH.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnThemKH.Name = "btnThemKH";
+            this.btnThemKH.Size = new System.Drawing.Size(156, 60);
+            this.btnThemKH.TabIndex = 23;
+            this.btnThemKH.Text = "Thêm";
+            this.btnThemKH.UseVisualStyleBackColor = true;
+            this.btnThemKH.Click += new System.EventHandler(this.btnThemKH_Click);
             // 
             // txtNgheNghiep
             // 
@@ -378,17 +378,17 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Mã khách hàng :";
             // 
-            // btnTaiAnh
+            // btnTaiAnhKH
             // 
-            this.btnTaiAnh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTaiAnh.Location = new System.Drawing.Point(1200, 406);
-            this.btnTaiAnh.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnTaiAnh.Name = "btnTaiAnh";
-            this.btnTaiAnh.Size = new System.Drawing.Size(138, 62);
-            this.btnTaiAnh.TabIndex = 1;
-            this.btnTaiAnh.Text = "Tải ảnh";
-            this.btnTaiAnh.UseVisualStyleBackColor = true;
-            this.btnTaiAnh.Click += new System.EventHandler(this.btnTaiAnh_Click);
+            this.btnTaiAnhKH.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTaiAnhKH.Location = new System.Drawing.Point(1200, 406);
+            this.btnTaiAnhKH.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnTaiAnhKH.Name = "btnTaiAnhKH";
+            this.btnTaiAnhKH.Size = new System.Drawing.Size(138, 62);
+            this.btnTaiAnhKH.TabIndex = 1;
+            this.btnTaiAnhKH.Text = "Tải ảnh";
+            this.btnTaiAnhKH.UseVisualStyleBackColor = true;
+            this.btnTaiAnhKH.Click += new System.EventHandler(this.btnTaiAnh_Click);
             // 
             // dgvKhachHang
             // 
@@ -441,12 +441,12 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnTaiAnh;
+        private System.Windows.Forms.Button btnTaiAnhKH;
         private System.Windows.Forms.PictureBox pictureKhachHang;
-        private System.Windows.Forms.Button btnCapNhat;
-        private System.Windows.Forms.Button btnXoa;
-        private System.Windows.Forms.Button btnSua;
-        private System.Windows.Forms.Button btnThem;
+        private System.Windows.Forms.Button btnCapNhatKH;
+        private System.Windows.Forms.Button btnXoaKH;
+        private System.Windows.Forms.Button btnSuaKH;
+        private System.Windows.Forms.Button btnThemKH;
         private System.Windows.Forms.TextBox txtNgheNghiep;
         private System.Windows.Forms.TextBox txtDiaChi;
         private System.Windows.Forms.TextBox txtEmail;

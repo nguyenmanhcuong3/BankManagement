@@ -34,11 +34,11 @@ namespace BankManagement
             radioKhac.Checked = false;
             pictureKhachHang.Image = null; 
             imageFilePath = "";
-            btnCapNhat.Enabled = false;
-            btnSua.Enabled= false;
-            btnTaiAnh.Enabled = false;
-            btnThem.Enabled = false;
-            btnXoa.Enabled = false;
+            btnCapNhatKH.Enabled = false;
+            btnSuaKH.Enabled= false;
+            btnTaiAnhKH.Enabled = false;
+            btnThemKH.Enabled = false;
+            btnXoaKH.Enabled = false;
             
 
 
@@ -49,11 +49,11 @@ namespace BankManagement
             DataTable dbKhachHang = db.DocBang("select * from KhachHang");
             dgvKhachHang.DataSource = dbKhachHang;
             dbKhachHang.Dispose();
-            btnCapNhat.Enabled = false;
-            btnSua.Enabled = false;
-            btnTaiAnh.Enabled = false;
-            btnThem.Enabled = true;
-            btnXoa.Enabled = false;
+            btnCapNhatKH.Enabled = false;
+            btnSuaKH.Enabled = false;
+            btnTaiAnhKH.Enabled = false;
+            btnThemKH.Enabled = true;
+            btnXoaKH.Enabled = false;
 
         }
         
@@ -72,7 +72,7 @@ namespace BankManagement
             }
 
         }
-        private void btnThem_Click(object sender, EventArgs e)
+        private void btnThemKH_Click(object sender, EventArgs e)
         {
             txtDiaChi.Text = "";
             txtEmail.Text = "";
@@ -82,16 +82,16 @@ namespace BankManagement
             txtSoDienThoai.Text = "";
             txttenKhachHang.Text = "";
             txtMaKhachHang.Focus();
-            btnCapNhat.Enabled = true;
-            btnTaiAnh.Enabled = true;
-            btnSua.Enabled = false;
-            btnXoa.Enabled = false;
-            btnTaiAnh.Image = null;
+            btnCapNhatKH.Enabled = true;
+            btnTaiAnhKH.Enabled = true;
+            btnSuaKH.Enabled = false;
+            btnXoaKH.Enabled = false;
+            btnTaiAnhKH.Image = null;
             pictureKhachHang.Image = null;
             radioKhac.Checked = true;
 
         }
-        private void btnCapNhat_Click(object sender, EventArgs e)
+        private void btnCapNhatKH_Click(object sender, EventArgs e)
         {
             string maKhachHang = txtMaKhachHang.Text;
             string tenKhachHang = txttenKhachHang.Text;
@@ -195,7 +195,7 @@ namespace BankManagement
 
         }
 
-        private void btnSua_Click(object sender, EventArgs e)
+        private void btnSuaKH_Click(object sender, EventArgs e)
         {
             try
             {
@@ -278,7 +278,7 @@ namespace BankManagement
         }
 
 
-        private void btnXoa_Click(object sender, EventArgs e)
+        private void btnXoaKH_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Bạn có muốn xóa khách hàng  có mã là:" +
                     txtMaKhachHang.Text + " không?", "Thông báo",
@@ -365,10 +365,10 @@ namespace BankManagement
         }
     }
 
-    btnXoa.Enabled = true;
-    btnThem.Enabled = true;
-    btnSua.Enabled = true;
-    btnTaiAnh.Enabled = true;
+    btnXoaKH.Enabled = true;
+    btnThemKH.Enabled = true;
+    btnSuaKH.Enabled = true;
+    btnTaiAnhKH.Enabled = true;
 }
 
 
