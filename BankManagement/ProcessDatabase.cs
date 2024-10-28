@@ -12,7 +12,7 @@ namespace BankManagement
 {
     internal class ProcessDatabase
     {
-        string strConnect = "Data Source=NMC\\SQLEXPRESS;Initial Catalog=BankManagement;Integrated Security=True";
+        string strConnect = "Data Source=LAPTOP-KGNBC7V6\\SQLEXPRESS;Initial Catalog=QLBank_BTL;Integrated Security=True;Encrypt=False";
         SqlConnection sqlConnect = null;
 
         private void KetNoiCSDL()

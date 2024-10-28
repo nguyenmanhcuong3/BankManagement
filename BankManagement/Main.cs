@@ -184,5 +184,10 @@ namespace BankManagement
                 Application.Exit(); 
             }
         }
-    }
+
+		private void panelMain_Paint(object sender, PaintEventArgs e)
+		{
+
+		}
+	}
 }
