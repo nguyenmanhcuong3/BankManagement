@@ -37,12 +37,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.tbslnv = new System.Windows.Forms.TextBox();
-            this.tbsltk = new System.Windows.Forms.TextBox();
-            this.tbslgd = new System.Windows.Forms.TextBox();
-            this.tbstg = new System.Windows.Forms.TextBox();
-            this.tbstv = new System.Windows.Forms.TextBox();
             this.lbslkh = new System.Windows.Forms.Label();
+            this.lbslnv = new System.Windows.Forms.Label();
+            this.lbsltk = new System.Windows.Forms.Label();
+            this.lbslgd = new System.Windows.Forms.Label();
+            this.lbsltg = new System.Windows.Forms.Label();
+            this.lbsltv = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -129,46 +129,11 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(201, 686);
+            this.label8.Location = new System.Drawing.Point(192, 686);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(294, 38);
             this.label8.TabIndex = 7;
             this.label8.Text = " Số lượng tiền vay :";
-            // 
-            // tbslnv
-            // 
-            this.tbslnv.Location = new System.Drawing.Point(574, 305);
-            this.tbslnv.Name = "tbslnv";
-            this.tbslnv.Size = new System.Drawing.Size(376, 26);
-            this.tbslnv.TabIndex = 9;
-            // 
-            // tbsltk
-            // 
-            this.tbsltk.Location = new System.Drawing.Point(574, 408);
-            this.tbsltk.Name = "tbsltk";
-            this.tbsltk.Size = new System.Drawing.Size(376, 26);
-            this.tbsltk.TabIndex = 10;
-            // 
-            // tbslgd
-            // 
-            this.tbslgd.Location = new System.Drawing.Point(574, 505);
-            this.tbslgd.Name = "tbslgd";
-            this.tbslgd.Size = new System.Drawing.Size(376, 26);
-            this.tbslgd.TabIndex = 11;
-            // 
-            // tbstg
-            // 
-            this.tbstg.Location = new System.Drawing.Point(574, 603);
-            this.tbstg.Name = "tbstg";
-            this.tbstg.Size = new System.Drawing.Size(376, 26);
-            this.tbstg.TabIndex = 12;
-            // 
-            // tbstv
-            // 
-            this.tbstv.Location = new System.Drawing.Point(574, 696);
-            this.tbstv.Name = "tbstv";
-            this.tbstv.Size = new System.Drawing.Size(376, 26);
-            this.tbstv.TabIndex = 13;
             // 
             // lbslkh
             // 
@@ -180,17 +145,67 @@
             this.lbslkh.TabIndex = 14;
             this.lbslkh.Text = "0";
             // 
+            // lbslnv
+            // 
+            this.lbslnv.AutoSize = true;
+            this.lbslnv.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbslnv.Location = new System.Drawing.Point(567, 295);
+            this.lbslnv.Name = "lbslnv";
+            this.lbslnv.Size = new System.Drawing.Size(35, 38);
+            this.lbslnv.TabIndex = 15;
+            this.lbslnv.Text = "0";
+            // 
+            // lbsltk
+            // 
+            this.lbsltk.AutoSize = true;
+            this.lbsltk.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbsltk.Location = new System.Drawing.Point(567, 398);
+            this.lbsltk.Name = "lbsltk";
+            this.lbsltk.Size = new System.Drawing.Size(35, 38);
+            this.lbsltk.TabIndex = 16;
+            this.lbsltk.Text = "0";
+            // 
+            // lbslgd
+            // 
+            this.lbslgd.AutoSize = true;
+            this.lbslgd.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbslgd.Location = new System.Drawing.Point(567, 495);
+            this.lbslgd.Name = "lbslgd";
+            this.lbslgd.Size = new System.Drawing.Size(35, 38);
+            this.lbslgd.TabIndex = 17;
+            this.lbslgd.Text = "0";
+            // 
+            // lbsltg
+            // 
+            this.lbsltg.AutoSize = true;
+            this.lbsltg.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbsltg.Location = new System.Drawing.Point(567, 593);
+            this.lbsltg.Name = "lbsltg";
+            this.lbsltg.Size = new System.Drawing.Size(35, 38);
+            this.lbsltg.TabIndex = 18;
+            this.lbsltg.Text = "0";
+            // 
+            // lbsltv
+            // 
+            this.lbsltv.AutoSize = true;
+            this.lbsltv.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbsltv.Location = new System.Drawing.Point(567, 686);
+            this.lbsltv.Name = "lbsltv";
+            this.lbsltv.Size = new System.Drawing.Size(35, 38);
+            this.lbsltv.TabIndex = 19;
+            this.lbsltv.Text = "0";
+            // 
             // ThongTin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1442, 980);
+            this.Controls.Add(this.lbsltv);
+            this.Controls.Add(this.lbsltg);
+            this.Controls.Add(this.lbslgd);
+            this.Controls.Add(this.lbsltk);
+            this.Controls.Add(this.lbslnv);
             this.Controls.Add(this.lbslkh);
-            this.Controls.Add(this.tbstv);
-            this.Controls.Add(this.tbstg);
-            this.Controls.Add(this.tbslgd);
-            this.Controls.Add(this.tbsltk);
-            this.Controls.Add(this.tbslnv);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -220,11 +235,11 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox tbslnv;
-        private System.Windows.Forms.TextBox tbsltk;
-        private System.Windows.Forms.TextBox tbslgd;
-        private System.Windows.Forms.TextBox tbstg;
-        private System.Windows.Forms.TextBox tbstv;
         private System.Windows.Forms.Label lbslkh;
+        private System.Windows.Forms.Label lbslnv;
+        private System.Windows.Forms.Label lbsltk;
+        private System.Windows.Forms.Label lbslgd;
+        private System.Windows.Forms.Label lbsltg;
+        private System.Windows.Forms.Label lbsltv;
     }
 }
