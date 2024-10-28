@@ -111,16 +111,17 @@
             // 
             // txtMaKhachHang
             // 
-            this.txtMaKhachHang.Location = new System.Drawing.Point(847, 139);
+            this.txtMaKhachHang.Location = new System.Drawing.Point(847, 83);
             this.txtMaKhachHang.Name = "txtMaKhachHang";
             this.txtMaKhachHang.Size = new System.Drawing.Size(200, 22);
             this.txtMaKhachHang.TabIndex = 39;
+            this.txtMaKhachHang.TextChanged += new System.EventHandler(this.txtMaKhachHang_TextChanged);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(670, 143);
+            this.label9.Location = new System.Drawing.Point(670, 85);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(122, 20);
             this.label9.TabIndex = 38;
@@ -167,11 +168,13 @@
             this.cbbLoaiTaiKhoan.Items.AddRange(new object[] {
             "ThanhToan",
             "TietKiem",
-            "VayVon"});
+            "VayVon",
+            "DaNang"});
             this.cbbLoaiTaiKhoan.Location = new System.Drawing.Point(307, 139);
             this.cbbLoaiTaiKhoan.Name = "cbbLoaiTaiKhoan";
             this.cbbLoaiTaiKhoan.Size = new System.Drawing.Size(200, 24);
             this.cbbLoaiTaiKhoan.TabIndex = 33;
+            this.cbbLoaiTaiKhoan.SelectedIndexChanged += new System.EventHandler(this.cbbLoaiTaiKhoan_SelectedIndexChanged);
             // 
             // dateNgayMo
             // 
@@ -228,7 +231,7 @@
             // 
             // txtTenKhachHang
             // 
-            this.txtTenKhachHang.Location = new System.Drawing.Point(847, 87);
+            this.txtTenKhachHang.Location = new System.Drawing.Point(847, 143);
             this.txtTenKhachHang.Name = "txtTenKhachHang";
             this.txtTenKhachHang.Size = new System.Drawing.Size(200, 22);
             this.txtTenKhachHang.TabIndex = 11;
@@ -251,7 +254,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(670, 85);
+            this.label6.Location = new System.Drawing.Point(670, 143);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(137, 20);
             this.label6.TabIndex = 6;
