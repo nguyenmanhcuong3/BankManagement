@@ -26,6 +26,7 @@ namespace BankManagement
             txtTaiKhoan.ForeColor = Color.Gray;
             txtMatKhau.Text = "Nhập mật khẩu";
             txtMatKhau.ForeColor = Color.Gray;
+            
             pbHienMk.Hide();
 
         }
@@ -54,6 +55,7 @@ namespace BankManagement
             {
                 txtMatKhau.Text = "";
                 txtMatKhau.ForeColor = Color.Black;
+                txtMatKhau.PasswordChar = '*';
             }
         }
 
@@ -68,8 +70,8 @@ namespace BankManagement
 
 
         private void pictureBox4_Click(object sender, EventArgs e)
-        {    
-            txtMatKhau.PasswordChar = '*';
+        {
+            txtMatKhau.PasswordChar = '\0';
             pbHienMk.Show();
             pictureBox4.Hide();
         }
@@ -128,7 +130,8 @@ namespace BankManagement
 
         private void pbHienMk_Click(object sender, EventArgs e)
         {
-            txtMatKhau.PasswordChar = '\0';
+           
+            txtMatKhau.PasswordChar = '*';
             pictureBox4.Show();
             pbHienMk.Hide();
 

@@ -133,14 +133,14 @@ namespace BankManagement
         {
             pbNhapMkMo.Show();
             pictureBox6.Hide();
-            txtNhapMk.PasswordChar = '*'; 
+            txtNhapMk.PasswordChar = '\0'; 
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
             pbNhapLaiMkMo.Show();
             pictureBox4.Hide();
-            txtNhapLaiMk.PasswordChar = '*'; 
+            txtNhapLaiMk.PasswordChar = '\0'; 
            
             
         }
@@ -190,14 +190,14 @@ namespace BankManagement
 
         private void pbNhapMkMo_Click(object sender, EventArgs e)
         {
-            txtNhapMk.PasswordChar = '\0';
+            txtNhapMk.PasswordChar = '*';
             pictureBox6.Show();
             pbNhapMkMo.Hide();
         }
 
         private void pbNhapLaiMkMo_Click(object sender, EventArgs e)
         {
-            txtNhapLaiMk.PasswordChar = '\0';
+            txtNhapLaiMk.PasswordChar = '*';
             pictureBox4.Show();
             pbNhapLaiMkMo.Hide();
         }
