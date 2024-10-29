@@ -164,6 +164,34 @@ namespace BankManagement
             }
             return ten;
         }
+        public object ThucThiGiaTriDon(string query, SqlParameter[] parameters = null)
+        {
+            object ketQua = null;
+            KetNoiCSDL();
+
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand(query, sqlConnect))
+                {
+                    if (parameters != null)
+                    {
+                        cmd.Parameters.AddRange(parameters);
+                    }
+                    // Thực thi câu truy vấn và trả về giá trị đơn
+                    ketQua = cmd.ExecuteScalar();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi xảy ra: " + ex.Message);
+            }
+            finally
+            {
+                DongKetNoiCSDL();
+            }
+
+            return ketQua;
+        }
 
     }
 }
