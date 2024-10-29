@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.Windows.Forms;
+using OfficeOpenXml;
+using System.IO;
 
 
 namespace BankManagement
@@ -216,6 +218,25 @@ namespace BankManagement
                 int count = (int)cmd.ExecuteScalar();
 
                 return count > 0;
+            }
+        }
+        public void ExportToExcel(string sql, string filePath, SqlParameter[] parameters = null)
+        {
+            DataTable dataTable = DocBang(sql, parameters); // Lấy dữ liệu từ database
+
+            // Thiết lập EPPlus
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            using (ExcelPackage package = new ExcelPackage())
+            {
+                // Tạo một worksheet
+                ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Sheet1");
+
+                // Tải dữ liệu từ DataTable vào worksheet
+                worksheet.Cells["A1"].LoadFromDataTable(dataTable, true);
+
+                // Lưu file Excel vào đường dẫn chỉ định
+                FileInfo file = new FileInfo(filePath);
+                package.SaveAs(file);
             }
         }
 

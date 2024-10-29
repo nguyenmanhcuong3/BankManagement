@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Excel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,7 +15,7 @@ namespace BankManagement
 {
     public partial class KhachHang : Form
     {
-        ProcessDatabase db= new ProcessDatabase();
+        ProcessDatabase db = new ProcessDatabase();
         private string imageFilePath = "";
         public KhachHang()
         {
@@ -32,21 +33,21 @@ namespace BankManagement
             radioNam.Checked = false;
             radioNu.Checked = false;
             radioKhac.Checked = false;
-            pictureKhachHang.Image = null; 
+            pictureKhachHang.Image = null;
             imageFilePath = "";
             btnCapNhatKH.Enabled = false;
-            btnSuaKH.Enabled= false;
+            btnSuaKH.Enabled = false;
             btnTaiAnhKH.Enabled = false;
             btnThemKH.Enabled = false;
             btnXoaKH.Enabled = false;
-            
+
 
 
 
         }
         private void KhachHang_Load(object sender, EventArgs e)
         {
-            DataTable dbKhachHang = db.DocBang("select * from KhachHang");
+            System.Data.DataTable dbKhachHang = db.DocBang("select * from KhachHang");
             dgvKhachHang.DataSource = dbKhachHang;
             dbKhachHang.Dispose();
             btnCapNhatKH.Enabled = false;
@@ -56,10 +57,10 @@ namespace BankManagement
             btnXoaKH.Enabled = false;
 
         }
-        
+
         private void btnTaiAnh_Click(object sender, EventArgs e)
         {
-          
+
             OpenFileDialog openFileDialog = new OpenFileDialog();
 
             openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
@@ -286,13 +287,13 @@ namespace BankManagement
                     System.Windows.Forms.DialogResult.Yes)
             {
                 db.CapNhatDuLieu("delete KhachHang where MaKhachHang='" +
-               txtMaKhachHang.Text + "'",null);
+               txtMaKhachHang.Text + "'", null);
                 dgvKhachHang.DataSource = db.DocBang("Select * from KhachHang");
                 MessageBox.Show("Xóa khách hàng thành công !");
 
                 ResetValue();
             }
-            
+
         }
 
         private void dgvKhachHang_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -301,75 +302,75 @@ namespace BankManagement
         }
 
         private void dgvKhachHang_Click(object sender, EventArgs e)
-{
-    if (dgvKhachHang.CurrentRow != null)
-    {
-        txtMaKhachHang.Text = dgvKhachHang.CurrentRow.Cells["MaKhachHang"].Value.ToString(); 
-        txttenKhachHang.Text = dgvKhachHang.CurrentRow.Cells["TenKhachHang"].Value.ToString(); 
-        txtSoCCCD.Text = dgvKhachHang.CurrentRow.Cells["SoCCCD"].Value.ToString(); 
-        txtSoDienThoai.Text = dgvKhachHang.CurrentRow.Cells["SoDienThoai"].Value.ToString(); 
-
-        string ngaySinhStr = dgvKhachHang.CurrentRow.Cells["NgaySinh"].Value?.ToString(); 
-        if (!string.IsNullOrEmpty(ngaySinhStr) && DateTime.TryParse(ngaySinhStr, out DateTime ngaySinh))
         {
-            dateNgaySinh.Value = ngaySinh; 
-        }
-
-        string gioiTinh = dgvKhachHang.CurrentRow.Cells["GioiTinh"].Value.ToString();
-        if (gioiTinh == "Nam")
-        {
-            radioNam.Checked = true;
-        }
-        else if (gioiTinh == "Nữ")
-        {
-            radioNu.Checked = true;
-        }
-        else
-        {
-            radioKhac.Checked = true;
-        }
-
-        txtEmail.Text = dgvKhachHang.CurrentRow.Cells["Email"].Value.ToString(); 
-        txtDiaChi.Text = dgvKhachHang.CurrentRow.Cells["DiaChi"].Value.ToString(); 
-        txtNgheNghiep.Text = dgvKhachHang.CurrentRow.Cells["NgheNghiep"].Value.ToString(); 
-
-        string anhDaiDien = dgvKhachHang.CurrentRow.Cells["AnhDaiDien"].Value?.ToString(); 
-        if (!string.IsNullOrEmpty(anhDaiDien))
-        {
-            string fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "ImagesKhachHang", anhDaiDien);
-
-            try
+            if (dgvKhachHang.CurrentRow != null)
             {
-                // Giải phóng ảnh hiện tại trước khi tải ảnh mới
-                if (pictureKhachHang.Image != null)
+                txtMaKhachHang.Text = dgvKhachHang.CurrentRow.Cells["MaKhachHang"].Value.ToString();
+                txttenKhachHang.Text = dgvKhachHang.CurrentRow.Cells["TenKhachHang"].Value.ToString();
+                txtSoCCCD.Text = dgvKhachHang.CurrentRow.Cells["SoCCCD"].Value.ToString();
+                txtSoDienThoai.Text = dgvKhachHang.CurrentRow.Cells["SoDienThoai"].Value.ToString();
+
+                string ngaySinhStr = dgvKhachHang.CurrentRow.Cells["NgaySinh"].Value?.ToString();
+                if (!string.IsNullOrEmpty(ngaySinhStr) && DateTime.TryParse(ngaySinhStr, out DateTime ngaySinh))
                 {
-                    pictureKhachHang.Image.Dispose();
+                    dateNgaySinh.Value = ngaySinh;
+                }
+
+                string gioiTinh = dgvKhachHang.CurrentRow.Cells["GioiTinh"].Value.ToString();
+                if (gioiTinh == "Nam")
+                {
+                    radioNam.Checked = true;
+                }
+                else if (gioiTinh == "Nữ")
+                {
+                    radioNu.Checked = true;
+                }
+                else
+                {
+                    radioKhac.Checked = true;
+                }
+
+                txtEmail.Text = dgvKhachHang.CurrentRow.Cells["Email"].Value.ToString();
+                txtDiaChi.Text = dgvKhachHang.CurrentRow.Cells["DiaChi"].Value.ToString();
+                txtNgheNghiep.Text = dgvKhachHang.CurrentRow.Cells["NgheNghiep"].Value.ToString();
+
+                string anhDaiDien = dgvKhachHang.CurrentRow.Cells["AnhDaiDien"].Value?.ToString();
+                if (!string.IsNullOrEmpty(anhDaiDien))
+                {
+                    string fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "ImagesKhachHang", anhDaiDien);
+
+                    try
+                    {
+                        // Giải phóng ảnh hiện tại trước khi tải ảnh mới
+                        if (pictureKhachHang.Image != null)
+                        {
+                            pictureKhachHang.Image.Dispose();
+                            pictureKhachHang.Image = null;
+                        }
+
+                        // Đọc ảnh từ tệp và tải vào PictureBox thông qua MemoryStream
+                        using (var stream = new MemoryStream(File.ReadAllBytes(fullPath)))
+                        {
+                            pictureKhachHang.Image = Image.FromStream(stream);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Không thể tải ảnh: " + ex.Message);
+                        pictureKhachHang.Image = null;
+                    }
+                }
+                else
+                {
                     pictureKhachHang.Image = null;
                 }
-
-                // Đọc ảnh từ tệp và tải vào PictureBox thông qua MemoryStream
-                using (var stream = new MemoryStream(File.ReadAllBytes(fullPath)))
-                {
-                    pictureKhachHang.Image = Image.FromStream(stream);
-                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Không thể tải ảnh: " + ex.Message);
-                pictureKhachHang.Image = null; 
-            }
-        }
-        else
-        {
-            pictureKhachHang.Image = null; 
-        }
-    }
 
-    btnXoaKH.Enabled = true;
-    btnThemKH.Enabled = true;
-    btnSuaKH.Enabled = true;
-    btnTaiAnhKH.Enabled = true;
-}
+            btnXoaKH.Enabled = true;
+            btnThemKH.Enabled = true;
+            btnSuaKH.Enabled = true;
+            btnTaiAnhKH.Enabled = true;
+        }
 
 
         private void button1_Click(object sender, EventArgs e)
@@ -377,16 +378,29 @@ namespace BankManagement
             this.Close();
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
+        private void btnXuatFile_Click(object sender, EventArgs e)
         {
+            // Tạo đối tượng cho việc xuất dữ liệu
+            ProcessDatabase db = new ProcessDatabase();
+            string sql = "SELECT * FROM KhachHang"; // Truy vấn SQL để lấy dữ liệu từ bảng KhachHang
 
+            // Tạo SaveFileDialog để cho phép người dùng chọn vị trí lưu file
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx"; // Chỉ cho phép lưu file với đuôi .xlsx
+                saveFileDialog.DefaultExt = "xlsx"; // Đặt đuôi mặc định
+                saveFileDialog.Title = "Lưu file Excel"; // Tiêu đề của hộp thoại
+
+                // Hiển thị hộp thoại và kiểm tra nếu người dùng đã chọn file
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = saveFileDialog.FileName; // Lấy đường dẫn file đã chọn
+
+                    // Xuất dữ liệu ra file Excel
+                    db.ExportToExcel(sql, filePath);
+                    MessageBox.Show("Xuất dữ liệu ra file Excel thành công!");
+                }
+            }
         }
-
-        private void pictureKhachHang_Click(object sender, EventArgs e)
-        {
-
-        }
-
-       
     }
 }

@@ -23,7 +23,7 @@ CREATE TABLE AnhKhachHang (
 CREATE TABLE TaiKhoan (
     MaTaiKhoan nvarchar(20) PRIMARY KEY,
     LoaiTaiKhoan NVARCHAR(50),
-    SoTien DECIMAL(18, 2),
+    SoTien int,
     ThoiGianMo DATETIME,
     MaKhachHang nvarchar(20),
     SoTienGuiTietKiem int,
