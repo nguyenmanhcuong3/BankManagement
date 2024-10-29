@@ -22,23 +22,56 @@ namespace BankManagement
             this.txtMatKhau.KeyDown += new KeyEventHandler(TxtBox_KeyDown);
             this.KeyDown += new KeyEventHandler(Form_KeyDown);
             this.KeyPreview = true;
+            txtTaiKhoan.Text = "Nhập tài khoản";
+            txtTaiKhoan.ForeColor = Color.Gray;
+            txtMatKhau.Text = "Nhập mật khẩu";
+            txtMatKhau.ForeColor = Color.Gray;
+            pbHienMk.Hide();
+
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        // tai khoan
+        private void txtTaiKhoan_Enter(object sender, EventArgs e)
         {
-
+            if (txtTaiKhoan.Text.Equals("Nhập tài khoản"))
+            {
+                txtTaiKhoan.Text = "";
+                txtTaiKhoan.ForeColor = Color.Black;
+            }
         }
+        private void txtTaiKhoan_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtTaiKhoan.Text))
+            {
+                txtTaiKhoan.Text = "Nhập tài khoản";
+                txtTaiKhoan.ForeColor = Color.Gray;
+            }
+        }
+        // mat khau
+        private void txtMatKhau_Enter(object sender, EventArgs e)
+        {
+            if (txtMatKhau.Text.Equals("Nhập mật khẩu"))
+            {
+                txtMatKhau.Text = "";
+                txtMatKhau.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtMatKhau_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtMatKhau.Text))
+            {
+                txtMatKhau.Text = "Nhập mật khẩu";
+                txtMatKhau.ForeColor = Color.Gray;
+            }
+        }
+
 
         private void pictureBox4_Click(object sender, EventArgs e)
-        {
-            if (txtMatKhau.PasswordChar == '*')
-            {
-                txtMatKhau.PasswordChar = '\0'; 
-            }
-            else
-            {
-                txtMatKhau.PasswordChar = '*';
-            }
+        {    
+            txtMatKhau.PasswordChar = '*';
+            pbHienMk.Show();
+            pictureBox4.Hide();
         }
         private void TxtBox_KeyDown(object sender, KeyEventArgs e)
         {
@@ -78,11 +111,26 @@ namespace BankManagement
         }
         private void btnThoat_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Hide();
+            DangKi dangKi = new DangKi();
+            dangKi.Show();
+        }
+
+        private void pbHienMk_Click(object sender, EventArgs e)
+        {
+            txtMatKhau.PasswordChar = '\0';
+            pictureBox4.Show();
+            pbHienMk.Hide();
 
         }
     }

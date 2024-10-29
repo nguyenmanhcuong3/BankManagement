@@ -38,6 +38,8 @@ namespace BankManagement
             txtNhapLaiMk.Text = "Nhập lại mật khẩu";
             txtNhapLaiMk.ForeColor = Color.Gray;
             
+            pbNhapMkMo.Hide();
+            pbNhapLaiMkMo.Hide();
 
             label1.Focus();
         }
@@ -129,28 +131,18 @@ namespace BankManagement
 
         private void pictureBox6_Click(object sender, EventArgs e)
         {
-        
-            if (txtNhapMk.PasswordChar == '\0')
-            {
-                txtNhapMk.PasswordChar = '*'; 
-            }
-            else
-            {
-                txtNhapMk.PasswordChar = '\0'; 
-            }
+            pbNhapMkMo.Show();
+            pictureBox6.Hide();
+            txtNhapMk.PasswordChar = '*'; 
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
+            pbNhapLaiMkMo.Show();
+            pictureBox4.Hide();
+            txtNhapLaiMk.PasswordChar = '*'; 
            
-            if (txtNhapLaiMk.PasswordChar == '\0')
-            {
-                txtNhapLaiMk.PasswordChar = '*'; 
-            }
-            else
-            {
-                txtNhapLaiMk.PasswordChar = '\0'; 
-            }
+            
         }
 
         private void btnDangKi_Click(object sender, EventArgs e)
@@ -196,6 +188,30 @@ namespace BankManagement
             login.Show(); 
         }
 
+        private void pbNhapMkMo_Click(object sender, EventArgs e)
+        {
+            txtNhapMk.PasswordChar = '\0';
+            pictureBox6.Show();
+            pbNhapMkMo.Hide();
+        }
 
+        private void pbNhapLaiMkMo_Click(object sender, EventArgs e)
+        {
+            txtNhapLaiMk.PasswordChar = '\0';
+            pictureBox4.Show();
+            pbNhapLaiMkMo.Hide();
+        }
+
+        private void btnThoat_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnDangNhap_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Login login = new Login();
+            login.Show();
+        }
     }
 }
