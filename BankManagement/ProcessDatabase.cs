@@ -191,7 +191,6 @@ namespace BankManagement
                     {
                         cmd.Parameters.AddRange(parameters);
                     }
-                    // Thực thi câu truy vấn và trả về giá trị đơn
                     ketQua = cmd.ExecuteScalar();
                 }
             }
@@ -205,6 +204,19 @@ namespace BankManagement
             }
 
             return ketQua;
+        }
+        public bool CheckAccountExists(string username)
+        { 
+            string query = "SELECT COUNT(*) FROM Login WHERE username = @username";
+            SqlParameter[] parameters = { new SqlParameter("@username", username) };
+            KetNoiCSDL();
+            using (SqlCommand cmd = new SqlCommand(query, sqlConnect))
+            {
+                cmd.Parameters.AddRange(parameters);
+                int count = (int)cmd.ExecuteScalar();
+
+                return count > 0;
+            }
         }
 
     }

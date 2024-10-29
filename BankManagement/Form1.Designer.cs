@@ -38,6 +38,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.panelLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -50,6 +51,7 @@
             this.panelLogin.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelLogin.BackColor = System.Drawing.Color.Silver;
             this.panelLogin.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelLogin.Controls.Add(this.linkLabel1);
             this.panelLogin.Controls.Add(this.btnThoat);
             this.panelLogin.Controls.Add(this.pictureBox4);
             this.panelLogin.Controls.Add(this.txtMatKhau);
@@ -163,8 +165,18 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(150, 62);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Quản lý";
+            this.label1.Text = "Login";
             this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(300, 461);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(63, 20);
+            this.linkLabel1.TabIndex = 9;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Đăng kí";
             // 
             // Login
             // 
@@ -202,6 +214,7 @@
         private System.Windows.Forms.TextBox txtTaiKhoan;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.LinkLabel btnThoat;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 
