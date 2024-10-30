@@ -254,6 +254,24 @@ namespace BankManagement
                 package.SaveAs(file);
             }
         }
+        public List<string> GetTenNhanVienList()
+        {
+            List<string> TenNhanVienList = new List<string>();
 
+            // Giả sử bạn đã thiết lập kết nối với cơ sở dữ liệu
+            string query = "SELECT TenNhanVien FROM NhanVien"; // Điều chỉnh tên bảng nếu cần
+            SqlConnection conn = new SqlConnection(strConnect);
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    TenNhanVienList.Add(reader["TenNhanVien"].ToString());
+                }
+            }
+
+            return TenNhanVienList;
+        }
     }
 }

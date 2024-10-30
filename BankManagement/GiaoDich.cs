@@ -15,12 +15,13 @@ namespace BankManagement
     {
         ProcessDatabase db = new ProcessDatabase();
         private KhachHang khachHangForm;
+        private DataTable dbGiaoDich = new DataTable();
         public GiaoDich()
         {
             InitializeComponent();
             // Khởi tạo danh sách mã khách hàng rỗng
             //maKhachHangList = new List<string>();
-          
+
             // Thiết lập DateTimePicker để ẩn ngày tháng mặc định
             dateNgayGiaoDich.Format = DateTimePickerFormat.Custom;
             dateNgayGiaoDich.CustomFormat = " "; // Ẩn ngày mặc định
@@ -39,42 +40,43 @@ namespace BankManagement
 
         private void ResetValue()
         {
-           txtMaGiaoDich.Text= string.Empty;
-           cbbLoaiGiaoDich.Text = string.Empty;
-           txtTenKhachHang.Text = string.Empty;
-           txtTenKhachHang.Text= string.Empty;
-            txtSoTien.Text= string.Empty;
-            txtNhanVien.Text= string.Empty;
-            btnGiaoDichMoi.Enabled = false;
+            txtMaGiaoDich.Text = string.Empty;
+            cbbLoaiGiaoDich.Text = string.Empty;
+            txtTenKhachHang.Text = string.Empty;
+            txtTenKhachHang.Text = string.Empty;
+            txtSoTien.Text = string.Empty;
+            cbbTenNhanVien.Text = string.Empty;
+            btnGiaoDichMoi.Enabled = true;
             btnXacNhan.Enabled = false;
             btnXoa.Enabled = false;
-            btnXuatExcel.Enabled = false;
+            btnXuatExcel.Enabled = true;
 
         }
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
+       
 
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void dateNgayGiaoDich_ValueChanged(object sender, EventArgs e)
-        {
-           
-        }
 
         private void GiaoDich_Load(object sender, EventArgs e)
         {
-            DataTable dbGiaoDich = db.DocBang("select * from GiaoDich");
+            dbGiaoDich = db.DocBang("select * from GiaoDich");
             dgvGiaoDich.DataSource = dbGiaoDich;
             dbGiaoDich.Dispose();
             btnGiaoDichMoi.Enabled = true;
-            btnXoa.Enabled=false;
-            btnXuatExcel.Enabled=false;
-            btnXacNhan.Enabled=false;
+            btnXoa.Enabled = false;
+            btnXuatExcel.Enabled = true;
+            btnXacNhan.Enabled = false;
+            // thêm mã khách hàng vào cbbMaKhachHang
+            List<string> listkh = db.GetMaKhachHangList();
+            foreach (string i in listkh)
+            {
+                cbbMaKhachHang.Items.Add(i);
+            }
+            // them ten nhan vien vao cbbTenNhanVien
+            List<string> listnv = db.GetTenNhanVienList();
+            foreach (string i in listnv)
+            {
+                cbbTenNhanVien.Items.Add(i);
+            }
+       
         }
 
         private void btnGiaoDichMoi_Click(object sender, EventArgs e)
@@ -82,15 +84,15 @@ namespace BankManagement
             txtMaGiaoDich.Enabled = true;
             txtSoTien.Enabled = true;
             txtTenKhachHang.Enabled = true;
-            txtMaKhachHang.Enabled = true;
+            cbbMaKhachHang.Enabled = true;
             cbbLoaiGiaoDich.Enabled = true;
-            txtNhanVien.Enabled = true;
+            cbbTenNhanVien.Enabled = true;
             dateNgayGiaoDich.Enabled = true;
             txtMaGiaoDich.Text = "";
             txtSoTien.Text = "";
             txtTenKhachHang.Text = "";
-            txtMaKhachHang.Text = "";
-            txtNhanVien.Text = "";
+            cbbMaKhachHang.Text = "";
+            cbbTenNhanVien.Text = "";
             btnXacNhan.Enabled = true;
         }
 
@@ -145,9 +147,11 @@ namespace BankManagement
             {
                 MessageBox.Show("Vui lòng chọn dòng cần xóa.");
             }
+         
+            ResetValue();
         }
 
-        
+
 
         private void dgvGiaoDich_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -160,7 +164,7 @@ namespace BankManagement
                 // Hiển thị thông tin giao dịch từ dòng được chọn lên các ô nhập
                 txtMaGiaoDich.Text = selectedRow.Cells["MaGiaoDich"].Value?.ToString();
                 cbbLoaiGiaoDich.Text = selectedRow.Cells["LoaiGiaoDich"].Value?.ToString();
-                txtMaKhachHang.Text = selectedRow.Cells["MaKhachHang"].Value?.ToString();
+                cbbMaKhachHang.Text = selectedRow.Cells["MaKhachHang"].Value?.ToString();
                 txtTenKhachHang.Text = selectedRow.Cells["TenKhachHang"].Value?.ToString();
                 txtSoTien.Text = selectedRow.Cells["SoTienGiaoDich"].Value?.ToString();
 
@@ -172,48 +176,41 @@ namespace BankManagement
 
                 string manv = selectedRow.Cells["MaNhanVien"].Value?.ToString();
                 string ten = db.GetTenNhanVienByMa(manv);
-                txtNhanVien.Text = ten;
+                cbbTenNhanVien.Text = ten;
             }
             btnXoa.Enabled = true;
             btnXacNhan.Enabled = true;
+            btnGiaoDichMoi.Enabled = true;
+            btnXuatExcel.Enabled = true;
         }
 
         private void btnXacNhan_Click(object sender, EventArgs e)
         {
             string magiaodich = txtMaGiaoDich.Text.Trim();
             string loaigiaodich = cbbLoaiGiaoDich.Text.Trim();
-            string makh = txtMaKhachHang.Text.Trim();
+            string makh = cbbMaKhachHang.Text.Trim();
             string tenkh = txtTenKhachHang.Text.Trim();
             int soTien = int.TryParse(txtSoTien.Text, out int sotien) ? sotien : 0;
             DateTime timeGiaoDich = DateTime.TryParse(dateNgayGiaoDich.Text, out DateTime ngaygiaodich) ? ngaygiaodich : DateTime.MinValue;
-            string tennhanvien = txtNhanVien.Text.Trim();
-            // xử lý thông tin rỗng 
+            string tennhanvien = cbbTenNhanVien.Text.Trim();
+
+            // Xử lý thông tin rỗng
             if (string.IsNullOrEmpty(magiaodich) || string.IsNullOrEmpty(loaigiaodich) ||
-               string.IsNullOrEmpty(makh) || string.IsNullOrEmpty(tenkh) ||
-               soTien <= 0 || timeGiaoDich == DateTime.MinValue ||
-               string.IsNullOrEmpty(tennhanvien))
+                string.IsNullOrEmpty(makh) || string.IsNullOrEmpty(tenkh) ||
+                soTien <= 0 || timeGiaoDich == DateTime.MinValue ||
+                string.IsNullOrEmpty(tennhanvien))
             {
                 MessageBox.Show("Vui lòng điền đầy đủ thông tin hoặc nhập lại ô \"Số Tiền Giao Dịch\"", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            // kiểm tra trùng lặp mã giao dịch
-            foreach (DataGridViewRow row in dgvGiaoDich.Rows)
-            {
-                if (row.Cells["MaGiaoDich"].Value != null && row.Cells["MaGiaoDich"].Value.ToString() == txtMaGiaoDich.Text)
-                {
-                    MessageBox.Show("Mã giao dịch đã tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-            }
-            // Kiểm tra có tồn tại mã khách hàng từ form KhachHang
-            List<string> maKhachHangList = db.GetMaKhachHangList();
 
-            if (!maKhachHangList.Contains(makh))
+            // Kiểm tra trùng lặp mã giao dịch
+            if (dgvGiaoDich.Rows.Cast<DataGridViewRow>().Any(row => row.Cells["MaGiaoDich"].Value?.ToString() == magiaodich))
             {
-                MessageBox.Show("Mã khách hàng không tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Mã giao dịch đã tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            // kiểm tra tên có khớp với tên trong bảng KhachHang ứng với trường MaKhachHang tương ứng 
+
             // Kiểm tra tên khách hàng
             string tenKhachHang = db.GetTenKhachHangByMa(makh);
             if (!string.Equals(tenKhachHang, tenkh, StringComparison.OrdinalIgnoreCase))
@@ -221,70 +218,102 @@ namespace BankManagement
                 MessageBox.Show("Tên khách hàng không đúng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            // Kiểm tra tên nhân viên có tồn tại trong cơ sở dữ liệu hay không
-            /*if (!db.CheckNhanVienByTen(tennhanvien))
-            {
-                MessageBox.Show("Tên nhân viên không tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }*/
-            // lấy mã nhân viên theo tennhanvien
+
+            // Lấy mã nhân viên theo tên nhân viên
             string maNhanVien = db.GetMaNhanVienByTen(tennhanvien);
-            // thêm thông tin giao dịch vào bảng
+
+            // Thêm thông tin giao dịch vào bảng
             string sqlInsert = "INSERT INTO GiaoDich (MaGiaoDich, LoaiGiaoDich, MaNhanVien, TenKhachHang, MaKhachHang, ThoiGianGiaoDich, SoTienGiaoDich) " +
-                   "VALUES (@MaGiaoDich, @LoaiGiaoDich, @MaNhanVien, @TenKhachHang, @MaKhachHang, @ThoiGianGiaoDich, @SoTienGiaoDich)";
+                               "VALUES (@MaGiaoDich, @LoaiGiaoDich, @MaNhanVien, @TenKhachHang, @MaKhachHang, @ThoiGianGiaoDich, @SoTienGiaoDich)";
 
             SqlParameter[] parameters = {
-                    new SqlParameter("@MaGiaoDich", magiaodich),
-                    new SqlParameter("@LoaiGiaoDich", loaigiaodich),
-                    new SqlParameter("@MaNhanVien", maNhanVien),
-                    new SqlParameter("@TenKhachHang", tenKhachHang),
-                    new SqlParameter("@MaKhachHang", makh),
-                    new SqlParameter("@ThoiGianGiaoDich", timeGiaoDich),
-                    new SqlParameter("@SoTienGiaoDich", soTien)
+    new SqlParameter("@MaGiaoDich", magiaodich),
+    new SqlParameter("@LoaiGiaoDich", loaigiaodich),
+    new SqlParameter("@MaNhanVien", maNhanVien),
+    new SqlParameter("@TenKhachHang", tenKhachHang),
+    new SqlParameter("@MaKhachHang", makh),
+    new SqlParameter("@ThoiGianGiaoDich", timeGiaoDich),
+    new SqlParameter("@SoTienGiaoDich", soTien)
 };
+
             try
             {
                 db.CapNhatDuLieu(sqlInsert, parameters);
                 MessageBox.Show("Thêm giao dịch thành công!");
                 dgvGiaoDich.DataSource = db.DocBang("SELECT * FROM GiaoDich");
 
-                //Tính số tiền cho bảng tài khoản
+                // Tính số tiền cho bảng tài khoản
+                string updateQuery = string.Empty;
+
                 switch (loaigiaodich)
                 {
                     case "Nhan Tien":
-                        db.CapNhatDuLieu("UPDATE TaiKhoan SET SoTien = SoTien +" + soTien + " WHERE MaKhachHang like N'" + makh + "'");
+                        updateQuery = "UPDATE TaiKhoan SET SoTien = SoTien + @SoTienGiaoDich WHERE MaKhachHang = @MaKhachHang";
                         break;
-
                     case "Chuyen Tien":
-                        db.CapNhatDuLieu("UPDATE TaiKhoan SET SoTien = SoTien - " + soTien + " WHERE MaKhachHang like N'" + makh + "'");
+                        updateQuery = "UPDATE TaiKhoan SET SoTien = SoTien - @SoTienGiaoDich WHERE MaKhachHang = @MaKhachHang";
                         break;
-
                     case "Gui Tiet Kiem":
-                        db.CapNhatDuLieu("UPDATE TaiKhoan SET SoTien = SoTien - " + soTien + ", SoTienGuiTietKiem = SoTienGuiTietKiem + " + soTien + "  WHERE MaKhachHang like N'" + makh + "'");
+                        updateQuery = "UPDATE TaiKhoan SET SoTien = SoTien - @SoTienGiaoDich, SoTienGuiTietKiem = SoTienGuiTietKiem + @SoTienGiaoDich WHERE MaKhachHang = @MaKhachHang";
                         break;
-
                     case "Rut Tien Tiet Kiem":
-                        db.CapNhatDuLieu("UPDATE TaiKhoan SET SoTien = SoTien +" + soTien + " , SoTienGuiTietKiem = SoTienGuiTietKiem - " + soTien + " WHERE MaKhachHang like N'" + makh + "'");
+                        updateQuery = "UPDATE TaiKhoan SET SoTien = SoTien + @SoTienGiaoDich, SoTienGuiTietKiem = SoTienGuiTietKiem - @SoTienGiaoDich WHERE MaKhachHang = @MaKhachHang";
                         break;
-
                     case "Vay Von":
-                        db.CapNhatDuLieu("UPDATE TaiKhoan SET SoTien = SoTien +" + soTien + ", SoTienVay = SoTienVay + " + soTien + " WHERE MaKhachHang like N'" + makh + "'");
+                        updateQuery = "UPDATE TaiKhoan SET SoTien = SoTien + @SoTienGiaoDich, SoTienVay = SoTienVay + @SoTienGiaoDich WHERE MaKhachHang = @MaKhachHang";
                         break;
-
                     case "Tra No":
-                        db.CapNhatDuLieu("UPDATE TaiKhoan SET SoTien = SoTien -" + soTien + ", SoTienVay = SoTienVay - " + soTien + " WHERE MaKhachHang like N'" + makh + "'");
+                        updateQuery = "UPDATE TaiKhoan SET SoTien = SoTien - @SoTienGiaoDich, SoTienVay = SoTienVay - @SoTienGiaoDich WHERE MaKhachHang = @MaKhachHang";
                         break;
-
-
                 }
 
-
+                if (!string.IsNullOrEmpty(updateQuery))
+                {
+                    SqlParameter[] updateParameters = {
+            new SqlParameter("@SoTienGiaoDich", soTien),
+            new SqlParameter("@MaKhachHang", makh)
+        };
+                    db.CapNhatDuLieu(updateQuery, updateParameters);
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi: " + ex.Message);
             }
             ResetValue();
+
+
         }
+        private void btnXuatExcel_Click(object sender, EventArgs e)
+        {
+            // Tạo đối tượng cho việc xuất dữ liệu
+            ProcessDatabase db = new ProcessDatabase();
+            string sql = "SELECT * FROM GiaoDich"; // Truy vấn SQL để lấy dữ liệu từ bảng KhachHang
+
+            // Tạo SaveFileDialog để cho phép người dùng chọn vị trí lưu file
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx"; // Chỉ cho phép lưu file với đuôi .xlsx
+                saveFileDialog.DefaultExt = "xlsx"; // Đặt đuôi mặc định
+                saveFileDialog.Title = "Lưu file Excel"; // Tiêu đề của hộp thoại
+
+                // Hiển thị hộp thoại và kiểm tra nếu người dùng đã chọn file
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = saveFileDialog.FileName; // Lấy đường dẫn file đã chọn
+
+                    // Xuất dữ liệu ra file Excel
+                    db.ExportToExcel(sql, filePath);
+                    MessageBox.Show("Xuất dữ liệu ra file Excel thành công!");
+                }
+            }
+        }
+
+        private void cbbMaKhachHang_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }

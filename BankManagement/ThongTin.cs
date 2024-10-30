@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace BankManagement
 {
@@ -15,92 +16,78 @@ namespace BankManagement
     {
         ProcessDatabase db = new ProcessDatabase();
         string str = "";
+
         public ThongTin()
         {
             InitializeComponent();
             try
             {
-                string query = "SELECT COUNT(*) FROM KhachHang";
-                int soLuongKhachHang = (int)db.ThucThiGiaTriDon(query);
-                if(soLuongKhachHang != 0)
-                {
-                    lbslkh.Text = soLuongKhachHang.ToString();
-                }
-                else
-                {
-                    str += "Số lượng khách hàng bằng 0\n";
-                }
-                
+                // Câu truy vấn và gán số liệu vào các biến
+                int soLuongKhachHang = GetCount("SELECT COUNT(*) FROM KhachHang", "Số lượng khách hàng bằng 0\n");
+                int soLuongNhanVien = GetCount("SELECT COUNT(*) FROM NhanVien", "Số lượng nhân viên bằng 0\n");
+                int soLuongTaiKhoan = GetCount("SELECT COUNT(*) FROM Taikhoan", "Số lượng tài khoản bằng 0\n");
+                int soLuongGiaoDich = GetCount("SELECT COUNT(*) FROM GiaoDich", "Số lượng giao dịch bằng 0\n");
+                int soLuongTienGui = GetSum("SELECT SUM(SoTienGuiTietKiem) FROM TaiKhoan", "Số lượng tiền gửi bằng 0\n");
+                int soLuongTienVay = GetSum("SELECT SUM(SoTienVay) FROM TaiKhoan", "Số lượng tiền vay = 0");
 
-                string query1 = "SELECT COUNT(*) FROM NhanVien";
-                int soLuongNhanVien = (int)db.ThucThiGiaTriDon(query1);
-                if (soLuongNhanVien != 0)
-                {
-                    lbslnv.Text = soLuongNhanVien.ToString();
-                }
-                else
-                {
-                    str += "Số lượng nhân viên bằng 0\n ";
-                }
-                
+                // Cập nhật giá trị cho các Label
+                lbslkh.Text = soLuongKhachHang.ToString();
+                lbslnv.Text = soLuongNhanVien.ToString();
+                lbsltk.Text = soLuongTaiKhoan.ToString();
+                lbslgd.Text = soLuongGiaoDich.ToString();
+                lbsltg.Text = soLuongTienGui.ToString();
+                lbsltv.Text = soLuongTienVay.ToString();
 
-                string query2 = "SELECT COUNT(*) FROM Taikhoan";
-                int soLuongTaiKhoan = (int)db.ThucThiGiaTriDon(query2);
-                if (soLuongTaiKhoan != 0)
-                {
-                    lbsltk.Text = soLuongTaiKhoan.ToString();
-                }
-                else
-                {
-                    str += "Số lượng tài khoản bằng 0\n";
-                }
-                
-
-                string query3 = "SELECT COUNT(*) FROM GiaoDich";
-                int soLuongGiaoDich = (int)db.ThucThiGiaTriDon(query3);
-                if (soLuongGiaoDich != 0)
-                {
-                    lbslgd.Text = soLuongGiaoDich.ToString();
-                }
-                else
-                {
-                    str += "Số lượng giao dịch bằng 0\n";
-                }
-
-                string query4 = "SELECT sum(SoTienGuiTietKiem) FROM TaiKhoan";
-                int soLuongTienGui = (int)db.ThucThiGiaTriDon(query4);
-                if (soLuongTienGui != 0)
-                {
-                    lbsltg.Text = soLuongTienGui.ToString();
-                }
-                else
-                {
-                    str += "Số lượng tiền giao dịch bằng 0\n";
-                }
-
-                string query5 = "SELECT sum(SoTienVay) FROM TaiKhoan";
-                int soLuongTienVay = (int)db.ThucThiGiaTriDon(query5);
-                if (soLuongTienVay != 0)
-                {
-                    lbsltv.Text = soLuongTienVay.ToString();
-                }
-                else
-                {
-                    str += "Số lượng tiền vay = 0";
-                }
+                // Vẽ biểu đồ
+                DrawChart(soLuongKhachHang, soLuongNhanVien, soLuongTaiKhoan, soLuongGiaoDich, soLuongTienGui, soLuongTienVay);
             }
             catch (InvalidCastException ex)
             {
-                MessageBox.Show($"Lỗi: "+str+ "");
+                MessageBox.Show($"Lỗi: " + str);
             }
-
-           
-
         }
 
-        private void lbslkh_Click(object sender, EventArgs e)
+        private int GetCount(string query, string errorMessage)
         {
+            int count = (int)db.ThucThiGiaTriDon(query);
+            if (count == 0)
+            {
+                str += errorMessage;
+            }
+            return count;
+        }
 
+        private int GetSum(string query, string errorMessage)
+        {
+            int sum = (int)db.ThucThiGiaTriDon(query);
+            if (sum == 0)
+            {
+                str += errorMessage;
+            }
+            return sum;
+        }
+
+        private void DrawChart(int khachHang, int nhanVien, int taiKhoan, int giaoDich, int tienGui, int tienVay)
+        {
+            // Thiết lập biểu đồ
+            chartThongKe.Series.Clear();
+            Series series = new Series("Số liệu");
+            series.ChartType = SeriesChartType.Column;
+
+            // Thêm dữ liệu vào biểu đồ
+            series.Points.AddXY("Khách Hàng", khachHang);
+            series.Points.AddXY("Nhân Viên", nhanVien);
+            series.Points.AddXY("Tài Khoản", taiKhoan);
+            series.Points.AddXY("Giao Dịch", giaoDich);
+            series.Points.AddXY("Tiền Gửi", tienGui);
+            series.Points.AddXY("Tiền Vay", tienVay);
+
+            // Thêm series vào biểu đồ
+            chartThongKe.Series.Add(series);
+
+            // Thiết lập tiêu đề cho trục
+            chartThongKe.ChartAreas[0].AxisX.Title = "Loại";
+            chartThongKe.ChartAreas[0].AxisY.Title = "Số lượng";
         }
     }
 }
