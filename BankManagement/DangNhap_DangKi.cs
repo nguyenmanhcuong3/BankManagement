@@ -5,90 +5,122 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace BankManagement
 {
-    public partial class DangKi : Form
+    public partial class DangNhap_DangKi : Form
     {
         ProcessDatabase db = new ProcessDatabase();
-        public DangKi()
+        public DangNhap_DangKi()
         {
             InitializeComponent();
-        }
-
-        private void DangKi_Load(object sender, EventArgs e)
-        {
-            panel1.Left = (this.ClientSize.Width - panel1.Width) / 2;
-            panel1.Top = (this.ClientSize.Height - panel1.Height) / 2;
-
-            txtMaNv.Text = "Nhập mã nhân viên bạn muốn đăng kí";
+            init();
+            txtMaNv.Text = "Nhập mã nhân viên";
             txtMaNv.ForeColor = Color.Gray;
 
-            txtNhapTk.Text = "Nhập tài khoản bạn muốn đăng kí";
+            txtNhapTk.Text = "Nhập tài khoản";
             txtNhapTk.ForeColor = Color.Gray;
-            
+
 
             txtNhapMk.Text = "Nhập mật khẩu";
             txtNhapMk.ForeColor = Color.Gray;
 
             txtNhapLaiMk.Text = "Nhập lại mật khẩu";
             txtNhapLaiMk.ForeColor = Color.Gray;
-            
+
             pbNhapMkMo.Hide();
             pbNhapLaiMkMo.Hide();
 
-            label1.Focus();
+            this.StartPosition = FormStartPosition.CenterScreen;
+           
+        }
+        
+        private void init()
+        {
+            txtMaNv.Hide();
+            txtNhapLaiMk.Hide();
+            pcMaNv.Hide();
+            pcAnh.Hide();
+            pbNhapMkMo.Hide();
+            pbNhapLaiMkMo.Hide();
+            pcDongLaiMk.Hide();
+            btnDangKi.Hide();
+            btnQlDangNhap.Hide();
+            lbdk.Hide();
+            pcDongMk.Show();
+            
+        }
+        private void pcExit_Click_1(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
-        private void DangKi_Resize(object sender, EventArgs e)
+        private void btnThoat_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            panel1.Left = (this.ClientSize.Width - panel1.Width) / 2;
-            panel1.Top = (this.ClientSize.Height - panel1.Height) / 2;
+            txtMaNv.Show();
+            txtNhapLaiMk.Show();
+            pcMaNv.Show();
+            pcAnh.Show();
+            pcDongLaiMk.Show();
+            btnDangKi.Show();
+            btnQlDangNhap.Show();
+            lbdk.Show();
+            lbdn.Hide();
+            btnDangNhap.Hide();
+            btnThoat.Hide();
+            pcDongMk.Show() ;
+            pbNhapMkMo.Hide();
         }
 
-        // Nhap MaNv       
-        private void txtMaNv_Enter(object sender, EventArgs e)
+        private void btnQlDangNhap_Click(object sender, EventArgs e)
         {
-            if (txtMaNv.Text.Equals("Nhập mã nhân viên bạn muốn đăng kí"))
+            init();
+            lbdn.Show();
+            btnThoat.Show();
+            btnDangNhap.Show();
+        }
+        // Ma nv
+        private void txtMaNv_Click(object sender, EventArgs e)
+        {
+            if (txtMaNv.Text.Equals("Nhập mã nhân viên"))
             {
                 txtMaNv.Text = "";
                 txtMaNv.ForeColor = Color.Black;
             }
         }
+
         private void txtMaNv_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtMaNv.Text))
             {
-                txtMaNv.Text = "Nhập mã nhân viên bạn muốn đăng kí";
+                txtMaNv.Text = "Nhập mã nhân viên";
                 txtMaNv.ForeColor = Color.Gray;
             }
         }
-
-        // nhap tk
+        // tk
         private void txtNhapTk_Enter(object sender, EventArgs e)
         {
-            if (txtNhapTk.Text.Equals("Nhập tài khoản bạn muốn đăng kí"))
+            if (txtNhapTk.Text.Equals("Nhập tài khoản"))
             {
                 txtNhapTk.Text = "";
                 txtNhapTk.ForeColor = Color.Black;
             }
         }
 
-        private void TxtNhapTk_Leave(object sender, EventArgs e)
+        private void txtNhapTk_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtNhapTk.Text))
             {
-                txtNhapTk.Text = "Nhập tài khoản bạn muốn đăng kí";
+                txtNhapTk.Text = "Nhập tài khoản";
                 txtNhapTk.ForeColor = Color.Gray;
             }
         }
-        // nhap mk
-
-        private void txtNhapMk_Enter_1(object sender, EventArgs e)
+        // mk 
+        private void txtNhapMk_Enter(object sender, EventArgs e)
         {
             if (txtNhapMk.Text.Equals("Nhập mật khẩu"))
             {
@@ -98,7 +130,7 @@ namespace BankManagement
             }
         }
 
-        private void txtNhapMk_Leave_1(object sender, EventArgs e)
+        private void txtNhapMk_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtNhapMk.Text))
             {
@@ -107,7 +139,6 @@ namespace BankManagement
                 txtNhapMk.PasswordChar = '\0';
             }
         }
-
         // nhap lai mk
         private void txtNhapLaiMk_Enter(object sender, EventArgs e)
         {
@@ -129,26 +160,45 @@ namespace BankManagement
             }
         }
 
-        private void pictureBox6_Click(object sender, EventArgs e)
+        private void pcDongMk_Click(object sender, EventArgs e)
         {
             pbNhapMkMo.Show();
-            pictureBox6.Hide();
-            txtNhapMk.PasswordChar = '\0'; 
+            pcDongMk.Hide();
+            txtNhapMk.PasswordChar = '\0';
         }
 
-        private void pictureBox4_Click(object sender, EventArgs e)
+        private void pcDongLaiMk_Click(object sender, EventArgs e)
         {
             pbNhapLaiMkMo.Show();
-            pictureBox4.Hide();
-            txtNhapLaiMk.PasswordChar = '\0'; 
-           
-            
+            pcDongLaiMk.Hide();
+            txtNhapLaiMk.PasswordChar = '\0';
+
+        }
+
+        private void pbNhapMkMo_Click(object sender, EventArgs e)
+        {
+            txtNhapMk.PasswordChar = '*';
+            pcDongMk.Show();
+            pbNhapMkMo.Hide();
+        }
+
+        private void pbNhapLaiMkMo_Click(object sender, EventArgs e)
+        {
+            txtNhapLaiMk.PasswordChar = '*';
+            pcDongLaiMk.Show();
+            pbNhapLaiMkMo.Hide();
         }
 
         private void btnDangKi_Click(object sender, EventArgs e)
         {
             string maNhanVien = txtMaNv.Text.Trim();
             string taiKhoan = txtNhapTk.Text.Trim();
+
+            if (db.CheckMnv(maNhanVien) == false)
+            {
+                MessageBox.Show("Mã nhân viên không tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (string.IsNullOrWhiteSpace(maNhanVien) || maNhanVien.Equals("Nhập mã nhân viên bạn muốn đăng kí"))
             {
                 MessageBox.Show("Vui lòng nhập mã nhân viên.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -179,50 +229,37 @@ namespace BankManagement
                 MessageBox.Show("Tài khoản đã tồn tại. Vui lòng chọn tài khoản khác.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (db.CheckMnv(maNhanVien) == false)
-            {
-                MessageBox.Show("Mã nhân viên không tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+           
             string insertQuery = "INSERT INTO Login (MaNhanVien,username, password) VALUES ( @maNhanVien,@username, @password)"; // Điều chỉnh tên bảng và cột nếu cần
             SqlParameter[] parameters =
             {
         new SqlParameter("@username", txtNhapTk.Text),
-        new SqlParameter("@password", txtNhapMk.Text), 
+        new SqlParameter("@password", txtNhapMk.Text),
         new SqlParameter("@maNhanVien", maNhanVien) };
 
             db.CapNhatDuLieu(insertQuery, parameters);
             MessageBox.Show("Đăng ký thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            
-            this.Hide(); 
-            Login login= new Login();
-            login.Show(); 
-        }
 
-        private void pbNhapMkMo_Click(object sender, EventArgs e)
-        {
-            txtNhapMk.PasswordChar = '*';
-            pictureBox6.Show();
-            pbNhapMkMo.Hide();
-        }
-
-        private void pbNhapLaiMkMo_Click(object sender, EventArgs e)
-        {
-            txtNhapLaiMk.PasswordChar = '*';
-            pictureBox4.Show();
-            pbNhapLaiMkMo.Hide();
-        }
-
-        private void btnThoat_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Application.Exit();
+            this.Hide();
+            Login login = new Login();
+            login.Show();
         }
 
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Login login = new Login();
-            login.Show();
+            string username = txtNhapTk.Text;
+            string password = txtNhapMk.Text;
+            DataTable dbKhachHang = db.DocBang("select * from Login where username='" + txtNhapTk.Text + "'and password ='" + txtNhapMk.Text + "'");
+            if (dbKhachHang.Rows.Count > 0)
+            {
+                frmMain main = new frmMain();
+                main.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Đăng nhập lỗi . Kiểm tra lại thông tin!");
+            }
         }
     }
 }

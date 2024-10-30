@@ -9,6 +9,8 @@ using System.Security.Cryptography;
 using System.Windows.Forms;
 using OfficeOpenXml;
 using System.IO;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.Collections;
 
 
 namespace BankManagement
@@ -213,6 +215,19 @@ namespace BankManagement
             SqlParameter[] parameters = { new SqlParameter("@username", username) };
             KetNoiCSDL();
             using (SqlCommand cmd = new SqlCommand(query, sqlConnect))
+            {
+                cmd.Parameters.AddRange(parameters);
+                int count = (int)cmd.ExecuteScalar();
+
+                return count > 0;
+            }
+        }
+        public bool CheckMnv(string MaNhanVien)
+        {
+            string strCon = "SELECT COUNT(*) FROM NhanVien WHERE MaNhanVien = @MaNhanVien";
+            SqlParameter[] parameters = { new SqlParameter("@MaNhanVien", MaNhanVien) };
+            KetNoiCSDL();
+            using (SqlCommand cmd = new SqlCommand(strCon, sqlConnect))
             {
                 cmd.Parameters.AddRange(parameters);
                 int count = (int)cmd.ExecuteScalar();

@@ -13,6 +13,8 @@ namespace BankManagement
 {
     public partial class Login : Form
     {
+        frmMain main = new frmMain();
+        DangKi dk = new DangKi();
         ProcessDatabase db = new ProcessDatabase();
         public Login()
         {
@@ -123,9 +125,9 @@ namespace BankManagement
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            
+            dk.Show();
             this.Hide();
-            DangKi dangKi = new DangKi();
-            dangKi.Show();
         }
 
         private void pbHienMk_Click(object sender, EventArgs e)
@@ -134,6 +136,19 @@ namespace BankManagement
             txtMatKhau.PasswordChar = '*';
             pictureBox4.Show();
             pbHienMk.Hide();
+
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+           
+            main.Hide();
+         
+            dk.Hide();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
 
         }
     }
