@@ -245,7 +245,7 @@ namespace BankManagement
             db.CapNhatDuLieu(insertQuery, parameters);
             MessageBox.Show("Đăng ký thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            this.Hide();
+            this.Close();
             Login login = new Login();
             login.Show();
         }
@@ -263,7 +263,8 @@ namespace BankManagement
             }
             else
             {
-                MessageBox.Show("Đăng nhập lỗi . Kiểm tra lại thông tin!");
+                MessageBox.Show("Tài khoản hoặc mật khẩu không chính xác!");
+                btnDangNhap.Focus();
             }
         }
         private void btnThoat_MouseEnter(object sender, EventArgs e)
@@ -319,13 +320,59 @@ namespace BankManagement
         // enter la dang nhap
         private void txtNhapMk_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter) 
+            if (e.KeyCode == Keys.Enter)
             {
-                btnDangNhap.PerformClick();
-                e.SuppressKeyPress = true;
+                // Kiểm tra xem nút nhập lại mật khẩu có được hiển thị hay không
+                if (txtNhapLaiMk.Visible)
+                {
+                    // Nếu nút nhập lại mật khẩu đang hiển thị, chuyển đến ô nhập lại mật khẩu
+                    txtNhapLaiMk.Focus();
+                    e.SuppressKeyPress = true; // Ngăn chặn âm thanh "ding"
+                }
+                else
+                {
+                    // Nếu nút không hiển thị, thực hiện đăng nhập
+                    btnDangNhap.PerformClick();
+                    e.SuppressKeyPress = true; // Ngăn chặn âm thanh "ding"
+                }
             }
         }
 
 
     }
 }
+/*
+ private void btnDangNhap_Click(object sender, EventArgs e)
+{
+    string username = txtNhapTk.Text;
+    string password = txtNhapMk.Text;
+
+    // Lấy thông tin người dùng từ cơ sở dữ liệu
+    DataTable dbKhachHang = db.DocBang("SELECT * FROM Login WHERE username='" + username + "' AND password='" + password + "'");
+
+    if (dbKhachHang.Rows.Count > 0)
+    {
+        // Kiểm tra xem người dùng có phải là admin không
+        string role = dbKhachHang.Rows[0]["Role"].ToString(); // Hoặc "UserType", tùy thuộc vào cột bạn sử dụng
+
+        if (role == "admin")
+        {
+            // Hiện form admin
+            frmAdmin adminForm = new frmAdmin(); // Giả sử bạn có form admin
+            adminForm.Show();
+        }
+        else
+        {
+            // Hiện form chính cho người dùng bình thường
+            frmMain main = new frmMain();
+            main.Show();
+        }
+
+        this.Hide(); // Ẩn form đăng nhập
+    }
+    else
+    {
+        MessageBox.Show("Đăng nhập lỗi. Kiểm tra lại thông tin!");
+    }
+}
+ */ 
