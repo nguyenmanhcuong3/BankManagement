@@ -1,26 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media;
 
 namespace BankManagement
 {
     public partial class frmMain : Form
     {
+        private bool dragging;
+        private Point dragCursorPoint;
+        private Point dragFormPoint;
+
         public frmMain()
         {
             InitializeComponent();
             this.KeyDown += new KeyEventHandler(Form_KeyDown);
+            plDiChuyen.SendToBack();
         }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+            plDiChuyen.SendToBack();
         }
 
         // Phương thức để hiển thị form trong panel và cập nhật trạng thái nút
@@ -66,7 +66,7 @@ namespace BankManagement
             btnThongTin.BackColor = SystemColors.Control;
 
             // Tô màu đỏ cho nút được chọn
-            selectedButton.BackColor = Color.Red;
+            selectedButton.BackColor = System.Drawing.Color.Red;
             
            
         }
@@ -111,6 +111,58 @@ namespace BankManagement
             {
                 Application.Exit();
             }
+        }
+
+        private void pcExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnThoat_MouseEnter(object sender, EventArgs e)
+        {
+            pcExit.BackColor = System.Drawing.Color.LightGray;
+            pcExit.Cursor = Cursors.Hand;
+        }
+
+        private void btnThoat_MouseLeave(object sender, EventArgs e)
+        {
+            pcExit.BackColor = System.Drawing.Color.Transparent;
+            pcExit.Cursor = Cursors.Default;
+        }
+
+        
+        // Dung panel de thay cho thanh tieu de
+        private void plDiChuyen_MouseDown(object sender, MouseEventArgs e)
+        {
+            dragging = true;
+            dragCursorPoint = Cursor.Position;
+            dragFormPoint = this.Location;
+        }
+
+        private void plDiChuyen_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (dragging)
+            {
+                Point dif = Point.Subtract(Cursor.Position, new Size(dragCursorPoint));
+                this.Location = Point.Add(dragFormPoint, new Size(dif));
+            }
+        }
+
+        private void plDiChuyen_MouseUp(object sender, MouseEventArgs e)
+        {
+            dragging = false;
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có muốn đổi tài khoản ?", "Xác nhận đăng nhập", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+                DangNhap_DangKi Login = new DangNhap_DangKi();
+                Login.Show();
+            }
+            
         }
     }
 

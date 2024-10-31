@@ -30,10 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.plDiChuyen = new System.Windows.Forms.Panel();
+            this.pcExit = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnLogin = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnThongTin = new System.Windows.Forms.Button();
             this.btnNhanVien = new System.Windows.Forms.Button();
@@ -41,14 +43,20 @@
             this.btnTaiKhoan = new System.Windows.Forms.Button();
             this.btnKhachHang = new System.Windows.Forms.Button();
             this.panelMain = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcExit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
+            this.panelMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.panel1.Controls.Add(this.plDiChuyen);
+            this.panel1.Controls.Add(this.pcExit);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -57,6 +65,31 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(854, 104);
             this.panel1.TabIndex = 0;
+            // 
+            // plDiChuyen
+            // 
+            this.plDiChuyen.Dock = System.Windows.Forms.DockStyle.Top;
+            this.plDiChuyen.Location = new System.Drawing.Point(0, 0);
+            this.plDiChuyen.Name = "plDiChuyen";
+            this.plDiChuyen.Size = new System.Drawing.Size(854, 32);
+            this.plDiChuyen.TabIndex = 34;
+            this.plDiChuyen.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plDiChuyen_MouseDown);
+            this.plDiChuyen.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plDiChuyen_MouseMove);
+            this.plDiChuyen.MouseUp += new System.Windows.Forms.MouseEventHandler(this.plDiChuyen_MouseUp);
+            // 
+            // pcExit
+            // 
+            this.pcExit.Image = ((System.Drawing.Image)(resources.GetObject("pcExit.Image")));
+            this.pcExit.Location = new System.Drawing.Point(824, 0);
+            this.pcExit.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pcExit.Name = "pcExit";
+            this.pcExit.Size = new System.Drawing.Size(30, 32);
+            this.pcExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcExit.TabIndex = 27;
+            this.pcExit.TabStop = false;
+            this.pcExit.Click += new System.EventHandler(this.pcExit_Click);
+            this.pcExit.MouseEnter += new System.EventHandler(this.btnThoat_MouseEnter);
+            this.pcExit.MouseLeave += new System.EventHandler(this.btnThoat_MouseLeave);
             // 
             // label1
             // 
@@ -83,7 +116,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.btnLogin);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.btnThongTin);
             this.panel2.Controls.Add(this.btnNhanVien);
@@ -97,27 +130,28 @@
             this.panel2.Size = new System.Drawing.Size(126, 470);
             this.panel2.TabIndex = 1;
             // 
-            // button2
+            // btnLogin
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.button2.Location = new System.Drawing.Point(7, 309);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(115, 35);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Login";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnLogin.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.btnLogin.Location = new System.Drawing.Point(7, 309);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(115, 35);
+            this.btnLogin.TabIndex = 8;
+            this.btnLogin.Text = "Login";
+            this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.button1.Location = new System.Drawing.Point(7, 359);
+            this.button1.Location = new System.Drawing.Point(7, 365);
             this.button1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(115, 35);
-            this.button1.TabIndex = 8;
+            this.button1.TabIndex = 9;
             this.button1.Text = "Thoát";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -190,15 +224,26 @@
             // panelMain
             // 
             this.panelMain.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.panelMain.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelMain.BackgroundImage")));
             this.panelMain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panelMain.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelMain.Controls.Add(this.pictureBox2);
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMain.Location = new System.Drawing.Point(126, 104);
             this.panelMain.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panelMain.Name = "panelMain";
             this.panelMain.Size = new System.Drawing.Size(728, 470);
             this.panelMain.TabIndex = 2;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(724, 466);
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
             // 
             // frmMain
             // 
@@ -210,15 +255,20 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.MaximizeBox = false;
             this.Name = "frmMain";
             this.Text = "Bank Management";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcExit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.panelMain.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -234,8 +284,11 @@
         private System.Windows.Forms.Button btnKhachHang;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panelMain;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pcExit;
+        private System.Windows.Forms.Panel plDiChuyen;
     }
 }

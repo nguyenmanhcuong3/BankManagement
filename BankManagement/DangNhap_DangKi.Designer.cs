@@ -49,6 +49,7 @@
             this.pbNhapLaiMkMo = new System.Windows.Forms.PictureBox();
             this.btnDangNhap = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.LinkLabel();
+            this.plDiChuyen = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -64,8 +65,8 @@
             // lbdn
             // 
             this.lbdn.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lbdn.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbdn.ForeColor = System.Drawing.Color.Blue;
+            this.lbdn.Font = new System.Drawing.Font("Ravie", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbdn.ForeColor = System.Drawing.Color.MediumOrchid;
             this.lbdn.Location = new System.Drawing.Point(241, 20);
             this.lbdn.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbdn.Name = "lbdn";
@@ -76,7 +77,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::BankManagement.Properties.Resources._0af3c9613761d2d2394d99312aeba397;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(155, 10);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pictureBox1.Name = "pictureBox1";
@@ -132,12 +133,12 @@
             // lbdk
             // 
             this.lbdk.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lbdk.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbdk.ForeColor = System.Drawing.Color.Blue;
-            this.lbdk.Location = new System.Drawing.Point(51, 20);
+            this.lbdk.Font = new System.Drawing.Font("Ravie", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbdk.ForeColor = System.Drawing.Color.MediumPurple;
+            this.lbdk.Location = new System.Drawing.Point(22, 19);
             this.lbdk.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbdk.Name = "lbdk";
-            this.lbdk.Size = new System.Drawing.Size(100, 40);
+            this.lbdk.Size = new System.Drawing.Size(128, 40);
             this.lbdk.TabIndex = 21;
             this.lbdk.Text = "Đăng Kí";
             this.lbdk.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -145,7 +146,7 @@
             // btnDangKi
             // 
             this.btnDangKi.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnDangKi.ForeColor = System.Drawing.Color.Blue;
+            this.btnDangKi.ForeColor = System.Drawing.Color.MediumPurple;
             this.btnDangKi.Location = new System.Drawing.Point(55, 253);
             this.btnDangKi.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnDangKi.Name = "btnDangKi";
@@ -158,13 +159,13 @@
             // btnQlDangNhap
             // 
             this.btnQlDangNhap.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnQlDangNhap.ForeColor = System.Drawing.Color.Blue;
+            this.btnQlDangNhap.ForeColor = System.Drawing.Color.MediumPurple;
             this.btnQlDangNhap.Location = new System.Drawing.Point(199, 253);
             this.btnQlDangNhap.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnQlDangNhap.Name = "btnQlDangNhap";
             this.btnQlDangNhap.Size = new System.Drawing.Size(205, 33);
             this.btnQlDangNhap.TabIndex = 20;
-            this.btnQlDangNhap.Text = "Đăng nhâp (đã có tài khoản)";
+            this.btnQlDangNhap.Text = "Đăng nhập (đã có tài khoản)";
             this.btnQlDangNhap.UseVisualStyleBackColor = true;
             this.btnQlDangNhap.Click += new System.EventHandler(this.btnQlDangNhap_Click);
             // 
@@ -183,6 +184,9 @@
             // 
             // txtNhapTk
             // 
+            this.txtNhapTk.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNhapTk.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.txtNhapTk.Location = new System.Drawing.Point(55, 124);
             this.txtNhapTk.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -192,6 +196,7 @@
             this.txtNhapTk.TabIndex = 23;
             this.txtNhapTk.TabStop = false;
             this.txtNhapTk.Enter += new System.EventHandler(this.txtNhapTk_Enter);
+            this.txtNhapTk.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNhapTk_KeyDown);
             this.txtNhapTk.Leave += new System.EventHandler(this.txtNhapTk_Leave);
             // 
             // txtNhapMk
@@ -205,6 +210,7 @@
             this.txtNhapMk.TabIndex = 24;
             this.txtNhapMk.TabStop = false;
             this.txtNhapMk.Enter += new System.EventHandler(this.txtNhapMk_Enter);
+            this.txtNhapMk.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNhapMk_KeyDown);
             this.txtNhapMk.Leave += new System.EventHandler(this.txtNhapMk_Leave);
             // 
             // txtNhapLaiMk
@@ -223,7 +229,7 @@
             // pcExit
             // 
             this.pcExit.Image = ((System.Drawing.Image)(resources.GetObject("pcExit.Image")));
-            this.pcExit.Location = new System.Drawing.Point(387, -1);
+            this.pcExit.Location = new System.Drawing.Point(389, 0);
             this.pcExit.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pcExit.Name = "pcExit";
             this.pcExit.Size = new System.Drawing.Size(30, 32);
@@ -231,6 +237,8 @@
             this.pcExit.TabIndex = 26;
             this.pcExit.TabStop = false;
             this.pcExit.Click += new System.EventHandler(this.pcExit_Click_1);
+            this.pcExit.MouseEnter += new System.EventHandler(this.btnThoat_MouseEnter);
+            this.pcExit.MouseLeave += new System.EventHandler(this.btnThoat_MouseLeave);
             // 
             // pcDongMk
             // 
@@ -287,7 +295,7 @@
             // btnDangNhap
             // 
             this.btnDangNhap.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnDangNhap.ForeColor = System.Drawing.Color.Blue;
+            this.btnDangNhap.ForeColor = System.Drawing.Color.MediumOrchid;
             this.btnDangNhap.Location = new System.Drawing.Point(155, 253);
             this.btnDangNhap.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnDangNhap.Name = "btnDangNhap";
@@ -301,6 +309,7 @@
             // 
             this.btnThoat.AutoSize = true;
             this.btnThoat.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.btnThoat.LinkColor = System.Drawing.Color.MediumOrchid;
             this.btnThoat.Location = new System.Drawing.Point(267, 265);
             this.btnThoat.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.btnThoat.Name = "btnThoat";
@@ -310,11 +319,23 @@
             this.btnThoat.Text = "Đăng kí (Chưa có tài khoản)";
             this.btnThoat.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnThoat_LinkClicked);
             // 
+            // plDiChuyen
+            // 
+            this.plDiChuyen.Dock = System.Windows.Forms.DockStyle.Top;
+            this.plDiChuyen.Location = new System.Drawing.Point(0, 0);
+            this.plDiChuyen.Name = "plDiChuyen";
+            this.plDiChuyen.Size = new System.Drawing.Size(419, 32);
+            this.plDiChuyen.TabIndex = 33;
+            this.plDiChuyen.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plDiChuyen_MouseDown);
+            this.plDiChuyen.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plDiChuyen_MouseMove);
+            this.plDiChuyen.MouseUp += new System.Windows.Forms.MouseEventHandler(this.plDiChuyen_MouseUp);
+            // 
             // DangNhap_DangKi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(419, 292);
+            this.Controls.Add(this.plDiChuyen);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnDangNhap);
             this.Controls.Add(this.pbNhapLaiMkMo);
@@ -336,9 +357,10 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lbdn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "DangNhap_DangKi";
             this.Text = "DangNhap_DangKi";
+            this.Load += new System.EventHandler(this.DangNhap_DangKi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -362,7 +384,6 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pcAnh;
         private System.Windows.Forms.PictureBox pcMaNv;
-        private System.Windows.Forms.Label lbdk;
         private System.Windows.Forms.Button btnDangKi;
         private System.Windows.Forms.Button btnQlDangNhap;
         private System.Windows.Forms.TextBox txtMaNv;
@@ -376,5 +397,7 @@
         private System.Windows.Forms.PictureBox pbNhapLaiMkMo;
         private System.Windows.Forms.Button btnDangNhap;
         private System.Windows.Forms.LinkLabel btnThoat;
+        private System.Windows.Forms.Label lbdk;
+        private System.Windows.Forms.Panel plDiChuyen;
     }
 }

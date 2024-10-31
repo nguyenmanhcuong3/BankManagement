@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -38,8 +30,9 @@ namespace BankManagement
                 lbsltg.Text = soLuongTienGui.ToString();
                 lbsltv.Text = soLuongTienVay.ToString();
 
-                // Vẽ biểu đồ
-                DrawChart(soLuongKhachHang, soLuongNhanVien, soLuongTaiKhoan, soLuongGiaoDich, soLuongTienGui, soLuongTienVay);
+                // Vẽ hai biểu đồ
+                DrawNguoiChart(soLuongKhachHang, soLuongNhanVien);
+                DrawTienChart(soLuongTienGui, soLuongTienVay);
             }
             catch (InvalidCastException ex)
             {
@@ -67,27 +60,42 @@ namespace BankManagement
             return sum;
         }
 
-        private void DrawChart(int khachHang, int nhanVien, int taiKhoan, int giaoDich, int tienGui, int tienVay)
+        private void DrawNguoiChart(int khachHang, int nhanVien)
         {
-            // Thiết lập biểu đồ
-            chartThongKe.Series.Clear();
-            Series series = new Series("Số liệu");
-            series.ChartType = SeriesChartType.Column;
+            // Thiết lập biểu đồ cho thông tin về người
+            chartNguoi.Series.Clear();
+            Series seriesNguoi = new Series("Số liệu Người");
+            seriesNguoi.ChartType = SeriesChartType.Column;
 
             // Thêm dữ liệu vào biểu đồ
-            series.Points.AddXY("Khách Hàng", khachHang);
-            series.Points.AddXY("Nhân Viên", nhanVien);
-            series.Points.AddXY("Tài Khoản", taiKhoan);
-            series.Points.AddXY("Giao Dịch", giaoDich);
-            series.Points.AddXY("Tiền Gửi", tienGui);
-            series.Points.AddXY("Tiền Vay", tienVay);
+            seriesNguoi.Points.AddXY("Khách Hàng", khachHang);
+            seriesNguoi.Points.AddXY("Nhân Viên", nhanVien);
 
             // Thêm series vào biểu đồ
-            chartThongKe.Series.Add(series);
+            chartNguoi.Series.Add(seriesNguoi);
 
             // Thiết lập tiêu đề cho trục
-            chartThongKe.ChartAreas[0].AxisX.Title = "Loại";
-            chartThongKe.ChartAreas[0].AxisY.Title = "Số lượng";
+            chartNguoi.ChartAreas[0].AxisX.Title = "Chức vụ";
+            chartNguoi.ChartAreas[0].AxisY.Title = "Số lượng";
+        }
+
+        private void DrawTienChart(int tienGui, int tienVay)
+        {
+            // Thiết lập biểu đồ cho thông tin về tiền
+            chartTien.Series.Clear();
+            Series seriesTien = new Series("Số liệu Tiền");
+            seriesTien.ChartType = SeriesChartType.Column;
+
+            // Thêm dữ liệu vào biểu đồ
+            seriesTien.Points.AddXY("Tiền Gửi", tienGui);
+            seriesTien.Points.AddXY("Tiền Vay", tienVay);
+
+            // Thêm series vào biểu đồ
+            chartTien.Series.Add(seriesTien);
+
+            // Thiết lập tiêu đề cho trục
+            chartTien.ChartAreas[0].AxisX.Title = "Loại tiền";
+            chartTien.ChartAreas[0].AxisY.Title = "Số tiền";
         }
     }
 }

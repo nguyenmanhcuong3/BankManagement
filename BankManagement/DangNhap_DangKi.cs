@@ -15,6 +15,9 @@ namespace BankManagement
     public partial class DangNhap_DangKi : Form
     {
         ProcessDatabase db = new ProcessDatabase();
+        private bool dragging = false;
+        private Point dragCursorPoint;
+        private Point dragFormPoint;
         public DangNhap_DangKi()
         {
             InitializeComponent();
@@ -82,6 +85,8 @@ namespace BankManagement
             lbdn.Show();
             btnThoat.Show();
             btnDangNhap.Show();
+            plDiChuyen.SendToBack();
+
         }
         // Ma nv
         private void txtMaNv_Click(object sender, EventArgs e)
@@ -261,5 +266,66 @@ namespace BankManagement
                 MessageBox.Show("Đăng nhập lỗi . Kiểm tra lại thông tin!");
             }
         }
+        private void btnThoat_MouseEnter(object sender, EventArgs e)
+        {
+            pcExit.BackColor= Color.LightGray;
+            pcExit.Cursor = Cursors.Hand;
+        }
+
+        private void btnThoat_MouseLeave(object sender, EventArgs e)
+        {
+            pcExit.BackColor = Color.Transparent;
+            pcExit.Cursor = Cursors.Default;
+        }
+
+        private void DangNhap_DangKi_Load(object sender, EventArgs e)
+        {
+            plDiChuyen.SendToBack();
+        }
+       
+
+        // Dung panel de thay cho thanh tieu de
+        private void plDiChuyen_MouseDown(object sender, MouseEventArgs e)
+        {
+            dragging = true;
+            dragCursorPoint = Cursor.Position;
+            dragFormPoint = this.Location;
+        }
+
+        private void plDiChuyen_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (dragging)
+            {
+                Point dif = Point.Subtract(Cursor.Position, new Size(dragCursorPoint));
+                this.Location = Point.Add(dragFormPoint, new Size(dif));
+            }
+        }
+
+        private void plDiChuyen_MouseUp(object sender, MouseEventArgs e)
+        {
+            dragging = false;
+        }
+
+        // enter nhay xuong mk
+        private void txtNhapTk_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) 
+            {
+                txtNhapMk.Focus();
+                e.SuppressKeyPress = true; 
+            }
+        }
+
+        // enter la dang nhap
+        private void txtNhapMk_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) 
+            {
+                btnDangNhap.PerformClick();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+
     }
 }

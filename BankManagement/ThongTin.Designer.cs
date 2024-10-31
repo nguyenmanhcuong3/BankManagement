@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -44,8 +47,10 @@
             this.lbslgd = new System.Windows.Forms.Label();
             this.lbsltg = new System.Windows.Forms.Label();
             this.lbsltv = new System.Windows.Forms.Label();
-            this.chartThongKe = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            ((System.ComponentModel.ISupportInitialize)(this.chartThongKe)).BeginInit();
+            this.chartTien = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartNguoi = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            ((System.ComponentModel.ISupportInitialize)(this.chartTien)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartNguoi)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -189,29 +194,47 @@
             this.lbsltv.TabIndex = 19;
             this.lbsltv.Text = "0";
             // 
-            // chartThongKe
+            // chartTien
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chartTien.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartTien.Legends.Add(legend1);
+            this.chartTien.Location = new System.Drawing.Point(236, 250);
+            this.chartTien.Name = "chartTien";
+            this.chartTien.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartTien.Series.Add(series1);
+            this.chartTien.Size = new System.Drawing.Size(423, 212);
+            this.chartTien.TabIndex = 20;
+            this.chartTien.Text = "Biểu đồ thống kê";
+            // 
+            // chartNguoi
             // 
             chartArea2.Name = "ChartArea1";
-            this.chartThongKe.ChartAreas.Add(chartArea2);
+            this.chartNguoi.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
-            this.chartThongKe.Legends.Add(legend2);
-            this.chartThongKe.Location = new System.Drawing.Point(216, 25);
-            this.chartThongKe.Name = "chartThongKe";
-            this.chartThongKe.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
+            this.chartNguoi.Legends.Add(legend2);
+            this.chartNguoi.Location = new System.Drawing.Point(236, 3);
+            this.chartNguoi.Name = "chartNguoi";
+            this.chartNguoi.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
             series2.ChartArea = "ChartArea1";
             series2.Legend = "Legend1";
             series2.Name = "Series1";
-            this.chartThongKe.Series.Add(series2);
-            this.chartThongKe.Size = new System.Drawing.Size(484, 355);
-            this.chartThongKe.TabIndex = 20;
-            this.chartThongKe.Text = "Biểu đồ thống kê";
+            this.chartNguoi.Series.Add(series2);
+            this.chartNguoi.Size = new System.Drawing.Size(423, 212);
+            this.chartNguoi.TabIndex = 21;
+            this.chartNguoi.Text = "Biểu đồ thống kê";
             // 
             // ThongTin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(712, 431);
-            this.Controls.Add(this.chartThongKe);
+            this.Controls.Add(this.chartNguoi);
+            this.Controls.Add(this.chartTien);
             this.Controls.Add(this.lbsltv);
             this.Controls.Add(this.lbsltg);
             this.Controls.Add(this.lbslgd);
@@ -229,7 +252,8 @@
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "ThongTin";
             this.Text = "ThongTin";
-            ((System.ComponentModel.ISupportInitialize)(this.chartThongKe)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartTien)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartNguoi)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -249,6 +273,7 @@
         private System.Windows.Forms.Label lbslgd;
         private System.Windows.Forms.Label lbsltg;
         private System.Windows.Forms.Label lbsltv;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartThongKe;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartTien;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartNguoi;
     }
 }
