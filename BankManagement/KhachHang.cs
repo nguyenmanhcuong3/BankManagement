@@ -40,10 +40,6 @@ namespace BankManagement
             btnTaiAnhKH.Enabled = false;
             btnThemKH.Enabled = false;
             btnXoaKH.Enabled = false;
-
-
-
-
         }
         private void KhachHang_Load(object sender, EventArgs e)
         {
@@ -190,12 +186,6 @@ namespace BankManagement
             }
         }
 
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void btnSuaKH_Click(object sender, EventArgs e)
         {
             try
@@ -296,11 +286,6 @@ namespace BankManagement
 
         }
 
-        private void dgvKhachHang_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void dgvKhachHang_Click(object sender, EventArgs e)
         {
             if (dgvKhachHang.CurrentRow != null)
@@ -341,14 +326,12 @@ namespace BankManagement
 
                     try
                     {
-                        // Giải phóng ảnh hiện tại trước khi tải ảnh mới
                         if (pictureKhachHang.Image != null)
                         {
                             pictureKhachHang.Image.Dispose();
                             pictureKhachHang.Image = null;
                         }
 
-                        // Đọc ảnh từ tệp và tải vào PictureBox thông qua MemoryStream
                         using (var stream = new MemoryStream(File.ReadAllBytes(fullPath)))
                         {
                             pictureKhachHang.Image = Image.FromStream(stream);
@@ -372,31 +355,19 @@ namespace BankManagement
             btnTaiAnhKH.Enabled = true;
         }
 
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void btnXuatFile_Click(object sender, EventArgs e)
         {
-            // Tạo đối tượng cho việc xuất dữ liệu
-            ProcessDatabase db = new ProcessDatabase();
             string sql = "SELECT * FROM KhachHang"; // Truy vấn SQL để lấy dữ liệu từ bảng KhachHang
 
-            // Tạo SaveFileDialog để cho phép người dùng chọn vị trí lưu file
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
                 saveFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx"; // Chỉ cho phép lưu file với đuôi .xlsx
                 saveFileDialog.DefaultExt = "xlsx"; // Đặt đuôi mặc định
                 saveFileDialog.Title = "Lưu file Excel"; // Tiêu đề của hộp thoại
 
-                // Hiển thị hộp thoại và kiểm tra nếu người dùng đã chọn file
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     string filePath = saveFileDialog.FileName; // Lấy đường dẫn file đã chọn
-
-                    // Xuất dữ liệu ra file Excel
                     db.ExportToExcel(sql, filePath);
                     MessageBox.Show("Xuất dữ liệu ra file Excel thành công!");
                 }

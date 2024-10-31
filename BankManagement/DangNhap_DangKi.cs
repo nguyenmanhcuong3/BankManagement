@@ -322,23 +322,38 @@ namespace BankManagement
         {
             if (e.KeyCode == Keys.Enter)
             {
-                // Kiểm tra xem nút nhập lại mật khẩu có được hiển thị hay không
+                
                 if (txtNhapLaiMk.Visible)
                 {
-                    // Nếu nút nhập lại mật khẩu đang hiển thị, chuyển đến ô nhập lại mật khẩu
                     txtNhapLaiMk.Focus();
-                    e.SuppressKeyPress = true; // Ngăn chặn âm thanh "ding"
+                    e.SuppressKeyPress = true; 
                 }
                 else
                 {
-                    // Nếu nút không hiển thị, thực hiện đăng nhập
                     btnDangNhap.PerformClick();
-                    e.SuppressKeyPress = true; // Ngăn chặn âm thanh "ding"
+                    e.SuppressKeyPress = true; 
                 }
             }
         }
 
+        private void txtMaNv_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtNhapTk.Focus();
+                e.SuppressKeyPress = true;
+            }
+        }
 
+        private void txtNhapLaiMk_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnDangKi.PerformClick();
+                btnDangKi.Focus();
+                e.SuppressKeyPress = true;
+            }
+        }
     }
 }
 /*

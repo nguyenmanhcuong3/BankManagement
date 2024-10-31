@@ -2,16 +2,9 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Security.Cryptography;
 using System.Windows.Forms;
 using OfficeOpenXml;
 using System.IO;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
-using System.Collections;
-
 
 namespace BankManagement
 {
@@ -62,30 +55,24 @@ namespace BankManagement
         {
             try
             {
-                // Mở kết nối CSDL
                 KetNoiCSDL();
 
-                // Tạo đối tượng SqlCommand
                 SqlCommand sqlcommand = new SqlCommand(sql, sqlConnect);
 
-                    // Thêm các tham số vào câu lệnh nếu có
                     if (parameters != null)
                     {
                         sqlcommand.Parameters.AddRange(parameters);
                     }
 
-                    // Thực thi câu lệnh SQL (INSERT, UPDATE, DELETE)
                     sqlcommand.ExecuteNonQuery();
                 
             }
             catch (Exception ex)
             {
-                // Xử lý ngoại lệ nếu có lỗi xảy ra
                 MessageBox.Show("Có lỗi xảy ra: " + ex.Message);
             }
             finally
             {
-                // Đảm bảo kết nối được đóng sau khi thực thi xong
                 DongKetNoiCSDL();
             }
         }
@@ -93,7 +80,6 @@ namespace BankManagement
         {
             List<string> maKhachHangList = new List<string>();
 
-            // Giả sử bạn đã thiết lập kết nối với cơ sở dữ liệu
             string query = "SELECT MaKhachHang FROM KhachHang"; // Điều chỉnh tên bảng nếu cần
             SqlConnection conn = new SqlConnection(strConnect);
             {
