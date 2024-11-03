@@ -221,9 +221,9 @@ namespace BankManagement
                 return count > 0;
             }
         }
-        public void ExportToExcel(string sql, string filePath, SqlParameter[] parameters = null)
+        public void ExportToExcel(string sql, string filePath)
         {
-            DataTable dataTable = DocBang(sql, parameters); // Lấy dữ liệu từ database
+            DataTable dataTable = DocBang(sql); // Lấy dữ liệu từ database
 
             // Thiết lập EPPlus
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
@@ -235,6 +235,14 @@ namespace BankManagement
                 // Tải dữ liệu từ DataTable vào worksheet
                 worksheet.Cells["A1"].LoadFromDataTable(dataTable, true);
 
+                for (int col = 1; col <= dataTable.Columns.Count; col++)
+                {
+                    if (dataTable.Columns[col - 1].DataType == typeof(DateTime))
+                    {
+                        worksheet.Column(col).Style.Numberformat.Format = "dd/MM/yyyy HH:mm:ss";
+                    }
+                }
+                worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
                 // Lưu file Excel vào đường dẫn chỉ định
                 FileInfo file = new FileInfo(filePath);
                 package.SaveAs(file);

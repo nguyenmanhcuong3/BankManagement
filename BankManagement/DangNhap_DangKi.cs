@@ -22,18 +22,7 @@ namespace BankManagement
         {
             InitializeComponent();
             init();
-            txtMaNv.Text = "Nhập mã nhân viên";
-            txtMaNv.ForeColor = Color.Gray;
-
-            txtNhapTk.Text = "Nhập tài khoản";
-            txtNhapTk.ForeColor = Color.Gray;
-
-
-            txtNhapMk.Text = "Nhập mật khẩu";
-            txtNhapMk.ForeColor = Color.Gray;
-
-            txtNhapLaiMk.Text = "Nhập lại mật khẩu";
-            txtNhapLaiMk.ForeColor = Color.Gray;
+            
 
             pbNhapMkMo.Hide();
             pbNhapLaiMkMo.Hide();
@@ -55,7 +44,19 @@ namespace BankManagement
             btnQlDangNhap.Hide();
             lbdk.Hide();
             pcDongMk.Show();
-            
+            txtMaNv.Text = "Nhập mã nhân viên";
+            txtMaNv.ForeColor = Color.Gray;
+
+            txtNhapTk.Text = "Nhập tài khoản";
+            txtNhapTk.ForeColor = Color.Gray;
+
+
+            txtNhapMk.Text = "Nhập mật khẩu";
+            txtNhapMk.ForeColor = Color.Gray;
+
+            txtNhapLaiMk.Text = "Nhập lại mật khẩu";
+            txtNhapLaiMk.ForeColor = Color.Gray;
+
         }
         private void pcExit_Click_1(object sender, EventArgs e)
         {
@@ -77,6 +78,19 @@ namespace BankManagement
             btnThoat.Hide();
             pcDongMk.Show() ;
             pbNhapMkMo.Hide();
+            txtMaNv.Text = "Nhập mã nhân viên";
+            txtMaNv.ForeColor = Color.Gray;
+
+            txtNhapTk.Text = "Nhập tài khoản";
+            txtNhapTk.ForeColor = Color.Gray;
+
+
+            txtNhapMk.Text = "Nhập mật khẩu";
+            txtNhapMk.ForeColor = Color.Gray;
+
+            txtNhapLaiMk.Text = "Nhập lại mật khẩu";
+            txtNhapLaiMk.ForeColor = Color.Gray;
+
         }
 
         private void btnQlDangNhap_Click(object sender, EventArgs e)
@@ -86,6 +100,7 @@ namespace BankManagement
             btnThoat.Show();
             btnDangNhap.Show();
             plDiChuyen.SendToBack();
+
 
         }
         // Ma nv
@@ -132,6 +147,10 @@ namespace BankManagement
                 txtNhapMk.Text = "";
                 txtNhapMk.ForeColor = Color.Black;
                 txtNhapMk.PasswordChar = '*';
+                if (pbNhapMkMo.Visible == true)
+                {
+                    txtNhapMk.PasswordChar = '\0';
+                }
             }
         }
 
@@ -152,6 +171,10 @@ namespace BankManagement
                 txtNhapLaiMk.Text = "";
                 txtNhapLaiMk.ForeColor = Color.Black;
                 txtNhapLaiMk.PasswordChar = '*';
+                if (pbNhapLaiMkMo.Visible == true)
+                {
+                    txtNhapLaiMk.PasswordChar = '\0';
+                }
             }
         }
 
@@ -245,9 +268,9 @@ namespace BankManagement
             db.CapNhatDuLieu(insertQuery, parameters);
             MessageBox.Show("Đăng ký thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            this.Close();
-            Login login = new Login();
-            login.Show();
+            btnQlDangNhap.PerformClick();
+            
+
         }
 
         private void btnDangNhap_Click(object sender, EventArgs e)
@@ -353,6 +376,11 @@ namespace BankManagement
                 btnDangKi.Focus();
                 e.SuppressKeyPress = true;
             }
+        }
+
+        private void txtMaNv_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
