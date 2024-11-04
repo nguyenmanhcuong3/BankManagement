@@ -13,7 +13,7 @@ namespace BankManagement
 {
     public partial class NhanVien : Form
     {
-        ProcessDatabase db = new ProcessDatabase();
+        IOManager db = new IOManager();
         public NhanVien()
         {
             InitializeComponent();
@@ -121,7 +121,6 @@ namespace BankManagement
                     MessageBox.Show("Vui lòng điền đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                // kiểm tra trùng lặp mã nhân viên
                 foreach (DataGridViewRow row in dgvNhanVien.Rows)
                 {
                     if (row.Cells["MaNhanVien"].Value != null && row.Cells["MaNhanVien"].Value.ToString() == manv)
@@ -131,23 +130,18 @@ namespace BankManagement
                     }
                 }
 
-                // Kiểm tra điều kiện số điện thoại
-                if (!System.Text.RegularExpressions.Regex.IsMatch(phone, @"^0\d{9}$"))
-                {
-                    MessageBox.Show("Số điện thoại phải có 10 chữ số và bắt đầu bằng số 0!");
-                    return;
-                }
-
-                // Kiểm tra điều kiện số CCCD (phải có 12 chữ số)
-                if (!System.Text.RegularExpressions.Regex.IsMatch(cccd, @"^\d{12}$"))
+                
+                if (!db.IsValidCCCD(cccd))
                 {
                     MessageBox.Show("Số CCCD phải có đúng 12 chữ số!");
                     return;
                 }
 
-
-
-                // Kiểm tra điều kiện email (phải có đuôi @gmail.com)
+                if (!db.IsValidPhone(phone))
+                {
+                    MessageBox.Show("Số điện thoại phải có 10 chữ số và bắt đầu bằng số 0!");
+                    return;
+                }
                 if (!System.Text.RegularExpressions.Regex.IsMatch(email, @"^[\w\.-]+@bank\.com$"))
                 {
                     MessageBox.Show("Email phải có định dạng hợp lệ và có đuôi @bank.com!");
@@ -172,17 +166,12 @@ namespace BankManagement
 
                 string query = "INSERT INTO NhanVien (MaNhanVien, TenNhanVien, ChucVu, NgayVaoLam, NgaySinh, GioiTinh, DiaChi, SoCCCD, SoDienThoai, Email) " +
                "VALUES (@MaNhanVien, @TenNhanVien, @ChucVu, @NgayVaoLam, @NgaySinh, @GioiTinh, @DiaChi, @SoCCCD, @SoDienThoai, @Email)";
-
-
-                // Hiển thị hộp thoại xác nhận
                 DialogResult result = MessageBox.Show("Bạn có muốn thêm thông tin nhân viên không?", "Xác nhận thêm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                // Kiểm tra nếu người dùng chọn Yes
                 if (result == DialogResult.Yes)
                 {
                     db.CapNhatDuLieu(query, parameters);
 
-                    // Thông báo và cập nhật lại DataGridView sau khi cập nhật thành công
                     MessageBox.Show("Thêm thông tin nhân viên thành công!");
                     dgvNhanVien.DataSource = db.DocBang("SELECT * FROM NhanVien");
                 }
@@ -199,13 +188,12 @@ namespace BankManagement
 
         private void dgvNhanVien_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Kiểm tra xem có phải dòng hợp lệ được chọn hay không
+
             if (e.RowIndex >= 0)
             {
-                // Lấy dòng được chọn trong DataGridView
+
                 DataGridViewRow selectedRow = dgvNhanVien.Rows[e.RowIndex];
 
-                // Hiển thị thông tin giao dịch từ dòng được chọn lên các ô nhập
                 txtMaNhanVien.Text = selectedRow.Cells["MaNhanVien"].Value?.ToString();
                 txtTenNhanVien.Text = selectedRow.Cells["TenNhanVien"].Value?.ToString();
                 txtSoCCCD.Text = selectedRow.Cells["SoCCCD"].Value?.ToString();
@@ -224,7 +212,7 @@ namespace BankManagement
                     radioNu.Checked = true;
                 }
 
-                // Kiểm tra và chuyển đổi dữ liệu ngày tháng, nếu có giá trị
+
                 if (DateTime.TryParse(selectedRow.Cells["NgaySinh"].Value?.ToString(), out DateTime ngaysinh))
                 {
                     dateNgaySinh.Value = ngaysinh;
