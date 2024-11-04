@@ -1,5 +1,5 @@
-﻿CREATE DATABASE QLBank
-use QLBank
+﻿--CREATE DATABASE QLBank
+--use QLBank
 -- Bảng KhachHang
 CREATE TABLE KhachHang (
     MaKhachHang nvarchar(20) PRIMARY KEY ,
