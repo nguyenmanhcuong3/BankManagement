@@ -86,6 +86,8 @@
     <Compile Include="DangNhap_DangKi.Designer.cs">
       <DependentUpon>DangNhap_DangKi.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataReport.cs" />
+    <Compile Include="DataTransaction.cs" />
     <Compile Include="GiaoDich.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -13,7 +13,7 @@ namespace BankManagement
 {
     public partial class NhanVien : Form
     {
-        ProcessDatabase db = new ProcessDatabase();
+        IOManager db = new IOManager();
         public NhanVien()
         {
             InitializeComponent();
@@ -131,13 +131,13 @@ namespace BankManagement
                 }
 
                 
-                if (!IOManager.IsValidCCCD(cccd))
+                if (!db.IsValidCCCD(cccd))
                 {
                     MessageBox.Show("Số CCCD phải có đúng 12 chữ số!");
                     return;
                 }
 
-                if (!IOManager.IsValidPhone(phone))
+                if (!db.IsValidPhone(phone))
                 {
                     MessageBox.Show("Số điện thoại phải có 10 chữ số và bắt đầu bằng số 0!");
                     return;

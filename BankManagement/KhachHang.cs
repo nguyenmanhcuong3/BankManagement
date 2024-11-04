@@ -15,7 +15,7 @@ namespace BankManagement
 {
     public partial class KhachHang : Form
     {
-        ProcessDatabase db = new ProcessDatabase();
+        IOManager db = new IOManager();
         private string imageFilePath = "";
         public KhachHang()
         {
@@ -114,14 +114,14 @@ namespace BankManagement
                     return;
                 }
                 // Kiểm tra điều kiện số điện thoại
-                if (!IOManager.IsValidPhone(soDienThoai))
+                if (!db.IsValidPhone(soDienThoai))
                 {
                     MessageBox.Show("Số điện thoại phải có 10 chữ số và bắt đầu bằng số 0!");
                     return;
                 }
 
                 // Kiểm tra điều kiện số CCCD (phải có 12 chữ số)
-                if (!IOManager.IsValidCCCD(soCCCD))
+                if (!db.IsValidCCCD(soCCCD))
                 {
                     MessageBox.Show("Số CCCD phải có đúng 12 chữ số!");
                     return;
@@ -366,7 +366,7 @@ namespace BankManagement
         private void btnXuatFile_Click(object sender, EventArgs e)
         {
             string sql = "SELECT * FROM KhachHang";
-            IOManager.ExportDataToExcel(sql);
+            db.ExportDataToExcel(sql);
         }
     }
 }

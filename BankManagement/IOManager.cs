@@ -15,24 +15,22 @@ using System.Windows.Forms;
 
 namespace BankManagement
 {
-    internal class IOManager
+    internal class IOManager : ProcessDatabase
     {
-        private static ProcessDatabase db = new ProcessDatabase();
-        public static bool AuthenticateUser(string username, string password)
+        public  bool AuthenticateUser(string username, string password)
         {
 
-            DataTable dbKhachHang = db.DocBang("SELECT * FROM Login WHERE username='" + username + "' AND password='" + password + "'");
-
+            DataTable dbKhachHang = DocBang("SELECT * FROM Login WHERE username='" + username + "' AND password='" + password + "'");
             return dbKhachHang.Rows.Count > 0;
         }
 
 
 
-        public static bool RegisterUser(string maNhanVien, string username, string password, string confirmPassword, out string message)
+        public  bool RegisterUser(string maNhanVien, string username, string password, string confirmPassword, out string message)
         {
 
 
-            if (!db.CheckMnv(maNhanVien))
+            if (!CheckMnv(maNhanVien))
             {
                 message = "Mã nhân viên không tồn tại.";
                 return false;
@@ -65,7 +63,7 @@ namespace BankManagement
             }
 
 
-            if (db.CheckAccountExists(username))
+            if (CheckAccountExists(username))
             {
                 message = "Tài khoản đã tồn tại. Vui lòng chọn tài khoản khác.";
                 return false;
@@ -79,11 +77,11 @@ namespace BankManagement
             new SqlParameter("@password", password)
         };
 
-            db.CapNhatDuLieu(insertQuery, parameters);
+            CapNhatDuLieu(insertQuery, parameters);
             message = "Đăng ký thành công!";
             return true;
         }
-        public static void ExportDataToExcel(string sql)
+        public void ExportDataToExcel(string sql)
         {
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
@@ -95,16 +93,16 @@ namespace BankManagement
                 {
                     string filePath = saveFileDialog.FileName;
 
-                    db.ExportToExcel(sql, filePath);
+                    ExportToExcel(sql, filePath);
                     MessageBox.Show("Xuất dữ liệu ra file Excel thành công!");
                 }
             }
         }
-        public static bool IsValidCCCD(string soCCCD)
+        public  bool IsValidCCCD(string soCCCD)
         {
             return Regex.IsMatch(soCCCD, @"^\d{12}$");
         }
-        public static bool IsValidPhone(string phone)
+        public  bool IsValidPhone(string phone)
         {
             return Regex.IsMatch(phone, @"^0\d{9}$");
         }

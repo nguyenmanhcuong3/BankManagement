@@ -13,7 +13,7 @@ namespace BankManagement
 {
     public partial class GiaoDich : Form
     {
-        ProcessDatabase db = new ProcessDatabase();
+        DataTransaction db = new DataTransaction();
         private KhachHang khachHangForm;
         private DataTable dbGiaoDich = new DataTable();
         public GiaoDich()
@@ -276,7 +276,7 @@ namespace BankManagement
         private void btnXuatExcel_Click(object sender, EventArgs e)
         {
             string sql = "SELECT * FROM GiaoDich";
-            IOManager.ExportDataToExcel(sql);
+            db.ExportDataToExcel(sql);
         }
 
         private void cbbMaKhachHang_SelectedIndexChanged_1(object sender, EventArgs e)

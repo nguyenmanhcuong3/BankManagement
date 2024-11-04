@@ -14,7 +14,7 @@ namespace BankManagement
 {
     public partial class DangNhap_DangKi : Form
     {
-        ProcessDatabase db = new ProcessDatabase();
+        IOManager db = new IOManager();
         private bool dragging = false;
         private Point dragCursorPoint;
         private Point dragFormPoint;
@@ -225,7 +225,7 @@ namespace BankManagement
             string confirmPassword = txtNhapLaiMk.Text;
 
             string message;
-            bool isRegistered = IOManager.RegisterUser(maNhanVien, username, password, confirmPassword, out message);
+            bool isRegistered = db.RegisterUser(maNhanVien, username, password, confirmPassword, out message);
 
             MessageBox.Show(message, "Thông báo", MessageBoxButtons.OK, isRegistered ? MessageBoxIcon.Information : MessageBoxIcon.Warning);
 
@@ -242,7 +242,7 @@ namespace BankManagement
             string username = txtNhapTk.Text;
             string password = txtNhapMk.Text;
 
-            bool isAuthenticated = IOManager.AuthenticateUser(username, password);
+            bool isAuthenticated =db.AuthenticateUser(username, password);
 
             if (isAuthenticated)
             {

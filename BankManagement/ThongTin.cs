@@ -6,7 +6,7 @@ namespace BankManagement
 {
     public partial class ThongTin : Form
     {
-        ProcessDatabase db = new ProcessDatabase();
+        DataReport db = new DataReport();
         string str = "";
 
         public ThongTin()

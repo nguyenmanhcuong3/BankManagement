@@ -13,7 +13,7 @@ namespace BankManagement
 {
     public partial class TaiKhoan : Form
     {
-        ProcessDatabase db = new ProcessDatabase();
+        DataTransaction db = new DataTransaction();
         void ResetValue()
         {
             cbbLoaiTaiKhoan.Text = "";
