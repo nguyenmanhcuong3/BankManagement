@@ -99,12 +99,20 @@ namespace BankManagement
             string duongDanAnh = null;
             try
             {
-                if (string.IsNullOrEmpty(txtMaKhachHang.Text))
+                // Xử lý thông tin rỗng
+                if (string.IsNullOrEmpty(maKhachHang) || string.IsNullOrEmpty(tenKhachHang) ||
+                    string.IsNullOrEmpty(soCCCD) || string.IsNullOrEmpty(soDienThoai) ||
+                    string.IsNullOrEmpty(diaChi) || string.IsNullOrEmpty(ngheNghiep) || string.IsNullOrEmpty(imageFilePath))
                 {
-                    MessageBox.Show("Mã khách hàng không được bỏ trống!");
+                    MessageBox.Show("Vui lòng điền đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
+                // Kiểm tra trùng lặp mã khách hàng
+                if (dgvKhachHang.Rows.Cast<DataGridViewRow>().Any(row => row.Cells["MaKhachHang"].Value?.ToString() == maKhachHang))
+                {
+                    MessageBox.Show("Mã khách hàng đã tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 // Kiểm tra điều kiện số điện thoại
                 if (!System.Text.RegularExpressions.Regex.IsMatch(soDienThoai, @"^0\d{9}$"))
                 {

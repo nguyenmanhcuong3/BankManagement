@@ -97,5 +97,10 @@ namespace BankManagement
             chartTien.ChartAreas[0].AxisX.Title = "Loại tiền";
             chartTien.ChartAreas[0].AxisY.Title = "Số tiền";
         }
+
+        private void ThongTin_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

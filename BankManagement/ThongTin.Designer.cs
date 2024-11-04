@@ -60,7 +60,7 @@
             this.label2.Location = new System.Drawing.Point(3, 66);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(124, 13);
+            this.label2.Size = new System.Drawing.Size(145, 19);
             this.label2.TabIndex = 1;
             this.label2.Text = "Số lượng khách hàng :";
             // 
@@ -71,7 +71,7 @@
             this.label3.Location = new System.Drawing.Point(1, 89);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(114, 13);
+            this.label3.Size = new System.Drawing.Size(134, 19);
             this.label3.TabIndex = 2;
             this.label3.Text = "Số lượng nhân viên :";
             // 
@@ -82,7 +82,7 @@
             this.label4.Location = new System.Drawing.Point(3, 113);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(112, 13);
+            this.label4.Size = new System.Drawing.Size(131, 19);
             this.label4.TabIndex = 3;
             this.label4.Text = "Số lượng tài khoản :";
             // 
@@ -93,7 +93,7 @@
             this.label5.Location = new System.Drawing.Point(3, 142);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(111, 13);
+            this.label5.Size = new System.Drawing.Size(129, 19);
             this.label5.TabIndex = 4;
             this.label5.Text = "Số lượng giao dịch :";
             // 
@@ -104,7 +104,7 @@
             this.label6.Location = new System.Drawing.Point(3, 172);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(103, 13);
+            this.label6.Size = new System.Drawing.Size(120, 19);
             this.label6.TabIndex = 5;
             this.label6.Text = "Số lượng tiền gửi :";
             // 
@@ -114,7 +114,7 @@
             this.label7.Location = new System.Drawing.Point(136, 471);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(0, 13);
+            this.label7.Size = new System.Drawing.Size(0, 19);
             this.label7.TabIndex = 6;
             // 
             // label8
@@ -124,7 +124,7 @@
             this.label8.Location = new System.Drawing.Point(1, 201);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(105, 13);
+            this.label8.Size = new System.Drawing.Size(126, 19);
             this.label8.TabIndex = 7;
             this.label8.Text = " Số lượng tiền vay :";
             // 
@@ -135,7 +135,7 @@
             this.lbslkh.Location = new System.Drawing.Point(131, 66);
             this.lbslkh.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbslkh.Name = "lbslkh";
-            this.lbslkh.Size = new System.Drawing.Size(13, 13);
+            this.lbslkh.Size = new System.Drawing.Size(17, 19);
             this.lbslkh.TabIndex = 14;
             this.lbslkh.Text = "0";
             // 
@@ -146,7 +146,7 @@
             this.lbslnv.Location = new System.Drawing.Point(131, 89);
             this.lbslnv.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbslnv.Name = "lbslnv";
-            this.lbslnv.Size = new System.Drawing.Size(13, 13);
+            this.lbslnv.Size = new System.Drawing.Size(17, 19);
             this.lbslnv.TabIndex = 15;
             this.lbslnv.Text = "0";
             // 
@@ -157,7 +157,7 @@
             this.lbsltk.Location = new System.Drawing.Point(131, 113);
             this.lbsltk.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbsltk.Name = "lbsltk";
-            this.lbsltk.Size = new System.Drawing.Size(13, 13);
+            this.lbsltk.Size = new System.Drawing.Size(17, 19);
             this.lbsltk.TabIndex = 16;
             this.lbsltk.Text = "0";
             // 
@@ -168,7 +168,7 @@
             this.lbslgd.Location = new System.Drawing.Point(131, 142);
             this.lbslgd.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbslgd.Name = "lbslgd";
-            this.lbslgd.Size = new System.Drawing.Size(13, 13);
+            this.lbslgd.Size = new System.Drawing.Size(17, 19);
             this.lbslgd.TabIndex = 17;
             this.lbslgd.Text = "0";
             // 
@@ -179,7 +179,7 @@
             this.lbsltg.Location = new System.Drawing.Point(131, 172);
             this.lbsltg.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbsltg.Name = "lbsltg";
-            this.lbsltg.Size = new System.Drawing.Size(13, 13);
+            this.lbsltg.Size = new System.Drawing.Size(17, 19);
             this.lbsltg.TabIndex = 18;
             this.lbsltg.Text = "0";
             // 
@@ -190,7 +190,7 @@
             this.lbsltv.Location = new System.Drawing.Point(131, 201);
             this.lbsltv.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbsltv.Name = "lbsltv";
-            this.lbsltv.Size = new System.Drawing.Size(13, 13);
+            this.lbsltv.Size = new System.Drawing.Size(17, 19);
             this.lbsltv.TabIndex = 19;
             this.lbsltv.Text = "0";
             // 
@@ -230,7 +230,7 @@
             // 
             // ThongTin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(712, 431);
             this.Controls.Add(this.chartNguoi);
@@ -252,6 +252,7 @@
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "ThongTin";
             this.Text = "ThongTin";
+            this.Load += new System.EventHandler(this.ThongTin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chartTien)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartNguoi)).EndInit();
             this.ResumeLayout(false);

@@ -88,6 +88,7 @@ namespace BankManagement
             cbbLoaiGiaoDich.Enabled = true;
             cbbTenNhanVien.Enabled = true;
             dateNgayGiaoDich.Enabled = true;
+            txtMaGiaoDich.Focus();
             txtMaGiaoDich.Text = "";
             txtSoTien.Text = "";
             txtTenKhachHang.Text = "";
@@ -311,9 +312,68 @@ namespace BankManagement
 
         private void cbbMaKhachHang_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
         }
 
-       
+        private void cbbMaKhachHang_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            // Lấy mã khách hàng được chọn trong ComboBox
+            string maKhachHang = cbbMaKhachHang.SelectedItem.ToString();
+
+            // Sử dụng ProcessDatabase để lấy tên khách hàng từ cơ sở dữ liệu
+
+            string tenKhachHang = db.GetTenKhachHangByMa(maKhachHang);
+
+            // Hiển thị tên khách hàng trên TextBox
+            txtTenKhachHang.Text = tenKhachHang;
+
+            if (!string.IsNullOrEmpty(maKhachHang))
+            {
+
+                DataTable loaiTaiKhoanTable = db.DocBang("SELECT LoaiTaiKhoan FROM TaiKhoan WHERE MaKhachHang like  N'" + maKhachHang + "'");
+                if (loaiTaiKhoanTable.Rows.Count > 0)
+                {
+                    string loaiTaiKhoan = loaiTaiKhoanTable.Rows[0]["LoaiTaiKhoan"].ToString();
+                    if (loaiTaiKhoan == "ThanhToan")
+                    {
+                        cbbLoaiGiaoDich.Items.Clear();
+                        cbbLoaiGiaoDich.Items.Add("Nhan Tien");
+                        cbbLoaiGiaoDich.Items.Add("Chuyen Tien");
+                    }
+                    else if (loaiTaiKhoan == "TietKiem")
+                    {
+                        cbbLoaiGiaoDich.Items.Clear();
+                        cbbLoaiGiaoDich.Items.Add("Nhan Tien");
+                        cbbLoaiGiaoDich.Items.Add("Chuyen Tien");
+                        cbbLoaiGiaoDich.Items.Add("Gui Tiet Kiem");
+                        cbbLoaiGiaoDich.Items.Add("Rut Tien Tiet Kiem");
+                    }
+                    else if (loaiTaiKhoan == "VayVon")
+                    {
+                        cbbLoaiGiaoDich.Items.Clear();
+                        cbbLoaiGiaoDich.Items.Add("Nhan Tien");
+                        cbbLoaiGiaoDich.Items.Add("Chuyen Tien");
+                        cbbLoaiGiaoDich.Items.Add("Vay Von");
+                        cbbLoaiGiaoDich.Items.Add("Tra No");
+                    }
+                    else if (loaiTaiKhoan == "DaNang")
+                    {
+                        cbbLoaiGiaoDich.Items.Clear();
+                        cbbLoaiGiaoDich.Items.Add("Nhan Tien");
+                        cbbLoaiGiaoDich.Items.Add("Chuyen Tien");
+                        cbbLoaiGiaoDich.Items.Add("Vay Von");
+                        cbbLoaiGiaoDich.Items.Add("Tra No");
+                        cbbLoaiGiaoDich.Items.Add("Gui Tiet Kiem");
+                        cbbLoaiGiaoDich.Items.Add("Rut Tien Tiet Kiem");
+                    }
+
+                }
+            }
+            else
+            {
+                txtTenKhachHang.Text = "";
+                cbbLoaiGiaoDich.Items.Clear();
+            }
+        }
     }
 }

@@ -17,6 +17,9 @@ namespace BankManagement
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new DangNhap_DangKi());
+            
+
+
         }
     }
 }
