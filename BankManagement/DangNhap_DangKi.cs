@@ -220,56 +220,20 @@ namespace BankManagement
         private void btnDangKi_Click(object sender, EventArgs e)
         {
             string maNhanVien = txtMaNv.Text.Trim();
-            string taiKhoan = txtNhapTk.Text.Trim();
+            string username = txtNhapTk.Text.Trim();
+            string password = txtNhapMk.Text;
+            string confirmPassword = txtNhapLaiMk.Text;
 
-            if (db.CheckMnv(maNhanVien) == false)
-            {
-                MessageBox.Show("Mã nhân viên không tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(maNhanVien) || maNhanVien.Equals("Nhập mã nhân viên bạn muốn đăng kí"))
-            {
-                MessageBox.Show("Vui lòng nhập mã nhân viên.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            string message;
+            bool isRegistered = IOManager.RegisterUser(maNhanVien, username, password, confirmPassword, out message);
 
-            if (string.IsNullOrWhiteSpace(taiKhoan) || taiKhoan.Equals("Nhập tài khoản bạn muốn đăng kí"))
+            MessageBox.Show(message, "Thông báo", MessageBoxButtons.OK, isRegistered ? MessageBoxIcon.Information : MessageBoxIcon.Warning);
+
+            if (isRegistered)
             {
-                MessageBox.Show("Vui lòng nhập tài khoản.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                btnQlDangNhap.PerformClick();
             }
 
-            if (txtNhapMk.Text.Length < 6)
-            {
-                MessageBox.Show("Mật khẩu phải có ít nhất 6 ký tự.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-
-            if (txtNhapMk.Text != txtNhapLaiMk.Text)
-            {
-                MessageBox.Show("Mật khẩu và mật khẩu nhập lại không khớp. Vui lòng kiểm tra lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (db.CheckAccountExists(txtNhapTk.Text))
-            {
-                MessageBox.Show("Tài khoản đã tồn tại. Vui lòng chọn tài khoản khác.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-           
-            string insertQuery = "INSERT INTO Login (MaNhanVien,username, password) VALUES ( @maNhanVien,@username, @password)"; // Điều chỉnh tên bảng và cột nếu cần
-            SqlParameter[] parameters =
-            {
-        new SqlParameter("@username", txtNhapTk.Text),
-        new SqlParameter("@password", txtNhapMk.Text),
-        new SqlParameter("@maNhanVien", maNhanVien) };
-
-            db.CapNhatDuLieu(insertQuery, parameters);
-            MessageBox.Show("Đăng ký thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            btnQlDangNhap.PerformClick();
-            
 
         }
 
@@ -277,8 +241,10 @@ namespace BankManagement
         {
             string username = txtNhapTk.Text;
             string password = txtNhapMk.Text;
-            DataTable dbKhachHang = db.DocBang("select * from Login where username='" + txtNhapTk.Text + "'and password ='" + txtNhapMk.Text + "'");
-            if (dbKhachHang.Rows.Count > 0)
+
+            bool isAuthenticated = IOManager.AuthenticateUser(username, password);
+
+            if (isAuthenticated)
             {
                 frmMain main = new frmMain();
                 main.Show();

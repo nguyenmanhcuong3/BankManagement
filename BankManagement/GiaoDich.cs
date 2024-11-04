@@ -19,20 +19,17 @@ namespace BankManagement
         public GiaoDich()
         {
             InitializeComponent();
-            // Khởi tạo danh sách mã khách hàng rỗng
-            //maKhachHangList = new List<string>();
 
-            // Thiết lập DateTimePicker để ẩn ngày tháng mặc định
             dateNgayGiaoDich.Format = DateTimePickerFormat.Custom;
-            dateNgayGiaoDich.CustomFormat = " "; // Ẩn ngày mặc định
+            dateNgayGiaoDich.CustomFormat = " "; 
 
-            // Hiển thị ngày khi có thay đổi
+
             dateNgayGiaoDich.ValueChanged += (s, e) =>
             {
-                dateNgayGiaoDich.CustomFormat = "dd/MM/yyyy"; // Định dạng ngày tháng
+                dateNgayGiaoDich.CustomFormat = "dd/MM/yyyy"; 
             };
         }
-        public GiaoDich(KhachHang khForm) // Nhận tham chiếu form KhachHang từ constructor
+        public GiaoDich(KhachHang khForm) 
         {
             InitializeComponent();
             khachHangForm = khForm;
@@ -278,26 +275,8 @@ namespace BankManagement
         }
         private void btnXuatExcel_Click(object sender, EventArgs e)
         {
-            ProcessDatabase db = new ProcessDatabase();
-            string sql = "SELECT * FROM GiaoDich"; // Truy vấn SQL để lấy dữ liệu từ bảng KhachHang
-
-            // Tạo SaveFileDialog để cho phép người dùng chọn vị trí lưu file
-            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
-            {
-                saveFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx"; // Chỉ cho phép lưu file với đuôi .xlsx
-                saveFileDialog.DefaultExt = "xlsx"; // Đặt đuôi mặc định
-                saveFileDialog.Title = "Lưu file Excel"; // Tiêu đề của hộp thoại
-
-                // Hiển thị hộp thoại và kiểm tra nếu người dùng đã chọn file
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    string filePath = saveFileDialog.FileName; // Lấy đường dẫn file đã chọn
-
-                    // Xuất dữ liệu ra file Excel
-                    db.ExportToExcel(sql, filePath);
-                    MessageBox.Show("Xuất dữ liệu ra file Excel thành công!");
-                }
-            }
+            string sql = "SELECT * FROM GiaoDich";
+            IOManager.ExportDataToExcel(sql);
         }
 
         private void cbbMaKhachHang_SelectedIndexChanged_1(object sender, EventArgs e)

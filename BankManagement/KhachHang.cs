@@ -114,14 +114,14 @@ namespace BankManagement
                     return;
                 }
                 // Kiểm tra điều kiện số điện thoại
-                if (!System.Text.RegularExpressions.Regex.IsMatch(soDienThoai, @"^0\d{9}$"))
+                if (!IOManager.IsValidPhone(soDienThoai))
                 {
                     MessageBox.Show("Số điện thoại phải có 10 chữ số và bắt đầu bằng số 0!");
                     return;
                 }
 
                 // Kiểm tra điều kiện số CCCD (phải có 12 chữ số)
-                if (!System.Text.RegularExpressions.Regex.IsMatch(soCCCD, @"^\d{12}$"))
+                if (!IOManager.IsValidCCCD(soCCCD))
                 {
                     MessageBox.Show("Số CCCD phải có đúng 12 chữ số!");
                     return;
@@ -365,21 +365,8 @@ namespace BankManagement
 
         private void btnXuatFile_Click(object sender, EventArgs e)
         {
-            string sql = "SELECT * FROM KhachHang"; // Truy vấn SQL để lấy dữ liệu từ bảng KhachHang
-
-            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
-            {
-                saveFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx"; // Chỉ cho phép lưu file với đuôi .xlsx
-                saveFileDialog.DefaultExt = "xlsx"; // Đặt đuôi mặc định
-                saveFileDialog.Title = "Lưu file Excel"; // Tiêu đề của hộp thoại
-
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    string filePath = saveFileDialog.FileName; // Lấy đường dẫn file đã chọn
-                    db.ExportToExcel(sql, filePath);
-                    MessageBox.Show("Xuất dữ liệu ra file Excel thành công!");
-                }
-            }
+            string sql = "SELECT * FROM KhachHang";
+            IOManager.ExportDataToExcel(sql);
         }
     }
 }

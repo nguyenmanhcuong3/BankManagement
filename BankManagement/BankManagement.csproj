@@ -125,6 +125,7 @@
     <Compile Include="ThongTin.Designer.cs">
       <DependentUpon>ThongTin.cs</DependentUpon>
     </Compile>
+    <Compile Include="IOManager.cs" />
     <EmbeddedResource Include="DangNhap_DangKi.resx">
       <DependentUpon>DangNhap_DangKi.cs</DependentUpon>
     </EmbeddedResource>
