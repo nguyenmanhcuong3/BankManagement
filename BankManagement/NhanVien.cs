@@ -40,7 +40,7 @@ namespace BankManagement
         }
         private void OffValue()
         {
-            // Thiết lập các TextBox và DateTimePicker không thể nhập liệu
+            
             txtMaNhanVien.Enabled = false;
             txtTenNhanVien.Enabled = false;
             txtSoCCCD.Enabled = false;
@@ -49,17 +49,16 @@ namespace BankManagement
             txtSoDienThoai.Enabled = false;
             txtEmail.Enabled = false;
 
-            // Thiết lập các DateTimePicker không thể chọn ngày
             dateNgaySinh.Enabled = false;
             dateNgayVaoLam.Enabled = false;
 
-            // Thiết lập RadioButton không thể chọn lại
+    
             radioNam.Enabled = false;
             radioNu.Enabled = false;
         }
         private void OnValue()
         {
-            // Thiết lập các TextBox và DateTimePicker không thể nhập liệu
+            
             txtMaNhanVien.Enabled = true;
             txtTenNhanVien.Enabled = true;
             txtSoCCCD.Enabled = true;
@@ -68,11 +67,10 @@ namespace BankManagement
             txtSoDienThoai.Enabled = true;
             txtEmail.Enabled = true;
 
-            // Thiết lập các DateTimePicker không thể chọn ngày
+
             dateNgaySinh.Enabled = true;
             dateNgayVaoLam.Enabled = true;
 
-            // Thiết lập RadioButton không thể chọn lại
             radioNam.Enabled = true;
             radioNu.Enabled = true;
         }
@@ -103,18 +101,18 @@ namespace BankManagement
         {
             string manv = txtMaNhanVien.Text.Trim();
             string tennv = txtTenNhanVien.Text.Trim();
-            DateTime ngaySinh = dateNgaySinh.Value;
+            DateTime ngaySinh = dateNgaySinh.Value.Date;
             string gioiTinh = radioNam.Checked ? "Nam" : radioNu.Checked ? "Nữ" : string.Empty;
             string cccd = txtSoCCCD.Text.Trim();
             string chucvu = txtChucVu.Text.Trim();
             string diachi = txtDiaChi.Text.Trim();
             string phone = txtSoDienThoai.Text.Trim();
             string email = txtEmail.Text.Trim();
-            DateTime ngayVaoLam = dateNgayVaoLam.Value;
-            // xu ly dieu kien
+            DateTime ngayVaoLam = dateNgayVaoLam.Value.Date;
+
             try
             {
-                // xử lý thông tin rỗng 
+             
                 if (string.IsNullOrEmpty(manv) || string.IsNullOrEmpty(tennv) ||
                    string.IsNullOrEmpty(cccd) || string.IsNullOrEmpty(chucvu) || string.IsNullOrEmpty(gioiTinh)
                    ||

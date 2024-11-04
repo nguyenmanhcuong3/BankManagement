@@ -81,6 +81,9 @@ namespace BankManagement
 
         private void btnGiaoDichMoi_Click(object sender, EventArgs e)
         {
+            txtTenKhachHang.Text = "";
+            cbbMaKhachHang.Text = "";
+            cbbTenNhanVien.Text = "";
             txtMaGiaoDich.Enabled = true;
             txtSoTien.Enabled = true;
             txtTenKhachHang.Enabled = true;
@@ -91,32 +94,24 @@ namespace BankManagement
             txtMaGiaoDich.Focus();
             txtMaGiaoDich.Text = "";
             txtSoTien.Text = "";
-            txtTenKhachHang.Text = "";
-            cbbMaKhachHang.Text = "";
-            cbbTenNhanVien.Text = "";
             btnXacNhan.Enabled = true;
+            cbbLoaiGiaoDich.ResetText();
         }
+
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            // Kiểm tra xem có dòng nào được chọn trong DataGridView hay không
             if (dgvGiaoDich.SelectedRows.Count > 0)
             {
-                // Hiển thị hộp thoại xác nhận
                 DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa giao dịch này không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                // Nếu người dùng chọn Yes, thực hiện xóa
                 if (result == DialogResult.Yes)
                 {
-                    // Lấy mã giao dịch từ dòng được chọn
                     string maGiaoDich = dgvGiaoDich.SelectedRows[0].Cells["MaGiaoDich"].Value.ToString();
-
-                    // Câu lệnh SQL xóa thông tin từ bảng GiaoDich
                     string sql = "DELETE FROM GiaoDich WHERE MaGiaoDich = @MaGiaoDich";
 
                     try
                     {
-                        using (SqlConnection con = new SqlConnection(db.strConnect)) // Kết nối tới cơ sở dữ liệu
+                        using (SqlConnection con = new SqlConnection(db.strConnect)) 
                         {
                             SqlCommand cmd = new SqlCommand(sql, con);
                             cmd.Parameters.AddWithValue("@MaGiaoDich", maGiaoDich);
@@ -156,20 +151,16 @@ namespace BankManagement
 
         private void dgvGiaoDich_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Kiểm tra xem có phải dòng hợp lệ được chọn hay không
+            
             if (e.RowIndex >= 0)
             {
-                // Lấy dòng được chọn trong DataGridView
                 DataGridViewRow selectedRow = dgvGiaoDich.Rows[e.RowIndex];
-
-                // Hiển thị thông tin giao dịch từ dòng được chọn lên các ô nhập
                 txtMaGiaoDich.Text = selectedRow.Cells["MaGiaoDich"].Value?.ToString();
                 cbbLoaiGiaoDich.Text = selectedRow.Cells["LoaiGiaoDich"].Value?.ToString();
                 cbbMaKhachHang.Text = selectedRow.Cells["MaKhachHang"].Value?.ToString();
                 txtTenKhachHang.Text = selectedRow.Cells["TenKhachHang"].Value?.ToString();
                 txtSoTien.Text = selectedRow.Cells["SoTienGiaoDich"].Value?.ToString();
 
-                // Kiểm tra và chuyển đổi dữ liệu ngày tháng, nếu có giá trị
                 if (DateTime.TryParse(selectedRow.Cells["ThoiGianGiaoDich"].Value?.ToString(), out DateTime ngayGiaoDich))
                 {
                     dateNgayGiaoDich.Value = ngayGiaoDich;
@@ -287,7 +278,6 @@ namespace BankManagement
         }
         private void btnXuatExcel_Click(object sender, EventArgs e)
         {
-            // Tạo đối tượng cho việc xuất dữ liệu
             ProcessDatabase db = new ProcessDatabase();
             string sql = "SELECT * FROM GiaoDich"; // Truy vấn SQL để lấy dữ liệu từ bảng KhachHang
 
@@ -310,21 +300,11 @@ namespace BankManagement
             }
         }
 
-        private void cbbMaKhachHang_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
         private void cbbMaKhachHang_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            // Lấy mã khách hàng được chọn trong ComboBox
             string maKhachHang = cbbMaKhachHang.SelectedItem.ToString();
 
-            // Sử dụng ProcessDatabase để lấy tên khách hàng từ cơ sở dữ liệu
-
             string tenKhachHang = db.GetTenKhachHangByMa(maKhachHang);
-
-            // Hiển thị tên khách hàng trên TextBox
             txtTenKhachHang.Text = tenKhachHang;
 
             if (!string.IsNullOrEmpty(maKhachHang))

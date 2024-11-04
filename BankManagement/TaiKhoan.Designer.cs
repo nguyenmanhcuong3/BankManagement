@@ -2,9 +2,6 @@
 {
     partial class TaiKhoan
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
@@ -109,7 +106,6 @@
             this.dgvTaiKhoan.Size = new System.Drawing.Size(726, 189);
             this.dgvTaiKhoan.TabIndex = 2;
             this.dgvTaiKhoan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTaiKhoan_CellClick);
-            this.dgvTaiKhoan.Click += new System.EventHandler(this.dgvTaiKhoan_Click);
             // 
             // label9
             // 
@@ -159,7 +155,6 @@
             this.label7.Size = new System.Drawing.Size(78, 19);
             this.label7.TabIndex = 34;
             this.label7.Text = "Số tiền gửi ";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // cbbLoaiTaiKhoan
             // 
@@ -183,7 +178,6 @@
             this.dateNgayMo.Name = "dateNgayMo";
             this.dateNgayMo.Size = new System.Drawing.Size(151, 26);
             this.dateNgayMo.TabIndex = 31;
-            this.dateNgayMo.ValueChanged += new System.EventHandler(this.dateNgayMo_ValueChanged);
             // 
             // btnCapNhat
             // 
@@ -231,7 +225,7 @@
             this.btnThem.TabIndex = 27;
             this.btnThem.Text = "Thêm mới";
             this.btnThem.UseVisualStyleBackColor = true;
-            this.btnThem.Click += new System.EventHandler(this.dgvTaiKhoan_Click);
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // txtTenKhachHang
             // 
@@ -268,7 +262,6 @@
             this.label6.Size = new System.Drawing.Size(109, 19);
             this.label6.TabIndex = 6;
             this.label6.Text = "Tên khách hàng ";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label5
             // 
@@ -335,7 +328,6 @@
             this.txtTim.Name = "txtTim";
             this.txtTim.Size = new System.Drawing.Size(487, 26);
             this.txtTim.TabIndex = 0;
-            this.txtTim.TextChanged += new System.EventHandler(this.txtTim_TextChanged);
             // 
             // TaiKhoan
             // 

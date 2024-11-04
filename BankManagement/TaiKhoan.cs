@@ -33,12 +33,6 @@ namespace BankManagement
         {
             InitializeComponent();
         }
-
-        private void txtTim_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnTim_Click(object sender, EventArgs e)
         {
             string searchValue = txtTim.Text.Trim();
@@ -65,7 +59,18 @@ namespace BankManagement
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            // chức năng ở dgvTaiKhoan_Click
+            txtMaTaiKhoan.Text = "";
+            cbbLoaiTaiKhoan.Text = "";
+            txtSoTien.Text = "";
+            cbbMaKhachHang.Text = "";
+            txtTenKhachHang.Text = "";
+            txtSoTienGui.Text = "";
+            txtSoTienVay.Text = "";
+            txtMaTaiKhoan.Focus();
+            btnSua.Enabled = false;
+            btnXoa.Enabled = false;
+            btnCapNhat.Enabled = true;
+            btnTim.Enabled = true;
 
         }
 
@@ -114,7 +119,6 @@ namespace BankManagement
                 // Lấy mã tài khoản đang chọn từ dgvTaiKhoan để loại trừ trong kiểm tra trùng lặp
                 string currentMaTaiKhoan = dgvTaiKhoan.CurrentRow.Cells["MaTaiKhoan"].Value.ToString();
 
-                // Kiểm tra mã tài khoản đã tồn tại trong cơ sở dữ liệu, bỏ qua dòng đang chọn
                 // Kiểm tra mã tài khoản đã tồn tại trong cơ sở dữ liệu, bỏ qua dòng đang chọn
                 int checkmaTK = (int)db.DocBang(
                     "SELECT COUNT(*) FROM TaiKhoan WHERE MaTaiKhoan = @MaTaiKhoan AND MaTaiKhoan <> @CurrentMaTaiKhoan",
@@ -266,56 +270,6 @@ namespace BankManagement
             }
 
         }
-
-        private void btnThoat_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void dateNgayMo_ValueChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void dgvTaiKhoan_Click(object sender, EventArgs e)   // nút thêm mới
-        {
-            txtMaTaiKhoan.Text = "";
-            cbbLoaiTaiKhoan.Text = "";
-            txtSoTien.Text = "";
-            cbbMaKhachHang.Text = "";
-            txtTenKhachHang.Text = "";
-            txtSoTienGui.Text = "";
-            txtSoTienVay.Text = "";
-            txtMaTaiKhoan.Focus();
-            btnSua.Enabled = false;
-            btnXoa.Enabled = false;
-            btnCapNhat.Enabled = true;
-            btnTim.Enabled = true;
-        }
-
-
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-        //Nhap ma khach hang ra ten khach hang
-        
-        private void cbbLoaiTaiKhoan_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void dgvTaiKhoan_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvTaiKhoan.CurrentRow != null)
@@ -381,14 +335,8 @@ namespace BankManagement
 
         private void cbbMaKhachHang_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Lấy mã khách hàng được chọn trong ComboBox
             string maKhachHang = cbbMaKhachHang.SelectedItem.ToString();
-
-            // Sử dụng ProcessDatabase để lấy tên khách hàng từ cơ sở dữ liệu
-
             string tenKhachHang = db.GetTenKhachHangByMa(maKhachHang);
-
-            // Hiển thị tên khách hàng trên TextBox
             txtTenKhachHang.Text = tenKhachHang;
         }
     }
