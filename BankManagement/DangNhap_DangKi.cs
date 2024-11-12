@@ -355,38 +355,3 @@ namespace BankManagement
         }
     }
 }
-/*
- private void btnDangNhap_Click(object sender, EventArgs e)
-{
-    string username = txtNhapTk.Text;
-    string password = txtNhapMk.Text;
-
-    // Lấy thông tin người dùng từ cơ sở dữ liệu
-    DataTable dbKhachHang = db.DocBang("SELECT * FROM Login WHERE username='" + username + "' AND password='" + password + "'");
-
-    if (dbKhachHang.Rows.Count > 0)
-    {
-        // Kiểm tra xem người dùng có phải là admin không
-        string role = dbKhachHang.Rows[0]["Role"].ToString(); // Hoặc "UserType", tùy thuộc vào cột bạn sử dụng
-
-        if (role == "admin")
-        {
-            // Hiện form admin
-            frmAdmin adminForm = new frmAdmin(); // Giả sử bạn có form admin
-            adminForm.Show();
-        }
-        else
-        {
-            // Hiện form chính cho người dùng bình thường
-            frmMain main = new frmMain();
-            main.Show();
-        }
-
-        this.Hide(); // Ẩn form đăng nhập
-    }
-    else
-    {
-        MessageBox.Show("Đăng nhập lỗi. Kiểm tra lại thông tin!");
-    }
-}
- */ 

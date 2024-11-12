@@ -162,7 +162,8 @@
             this.cbbLoaiTaiKhoan.Items.AddRange(new object[] {
             "ThanhToan",
             "TietKiem",
-            "VayVon"});
+            "VayVon",
+            "DaNang"});
             this.cbbLoaiTaiKhoan.Location = new System.Drawing.Point(143, 91);
             this.cbbLoaiTaiKhoan.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.cbbLoaiTaiKhoan.Name = "cbbLoaiTaiKhoan";

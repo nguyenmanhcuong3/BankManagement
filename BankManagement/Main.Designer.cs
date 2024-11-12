@@ -73,6 +73,7 @@
             this.plDiChuyen.Name = "plDiChuyen";
             this.plDiChuyen.Size = new System.Drawing.Size(854, 32);
             this.plDiChuyen.TabIndex = 34;
+            this.plDiChuyen.Paint += new System.Windows.Forms.PaintEventHandler(this.plDiChuyen_Paint);
             this.plDiChuyen.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plDiChuyen_MouseDown);
             this.plDiChuyen.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plDiChuyen_MouseMove);
             this.plDiChuyen.MouseUp += new System.Windows.Forms.MouseEventHandler(this.plDiChuyen_MouseUp);

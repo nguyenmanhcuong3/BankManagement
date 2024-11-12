@@ -91,9 +91,6 @@ namespace BankManagement
             {
                 cbbMaKhachHang.Items.Add(i);
             }
-            // thêm tính năng vào loại tài khoản
-           
-            cbbLoaiTaiKhoan.Items.Add("DaNang");
         }
 
         private void btnSua_Click(object sender, EventArgs e)

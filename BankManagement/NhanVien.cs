@@ -131,13 +131,13 @@ namespace BankManagement
                 }
 
                 
-                if (!db.IsValidCCCD(cccd))
+                if (!IOManager.IsValidCCCD(cccd))
                 {
                     MessageBox.Show("Số CCCD phải có đúng 12 chữ số!");
                     return;
                 }
 
-                if (!db.IsValidPhone(phone))
+                if (!IOManager.IsValidPhone(phone))
                 {
                     MessageBox.Show("Số điện thoại phải có 10 chữ số và bắt đầu bằng số 0!");
                     return;

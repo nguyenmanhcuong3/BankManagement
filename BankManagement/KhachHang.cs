@@ -114,14 +114,14 @@ namespace BankManagement
                     return;
                 }
                 // Kiểm tra điều kiện số điện thoại
-                if (!db.IsValidPhone(soDienThoai))
+                if (!IOManager.IsValidPhone(soDienThoai))
                 {
                     MessageBox.Show("Số điện thoại phải có 10 chữ số và bắt đầu bằng số 0!");
                     return;
                 }
 
                 // Kiểm tra điều kiện số CCCD (phải có 12 chữ số)
-                if (!db.IsValidCCCD(soCCCD))
+                if (!IOManager.IsValidCCCD(soCCCD))
                 {
                     MessageBox.Show("Số CCCD phải có đúng 12 chữ số!");
                     return;

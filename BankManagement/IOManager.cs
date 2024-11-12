@@ -98,11 +98,11 @@ namespace BankManagement
                 }
             }
         }
-        public  bool IsValidCCCD(string soCCCD)
+        public static  bool IsValidCCCD(string soCCCD)
         {
             return Regex.IsMatch(soCCCD, @"^\d{12}$");
         }
-        public  bool IsValidPhone(string phone)
+        public static bool IsValidPhone(string phone)
         {
             return Regex.IsMatch(phone, @"^0\d{9}$");
         }
