@@ -1,6 +1,6 @@
 ﻿namespace BankManagement
 {
-    partial class ThongTin
+    partial class ThongTinNN
     {
         /// <summary>
         /// Required designer variable.

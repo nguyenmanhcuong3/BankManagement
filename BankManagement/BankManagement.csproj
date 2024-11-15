@@ -94,6 +94,12 @@
     <Compile Include="GiaoDich.Designer.cs">
       <DependentUpon>GiaoDich.cs</DependentUpon>
     </Compile>
+    <Compile Include="Khach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Khach.Designer.cs">
+      <DependentUpon>Khach.cs</DependentUpon>
+    </Compile>
     <Compile Include="KhachHang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,11 +127,11 @@
     <Compile Include="TaiKhoan.Designer.cs">
       <DependentUpon>TaiKhoan.cs</DependentUpon>
     </Compile>
-    <Compile Include="ThongTin.cs">
+    <Compile Include="ThongTinNN.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ThongTin.Designer.cs">
-      <DependentUpon>ThongTin.cs</DependentUpon>
+    <Compile Include="ThongTinNN.Designer.cs">
+      <DependentUpon>ThongTinNN.cs</DependentUpon>
     </Compile>
     <Compile Include="IOManager.cs" />
     <EmbeddedResource Include="DangNhap_DangKi.resx">
@@ -133,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GiaoDich.resx">
       <DependentUpon>GiaoDich.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Khach.resx">
+      <DependentUpon>Khach.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="KhachHang.resx">
       <DependentUpon>KhachHang.cs</DependentUpon>
@@ -156,8 +165,8 @@
     <EmbeddedResource Include="TaiKhoan.resx">
       <DependentUpon>TaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ThongTin.resx">
-      <DependentUpon>ThongTin.cs</DependentUpon>
+    <EmbeddedResource Include="ThongTinNN.resx">
+      <DependentUpon>ThongTinNN.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

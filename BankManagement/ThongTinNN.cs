@@ -4,12 +4,12 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace BankManagement
 {
-    public partial class ThongTin : Form
+    public partial class ThongTinNN : Form
     {
         DataReport db = new DataReport();
         string str = "";
 
-        public ThongTin()
+        public ThongTinNN()
         {
             InitializeComponent();
             try

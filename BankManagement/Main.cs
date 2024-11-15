@@ -93,7 +93,7 @@ namespace BankManagement
 
         private void btnThongTin_Click(object sender, EventArgs e)
         {
-            ShowFormInPanel(new ThongTin(), btnThongTin);
+            ShowFormInPanel(new ThongTinNN(), btnThongTin);
         }
 
         private void Form_KeyDown(object sender, KeyEventArgs e)
