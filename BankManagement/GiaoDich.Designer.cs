@@ -177,6 +177,7 @@
             this.dgvGiaoDich.RowTemplate.Height = 24;
             this.dgvGiaoDich.Size = new System.Drawing.Size(726, 197);
             this.dgvGiaoDich.TabIndex = 2;
+            this.dgvGiaoDich.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGiaoDich_CellContentClick);
             this.dgvGiaoDich.Click += new System.EventHandler(this.dgvGiaoDich_Click);
             // 
             // dateNgayGiaoDich

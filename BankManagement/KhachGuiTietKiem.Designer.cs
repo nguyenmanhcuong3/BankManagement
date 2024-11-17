@@ -58,14 +58,12 @@
             this.txtKiHan = new System.Windows.Forms.TextBox();
             this.btnKhoanRutMoi = new System.Windows.Forms.Button();
             this.btnXacNhanRut = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.txtSoTienConLai = new System.Windows.Forms.TextBox();
+            this.dgvRut = new System.Windows.Forms.DataGridView();
             this.dateTra = new System.Windows.Forms.DateTimePicker();
             this.txtSoTienRut = new System.Windows.Forms.TextBox();
             this.txtHocTenRut = new System.Windows.Forms.TextBox();
             this.txtTaiKhoanRut = new System.Windows.Forms.TextBox();
             this.txtMaKhoanVayTra = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -73,11 +71,12 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.btnLamMoiGui = new System.Windows.Forms.Button();
             this.TietKiem.SuspendLayout();
             this.tabpageGuiTien.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVay)).BeginInit();
             this.tabpageRutTien.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRut)).BeginInit();
             this.SuspendLayout();
             // 
             // TietKiem
@@ -92,6 +91,7 @@
             // 
             // tabpageGuiTien
             // 
+            this.tabpageGuiTien.Controls.Add(this.btnLamMoiGui);
             this.tabpageGuiTien.Controls.Add(this.txtHoatDongGuiTien);
             this.tabpageGuiTien.Controls.Add(this.label18);
             this.tabpageGuiTien.Controls.Add(this.txtTienNhanSauLai);
@@ -165,21 +165,23 @@
             // 
             // btnXacNhanGui
             // 
-            this.btnXacNhanGui.Location = new System.Drawing.Point(379, 214);
+            this.btnXacNhanGui.Location = new System.Drawing.Point(447, 214);
             this.btnXacNhanGui.Name = "btnXacNhanGui";
-            this.btnXacNhanGui.Size = new System.Drawing.Size(111, 23);
+            this.btnXacNhanGui.Size = new System.Drawing.Size(148, 23);
             this.btnXacNhanGui.TabIndex = 24;
             this.btnXacNhanGui.Text = "Xác nhận gửi";
             this.btnXacNhanGui.UseVisualStyleBackColor = true;
+            this.btnXacNhanGui.Click += new System.EventHandler(this.btnXacNhanGui_Click);
             // 
             // btnKhoanGuiMoi
             // 
-            this.btnKhoanGuiMoi.Location = new System.Drawing.Point(173, 214);
+            this.btnKhoanGuiMoi.Location = new System.Drawing.Point(278, 214);
             this.btnKhoanGuiMoi.Name = "btnKhoanGuiMoi";
-            this.btnKhoanGuiMoi.Size = new System.Drawing.Size(100, 23);
+            this.btnKhoanGuiMoi.Size = new System.Drawing.Size(141, 23);
             this.btnKhoanGuiMoi.TabIndex = 23;
             this.btnKhoanGuiMoi.Text = "Khoản gửi mới";
             this.btnKhoanGuiMoi.UseVisualStyleBackColor = true;
+            this.btnKhoanGuiMoi.Click += new System.EventHandler(this.btnKhoanGuiMoi_Click);
             // 
             // cbbKiHan
             // 
@@ -188,6 +190,7 @@
             this.cbbKiHan.Name = "cbbKiHan";
             this.cbbKiHan.Size = new System.Drawing.Size(159, 24);
             this.cbbKiHan.TabIndex = 22;
+            this.cbbKiHan.SelectedIndexChanged += new System.EventHandler(this.cbbKiHan_SelectedIndexChanged);
             // 
             // cbbLaiSuat
             // 
@@ -212,6 +215,7 @@
             this.txtTienGui.Name = "txtTienGui";
             this.txtTienGui.Size = new System.Drawing.Size(159, 22);
             this.txtTienGui.TabIndex = 10;
+            this.txtTienGui.TextChanged += new System.EventHandler(this.txtTienGui_TextChanged);
             // 
             // txtHoTen
             // 
@@ -305,14 +309,12 @@
             this.tabpageRutTien.Controls.Add(this.txtKiHan);
             this.tabpageRutTien.Controls.Add(this.btnKhoanRutMoi);
             this.tabpageRutTien.Controls.Add(this.btnXacNhanRut);
-            this.tabpageRutTien.Controls.Add(this.dataGridView1);
-            this.tabpageRutTien.Controls.Add(this.txtSoTienConLai);
+            this.tabpageRutTien.Controls.Add(this.dgvRut);
             this.tabpageRutTien.Controls.Add(this.dateTra);
             this.tabpageRutTien.Controls.Add(this.txtSoTienRut);
             this.tabpageRutTien.Controls.Add(this.txtHocTenRut);
             this.tabpageRutTien.Controls.Add(this.txtTaiKhoanRut);
             this.tabpageRutTien.Controls.Add(this.txtMaKhoanVayTra);
-            this.tabpageRutTien.Controls.Add(this.label16);
             this.tabpageRutTien.Controls.Add(this.label15);
             this.tabpageRutTien.Controls.Add(this.label14);
             this.tabpageRutTien.Controls.Add(this.label13);
@@ -366,32 +368,29 @@
             this.btnKhoanRutMoi.TabIndex = 27;
             this.btnKhoanRutMoi.Text = "Khoản rút mới";
             this.btnKhoanRutMoi.UseVisualStyleBackColor = true;
+            this.btnKhoanRutMoi.Click += new System.EventHandler(this.btnKhoanRutMoi_Click);
             // 
             // btnXacNhanRut
             // 
-            this.btnXacNhanRut.Location = new System.Drawing.Point(400, 218);
+            this.btnXacNhanRut.Location = new System.Drawing.Point(401, 218);
             this.btnXacNhanRut.Name = "btnXacNhanRut";
             this.btnXacNhanRut.Size = new System.Drawing.Size(111, 23);
             this.btnXacNhanRut.TabIndex = 26;
             this.btnXacNhanRut.Text = "Xác nhận rút";
             this.btnXacNhanRut.UseVisualStyleBackColor = true;
+            this.btnXacNhanRut.Click += new System.EventHandler(this.btnXacNhanRut_Click);
             // 
-            // dataGridView1
+            // dgvRut
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 275);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(697, 137);
-            this.dataGridView1.TabIndex = 25;
-            // 
-            // txtSoTienConLai
-            // 
-            this.txtSoTienConLai.Location = new System.Drawing.Point(468, 170);
-            this.txtSoTienConLai.Name = "txtSoTienConLai";
-            this.txtSoTienConLai.Size = new System.Drawing.Size(157, 22);
-            this.txtSoTienConLai.TabIndex = 24;
+            this.dgvRut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRut.Location = new System.Drawing.Point(6, 275);
+            this.dgvRut.Name = "dgvRut";
+            this.dgvRut.RowHeadersWidth = 51;
+            this.dgvRut.RowTemplate.Height = 24;
+            this.dgvRut.Size = new System.Drawing.Size(697, 137);
+            this.dgvRut.TabIndex = 25;
+            this.dgvRut.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRut_CellContentClick);
+            this.dgvRut.Click += new System.EventHandler(this.dgvRut_Click);
             // 
             // dateTra
             // 
@@ -429,15 +428,6 @@
             this.txtMaKhoanVayTra.Name = "txtMaKhoanVayTra";
             this.txtMaKhoanVayTra.Size = new System.Drawing.Size(171, 22);
             this.txtMaKhoanVayTra.TabIndex = 8;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(364, 176);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(90, 16);
-            this.label16.TabIndex = 7;
-            this.label16.Text = "Số tiền còn lại";
             // 
             // label15
             // 
@@ -502,6 +492,16 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "Mã tiết kiệm";
             // 
+            // btnLamMoiGui
+            // 
+            this.btnLamMoiGui.Location = new System.Drawing.Point(145, 214);
+            this.btnLamMoiGui.Name = "btnLamMoiGui";
+            this.btnLamMoiGui.Size = new System.Drawing.Size(114, 23);
+            this.btnLamMoiGui.TabIndex = 31;
+            this.btnLamMoiGui.Text = "Làm mới";
+            this.btnLamMoiGui.UseVisualStyleBackColor = true;
+            this.btnLamMoiGui.Click += new System.EventHandler(this.btnLamMoiGui_Click);
+            // 
             // KhachGuiTietKiem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -517,7 +517,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvVay)).EndInit();
             this.tabpageRutTien.ResumeLayout(false);
             this.tabpageRutTien.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRut)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -550,14 +550,12 @@
         private System.Windows.Forms.TextBox txtKiHan;
         private System.Windows.Forms.Button btnKhoanRutMoi;
         private System.Windows.Forms.Button btnXacNhanRut;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox txtSoTienConLai;
+        private System.Windows.Forms.DataGridView dgvRut;
         private System.Windows.Forms.DateTimePicker dateTra;
         private System.Windows.Forms.TextBox txtSoTienRut;
         private System.Windows.Forms.TextBox txtHocTenRut;
         private System.Windows.Forms.TextBox txtTaiKhoanRut;
         private System.Windows.Forms.TextBox txtMaKhoanVayTra;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
@@ -569,5 +567,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox txtHoatDongRutTien;
+        private System.Windows.Forms.Button btnLamMoiGui;
     }
 }

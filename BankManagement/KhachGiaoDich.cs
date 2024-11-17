@@ -103,42 +103,29 @@ namespace BankManagement
             try
             {
                 db.CapNhatDuLieu(sqlInsert, parameters);
-                MessageBox.Show("Thêm giao dịch thành công!");
                 dgvGiaoDich.DataSource = db.DocBang("SELECT * FROM GiaoDich");
 
                 // Tính số tiền cho bảng tài khoản
-                /*string updateQuery = string.Empty;
-
-                switch (loaigiaodich)
-                {
-                    case "Nhan Tien":
-                        updateQuery = "UPDATE TaiKhoan SET SoTien = SoTien + @SoTienGiaoDich WHERE MaKhachHang = @MaKhachHang";
-                        break;
-                    case "Chuyen Tien":
-                        updateQuery = "UPDATE TaiKhoan SET SoTien = SoTien - @SoTienGiaoDich WHERE MaKhachHang = @MaKhachHang";
-                        break;
-                    case "Gui Tiet Kiem":
-                        updateQuery = "UPDATE TaiKhoan SET SoTien = SoTien - @SoTienGiaoDich, SoTienGuiTietKiem = SoTienGuiTietKiem + @SoTienGiaoDich WHERE MaKhachHang = @MaKhachHang";
-                        break;
-                    case "Rut Tien Tiet Kiem":
-                        updateQuery = "UPDATE TaiKhoan SET SoTien = SoTien + @SoTienGiaoDich, SoTienGuiTietKiem = SoTienGuiTietKiem - @SoTienGiaoDich WHERE MaKhachHang = @MaKhachHang";
-                        break;
-                    case "Vay Von":
-                        updateQuery = "UPDATE TaiKhoan SET SoTien = SoTien + @SoTienGiaoDich, SoTienVay = SoTienVay + @SoTienGiaoDich WHERE MaKhachHang = @MaKhachHang";
-                        break;
-                    case "Tra No":
-                        updateQuery = "UPDATE TaiKhoan SET SoTien = SoTien - @SoTienGiaoDich, SoTienVay = SoTienVay - @SoTienGiaoDich WHERE MaKhachHang = @MaKhachHang";
-                        break;
-                }
-
-                if (!string.IsNullOrEmpty(updateQuery))
+                string updateQueryGui = "UPDATE KhachHang SET SoDu = SoDu - @SoTien WHERE SoTaiKhoan = @SoTaiKhoan";
+                string updateQueryNhan = "UPDATE KhachHang SET SoDu = SoDu + @SoTien WHERE SoTaiKhoan = @TaiKhoanNhan";
+                if (!string.IsNullOrEmpty(updateQueryGui))
                 {
                     SqlParameter[] updateParameters = {
-            new SqlParameter("@SoTienGiaoDich", soTien),
-            new SqlParameter("@MaKhachHang", makh)
+            new SqlParameter("@SoTien", soTien),
+            new SqlParameter("@SoTaiKhoan",taikhoangui )
         };
-                    db.CapNhatDuLieu(updateQuery, updateParameters);
-                }*/
+                    db.CapNhatDuLieu(updateQueryGui, updateParameters);
+
+                }
+                if (!string.IsNullOrEmpty(updateQueryNhan))
+                {
+                    SqlParameter[] updateParameters = {
+            new SqlParameter("@SoTien", soTien),
+            new SqlParameter("@TaiKhoanNhan",taikhoannhan )
+        };
+                    db.CapNhatDuLieu(updateQueryNhan, updateParameters);
+                    MessageBox.Show("Giao dịch thành công!");
+                }
             }
             catch (Exception ex)
             {

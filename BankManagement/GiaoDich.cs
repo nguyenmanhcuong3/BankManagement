@@ -85,5 +85,10 @@ namespace BankManagement
             string sql = "SELECT * FROM GiaoDich";
             db.ExportDataToExcel(sql);
         }
+
+        private void dgvGiaoDich_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
