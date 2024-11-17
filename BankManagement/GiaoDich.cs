@@ -13,26 +13,23 @@ namespace BankManagement
 {
     public partial class GiaoDich : Form
     {
-        ProcessDatabase db = new ProcessDatabase();
+        DataTransaction db = new DataTransaction();
         private KhachHang khachHangForm;
         private DataTable dbGiaoDich = new DataTable();
         public GiaoDich()
         {
             InitializeComponent();
-            // Khởi tạo danh sách mã khách hàng rỗng
-            //maKhachHangList = new List<string>();
 
-            // Thiết lập DateTimePicker để ẩn ngày tháng mặc định
             dateNgayGiaoDich.Format = DateTimePickerFormat.Custom;
-            dateNgayGiaoDich.CustomFormat = " "; // Ẩn ngày mặc định
+            dateNgayGiaoDich.CustomFormat = " "; 
 
-            // Hiển thị ngày khi có thay đổi
+
             dateNgayGiaoDich.ValueChanged += (s, e) =>
             {
-                dateNgayGiaoDich.CustomFormat = "dd/MM/yyyy"; // Định dạng ngày tháng
+                dateNgayGiaoDich.CustomFormat = "dd/MM/yyyy"; 
             };
         }
-        public GiaoDich(KhachHang khForm) // Nhận tham chiếu form KhachHang từ constructor
+        public GiaoDich(KhachHang khForm) 
         {
             InitializeComponent();
             khachHangForm = khForm;
@@ -81,6 +78,9 @@ namespace BankManagement
 
         private void btnGiaoDichMoi_Click(object sender, EventArgs e)
         {
+            txtTenKhachHang.Text = "";
+            cbbMaKhachHang.Text = "";
+            cbbTenNhanVien.Text = "";
             txtMaGiaoDich.Enabled = true;
             txtSoTien.Enabled = true;
             txtTenKhachHang.Enabled = true;
@@ -88,34 +88,27 @@ namespace BankManagement
             cbbLoaiGiaoDich.Enabled = true;
             cbbTenNhanVien.Enabled = true;
             dateNgayGiaoDich.Enabled = true;
+            txtMaGiaoDich.Focus();
             txtMaGiaoDich.Text = "";
             txtSoTien.Text = "";
-            txtTenKhachHang.Text = "";
-            cbbMaKhachHang.Text = "";
-            cbbTenNhanVien.Text = "";
             btnXacNhan.Enabled = true;
+            cbbLoaiGiaoDich.ResetText();
         }
+
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            // Kiểm tra xem có dòng nào được chọn trong DataGridView hay không
             if (dgvGiaoDich.SelectedRows.Count > 0)
             {
-                // Hiển thị hộp thoại xác nhận
                 DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa giao dịch này không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                // Nếu người dùng chọn Yes, thực hiện xóa
                 if (result == DialogResult.Yes)
                 {
-                    // Lấy mã giao dịch từ dòng được chọn
                     string maGiaoDich = dgvGiaoDich.SelectedRows[0].Cells["MaGiaoDich"].Value.ToString();
-
-                    // Câu lệnh SQL xóa thông tin từ bảng GiaoDich
                     string sql = "DELETE FROM GiaoDich WHERE MaGiaoDich = @MaGiaoDich";
 
                     try
                     {
-                        using (SqlConnection con = new SqlConnection(db.strConnect)) // Kết nối tới cơ sở dữ liệu
+                        using (SqlConnection con = new SqlConnection(db.strConnect)) 
                         {
                             SqlCommand cmd = new SqlCommand(sql, con);
                             cmd.Parameters.AddWithValue("@MaGiaoDich", maGiaoDich);
@@ -155,20 +148,16 @@ namespace BankManagement
 
         private void dgvGiaoDich_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Kiểm tra xem có phải dòng hợp lệ được chọn hay không
+            
             if (e.RowIndex >= 0)
             {
-                // Lấy dòng được chọn trong DataGridView
                 DataGridViewRow selectedRow = dgvGiaoDich.Rows[e.RowIndex];
-
-                // Hiển thị thông tin giao dịch từ dòng được chọn lên các ô nhập
                 txtMaGiaoDich.Text = selectedRow.Cells["MaGiaoDich"].Value?.ToString();
                 cbbLoaiGiaoDich.Text = selectedRow.Cells["LoaiGiaoDich"].Value?.ToString();
                 cbbMaKhachHang.Text = selectedRow.Cells["MaKhachHang"].Value?.ToString();
                 txtTenKhachHang.Text = selectedRow.Cells["TenKhachHang"].Value?.ToString();
                 txtSoTien.Text = selectedRow.Cells["SoTienGiaoDich"].Value?.ToString();
 
-                // Kiểm tra và chuyển đổi dữ liệu ngày tháng, nếu có giá trị
                 if (DateTime.TryParse(selectedRow.Cells["ThoiGianGiaoDich"].Value?.ToString(), out DateTime ngayGiaoDich))
                 {
                     dateNgayGiaoDich.Value = ngayGiaoDich;
@@ -286,34 +275,64 @@ namespace BankManagement
         }
         private void btnXuatExcel_Click(object sender, EventArgs e)
         {
-            // Tạo đối tượng cho việc xuất dữ liệu
-            ProcessDatabase db = new ProcessDatabase();
-            string sql = "SELECT * FROM GiaoDich"; // Truy vấn SQL để lấy dữ liệu từ bảng KhachHang
+            string sql = "SELECT * FROM GiaoDich";
+            db.ExportDataToExcel(sql);
+        }
 
-            // Tạo SaveFileDialog để cho phép người dùng chọn vị trí lưu file
-            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+        private void cbbMaKhachHang_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            string maKhachHang = cbbMaKhachHang.SelectedItem.ToString();
+
+            string tenKhachHang = db.GetTenKhachHangByMa(maKhachHang);
+            txtTenKhachHang.Text = tenKhachHang;
+
+            if (!string.IsNullOrEmpty(maKhachHang))
             {
-                saveFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx"; // Chỉ cho phép lưu file với đuôi .xlsx
-                saveFileDialog.DefaultExt = "xlsx"; // Đặt đuôi mặc định
-                saveFileDialog.Title = "Lưu file Excel"; // Tiêu đề của hộp thoại
 
-                // Hiển thị hộp thoại và kiểm tra nếu người dùng đã chọn file
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                DataTable loaiTaiKhoanTable = db.DocBang("SELECT LoaiTaiKhoan FROM TaiKhoan WHERE MaKhachHang like  N'" + maKhachHang + "'");
+                if (loaiTaiKhoanTable.Rows.Count > 0)
                 {
-                    string filePath = saveFileDialog.FileName; // Lấy đường dẫn file đã chọn
+                    string loaiTaiKhoan = loaiTaiKhoanTable.Rows[0]["LoaiTaiKhoan"].ToString();
+                    if (loaiTaiKhoan == "ThanhToan")
+                    {
+                        cbbLoaiGiaoDich.Items.Clear();
+                        cbbLoaiGiaoDich.Items.Add("Nhan Tien");
+                        cbbLoaiGiaoDich.Items.Add("Chuyen Tien");
+                    }
+                    else if (loaiTaiKhoan == "TietKiem")
+                    {
+                        cbbLoaiGiaoDich.Items.Clear();
+                        cbbLoaiGiaoDich.Items.Add("Nhan Tien");
+                        cbbLoaiGiaoDich.Items.Add("Chuyen Tien");
+                        cbbLoaiGiaoDich.Items.Add("Gui Tiet Kiem");
+                        cbbLoaiGiaoDich.Items.Add("Rut Tien Tiet Kiem");
+                    }
+                    else if (loaiTaiKhoan == "VayVon")
+                    {
+                        cbbLoaiGiaoDich.Items.Clear();
+                        cbbLoaiGiaoDich.Items.Add("Nhan Tien");
+                        cbbLoaiGiaoDich.Items.Add("Chuyen Tien");
+                        cbbLoaiGiaoDich.Items.Add("Vay Von");
+                        cbbLoaiGiaoDich.Items.Add("Tra No");
+                    }
+                    else if (loaiTaiKhoan == "DaNang")
+                    {
+                        cbbLoaiGiaoDich.Items.Clear();
+                        cbbLoaiGiaoDich.Items.Add("Nhan Tien");
+                        cbbLoaiGiaoDich.Items.Add("Chuyen Tien");
+                        cbbLoaiGiaoDich.Items.Add("Vay Von");
+                        cbbLoaiGiaoDich.Items.Add("Tra No");
+                        cbbLoaiGiaoDich.Items.Add("Gui Tiet Kiem");
+                        cbbLoaiGiaoDich.Items.Add("Rut Tien Tiet Kiem");
+                    }
 
-                    // Xuất dữ liệu ra file Excel
-                    db.ExportToExcel(sql, filePath);
-                    MessageBox.Show("Xuất dữ liệu ra file Excel thành công!");
                 }
             }
+            else
+            {
+                txtTenKhachHang.Text = "";
+                cbbLoaiGiaoDich.Items.Clear();
+            }
         }
-
-        private void cbbMaKhachHang_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-       
     }
 }

@@ -93,7 +93,7 @@ namespace BankManagement
 
         private void btnThongTin_Click(object sender, EventArgs e)
         {
-            ShowFormInPanel(new ThongTin(), btnThongTin);
+            ShowFormInPanel(new ThongTinNN(), btnThongTin);
         }
 
         private void Form_KeyDown(object sender, KeyEventArgs e)
@@ -155,7 +155,7 @@ namespace BankManagement
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Bạn có muốn đổi tài khoản ?", "Xác nhận đăng nhập", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Bạn có muốn đăng xuất ?", "Xác nhận đăng nhập", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                 this.Close();
@@ -163,6 +163,11 @@ namespace BankManagement
                 Login.Show();
             }
             
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 

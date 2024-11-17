@@ -15,7 +15,7 @@ namespace BankManagement
 {
     public partial class KhachHang : Form
     {
-        ProcessDatabase db = new ProcessDatabase();
+        IOManager db = new IOManager();
         private string imageFilePath = "";
         public KhachHang()
         {
@@ -99,21 +99,29 @@ namespace BankManagement
             string duongDanAnh = null;
             try
             {
-                if (string.IsNullOrEmpty(txtMaKhachHang.Text))
+                // Xử lý thông tin rỗng
+                if (string.IsNullOrEmpty(maKhachHang) || string.IsNullOrEmpty(tenKhachHang) ||
+                    string.IsNullOrEmpty(soCCCD) || string.IsNullOrEmpty(soDienThoai) ||
+                    string.IsNullOrEmpty(diaChi) || string.IsNullOrEmpty(ngheNghiep) || string.IsNullOrEmpty(imageFilePath))
                 {
-                    MessageBox.Show("Mã khách hàng không được bỏ trống!");
+                    MessageBox.Show("Vui lòng điền đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
+                // Kiểm tra trùng lặp mã khách hàng
+                if (dgvKhachHang.Rows.Cast<DataGridViewRow>().Any(row => row.Cells["MaKhachHang"].Value?.ToString() == maKhachHang))
+                {
+                    MessageBox.Show("Mã khách hàng đã tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 // Kiểm tra điều kiện số điện thoại
-                if (!System.Text.RegularExpressions.Regex.IsMatch(soDienThoai, @"^0\d{9}$"))
+                if (!db.IsValidPhone(soDienThoai))
                 {
                     MessageBox.Show("Số điện thoại phải có 10 chữ số và bắt đầu bằng số 0!");
                     return;
                 }
 
                 // Kiểm tra điều kiện số CCCD (phải có 12 chữ số)
-                if (!System.Text.RegularExpressions.Regex.IsMatch(soCCCD, @"^\d{12}$"))
+                if (!db.IsValidCCCD(soCCCD))
                 {
                     MessageBox.Show("Số CCCD phải có đúng 12 chữ số!");
                     return;
@@ -357,21 +365,8 @@ namespace BankManagement
 
         private void btnXuatFile_Click(object sender, EventArgs e)
         {
-            string sql = "SELECT * FROM KhachHang"; // Truy vấn SQL để lấy dữ liệu từ bảng KhachHang
-
-            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
-            {
-                saveFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx"; // Chỉ cho phép lưu file với đuôi .xlsx
-                saveFileDialog.DefaultExt = "xlsx"; // Đặt đuôi mặc định
-                saveFileDialog.Title = "Lưu file Excel"; // Tiêu đề của hộp thoại
-
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    string filePath = saveFileDialog.FileName; // Lấy đường dẫn file đã chọn
-                    db.ExportToExcel(sql, filePath);
-                    MessageBox.Show("Xuất dữ liệu ra file Excel thành công!");
-                }
-            }
+            string sql = "SELECT * FROM KhachHang";
+            db.ExportDataToExcel(sql);
         }
     }
 }

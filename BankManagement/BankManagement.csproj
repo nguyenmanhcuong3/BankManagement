@@ -86,17 +86,31 @@
     <Compile Include="DangNhap_DangKi.Designer.cs">
       <DependentUpon>DangNhap_DangKi.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataReport.cs" />
+    <Compile Include="DataTransaction.cs" />
     <Compile Include="GiaoDich.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GiaoDich.Designer.cs">
       <DependentUpon>GiaoDich.cs</DependentUpon>
     </Compile>
+    <Compile Include="Khach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Khach.Designer.cs">
+      <DependentUpon>Khach.cs</DependentUpon>
+    </Compile>
     <Compile Include="KhachHang.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="KhachHang.Designer.cs">
       <DependentUpon>KhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KhachHangGiaoDich.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KhachHangGiaoDich.Designer.cs">
+      <DependentUpon>KhachHangGiaoDich.cs</DependentUpon>
     </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
@@ -119,17 +133,39 @@
     <Compile Include="TaiKhoan.Designer.cs">
       <DependentUpon>TaiKhoan.cs</DependentUpon>
     </Compile>
-    <Compile Include="ThongTin.cs">
+    <Compile Include="ThongTinKhachHang.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ThongTin.Designer.cs">
-      <DependentUpon>ThongTin.cs</DependentUpon>
+    <Compile Include="ThongTinKhachHang.Designer.cs">
+      <DependentUpon>ThongTinKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThongTinNN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThongTinNN.Designer.cs">
+      <DependentUpon>ThongTinNN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IOManager.cs" />
+    <Compile Include="TietKiem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TietKiem.Designer.cs">
+      <DependentUpon>TietKiem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TinDung.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TinDung.Designer.cs">
+      <DependentUpon>TinDung.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="DangNhap_DangKi.resx">
       <DependentUpon>DangNhap_DangKi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GiaoDich.resx">
       <DependentUpon>GiaoDich.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Khach.resx">
+      <DependentUpon>Khach.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="KhachHang.resx">
       <DependentUpon>KhachHang.cs</DependentUpon>
@@ -153,8 +189,8 @@
     <EmbeddedResource Include="TaiKhoan.resx">
       <DependentUpon>TaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ThongTin.resx">
-      <DependentUpon>ThongTin.cs</DependentUpon>
+    <EmbeddedResource Include="ThongTinNN.resx">
+      <DependentUpon>ThongTinNN.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
