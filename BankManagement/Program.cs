@@ -11,9 +11,10 @@ namespace BankManagement
         [STAThread]
         static void Main()
         {
+            string user = "user1";
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new QLTietKiem());
+            Application.Run(new Khach(user));
            
 
 

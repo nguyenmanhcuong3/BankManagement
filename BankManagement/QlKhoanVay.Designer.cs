@@ -42,21 +42,24 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtTaiKhoan = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dgvTietKiem = new System.Windows.Forms.DataGridView();
+            this.dgvKhoanVay = new System.Windows.Forms.DataGridView();
             this.dateNgayGiaoDich = new System.Windows.Forms.DateTimePicker();
             this.txtSoTien = new System.Windows.Forms.TextBox();
-            this.txtMaTietKiem = new System.Windows.Forms.TextBox();
+            this.txtMaKhoanVay = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtChiTietKhoanVay = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTietKiem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvKhoanVay)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.LightGray;
+            this.panel2.Controls.Add(this.txtChiTietKhoanVay);
+            this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.btnTim);
             this.panel2.Controls.Add(this.txtTim);
             this.panel2.Controls.Add(this.btnChiTietGiaoDich);
@@ -70,11 +73,10 @@
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.txtTaiKhoan);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.dgvTietKiem);
+            this.panel2.Controls.Add(this.dgvKhoanVay);
             this.panel2.Controls.Add(this.dateNgayGiaoDich);
             this.panel2.Controls.Add(this.txtSoTien);
-            this.panel2.Controls.Add(this.txtMaTietKiem);
+            this.panel2.Controls.Add(this.txtMaKhoanVay);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label2);
@@ -93,6 +95,7 @@
             this.btnTim.TabIndex = 39;
             this.btnTim.Text = "Tìm";
             this.btnTim.UseVisualStyleBackColor = true;
+            this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
             // 
             // txtTim
             // 
@@ -103,12 +106,13 @@
             // 
             // btnChiTietGiaoDich
             // 
-            this.btnChiTietGiaoDich.Location = new System.Drawing.Point(431, 230);
+            this.btnChiTietGiaoDich.Location = new System.Drawing.Point(387, 226);
             this.btnChiTietGiaoDich.Name = "btnChiTietGiaoDich";
             this.btnChiTietGiaoDich.Size = new System.Drawing.Size(115, 23);
             this.btnChiTietGiaoDich.TabIndex = 37;
-            this.btnChiTietGiaoDich.Text = "Các giao dịch";
+            this.btnChiTietGiaoDich.Text = "Chi tiết";
             this.btnChiTietGiaoDich.UseVisualStyleBackColor = true;
+            this.btnChiTietGiaoDich.Click += new System.EventHandler(this.btnChiTietGiaoDich_Click);
             // 
             // txtSoTienDuKien
             // 
@@ -190,25 +194,18 @@
             this.label3.TabIndex = 25;
             this.label3.Text = "Tài khoản";
             // 
-            // label1
+            // dgvKhoanVay
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 255);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 16);
-            this.label1.TabIndex = 24;
-            this.label1.Text = "Các khoản vay";
-            // 
-            // dgvTietKiem
-            // 
-            this.dgvTietKiem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTietKiem.Location = new System.Drawing.Point(-2, 274);
-            this.dgvTietKiem.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.dgvTietKiem.Name = "dgvTietKiem";
-            this.dgvTietKiem.RowHeadersWidth = 51;
-            this.dgvTietKiem.RowTemplate.Height = 24;
-            this.dgvTietKiem.Size = new System.Drawing.Size(726, 189);
-            this.dgvTietKiem.TabIndex = 2;
+            this.dgvKhoanVay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvKhoanVay.Location = new System.Drawing.Point(-2, 274);
+            this.dgvKhoanVay.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.dgvKhoanVay.Name = "dgvKhoanVay";
+            this.dgvKhoanVay.RowHeadersWidth = 51;
+            this.dgvKhoanVay.RowTemplate.Height = 24;
+            this.dgvKhoanVay.Size = new System.Drawing.Size(726, 189);
+            this.dgvKhoanVay.TabIndex = 2;
+            this.dgvKhoanVay.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKhoanVay_CellContentClick);
+            this.dgvKhoanVay.Click += new System.EventHandler(this.dgvKhoanVay_Click);
             // 
             // dateNgayGiaoDich
             // 
@@ -227,13 +224,13 @@
             this.txtSoTien.Size = new System.Drawing.Size(175, 22);
             this.txtSoTien.TabIndex = 10;
             // 
-            // txtMaTietKiem
+            // txtMaKhoanVay
             // 
-            this.txtMaTietKiem.Location = new System.Drawing.Point(128, 63);
-            this.txtMaTietKiem.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.txtMaTietKiem.Name = "txtMaTietKiem";
-            this.txtMaTietKiem.Size = new System.Drawing.Size(175, 22);
-            this.txtMaTietKiem.TabIndex = 7;
+            this.txtMaKhoanVay.Location = new System.Drawing.Point(128, 63);
+            this.txtMaKhoanVay.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txtMaKhoanVay.Name = "txtMaKhoanVay";
+            this.txtMaKhoanVay.Size = new System.Drawing.Size(175, 22);
+            this.txtMaKhoanVay.TabIndex = 7;
             // 
             // label7
             // 
@@ -265,6 +262,22 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Mã  khoản vay";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(33, 226);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(111, 16);
+            this.label10.TabIndex = 41;
+            this.label10.Text = "Chi tiết khoản vay";
+            // 
+            // txtChiTietKhoanVay
+            // 
+            this.txtChiTietKhoanVay.Location = new System.Drawing.Point(188, 223);
+            this.txtChiTietKhoanVay.Name = "txtChiTietKhoanVay";
+            this.txtChiTietKhoanVay.Size = new System.Drawing.Size(146, 22);
+            this.txtChiTietKhoanVay.TabIndex = 42;
+            // 
             // QlKhoanVay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -276,7 +289,7 @@
             this.Load += new System.EventHandler(this.QlKhoanVay_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTietKiem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvKhoanVay)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -297,13 +310,14 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtTaiKhoan;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dgvTietKiem;
+        private System.Windows.Forms.DataGridView dgvKhoanVay;
         private System.Windows.Forms.DateTimePicker dateNgayGiaoDich;
         private System.Windows.Forms.TextBox txtSoTien;
-        private System.Windows.Forms.TextBox txtMaTietKiem;
+        private System.Windows.Forms.TextBox txtMaKhoanVay;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtChiTietKhoanVay;
+        private System.Windows.Forms.Label label10;
     }
 }

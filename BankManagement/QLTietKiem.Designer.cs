@@ -109,9 +109,9 @@
             // 
             // btnChiTietGiaoDich
             // 
-            this.btnChiTietGiaoDich.Location = new System.Drawing.Point(289, 245);
+            this.btnChiTietGiaoDich.Location = new System.Drawing.Point(262, 233);
             this.btnChiTietGiaoDich.Name = "btnChiTietGiaoDich";
-            this.btnChiTietGiaoDich.Size = new System.Drawing.Size(173, 23);
+            this.btnChiTietGiaoDich.Size = new System.Drawing.Size(173, 35);
             this.btnChiTietGiaoDich.TabIndex = 37;
             this.btnChiTietGiaoDich.Text = "Chi tiết giao dịch";
             this.btnChiTietGiaoDich.UseVisualStyleBackColor = true;
@@ -274,7 +274,7 @@
             // 
             // txtChiTietGiaoDich
             // 
-            this.txtChiTietGiaoDich.Location = new System.Drawing.Point(354, 219);
+            this.txtChiTietGiaoDich.Location = new System.Drawing.Point(377, 205);
             this.txtChiTietGiaoDich.Name = "txtChiTietGiaoDich";
             this.txtChiTietGiaoDich.Size = new System.Drawing.Size(189, 22);
             this.txtChiTietGiaoDich.TabIndex = 41;
@@ -282,7 +282,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(125, 219);
+            this.label1.Location = new System.Drawing.Point(125, 211);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(195, 16);
             this.label1.TabIndex = 42;

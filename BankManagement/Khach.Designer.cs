@@ -31,7 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Khach));
             this.panel1 = new System.Windows.Forms.Panel();
             this.plDiChuyen = new System.Windows.Forms.Panel();
+            this.pcExit = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnVayVon = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
@@ -40,12 +42,10 @@
             this.btnGiaoDich = new System.Windows.Forms.Button();
             this.btnTietKiem = new System.Windows.Forms.Button();
             this.panelKhach = new System.Windows.Forms.FlowLayoutPanel();
-            this.pcExit = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcExit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -71,6 +71,17 @@
             this.plDiChuyen.Size = new System.Drawing.Size(1117, 39);
             this.plDiChuyen.TabIndex = 34;
             // 
+            // pcExit
+            // 
+            this.pcExit.Image = ((System.Drawing.Image)(resources.GetObject("pcExit.Image")));
+            this.pcExit.Location = new System.Drawing.Point(1099, 0);
+            this.pcExit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pcExit.Name = "pcExit";
+            this.pcExit.Size = new System.Drawing.Size(40, 39);
+            this.pcExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcExit.TabIndex = 27;
+            this.pcExit.TabStop = false;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -81,6 +92,19 @@
             this.label1.Size = new System.Drawing.Size(585, 59);
             this.label1.TabIndex = 1;
             this.label1.Text = "Bank Management";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(-4, 13);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(168, 128);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // panel2
             // 
@@ -178,34 +202,10 @@
             // 
             // panelKhach
             // 
-            this.panelKhach.Location = new System.Drawing.Point(168, 128);
+            this.panelKhach.Location = new System.Drawing.Point(174, 128);
             this.panelKhach.Name = "panelKhach";
             this.panelKhach.Size = new System.Drawing.Size(937, 530);
             this.panelKhach.TabIndex = 3;
-            // 
-            // pcExit
-            // 
-            this.pcExit.Image = ((System.Drawing.Image)(resources.GetObject("pcExit.Image")));
-            this.pcExit.Location = new System.Drawing.Point(1099, 0);
-            this.pcExit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pcExit.Name = "pcExit";
-            this.pcExit.Size = new System.Drawing.Size(40, 39);
-            this.pcExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pcExit.TabIndex = 27;
-            this.pcExit.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(-4, 13);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(168, 128);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // Khach
             // 
@@ -221,9 +221,9 @@
             this.Load += new System.EventHandler(this.Khach_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pcExit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

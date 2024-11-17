@@ -27,7 +27,7 @@ namespace BankManagement
                 {
                     txtMaTietKiem.Text = dgvTietKiem.CurrentRow.Cells["MaTietKiem"].Value.ToString();
                     txtTaiKhoan.Text = dgvTietKiem.CurrentRow.Cells["SoTaiKhoan"].Value.ToString();
-                    txtSoTien.Text = dgvTietKiem.CurrentRow.Cells["soTien"].Value.ToString();
+                    txtSoTien.Text = dgvTietKiem.CurrentRow.Cells["SoTien"].Value.ToString();
 
                     string thoiGian = dgvTietKiem.CurrentRow.Cells["ThoiGian"].Value?.ToString();
                     if (!string.IsNullOrEmpty(thoiGian) && DateTime.TryParse(thoiGian, out DateTime ThoiGianGiaoDich))

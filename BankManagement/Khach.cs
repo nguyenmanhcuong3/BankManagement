@@ -67,7 +67,19 @@ namespace BankManagement
         }
         private void btnThongTin_Click(object sender, EventArgs e)
         {
-            ShowFormInPanel(new ThongTinKhach(), btnThongTin);
+            ThongTinKhach formKhachHang = new ThongTinKhach();
+
+            formKhachHang.TopLevel = false;
+            formKhachHang.FormBorderStyle = FormBorderStyle.None;
+            formKhachHang.Dock = DockStyle.Fill;
+
+
+            panelKhach.Controls.Clear();
+
+
+            panelKhach.Controls.Add(formKhachHang);
+
+            formKhachHang.Show();
         }
 
         private void btnGiaoDich_Click(object sender, EventArgs e)
