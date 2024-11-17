@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtTaiKhoan = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSoDu = new System.Windows.Forms.TextBox();
+            this.txtSoTaiKhoan = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnTim = new System.Windows.Forms.Button();
@@ -76,10 +76,10 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.LightGray;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.textBox3);
+            this.panel2.Controls.Add(this.txtTaiKhoan);
             this.panel2.Controls.Add(this.label11);
-            this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.txtSoDu);
+            this.panel2.Controls.Add(this.txtSoTaiKhoan);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.btnTim);
@@ -116,12 +116,12 @@
             this.panel2.Size = new System.Drawing.Size(786, 488);
             this.panel2.TabIndex = 1;
             // 
-            // textBox3
+            // txtTaiKhoan
             // 
-            this.textBox3.Location = new System.Drawing.Point(123, 217);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(152, 26);
-            this.textBox3.TabIndex = 37;
+            this.txtTaiKhoan.Location = new System.Drawing.Point(123, 217);
+            this.txtTaiKhoan.Name = "txtTaiKhoan";
+            this.txtTaiKhoan.Size = new System.Drawing.Size(152, 26);
+            this.txtTaiKhoan.TabIndex = 37;
             // 
             // label11
             // 
@@ -132,19 +132,19 @@
             this.label11.TabIndex = 36;
             this.label11.Text = "Tài khoản";
             // 
-            // textBox2
+            // txtSoDu
             // 
-            this.textBox2.Location = new System.Drawing.Point(398, 217);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(143, 26);
-            this.textBox2.TabIndex = 35;
+            this.txtSoDu.Location = new System.Drawing.Point(398, 217);
+            this.txtSoDu.Name = "txtSoDu";
+            this.txtSoDu.Size = new System.Drawing.Size(143, 26);
+            this.txtSoDu.TabIndex = 35;
             // 
-            // textBox1
+            // txtSoTaiKhoan
             // 
-            this.textBox1.Location = new System.Drawing.Point(398, 174);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(143, 26);
-            this.textBox1.TabIndex = 34;
+            this.txtSoTaiKhoan.Location = new System.Drawing.Point(398, 174);
+            this.txtSoTaiKhoan.Name = "txtSoTaiKhoan";
+            this.txtSoTaiKhoan.Size = new System.Drawing.Size(143, 26);
+            this.txtSoTaiKhoan.TabIndex = 34;
             // 
             // label2
             // 
@@ -502,10 +502,10 @@
         private System.Windows.Forms.Button btnTim;
         private System.Windows.Forms.TextBox txtTimKH;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtTaiKhoan;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSoDu;
+        private System.Windows.Forms.TextBox txtSoTaiKhoan;
         private System.Windows.Forms.Label label2;
     }
 }

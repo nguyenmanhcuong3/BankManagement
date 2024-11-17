@@ -78,7 +78,7 @@ namespace BankManagement
                     {
                         radioNam.Checked = true;
                     }
-                    else if (gioiTinh == "Nữ")
+                    else if (gioiTinh == "Nu")
                     {
                         radioNu.Checked = true;
                     }
@@ -90,7 +90,9 @@ namespace BankManagement
                     txtEmail.Text = dgvKhachHang.CurrentRow.Cells["Email"].Value.ToString();
                     txtDiaChi.Text = dgvKhachHang.CurrentRow.Cells["DiaChi"].Value.ToString();
                     txtNgheNghiep.Text = dgvKhachHang.CurrentRow.Cells["NgheNghiep"].Value.ToString();
-
+                    txtSoTaiKhoan.Text=dgvKhachHang.CurrentRow.Cells["SoTaiKhoan"].Value.ToString();
+                    txtSoDu.Text = dgvKhachHang.CurrentRow.Cells["SoDu"].Value.ToString();
+                    txtTaiKhoan.Text = dgvKhachHang.CurrentRow.Cells["TaiKhoan"].Value.ToString();
                     string anhDaiDien = dgvKhachHang.CurrentRow.Cells["Anh"].Value?.ToString();
                     if (!string.IsNullOrEmpty(anhDaiDien))
                     {
