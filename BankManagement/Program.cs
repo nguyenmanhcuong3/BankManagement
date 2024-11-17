@@ -13,7 +13,7 @@ namespace BankManagement
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new QLKhachHang());
+            Application.Run(new QLTietKiem());
            
 
 

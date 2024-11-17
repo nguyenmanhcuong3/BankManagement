@@ -27,14 +27,14 @@ namespace BankManagement
 
             return maKhachHangList;
         }
-        public string GetTenKhachHangByMa(string maKhachHang)
+        public string GetTenKhachHangByTSoTaiKhoan(string soTaiKhoan)
         {
             string tenKhachHang = string.Empty;
             using (SqlConnection connection = new SqlConnection(strConnect))
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand("SELECT TenKhachHang FROM KhachHang WHERE MaKhachHang = @maKhachHang", connection);
-                command.Parameters.AddWithValue("@maKhachHang", maKhachHang);
+                SqlCommand command = new SqlCommand("SELECT TenKhachHang FROM KhachHang WHERE SoTaiKhoan = @SoTaiKhoan", connection);
+                command.Parameters.AddWithValue("@SoTaiKhoan", soTaiKhoan);
 
                 object result = command.ExecuteScalar();
                 if (result != null)
@@ -44,19 +44,7 @@ namespace BankManagement
             }
             return tenKhachHang;
         }
-        public bool CheckNhanVienByTen(string tenNhanVien)
-        {
-            string query = "SELECT COUNT(*) FROM NhanVien WHERE TenNhanVien = @tenNhanVien AND ChucVu = 'Nhan Vien'";
-            SqlParameter[] parameters = { new SqlParameter("@tenNhanVien", tenNhanVien) };
-
-            KetNoiCSDL();
-            using (SqlCommand cmd = new SqlCommand(query, sqlConnect))
-            {
-                cmd.Parameters.AddRange(parameters);
-                int count = (int)cmd.ExecuteScalar();
-                return count > 0;
-            }
-        }
+        
         public string GetMaNhanVienByTen(string tenNhanVien)
         {
             string maNhanVien = string.Empty;

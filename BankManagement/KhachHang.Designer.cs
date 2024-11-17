@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtTaiKhoan = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -44,7 +43,6 @@
             this.pictureKhachHang = new System.Windows.Forms.PictureBox();
             this.btnCapNhatKH = new System.Windows.Forms.Button();
             this.btnXoaKH = new System.Windows.Forms.Button();
-            this.btnSuaKH = new System.Windows.Forms.Button();
             this.txtNgheNghiep = new System.Windows.Forms.TextBox();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -64,12 +62,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnTaiAnhKH = new System.Windows.Forms.Button();
-            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKhachHang)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureKhachHang)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -89,7 +85,6 @@
             this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Controls.Add(this.btnCapNhatKH);
             this.panel2.Controls.Add(this.btnXoaKH);
-            this.panel2.Controls.Add(this.btnSuaKH);
             this.panel2.Controls.Add(this.txtNgheNghiep);
             this.panel2.Controls.Add(this.txtDiaChi);
             this.panel2.Controls.Add(this.txtEmail);
@@ -197,13 +192,14 @@
             // btnXuatFile
             // 
             this.btnXuatFile.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnXuatFile.Location = new System.Drawing.Point(489, 252);
+            this.btnXuatFile.Location = new System.Drawing.Point(449, 252);
             this.btnXuatFile.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnXuatFile.Name = "btnXuatFile";
             this.btnXuatFile.Size = new System.Drawing.Size(92, 28);
             this.btnXuatFile.TabIndex = 29;
             this.btnXuatFile.Text = "Xuất File ";
             this.btnXuatFile.UseVisualStyleBackColor = true;
+            this.btnXuatFile.Click += new System.EventHandler(this.btnXuatFile_Click);
             // 
             // groupBox1
             // 
@@ -231,35 +227,26 @@
             // btnCapNhatKH
             // 
             this.btnCapNhatKH.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnCapNhatKH.Location = new System.Drawing.Point(359, 252);
+            this.btnCapNhatKH.Location = new System.Drawing.Point(300, 252);
             this.btnCapNhatKH.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnCapNhatKH.Name = "btnCapNhatKH";
             this.btnCapNhatKH.Size = new System.Drawing.Size(92, 28);
             this.btnCapNhatKH.TabIndex = 26;
             this.btnCapNhatKH.Text = "Cập nhật";
             this.btnCapNhatKH.UseVisualStyleBackColor = true;
+            this.btnCapNhatKH.Click += new System.EventHandler(this.btnCapNhatKH_Click);
             // 
             // btnXoaKH
             // 
             this.btnXoaKH.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnXoaKH.Location = new System.Drawing.Point(227, 252);
+            this.btnXoaKH.Location = new System.Drawing.Point(158, 252);
             this.btnXoaKH.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnXoaKH.Name = "btnXoaKH";
             this.btnXoaKH.Size = new System.Drawing.Size(92, 28);
             this.btnXoaKH.TabIndex = 25;
             this.btnXoaKH.Text = "Xóa";
             this.btnXoaKH.UseVisualStyleBackColor = true;
-            // 
-            // btnSuaKH
-            // 
-            this.btnSuaKH.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnSuaKH.Location = new System.Drawing.Point(113, 252);
-            this.btnSuaKH.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnSuaKH.Name = "btnSuaKH";
-            this.btnSuaKH.Size = new System.Drawing.Size(92, 28);
-            this.btnSuaKH.TabIndex = 24;
-            this.btnSuaKH.Text = "Sửa";
-            this.btnSuaKH.UseVisualStyleBackColor = true;
+            this.btnXoaKH.Click += new System.EventHandler(this.btnXoaKH_Click);
             // 
             // txtNgheNghiep
             // 
@@ -444,10 +431,7 @@
             this.btnTaiAnhKH.TabIndex = 1;
             this.btnTaiAnhKH.Text = "Tải ảnh";
             this.btnTaiAnhKH.UseVisualStyleBackColor = true;
-            // 
-            // errorProvider
-            // 
-            this.errorProvider.ContainerControl = this;
+            this.btnTaiAnhKH.Click += new System.EventHandler(this.btnTaiAnhKH_Click);
             // 
             // QLKhachHang
             // 
@@ -465,7 +449,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvKhachHang)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureKhachHang)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -496,9 +479,7 @@
         private System.Windows.Forms.Button btnXuatFile;
         private System.Windows.Forms.Button btnCapNhatKH;
         private System.Windows.Forms.Button btnXoaKH;
-        private System.Windows.Forms.Button btnSuaKH;
         public System.Windows.Forms.DataGridView dgvKhachHang;
-        private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.Button btnTim;
         private System.Windows.Forms.TextBox txtTimKH;
         private System.Windows.Forms.Label label1;

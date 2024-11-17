@@ -120,6 +120,7 @@ namespace BankManagement
                     File.Copy(imageFilePath, saveImagePath, true);
                     duongDanAnh = imageFileName;
                 }
+
                 int soDu = 0;
                 // Câu lệnh SQL
                 string role = "User";

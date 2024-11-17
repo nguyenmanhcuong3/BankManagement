@@ -106,6 +106,18 @@ namespace BankManagement
         {
             return Regex.IsMatch(phone, @"^0\d{9}$");
         }
-        
+        public static string GetMaGiaoDich(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            StringBuilder transactionCode = new StringBuilder();
+            Random random = new Random();
+
+            for (int i = 0; i < length; i++)
+            {
+                transactionCode.Append(chars[random.Next(chars.Length)]);
+            }
+
+            return transactionCode.ToString();
+        }
     }
 }

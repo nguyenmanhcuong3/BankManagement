@@ -136,6 +136,7 @@
             this.btnQLKhoanVay.TabIndex = 10;
             this.btnQLKhoanVay.Text = "QL Khoản vay";
             this.btnQLKhoanVay.UseVisualStyleBackColor = false;
+            this.btnQLKhoanVay.Click += new System.EventHandler(this.btnQLKhoanVay_Click);
             // 
             // btnLogin
             // 
@@ -148,6 +149,7 @@
             this.btnLogin.TabIndex = 8;
             this.btnLogin.Text = "Đăng xuất";
             this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // button1
             // 
@@ -160,6 +162,7 @@
             this.button1.TabIndex = 9;
             this.button1.Text = "Thoát";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnThongTin
             // 
@@ -172,6 +175,7 @@
             this.btnThongTin.TabIndex = 7;
             this.btnThongTin.Text = "Thống kê";
             this.btnThongTin.UseVisualStyleBackColor = false;
+            this.btnThongTin.Click += new System.EventHandler(this.btnThongTin_Click);
             // 
             // btnQLTietKiem
             // 
@@ -184,6 +188,7 @@
             this.btnQLTietKiem.TabIndex = 4;
             this.btnQLTietKiem.Text = "QL Tiết kiệm";
             this.btnQLTietKiem.UseVisualStyleBackColor = false;
+            this.btnQLTietKiem.Click += new System.EventHandler(this.btnQLTietKiem_Click);
             // 
             // btnQLGiaoDich
             // 
@@ -196,6 +201,7 @@
             this.btnQLGiaoDich.TabIndex = 3;
             this.btnQLGiaoDich.Text = "QL Giao dịch";
             this.btnQLGiaoDich.UseVisualStyleBackColor = false;
+            this.btnQLGiaoDich.Click += new System.EventHandler(this.btnQLGiaoDich_Click);
             // 
             // btnQLKhachHang
             // 
@@ -208,6 +214,7 @@
             this.btnQLKhachHang.TabIndex = 2;
             this.btnQLKhachHang.Text = "QL Khách hàng";
             this.btnQLKhachHang.UseVisualStyleBackColor = false;
+            this.btnQLKhachHang.Click += new System.EventHandler(this.btnQLKhachHang_Click);
             // 
             // panelMain
             // 

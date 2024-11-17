@@ -24,7 +24,7 @@ CREATE TABLE KhachHang (
     TaiKhoan VARCHAR(255),
     SoDu int,
     Anh varchar(255),
-	FOREIGN KEY (TaiKhoan) REFERENCES DangNhap(TaiKhoan)
+	FOREIGN KEY (TaiKhoan) REFERENCES DangNhap(TaiKhoan) ON DELETE CASCADE
 );
 
 
@@ -35,7 +35,7 @@ CREATE TABLE GiaoDich (
     SoTaiKhoan int,
     TaiKhoanNhan int,
     SoTien int,
-    FOREIGN KEY (SoTaiKhoan) REFERENCES KhachHang(SoTaiKhoan)
+    FOREIGN KEY (SoTaiKhoan) REFERENCES KhachHang(SoTaiKhoan) ON DELETE CASCADE
 );
 
 -- Bảng tiết kiệm
@@ -47,7 +47,7 @@ CREATE TABLE TietKiem (
     KyHan INT,
     LaiSuat DECIMAL(5, 2),
     SoTienDuKienNhan  int,
-    FOREIGN KEY (SoTaiKhoan) REFERENCES KhachHang(SoTaiKhoan)
+    FOREIGN KEY (SoTaiKhoan) REFERENCES KhachHang(SoTaiKhoan) ON DELETE CASCADE
 );
 
 -- Bảng chi tiết tiết kiệm
@@ -55,7 +55,7 @@ CREATE TABLE ChiTietTietKiem (
     MaTietKiem varchar(100),
     HoatDong VARCHAR(255),
     SoTien int,
-    FOREIGN KEY (MaTietKiem) REFERENCES TietKiem(MaTietKiem)
+    FOREIGN KEY (MaTietKiem) REFERENCES TietKiem(MaTietKiem) ON DELETE CASCADE
 );
 
 -- Bảng khoản vay
@@ -67,7 +67,7 @@ CREATE TABLE KhoanVay (
     KyHan INT,
     LaiSuat DECIMAL(5, 2),
     SoTienPhaiTra Int,
-    FOREIGN KEY (SoTaiKhoan) REFERENCES KhachHang(SoTaiKhoan)
+    FOREIGN KEY (SoTaiKhoan) REFERENCES KhachHang(SoTaiKhoan) ON DELETE CASCADE
 );
 
 -- Bảng chi tiết khoản vay
@@ -75,7 +75,7 @@ CREATE TABLE ChiTietKhoanVay (
     MaKhoanVay varchar(100),
     HoatDong VARCHAR(255),
     SoTien int,
-    FOREIGN KEY (MaKhoanVay) REFERENCES KhoanVay(MaKhoanVay)
+    FOREIGN KEY (MaKhoanVay) REFERENCES KhoanVay(MaKhoanVay) ON DELETE CASCADE
 );
 
 -- Chèn dữ liệu vào bảng DangNhap
