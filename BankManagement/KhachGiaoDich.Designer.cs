@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbbTaiKhoanNhan = new System.Windows.Forms.ComboBox();
             this.txtChuTaiKhoanNhan = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtTaiKhoanGui = new System.Windows.Forms.TextBox();
@@ -53,7 +53,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.LightGray;
-            this.panel2.Controls.Add(this.comboBox1);
+            this.panel2.Controls.Add(this.cbbTaiKhoanNhan);
             this.panel2.Controls.Add(this.txtChuTaiKhoanNhan);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.txtTaiKhoanGui);
@@ -77,13 +77,14 @@
             this.panel2.Size = new System.Drawing.Size(719, 450);
             this.panel2.TabIndex = 2;
             // 
-            // comboBox1
+            // cbbTaiKhoanNhan
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(487, 71);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(171, 24);
-            this.comboBox1.TabIndex = 31;
+            this.cbbTaiKhoanNhan.FormattingEnabled = true;
+            this.cbbTaiKhoanNhan.Location = new System.Drawing.Point(487, 71);
+            this.cbbTaiKhoanNhan.Name = "cbbTaiKhoanNhan";
+            this.cbbTaiKhoanNhan.Size = new System.Drawing.Size(171, 24);
+            this.cbbTaiKhoanNhan.TabIndex = 31;
+            this.cbbTaiKhoanNhan.SelectedIndexChanged += new System.EventHandler(this.cbbTaiKhoanNhan_SelectedIndexChanged);
             // 
             // txtChuTaiKhoanNhan
             // 
@@ -134,7 +135,6 @@
             this.label1.Size = new System.Drawing.Size(106, 16);
             this.label1.TabIndex = 24;
             this.label1.Text = "Lịch sử giao dịch";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // dgvGiaoDich
             // 
@@ -166,6 +166,7 @@
             this.btnXuatExcel.TabIndex = 16;
             this.btnXuatExcel.Text = "Sao kê";
             this.btnXuatExcel.UseVisualStyleBackColor = true;
+            this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
             // 
             // btnXacNhan
             // 
@@ -177,6 +178,7 @@
             this.btnXacNhan.TabIndex = 15;
             this.btnXacNhan.Text = "Xác nhận";
             this.btnXacNhan.UseVisualStyleBackColor = true;
+            this.btnXacNhan.Click += new System.EventHandler(this.btnXacNhan_Click);
             // 
             // btnGiaoDichMoi
             // 
@@ -188,6 +190,7 @@
             this.btnGiaoDichMoi.TabIndex = 13;
             this.btnGiaoDichMoi.Text = "Giao dịch mới";
             this.btnGiaoDichMoi.UseVisualStyleBackColor = true;
+            this.btnGiaoDichMoi.Click += new System.EventHandler(this.btnGiaoDichMoi_Click);
             // 
             // txtSoTien
             // 
@@ -270,6 +273,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtChuTaiKhoanNhan;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbbTaiKhoanNhan;
     }
 }

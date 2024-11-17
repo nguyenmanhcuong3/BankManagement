@@ -81,7 +81,6 @@ CREATE TABLE ChiTietKhoanVay (
 -- Chèn dữ liệu vào bảng DangNhap
 INSERT INTO DangNhap (TaiKhoan, MatKhau,Role) 
 VALUES 
-('user1', 'password1','Admin'),
 ('user2', 'password2','User'),
 ('user3', 'password3','User');
 
@@ -89,7 +88,7 @@ VALUES
 -- Chèn dữ liệu vào bảng KhachHang
 INSERT INTO KhachHang (SoTaiKhoan, TenKhachHang, NgaySinh, SoCCCD, SoDienThoai, GioiTinh, Email, DiaChi, NgheNghiep, TaiKhoan, SoDu, Anh)
 VALUES 
-(1001, 'Nguyen Van A', '1990-05-15', '012345678901', '0987654321', 'Nam', 'nguyenvana@example.com', '123 Le Loi, Hanoi', 'Nhan vien van phong', 'user1', 5000000, 'anha.jpg'),
+
 (1002, 'Tran Thi B', '1995-10-20', '098765432109', '0912345678', 'Nu', 'tranthib@example.com', '456 Hai Ba Trung, HCM', 'Giao vien', 'user2', 7000000, 'anhb.jpg'),
 (1003, 'Le Van C', '1988-03-25', '123456789012', '0976543210', 'Nam', 'levanc@example.com', '789 Tran Hung Dao, Da Nang', 'Ky su', 'user3', 10000000, 'anhc.jpg');
 
@@ -127,6 +126,25 @@ VALUES
 ('KV001', 'Vay tien', 1000000),
 ('KV002', 'Vay tien', 2000000),
 ('KV003', 'Vay tien', 3000000);
+
+alter table [dbo].[ChiTietKhoanVay]
+add ThoiGianGiaoDich date
+alter table [dbo].[ChiTietTietKiem]
+add ThoiGianGiaoDich date
+
+create function ChiTietGiaoDich(@stk int)
+returns table
+as return (
+select  t.[MaTietKiem],t.[SoTaiKhoan],c.[SoTien],c.[ThoiGianGiaoDich],c.[HoatDong]
+from  [dbo].[TietKiem] t
+join [dbo].[ChiTietTietKiem] c on t.MaTietKiem= c.MaTietKiem
+where t.[SoTaiKhoan] = @stk)
+select * from dbo.ChiTietGiaoDich(1001)
+
+select  t.[MaTietKiem],t.[SoTaiKhoan],c.[SoTien],c.[ThoiGianGiaoDich],c.[HoatDong]
+from  [dbo].[TietKiem] t
+join [dbo].[ChiTietTietKiem] c on t.MaTietKiem= c.MaTietKiem
+where t.[SoTaiKhoan] = 1001
 
 
 

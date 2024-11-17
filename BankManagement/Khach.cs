@@ -53,7 +53,19 @@ namespace BankManagement
 
         private void btnGiaoDich_Click(object sender, EventArgs e)
         {
-            
+            KhachGiaoDich formKhachHang = new KhachGiaoDich(TaiKhoan);
+
+            formKhachHang.TopLevel = false;
+            formKhachHang.FormBorderStyle = FormBorderStyle.None;
+            formKhachHang.Dock = DockStyle.Fill;
+
+
+            pictureBoxKhach.Controls.Clear();
+
+
+            pictureBoxKhach.Controls.Add(formKhachHang);
+
+            formKhachHang.Show();
         }
 
         private void btnTietKiem_Click(object sender, EventArgs e)
