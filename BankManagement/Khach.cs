@@ -23,26 +23,7 @@ namespace BankManagement
         {
 
         }
-        private void ShowFormInPanel(Form formToShow, Button activeButton)
-        {
-            // Đặt tất cả các nút thành Enabled
-            SetButtonsEnabled(true);
-            activeButton.Enabled = false;
 
-            // Tô màu đỏ cho nút đã chọn
-            HighlightButton(activeButton);
-
-            // Cấu hình form và thêm vào panel
-            formToShow.TopLevel = false;
-            formToShow.FormBorderStyle = FormBorderStyle.None;
-            formToShow.Dock = DockStyle.Fill;
-            panelKhach.Controls.Clear();
-            panelKhach.Controls.Add(formToShow);
-            formToShow.Show();
-
-            // Bật lại tất cả các nút khi form đóng
-            formToShow.FormClosed += (s, args) => SetButtonsEnabled(true);
-        }
         private void SetButtonsEnabled(bool enabled)
         {
             btnGiaoDich.Enabled = enabled;
@@ -52,49 +33,37 @@ namespace BankManagement
         }
 
         // Phương thức để tô màu đỏ nút đang được chọn
-        private void HighlightButton(Button selectedButton)
-        {
-            // Đặt lại màu cho tất cả các nút về màu mặc định
-            btnGiaoDich.BackColor = SystemColors.Control;
-            btnTietKiem.BackColor = SystemColors.Control;
-            btnVayVon.BackColor = SystemColors.Control;
-            btnThongTin.BackColor = SystemColors.Control;
 
-            // Tô màu đỏ cho nút được chọn
-            selectedButton.BackColor = System.Drawing.Color.Red;
-
-
-        }
         private void btnThongTin_Click(object sender, EventArgs e)
         {
-            ThongTinKhach formKhachHang = new ThongTinKhach();
+            ThongTinKhach formKhachHang = new ThongTinKhach(TaiKhoan);
 
             formKhachHang.TopLevel = false;
             formKhachHang.FormBorderStyle = FormBorderStyle.None;
             formKhachHang.Dock = DockStyle.Fill;
 
 
-            panelKhach.Controls.Clear();
+            pictureBoxKhach.Controls.Clear();
 
 
-            panelKhach.Controls.Add(formKhachHang);
+            pictureBoxKhach.Controls.Add(formKhachHang);
 
             formKhachHang.Show();
         }
 
         private void btnGiaoDich_Click(object sender, EventArgs e)
         {
-            ShowFormInPanel(new KhachGiaoDich(), btnGiaoDich);
+            
         }
 
         private void btnTietKiem_Click(object sender, EventArgs e)
         {
-            ShowFormInPanel(new KhachGuiTietKiem(), btnTietKiem);
+            
         }
 
         private void btnVayVon_Click(object sender, EventArgs e)
         {
-            ShowFormInPanel(new KhachVayVon(), btnVayVon);
+            
         }
 
         private void btnLogin_Click(object sender, EventArgs e)

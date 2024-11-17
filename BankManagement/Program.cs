@@ -14,7 +14,7 @@ namespace BankManagement
             string user = "user1";
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Khach(user));
+            Application.Run(new DangNhap_DangKi());
            
 
 

@@ -43,6 +43,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnSuaThongTin = new System.Windows.Forms.Button();
+            this.btnCapNhat = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureKhachHang)).BeginInit();
@@ -52,6 +54,8 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.LightGray;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.btnCapNhat);
+            this.panel2.Controls.Add(this.btnSuaThongTin);
             this.panel2.Controls.Add(this.txtSoDu);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.txtSoTaiKhoan);
@@ -199,6 +203,26 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Họ tên";
             // 
+            // btnSuaThongTin
+            // 
+            this.btnSuaThongTin.Location = new System.Drawing.Point(516, 294);
+            this.btnSuaThongTin.Name = "btnSuaThongTin";
+            this.btnSuaThongTin.Size = new System.Drawing.Size(117, 42);
+            this.btnSuaThongTin.TabIndex = 38;
+            this.btnSuaThongTin.Text = "Sửa thông tin";
+            this.btnSuaThongTin.UseVisualStyleBackColor = true;
+            this.btnSuaThongTin.Click += new System.EventHandler(this.btnSuaThongTin_Click);
+            // 
+            // btnCapNhat
+            // 
+            this.btnCapNhat.Location = new System.Drawing.Point(516, 357);
+            this.btnCapNhat.Name = "btnCapNhat";
+            this.btnCapNhat.Size = new System.Drawing.Size(117, 42);
+            this.btnCapNhat.TabIndex = 39;
+            this.btnCapNhat.Text = "Cập nhật";
+            this.btnCapNhat.UseVisualStyleBackColor = true;
+            this.btnCapNhat.Click += new System.EventHandler(this.btnCapNhat_Click);
+            // 
             // ThongTinKhach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -233,5 +257,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtSoDu;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnCapNhat;
+        private System.Windows.Forms.Button btnSuaThongTin;
     }
 }

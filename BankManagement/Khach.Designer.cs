@@ -41,11 +41,12 @@
             this.btnThongTin = new System.Windows.Forms.Button();
             this.btnGiaoDich = new System.Windows.Forms.Button();
             this.btnTietKiem = new System.Windows.Forms.Button();
-            this.panelKhach = new System.Windows.Forms.FlowLayoutPanel();
+            this.pictureBoxKhach = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcExit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxKhach)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -200,19 +201,20 @@
             this.btnTietKiem.UseVisualStyleBackColor = false;
             this.btnTietKiem.Click += new System.EventHandler(this.btnTietKiem_Click);
             // 
-            // panelKhach
+            // pictureBoxKhach
             // 
-            this.panelKhach.Location = new System.Drawing.Point(174, 128);
-            this.panelKhach.Name = "panelKhach";
-            this.panelKhach.Size = new System.Drawing.Size(937, 530);
-            this.panelKhach.TabIndex = 3;
+            this.pictureBoxKhach.Location = new System.Drawing.Point(174, 135);
+            this.pictureBoxKhach.Name = "pictureBoxKhach";
+            this.pictureBoxKhach.Size = new System.Drawing.Size(850, 472);
+            this.pictureBoxKhach.TabIndex = 3;
+            this.pictureBoxKhach.TabStop = false;
             // 
             // Khach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1117, 658);
-            this.Controls.Add(this.panelKhach);
+            this.Controls.Add(this.pictureBoxKhach);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -224,6 +226,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcExit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxKhach)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -242,6 +245,6 @@
         private System.Windows.Forms.Button btnGiaoDich;
         private System.Windows.Forms.Button btnTietKiem;
         private System.Windows.Forms.Button btnVayVon;
-        private System.Windows.Forms.FlowLayoutPanel panelKhach;
+        private System.Windows.Forms.PictureBox pictureBoxKhach;
     }
 }
