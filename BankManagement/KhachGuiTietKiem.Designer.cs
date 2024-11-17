@@ -58,11 +58,11 @@
             this.txtKiHan = new System.Windows.Forms.TextBox();
             this.btnKhoanRutMoi = new System.Windows.Forms.Button();
             this.btnXacNhanRut = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvRut = new System.Windows.Forms.DataGridView();
             this.txtSoTienConLai = new System.Windows.Forms.TextBox();
             this.dateTra = new System.Windows.Forms.DateTimePicker();
             this.txtSoTienRut = new System.Windows.Forms.TextBox();
-            this.txtHocTenRut = new System.Windows.Forms.TextBox();
+            this.txtHoTenRut = new System.Windows.Forms.TextBox();
             this.txtTaiKhoanRut = new System.Windows.Forms.TextBox();
             this.txtMaKhoanVayTra = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -77,7 +77,7 @@
             this.tabpageGuiTien.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVay)).BeginInit();
             this.tabpageRutTien.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRut)).BeginInit();
             this.SuspendLayout();
             // 
             // TietKiem
@@ -171,6 +171,7 @@
             this.btnXacNhanGui.TabIndex = 24;
             this.btnXacNhanGui.Text = "Xác nhận gửi";
             this.btnXacNhanGui.UseVisualStyleBackColor = true;
+            this.btnXacNhanGui.Click += new System.EventHandler(this.btnXacNhanGui_Click);
             // 
             // btnKhoanGuiMoi
             // 
@@ -180,6 +181,7 @@
             this.btnKhoanGuiMoi.TabIndex = 23;
             this.btnKhoanGuiMoi.Text = "Khoản gửi mới";
             this.btnKhoanGuiMoi.UseVisualStyleBackColor = true;
+            this.btnKhoanGuiMoi.Click += new System.EventHandler(this.btnKhoanGuiMoi_Click);
             // 
             // cbbKiHan
             // 
@@ -305,11 +307,11 @@
             this.tabpageRutTien.Controls.Add(this.txtKiHan);
             this.tabpageRutTien.Controls.Add(this.btnKhoanRutMoi);
             this.tabpageRutTien.Controls.Add(this.btnXacNhanRut);
-            this.tabpageRutTien.Controls.Add(this.dataGridView1);
+            this.tabpageRutTien.Controls.Add(this.dgvRut);
             this.tabpageRutTien.Controls.Add(this.txtSoTienConLai);
             this.tabpageRutTien.Controls.Add(this.dateTra);
             this.tabpageRutTien.Controls.Add(this.txtSoTienRut);
-            this.tabpageRutTien.Controls.Add(this.txtHocTenRut);
+            this.tabpageRutTien.Controls.Add(this.txtHoTenRut);
             this.tabpageRutTien.Controls.Add(this.txtTaiKhoanRut);
             this.tabpageRutTien.Controls.Add(this.txtMaKhoanVayTra);
             this.tabpageRutTien.Controls.Add(this.label16);
@@ -366,6 +368,7 @@
             this.btnKhoanRutMoi.TabIndex = 27;
             this.btnKhoanRutMoi.Text = "Khoản rút mới";
             this.btnKhoanRutMoi.UseVisualStyleBackColor = true;
+            this.btnKhoanRutMoi.Click += new System.EventHandler(this.btnKhoanRutMoi_Click);
             // 
             // btnXacNhanRut
             // 
@@ -376,15 +379,15 @@
             this.btnXacNhanRut.Text = "Xác nhận rút";
             this.btnXacNhanRut.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dgvRut
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 275);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(697, 137);
-            this.dataGridView1.TabIndex = 25;
+            this.dgvRut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRut.Location = new System.Drawing.Point(6, 275);
+            this.dgvRut.Name = "dgvRut";
+            this.dgvRut.RowHeadersWidth = 51;
+            this.dgvRut.RowTemplate.Height = 24;
+            this.dgvRut.Size = new System.Drawing.Size(697, 137);
+            this.dgvRut.TabIndex = 25;
             // 
             // txtSoTienConLai
             // 
@@ -409,12 +412,12 @@
             this.txtSoTienRut.Size = new System.Drawing.Size(157, 22);
             this.txtSoTienRut.TabIndex = 11;
             // 
-            // txtHocTenRut
+            // txtHoTenRut
             // 
-            this.txtHocTenRut.Location = new System.Drawing.Point(115, 101);
-            this.txtHocTenRut.Name = "txtHocTenRut";
-            this.txtHocTenRut.Size = new System.Drawing.Size(171, 22);
-            this.txtHocTenRut.TabIndex = 10;
+            this.txtHoTenRut.Location = new System.Drawing.Point(115, 101);
+            this.txtHoTenRut.Name = "txtHoTenRut";
+            this.txtHoTenRut.Size = new System.Drawing.Size(171, 22);
+            this.txtHoTenRut.TabIndex = 10;
             // 
             // txtTaiKhoanRut
             // 
@@ -517,7 +520,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvVay)).EndInit();
             this.tabpageRutTien.ResumeLayout(false);
             this.tabpageRutTien.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRut)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -550,11 +553,11 @@
         private System.Windows.Forms.TextBox txtKiHan;
         private System.Windows.Forms.Button btnKhoanRutMoi;
         private System.Windows.Forms.Button btnXacNhanRut;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvRut;
         private System.Windows.Forms.TextBox txtSoTienConLai;
         private System.Windows.Forms.DateTimePicker dateTra;
         private System.Windows.Forms.TextBox txtSoTienRut;
-        private System.Windows.Forms.TextBox txtHocTenRut;
+        private System.Windows.Forms.TextBox txtHoTenRut;
         private System.Windows.Forms.TextBox txtTaiKhoanRut;
         private System.Windows.Forms.TextBox txtMaKhoanVayTra;
         private System.Windows.Forms.Label label16;

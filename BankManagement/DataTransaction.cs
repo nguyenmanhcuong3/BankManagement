@@ -87,5 +87,20 @@ namespace BankManagement
             }
             return ten;
         }
+        public string LaySoTaiKhoan(string username)
+        {
+            string query = "SELECT SoTaiKhoan FROM KhachHang WHERE TaiKhoan = @username";
+            SqlParameter[] parameters = {
+        new SqlParameter("@username", username)
+    };
+
+            System.Data.DataTable result = DocBang(query, parameters); // DocBang là phương thức để đọc dữ liệu từ CSDL
+            if (result.Rows.Count > 0)
+            {
+                return result.Rows[0]["SoTaiKhoan"].ToString();
+            }
+            return string.Empty;
+        }
+
     }
 }

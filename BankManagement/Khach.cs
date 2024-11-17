@@ -77,7 +77,7 @@ namespace BankManagement
 
         private void btnTietKiem_Click(object sender, EventArgs e)
         {
-            ShowFormInPanel(new KhachGuiTietKiem(), btnTietKiem);
+            ShowFormInPanel(new KhachGuiTietKiem(TaiKhoan), btnTietKiem);
         }
 
         private void btnVayVon_Click(object sender, EventArgs e)

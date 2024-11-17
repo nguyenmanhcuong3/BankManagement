@@ -15,6 +15,10 @@ namespace BankManagement
     public partial class DangNhap_DangKi : Form
     {
         ProcessDatabase db = new ProcessDatabase();
+        public DangNhap_DangKi()
+        {
+            InitializeComponent();
+        }
         private void DangNhap_DangKi_Load(object sender, EventArgs e)
         {
 
