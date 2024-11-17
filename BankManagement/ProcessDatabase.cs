@@ -10,8 +10,11 @@ namespace BankManagement
 {
     internal class ProcessDatabase
     {
-        public string strConnect = "Data Source=NMC\\SQLEXPRESS;Initial Catalog=QLBanknew;Integrated Security=True;Encrypt=False";
-        public SqlConnection sqlConnect = null;
+
+        public string strConnect = "Data Source=NMC\\SQLEXPRESS;Initial Catalog=QlBank;Integrated Security=True";
+        protected SqlConnection sqlConnect = null;
+
+       
 
         protected void KetNoiCSDL()
         {

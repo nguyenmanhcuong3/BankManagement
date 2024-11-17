@@ -35,13 +35,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnQLKhoanVay = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnThongTin = new System.Windows.Forms.Button();
-            this.btnNhanVien = new System.Windows.Forms.Button();
-            this.btnGiaoDich = new System.Windows.Forms.Button();
-            this.btnTaiKhoan = new System.Windows.Forms.Button();
-            this.btnKhachHang = new System.Windows.Forms.Button();
+            this.btnQLTietKiem = new System.Windows.Forms.Button();
+            this.btnQLGiaoDich = new System.Windows.Forms.Button();
+            this.btnQLKhachHang = new System.Windows.Forms.Button();
             this.panelMain = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
@@ -74,9 +74,6 @@
             this.plDiChuyen.Size = new System.Drawing.Size(854, 32);
             this.plDiChuyen.TabIndex = 34;
             this.plDiChuyen.Paint += new System.Windows.Forms.PaintEventHandler(this.plDiChuyen_Paint);
-            this.plDiChuyen.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plDiChuyen_MouseDown);
-            this.plDiChuyen.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plDiChuyen_MouseMove);
-            this.plDiChuyen.MouseUp += new System.Windows.Forms.MouseEventHandler(this.plDiChuyen_MouseUp);
             // 
             // pcExit
             // 
@@ -88,9 +85,6 @@
             this.pcExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pcExit.TabIndex = 27;
             this.pcExit.TabStop = false;
-            this.pcExit.Click += new System.EventHandler(this.pcExit_Click);
-            this.pcExit.MouseEnter += new System.EventHandler(this.btnThoat_MouseEnter);
-            this.pcExit.MouseLeave += new System.EventHandler(this.btnThoat_MouseLeave);
             // 
             // label1
             // 
@@ -117,13 +111,13 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.panel2.Controls.Add(this.btnQLKhoanVay);
             this.panel2.Controls.Add(this.btnLogin);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.btnThongTin);
-            this.panel2.Controls.Add(this.btnNhanVien);
-            this.panel2.Controls.Add(this.btnGiaoDich);
-            this.panel2.Controls.Add(this.btnTaiKhoan);
-            this.panel2.Controls.Add(this.btnKhachHang);
+            this.panel2.Controls.Add(this.btnQLTietKiem);
+            this.panel2.Controls.Add(this.btnQLGiaoDich);
+            this.panel2.Controls.Add(this.btnQLKhachHang);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 104);
             this.panel2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -131,96 +125,89 @@
             this.panel2.Size = new System.Drawing.Size(126, 470);
             this.panel2.TabIndex = 1;
             // 
+            // btnQLKhoanVay
+            // 
+            this.btnQLKhoanVay.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnQLKhoanVay.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.btnQLKhoanVay.Location = new System.Drawing.Point(7, 196);
+            this.btnQLKhoanVay.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnQLKhoanVay.Name = "btnQLKhoanVay";
+            this.btnQLKhoanVay.Size = new System.Drawing.Size(115, 40);
+            this.btnQLKhoanVay.TabIndex = 10;
+            this.btnQLKhoanVay.Text = "QL Khoản vay";
+            this.btnQLKhoanVay.UseVisualStyleBackColor = false;
+            // 
             // btnLogin
             // 
             this.btnLogin.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnLogin.Location = new System.Drawing.Point(7, 309);
+            this.btnLogin.Location = new System.Drawing.Point(7, 317);
             this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(115, 35);
             this.btnLogin.TabIndex = 8;
             this.btnLogin.Text = "Đăng xuất";
             this.btnLogin.UseVisualStyleBackColor = false;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.button1.Location = new System.Drawing.Point(7, 365);
+            this.button1.Location = new System.Drawing.Point(7, 377);
             this.button1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(115, 35);
             this.button1.TabIndex = 9;
             this.button1.Text = "Thoát";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnThongTin
             // 
             this.btnThongTin.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnThongTin.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnThongTin.Location = new System.Drawing.Point(7, 251);
+            this.btnThongTin.Location = new System.Drawing.Point(7, 258);
             this.btnThongTin.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnThongTin.Name = "btnThongTin";
             this.btnThongTin.Size = new System.Drawing.Size(115, 40);
             this.btnThongTin.TabIndex = 7;
-            this.btnThongTin.Text = "Thông tin";
+            this.btnThongTin.Text = "Thống kê";
             this.btnThongTin.UseVisualStyleBackColor = false;
-            this.btnThongTin.Click += new System.EventHandler(this.btnThongTin_Click);
             // 
-            // btnNhanVien
+            // btnQLTietKiem
             // 
-            this.btnNhanVien.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnNhanVien.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnNhanVien.Location = new System.Drawing.Point(7, 192);
-            this.btnNhanVien.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnNhanVien.Name = "btnNhanVien";
-            this.btnNhanVien.Size = new System.Drawing.Size(115, 40);
-            this.btnNhanVien.TabIndex = 6;
-            this.btnNhanVien.Text = "Nhân viên";
-            this.btnNhanVien.UseVisualStyleBackColor = false;
-            this.btnNhanVien.Click += new System.EventHandler(this.btnNhanVien_Click);
+            this.btnQLTietKiem.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnQLTietKiem.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.btnQLTietKiem.Location = new System.Drawing.Point(7, 136);
+            this.btnQLTietKiem.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnQLTietKiem.Name = "btnQLTietKiem";
+            this.btnQLTietKiem.Size = new System.Drawing.Size(115, 40);
+            this.btnQLTietKiem.TabIndex = 4;
+            this.btnQLTietKiem.Text = "QL Tiết kiệm";
+            this.btnQLTietKiem.UseVisualStyleBackColor = false;
             // 
-            // btnGiaoDich
+            // btnQLGiaoDich
             // 
-            this.btnGiaoDich.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnGiaoDich.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnGiaoDich.Location = new System.Drawing.Point(7, 136);
-            this.btnGiaoDich.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnGiaoDich.Name = "btnGiaoDich";
-            this.btnGiaoDich.Size = new System.Drawing.Size(115, 40);
-            this.btnGiaoDich.TabIndex = 4;
-            this.btnGiaoDich.Text = "Giao dịch";
-            this.btnGiaoDich.UseVisualStyleBackColor = false;
-            this.btnGiaoDich.Click += new System.EventHandler(this.btnGiaoDich_Click);
+            this.btnQLGiaoDich.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnQLGiaoDich.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.btnQLGiaoDich.Location = new System.Drawing.Point(7, 81);
+            this.btnQLGiaoDich.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnQLGiaoDich.Name = "btnQLGiaoDich";
+            this.btnQLGiaoDich.Size = new System.Drawing.Size(115, 40);
+            this.btnQLGiaoDich.TabIndex = 3;
+            this.btnQLGiaoDich.Text = "QL Giao dịch";
+            this.btnQLGiaoDich.UseVisualStyleBackColor = false;
             // 
-            // btnTaiKhoan
+            // btnQLKhachHang
             // 
-            this.btnTaiKhoan.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnTaiKhoan.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnTaiKhoan.Location = new System.Drawing.Point(7, 81);
-            this.btnTaiKhoan.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnTaiKhoan.Name = "btnTaiKhoan";
-            this.btnTaiKhoan.Size = new System.Drawing.Size(115, 40);
-            this.btnTaiKhoan.TabIndex = 3;
-            this.btnTaiKhoan.Text = "Tài khoản";
-            this.btnTaiKhoan.UseVisualStyleBackColor = false;
-            this.btnTaiKhoan.Click += new System.EventHandler(this.btnTaiKhoan_Click);
-            // 
-            // btnKhachHang
-            // 
-            this.btnKhachHang.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnKhachHang.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnKhachHang.Location = new System.Drawing.Point(7, 25);
-            this.btnKhachHang.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnKhachHang.Name = "btnKhachHang";
-            this.btnKhachHang.Size = new System.Drawing.Size(115, 40);
-            this.btnKhachHang.TabIndex = 2;
-            this.btnKhachHang.Text = "Khách hàng";
-            this.btnKhachHang.UseVisualStyleBackColor = false;
-            this.btnKhachHang.Click += new System.EventHandler(this.btnKhachHang_Click);
+            this.btnQLKhachHang.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnQLKhachHang.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.btnQLKhachHang.Location = new System.Drawing.Point(7, 25);
+            this.btnQLKhachHang.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnQLKhachHang.Name = "btnQLKhachHang";
+            this.btnQLKhachHang.Size = new System.Drawing.Size(115, 40);
+            this.btnQLKhachHang.TabIndex = 2;
+            this.btnQLKhachHang.Text = "QL Khách hàng";
+            this.btnQLKhachHang.UseVisualStyleBackColor = false;
             // 
             // panelMain
             // 
@@ -262,7 +249,6 @@
             this.MaximizeBox = false;
             this.Name = "frmMain";
             this.Text = "Bank Management";
-            this.Load += new System.EventHandler(this.frmMain_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcExit)).EndInit();
@@ -279,10 +265,9 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnThongTin;
-        private System.Windows.Forms.Button btnNhanVien;
-        private System.Windows.Forms.Button btnGiaoDich;
-        private System.Windows.Forms.Button btnTaiKhoan;
-        private System.Windows.Forms.Button btnKhachHang;
+        private System.Windows.Forms.Button btnQLTietKiem;
+        private System.Windows.Forms.Button btnQLGiaoDich;
+        private System.Windows.Forms.Button btnQLKhachHang;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Button btnLogin;
@@ -291,5 +276,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pcExit;
         private System.Windows.Forms.Panel plDiChuyen;
+        private System.Windows.Forms.Button btnQLKhoanVay;
     }
 }

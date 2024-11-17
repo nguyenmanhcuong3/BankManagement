@@ -4,34 +4,30 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace BankManagement
 {
-    public partial class ThongTin : Form
+    public partial class BaoCao : Form
     {
         DataReport db = new DataReport();
         string str = "";
 
-        public ThongTin()
+        public BaoCao()
         {
             InitializeComponent();
             try
             {
                 // Câu truy vấn và gán số liệu vào các biến
                 int soLuongKhachHang = GetCount("SELECT COUNT(*) FROM KhachHang", "Số lượng khách hàng bằng 0\n");
-                int soLuongNhanVien = GetCount("SELECT COUNT(*) FROM NhanVien", "Số lượng nhân viên bằng 0\n");
-                int soLuongTaiKhoan = GetCount("SELECT COUNT(*) FROM Taikhoan", "Số lượng tài khoản bằng 0\n");
                 int soLuongGiaoDich = GetCount("SELECT COUNT(*) FROM GiaoDich", "Số lượng giao dịch bằng 0\n");
                 int soLuongTienGui = GetSum("SELECT SUM(SoTienGuiTietKiem) FROM TaiKhoan", "Số lượng tiền gửi bằng 0\n");
                 int soLuongTienVay = GetSum("SELECT SUM(SoTienVay) FROM TaiKhoan", "Số lượng tiền vay = 0");
 
                 // Cập nhật giá trị cho các Label
                 lbslkh.Text = soLuongKhachHang.ToString();
-                lbslnv.Text = soLuongNhanVien.ToString();
-                lbsltk.Text = soLuongTaiKhoan.ToString();
                 lbslgd.Text = soLuongGiaoDich.ToString();
                 lbsltg.Text = soLuongTienGui.ToString();
                 lbsltv.Text = soLuongTienVay.ToString();
 
                 // Vẽ hai biểu đồ
-                DrawNguoiChart(soLuongKhachHang, soLuongNhanVien);
+                DrawNguoiChart(soLuongKhachHang);
                 DrawTienChart(soLuongTienGui, soLuongTienVay);
             }
             catch (InvalidCastException ex)
@@ -60,7 +56,7 @@ namespace BankManagement
             return sum;
         }
 
-        private void DrawNguoiChart(int khachHang, int nhanVien)
+        private void DrawNguoiChart(int khachHang)
         {
             // Thiết lập biểu đồ cho thông tin về người
             chartNguoi.Series.Clear();
@@ -69,7 +65,6 @@ namespace BankManagement
 
             // Thêm dữ liệu vào biểu đồ
             seriesNguoi.Points.AddXY("Khách Hàng", khachHang);
-            seriesNguoi.Points.AddXY("Nhân Viên", nhanVien);
 
             // Thêm series vào biểu đồ
             chartNguoi.Series.Add(seriesNguoi);
