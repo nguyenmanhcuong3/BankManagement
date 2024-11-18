@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BankManagement
 {
@@ -51,10 +52,40 @@ namespace BankManagement
             }
             return tenKhachHang;
         }
-        
+
+        public int GetSoDuByTSoTaiKhoan(int soTaiKhoan)
+        {
+            int soDu = 0; 
+
+            using (SqlConnection connection = new SqlConnection(strConnect))
+            {
+               
+                    connection.Open(); 
+
+                  
+                    string query = "SELECT SoDu FROM KhachHang WHERE SoTaiKhoan = @SoTaiKhoan";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                       
+                        command.Parameters.AddWithValue("@SoTaiKhoan", soTaiKhoan);
+
+                      
+                        object result = command.ExecuteScalar();
+
+                     
+                        if (result != null && int.TryParse(result.ToString(), out soDu))
+                        {
+                            return soDu;
+                        }
+                    }
+                
+            }
+
+            return soDu; 
+        }
 
 
-        public  int GetSoTaiKhoanByTaiKhoan(string taikhoan)
+        public int GetSoTaiKhoanByTaiKhoan(string taikhoan)
         {
             int sotaikhoan = 0; 
             string query = "select SoTaiKhoan from KhachHang where TaiKhoan = @taikhoan";

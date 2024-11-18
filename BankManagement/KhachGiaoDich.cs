@@ -21,12 +21,29 @@ namespace BankManagement
             InitializeComponent();
             taiKhoan = taikhoan;
             btnXacNhan.Enabled = false;
-
+            offValue();
         }
 
 
-
-
+        private void offValue()
+        {
+            txtMaGiaoDich.Enabled = false;
+            txtTaiKhoanGui.Enabled = false;
+            txtSoTien.Enabled = false;
+            txtChuTaiKhoanNhan.Enabled = false;
+            dateNgayGiaoDich.Enabled=false;
+            cbbTaiKhoanNhan.Enabled=false;
+        }
+        private void ResetValue()
+        {
+            txtMaGiaoDich.Clear();
+            txtTaiKhoanGui.Clear();
+            txtSoTien.Clear();
+            txtChuTaiKhoanNhan.Clear();
+            dateNgayGiaoDich.Enabled = false;
+            cbbTaiKhoanNhan.Items.Clear();
+            cbbTaiKhoanNhan.Text = " ";
+        }
         private void KhachGiaoDich_Load(object sender, EventArgs e)
         {
             int sotaikhoan = db.GetSoTaiKhoanByTaiKhoan(taiKhoan);
@@ -49,11 +66,14 @@ namespace BankManagement
             btnXacNhan.Enabled = true;
             btnGiaoDichMoi.Enabled = false;
             txtChuTaiKhoanNhan.Enabled=false;
+            cbbTaiKhoanNhan.Items.Clear();
             List<string> liststk = db.GetSoTaiKhoanList(db.GetSoTaiKhoanByTaiKhoan(taiKhoan));
             foreach (string i in liststk)
             {
                 cbbTaiKhoanNhan.Items.Add(i);
             }
+            txtSoTien.Enabled= true;
+            cbbTaiKhoanNhan.Enabled=true;
         }
        
         private void cbbTaiKhoanNhan_SelectedIndexChanged(object sender, EventArgs e)
@@ -71,7 +91,7 @@ namespace BankManagement
         private void btnXacNhan_Click(object sender, EventArgs e)
         {
             string magiaodich = txtMaGiaoDich.Text.Trim();
-            string taikhoannhan = cbbTaiKhoanNhan.Text.Trim();
+            string taikhoannhan = cbbTaiKhoanNhan.Text;
             string taikhoangui = txtTaiKhoanGui.Text.Trim();
             string tennguoinhan = txtChuTaiKhoanNhan.Text.Trim();
             int soTien = int.TryParse(txtSoTien.Text, out int sotien) ? sotien : 0;
@@ -85,9 +105,13 @@ namespace BankManagement
                 MessageBox.Show("Vui lòng điền đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if(soTien > db.GetSoDuByTSoTaiKhoan(int.Parse(taikhoangui)))
+            {
+                MessageBox.Show("Không đủ số dư!");
+                txtSoTien.Text = " ";
+                return;
+            }
 
-
-            // Thêm thông tin giao dịch vào bảng
             string sqlInsert = "INSERT INTO GiaoDich (MaGiaoDich, ThoiGian, SoTaiKhoan, TaiKhoanNhan, SoTien) " +
                                "VALUES (@MaGiaoDich, @ThoiGian, @SoTaiKhoan, @TaiKhoanNhan, @SoTien)";
 
@@ -95,7 +119,7 @@ namespace BankManagement
     new SqlParameter("@MaGiaoDich", magiaodich),
     new SqlParameter("@ThoiGian", timeGiaoDich),
     new SqlParameter("@SoTaiKhoan", taikhoangui),
-    new SqlParameter("@TaiKhoanNhan", taikhoangui),
+    new SqlParameter("@TaiKhoanNhan", taikhoannhan),
     new SqlParameter("@SoTien", soTien)
 
 };
@@ -103,7 +127,6 @@ namespace BankManagement
             try
             {
                 db.CapNhatDuLieu(sqlInsert, parameters);
-                dgvGiaoDich.DataSource = db.DocBang("SELECT * FROM GiaoDich");
 
                 // Tính số tiền cho bảng tài khoản
                 string updateQueryGui = "UPDATE KhachHang SET SoDu = SoDu - @SoTien WHERE SoTaiKhoan = @SoTaiKhoan";
@@ -131,6 +154,12 @@ namespace BankManagement
             {
                 MessageBox.Show("Lỗi: " + ex.Message);
             }
+            dgvGiaoDich.Refresh();
+            System.Data.DataTable dbGiaoDich = db.DocBang($"select MaGiaoDich, ThoiGian, SoTaiKhoan as 'TaiKhoanGui', TaiKhoanNhan, SoTien from GiaoDich where SoTaiKhoan like '%{taikhoangui}%' or TaiKhoanNhan like '%{taikhoangui}%' ");
+            dgvGiaoDich.DataSource = dbGiaoDich;
+            btnGiaoDichMoi.Enabled = true;
+            ResetValue();
+            btnXacNhan.Enabled=false;
         }
     }
 }

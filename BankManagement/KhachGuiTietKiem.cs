@@ -361,10 +361,11 @@ namespace BankManagement
                 }
 
                 // Thực hiện cập nhật vào cơ sở dữ liệu
-                string sqlUpdateTietKiem = "UPDATE TietKiem SET SoTien = SoTien - @SoTien WHERE MaTietKiem = @MaTietKiem";
+                string sqlUpdateTietKiem = "UPDATE TietKiem SET SoTien = SoTien - @SoTien, SoTienDuKienNhan=SoTienDuKienNhan-@SoTienSauLai WHERE MaTietKiem = @MaTietKiem";
                 SqlParameter[] parameters = {
             new SqlParameter("@MaTietKiem", maTietKiem),
-            new SqlParameter("@SoTien", soTienRut)
+            new SqlParameter("@SoTien", soTienRut),
+            new SqlParameter("@SoTienSauLai", IOManager.TinhSoTienSauLai(soTienRut,decimal.Parse(txtLaiSuat.Text),int.Parse(txtKiHan.Text)))
         };
                 db.CapNhatDuLieu(sqlUpdateTietKiem, parameters);
 
@@ -372,7 +373,7 @@ namespace BankManagement
                                           "VALUES (@MaTietKiem, @HoatDong, @SoTien, @ThoiGian)";
                 SqlParameter[] parametersChiTiet = {
             new SqlParameter("@MaTietKiem", maTietKiem),
-            new SqlParameter("@HoatDong", "Rút tiền tiết kiệm"),
+            new SqlParameter("@HoatDong", "Rut tien tiet kiem"),
             new SqlParameter("@SoTien", soTienRut),
             new SqlParameter("@ThoiGian", DateTime.Now)
         };

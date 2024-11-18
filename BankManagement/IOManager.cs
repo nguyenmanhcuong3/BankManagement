@@ -119,5 +119,22 @@ namespace BankManagement
 
             return transactionCode.ToString();
         }
+        public static int TinhSoTienSauLai(decimal sotien, decimal laisuat, int kyhan)
+        {
+            if (sotien > 0 && laisuat > 0 && kyhan > 0)
+            {
+                
+                laisuat /= 100;
+
+                
+                decimal sotiensenhan = sotien * (1 + laisuat * kyhan / 12);
+
+                
+                return (int)Math.Round(sotiensenhan, MidpointRounding.AwayFromZero);
+            }
+
+            
+            return 0;
+        }
     }
 }

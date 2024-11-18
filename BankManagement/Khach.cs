@@ -75,7 +75,19 @@ namespace BankManagement
 
         private void btnVayVon_Click(object sender, EventArgs e)
         {
-            
+            KhachVayVon formKhachHang = new KhachVayVon(TaiKhoan);
+
+            formKhachHang.TopLevel = false;
+            formKhachHang.FormBorderStyle = FormBorderStyle.None;
+            formKhachHang.Dock = DockStyle.Fill;
+
+
+            pictureBoxKhach.Controls.Clear();
+
+
+            pictureBoxKhach.Controls.Add(formKhachHang);
+
+            formKhachHang.Show();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)

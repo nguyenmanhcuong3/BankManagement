@@ -30,6 +30,7 @@
         {
             this.VayVon = new System.Windows.Forms.TabControl();
             this.tabpageVayVon = new System.Windows.Forms.TabPage();
+            this.btnLamMoi = new System.Windows.Forms.Button();
             this.txtHoatDongVay = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.txtTienPhaiTra = new System.Windows.Forms.TextBox();
@@ -56,17 +57,14 @@
             this.txtHoatDongTra = new System.Windows.Forms.TextBox();
             this.txtLaiSuat = new System.Windows.Forms.TextBox();
             this.txtKiHan = new System.Windows.Forms.TextBox();
-            this.btnKhoanTraMoi = new System.Windows.Forms.Button();
             this.btnXacNhanTra = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txtSoTienTra = new System.Windows.Forms.TextBox();
             this.dateTra = new System.Windows.Forms.DateTimePicker();
-            this.txtSoTienPhaiTra = new System.Windows.Forms.TextBox();
             this.txtHocTenTra = new System.Windows.Forms.TextBox();
             this.txtTaiKhoanTra = new System.Windows.Forms.TextBox();
             this.txtMaKhoanVayTra = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -74,6 +72,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.VayVon.SuspendLayout();
             this.tabpageVayVon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVay)).BeginInit();
@@ -94,6 +93,7 @@
             // 
             // tabpageVayVon
             // 
+            this.tabpageVayVon.Controls.Add(this.btnLamMoi);
             this.tabpageVayVon.Controls.Add(this.txtHoatDongVay);
             this.tabpageVayVon.Controls.Add(this.label18);
             this.tabpageVayVon.Controls.Add(this.txtTienPhaiTra);
@@ -122,6 +122,16 @@
             this.tabpageVayVon.TabIndex = 0;
             this.tabpageVayVon.Text = "Vay vốn";
             this.tabpageVayVon.UseVisualStyleBackColor = true;
+            // 
+            // btnLamMoi
+            // 
+            this.btnLamMoi.Location = new System.Drawing.Point(37, 214);
+            this.btnLamMoi.Name = "btnLamMoi";
+            this.btnLamMoi.Size = new System.Drawing.Size(110, 23);
+            this.btnLamMoi.TabIndex = 31;
+            this.btnLamMoi.Text = "Làm mới";
+            this.btnLamMoi.UseVisualStyleBackColor = true;
+            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
             // 
             // txtHoatDongVay
             // 
@@ -167,21 +177,23 @@
             // 
             // btnXacNhanVay
             // 
-            this.btnXacNhanVay.Location = new System.Drawing.Point(379, 214);
+            this.btnXacNhanVay.Location = new System.Drawing.Point(422, 214);
             this.btnXacNhanVay.Name = "btnXacNhanVay";
-            this.btnXacNhanVay.Size = new System.Drawing.Size(111, 23);
+            this.btnXacNhanVay.Size = new System.Drawing.Size(153, 23);
             this.btnXacNhanVay.TabIndex = 24;
             this.btnXacNhanVay.Text = "Xác nhận vay";
             this.btnXacNhanVay.UseVisualStyleBackColor = true;
+            this.btnXacNhanVay.Click += new System.EventHandler(this.btnXacNhanVay_Click);
             // 
             // btnKhoanVayMoi
             // 
-            this.btnKhoanVayMoi.Location = new System.Drawing.Point(173, 214);
+            this.btnKhoanVayMoi.Location = new System.Drawing.Point(195, 214);
             this.btnKhoanVayMoi.Name = "btnKhoanVayMoi";
-            this.btnKhoanVayMoi.Size = new System.Drawing.Size(100, 23);
+            this.btnKhoanVayMoi.Size = new System.Drawing.Size(145, 23);
             this.btnKhoanVayMoi.TabIndex = 23;
             this.btnKhoanVayMoi.Text = "Khoản vay mới";
             this.btnKhoanVayMoi.UseVisualStyleBackColor = true;
+            this.btnKhoanVayMoi.Click += new System.EventHandler(this.btnKhoanVayMoi_Click);
             // 
             // cbbKiHan
             // 
@@ -190,6 +202,7 @@
             this.cbbKiHan.Name = "cbbKiHan";
             this.cbbKiHan.Size = new System.Drawing.Size(159, 24);
             this.cbbKiHan.TabIndex = 22;
+            this.cbbKiHan.SelectedIndexChanged += new System.EventHandler(this.cbbKiHan_SelectedIndexChanged);
             // 
             // cbbLaiSuat
             // 
@@ -214,6 +227,7 @@
             this.txtTienVay.Name = "txtTienVay";
             this.txtTienVay.Size = new System.Drawing.Size(159, 22);
             this.txtTienVay.TabIndex = 10;
+            this.txtTienVay.TextChanged += new System.EventHandler(this.txtTienVay_TextChanged);
             // 
             // txtHoTen
             // 
@@ -306,17 +320,14 @@
             this.tabpageTraNo.Controls.Add(this.txtHoatDongTra);
             this.tabpageTraNo.Controls.Add(this.txtLaiSuat);
             this.tabpageTraNo.Controls.Add(this.txtKiHan);
-            this.tabpageTraNo.Controls.Add(this.btnKhoanTraMoi);
             this.tabpageTraNo.Controls.Add(this.btnXacNhanTra);
             this.tabpageTraNo.Controls.Add(this.dataGridView1);
             this.tabpageTraNo.Controls.Add(this.txtSoTienTra);
             this.tabpageTraNo.Controls.Add(this.dateTra);
-            this.tabpageTraNo.Controls.Add(this.txtSoTienPhaiTra);
             this.tabpageTraNo.Controls.Add(this.txtHocTenTra);
             this.tabpageTraNo.Controls.Add(this.txtTaiKhoanTra);
             this.tabpageTraNo.Controls.Add(this.txtMaKhoanVayTra);
             this.tabpageTraNo.Controls.Add(this.label16);
-            this.tabpageTraNo.Controls.Add(this.label15);
             this.tabpageTraNo.Controls.Add(this.label14);
             this.tabpageTraNo.Controls.Add(this.label13);
             this.tabpageTraNo.Controls.Add(this.label12);
@@ -361,23 +372,15 @@
             this.txtKiHan.Size = new System.Drawing.Size(157, 22);
             this.txtKiHan.TabIndex = 28;
             // 
-            // btnKhoanTraMoi
-            // 
-            this.btnKhoanTraMoi.Location = new System.Drawing.Point(147, 218);
-            this.btnKhoanTraMoi.Name = "btnKhoanTraMoi";
-            this.btnKhoanTraMoi.Size = new System.Drawing.Size(108, 23);
-            this.btnKhoanTraMoi.TabIndex = 27;
-            this.btnKhoanTraMoi.Text = "Khoản trả mới";
-            this.btnKhoanTraMoi.UseVisualStyleBackColor = true;
-            // 
             // btnXacNhanTra
             // 
-            this.btnXacNhanTra.Location = new System.Drawing.Point(400, 218);
+            this.btnXacNhanTra.Location = new System.Drawing.Point(319, 226);
             this.btnXacNhanTra.Name = "btnXacNhanTra";
             this.btnXacNhanTra.Size = new System.Drawing.Size(111, 23);
             this.btnXacNhanTra.TabIndex = 26;
             this.btnXacNhanTra.Text = "Xác nhận trả";
             this.btnXacNhanTra.UseVisualStyleBackColor = true;
+            this.btnXacNhanTra.Click += new System.EventHandler(this.btnXacNhanTra_Click);
             // 
             // dataGridView1
             // 
@@ -388,10 +391,11 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(697, 137);
             this.dataGridView1.TabIndex = 25;
+            this.dataGridView1.Click += new System.EventHandler(this.dataGridView1_Click);
             // 
             // txtSoTienTra
             // 
-            this.txtSoTienTra.Location = new System.Drawing.Point(468, 170);
+            this.txtSoTienTra.Location = new System.Drawing.Point(468, 122);
             this.txtSoTienTra.Name = "txtSoTienTra";
             this.txtSoTienTra.Size = new System.Drawing.Size(157, 22);
             this.txtSoTienTra.TabIndex = 24;
@@ -404,13 +408,6 @@
             this.dateTra.Name = "dateTra";
             this.dateTra.Size = new System.Drawing.Size(171, 22);
             this.dateTra.TabIndex = 21;
-            // 
-            // txtSoTienPhaiTra
-            // 
-            this.txtSoTienPhaiTra.Location = new System.Drawing.Point(468, 125);
-            this.txtSoTienPhaiTra.Name = "txtSoTienPhaiTra";
-            this.txtSoTienPhaiTra.Size = new System.Drawing.Size(157, 22);
-            this.txtSoTienPhaiTra.TabIndex = 11;
             // 
             // txtHocTenTra
             // 
@@ -436,20 +433,11 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(364, 176);
+            this.label16.Location = new System.Drawing.Point(364, 125);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(66, 16);
             this.label16.TabIndex = 7;
             this.label16.Text = "Số tiền trả";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(361, 125);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(95, 16);
-            this.label15.TabIndex = 6;
-            this.label15.Text = "Số tiền phải trả";
             // 
             // label14
             // 
@@ -561,12 +549,10 @@
         private System.Windows.Forms.DateTimePicker dateVay;
         private System.Windows.Forms.TextBox txtTienPhaiTra;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtSoTienPhaiTra;
         private System.Windows.Forms.TextBox txtHocTenTra;
         private System.Windows.Forms.TextBox txtTaiKhoanTra;
         private System.Windows.Forms.TextBox txtMaKhoanVayTra;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
@@ -576,7 +562,6 @@
         private System.Windows.Forms.TextBox txtSoTienTra;
         private System.Windows.Forms.DateTimePicker dateTra;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button btnKhoanTraMoi;
         private System.Windows.Forms.Button btnXacNhanTra;
         private System.Windows.Forms.TextBox txtLaiSuat;
         private System.Windows.Forms.TextBox txtKiHan;
@@ -584,5 +569,7 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox txtHoatDongTra;
+        private System.Windows.Forms.Button btnLamMoi;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
