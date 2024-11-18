@@ -9,32 +9,39 @@ namespace BankManagement
 {
     internal class DataTransaction : IOManager
     {
-        public List<string> GetMaKhachHangList()
+        public List<string> GetSoTaiKhoanList(int sotaikhoan)
         {
-            List<string> maKhachHangList = new List<string>();
+            List<string> soTaiKhoanList = new List<string>();
 
-            string query = "SELECT MaKhachHang FROM KhachHang";
-            SqlConnection conn = new SqlConnection(strConnect);
+            string query = "SELECT SoTaiKhoan FROM KhachHang WHERE SoTaiKhoan != @SoTaiKhoan";
+
+            using (SqlConnection conn = new SqlConnection(strConnect))
             {
                 SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@SoTaiKhoan", sotaikhoan); // Thêm tham số vào câu truy vấn
+
                 conn.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    maKhachHangList.Add(reader["MaKhachHang"].ToString());
+                    while (reader.Read())
+                    {
+                        soTaiKhoanList.Add(reader["SoTaiKhoan"].ToString());
+                    }
                 }
             }
 
-            return maKhachHangList;
+            return soTaiKhoanList;
         }
-        public string GetTenKhachHangByMa(string maKhachHang)
+
+        public string GetTenKhachHangByTSoTaiKhoan(string soTaiKhoan)
         {
             string tenKhachHang = string.Empty;
             using (SqlConnection connection = new SqlConnection(strConnect))
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand("SELECT TenKhachHang FROM KhachHang WHERE MaKhachHang = @maKhachHang", connection);
-                command.Parameters.AddWithValue("@maKhachHang", maKhachHang);
+                SqlCommand command = new SqlCommand("SELECT TenKhachHang FROM KhachHang WHERE SoTaiKhoan = @SoTaiKhoan", connection);
+                command.Parameters.AddWithValue("@SoTaiKhoan", soTaiKhoan);
 
                 object result = command.ExecuteScalar();
                 if (result != null)
@@ -44,40 +51,32 @@ namespace BankManagement
             }
             return tenKhachHang;
         }
-        public bool CheckNhanVienByTen(string tenNhanVien)
-        {
-            string query = "SELECT COUNT(*) FROM NhanVien WHERE TenNhanVien = @tenNhanVien AND ChucVu = 'Nhan Vien'";
-            SqlParameter[] parameters = { new SqlParameter("@tenNhanVien", tenNhanVien) };
+        
 
-            KetNoiCSDL();
-            using (SqlCommand cmd = new SqlCommand(query, sqlConnect))
-            {
-                cmd.Parameters.AddRange(parameters);
-                int count = (int)cmd.ExecuteScalar();
-                return count > 0;
-            }
-        }
-        public string GetMaNhanVienByTen(string tenNhanVien)
+
+        public  int GetSoTaiKhoanByTaiKhoan(string taikhoan)
         {
-            string maNhanVien = string.Empty;
-            string query = "SELECT MaNhanVien FROM NhanVien WHERE TenNhanVien = @TenNhanVien";
+            int sotaikhoan = 0; 
+            string query = "select SoTaiKhoan from KhachHang where TaiKhoan = @taikhoan";
 
             using (SqlConnection connection = new SqlConnection(strConnect))
             {
                 connection.Open();
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
-                    cmd.Parameters.AddWithValue("@TenNhanVien", tenNhanVien);
+                    cmd.Parameters.AddWithValue("@taikhoan", taikhoan);
 
-                    object result = cmd.ExecuteScalar();
-                    if (result != null)
+                    object result = cmd.ExecuteScalar(); 
+                    if (result != null && int.TryParse(result.ToString(), out int parsedValue))
                     {
-                        maNhanVien = result.ToString();
+                        sotaikhoan = parsedValue; 
                     }
                 }
             }
-            return maNhanVien;
+
+            return sotaikhoan;
         }
+
         public string GetTenNhanVienByMa(string maNhanVien)
         {
             string ten = string.Empty;
@@ -98,6 +97,36 @@ namespace BankManagement
                 }
             }
             return ten;
+        }
+        public int GetSoDuByTSoTaiKhoan(int soTaiKhoan)
+        {
+            int soDu = 0;
+
+            using (SqlConnection connection = new SqlConnection(strConnect))
+            {
+
+                connection.Open();
+
+
+                string query = "SELECT SoDu FROM KhachHang WHERE SoTaiKhoan = @SoTaiKhoan";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+
+                    command.Parameters.AddWithValue("@SoTaiKhoan", soTaiKhoan);
+
+
+                    object result = command.ExecuteScalar();
+
+
+                    if (result != null && int.TryParse(result.ToString(), out soDu))
+                    {
+                        return soDu;
+                    }
+                }
+
+            }
+
+            return soDu;
         }
     }
 }

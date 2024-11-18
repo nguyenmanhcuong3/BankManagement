@@ -11,7 +11,7 @@ namespace BankManagement
     internal class ProcessDatabase
     {
 
-        public string strConnect = "Data Source=MSI\\SQLEXPRESS;Initial Catalog=QLBank;Integrated Security=True";
+        public string strConnect = "Data Source=MSI\\SQLEXPRESS;Initial Catalog=QLBank_end;Integrated Security=True";
         protected SqlConnection sqlConnect = null;
 
        
@@ -150,6 +150,33 @@ namespace BankManagement
             }
 
             return TenNhanVienList;
+        }
+        public object ThucThiGiaTriDon(string query, SqlParameter[] parameters = null)
+        {
+            object ketQua = null;
+            KetNoiCSDL();
+
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand(query, sqlConnect))
+                {
+                    if (parameters != null)
+                    {
+                        cmd.Parameters.AddRange(parameters);
+                    }
+                    ketQua = cmd.ExecuteScalar();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi xảy ra: " + ex.Message);
+            }
+            finally
+            {
+                DongKetNoiCSDL();
+            }
+
+            return ketQua;
         }
     }
 }

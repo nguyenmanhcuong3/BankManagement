@@ -98,14 +98,45 @@ namespace BankManagement
                 }
             }
         }
-        public  bool IsValidCCCD(string soCCCD)
+        public static  bool IsValidCCCD(string soCCCD)
         {
             return Regex.IsMatch(soCCCD, @"^\d{12}$");
         }
-        public  bool IsValidPhone(string phone)
+
+        public static int TinhSoTienSauLai(decimal sotien, decimal laisuat, int kyhan)
+        {
+            if (sotien > 0 && laisuat > 0 && kyhan > 0)
+            {
+
+                laisuat /= 100;
+
+
+                decimal sotiensenhan = sotien * (1 + laisuat * kyhan / 12);
+
+
+                return (int)Math.Round(sotiensenhan, MidpointRounding.AwayFromZero);
+            }
+
+
+            return 0;
+        }
+
+        public static bool IsValidPhone(string phone)
         {
             return Regex.IsMatch(phone, @"^0\d{9}$");
         }
-        
+        public static string GetMaGiaoDich(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            StringBuilder transactionCode = new StringBuilder();
+            Random random = new Random();
+
+            for (int i = 0; i < length; i++)
+            {
+                transactionCode.Append(chars[random.Next(chars.Length)]);
+            }
+
+            return transactionCode.ToString();
+        }
     }
 }
