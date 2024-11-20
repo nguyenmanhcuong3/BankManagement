@@ -102,7 +102,107 @@ namespace BankManagement
 
         private void btnDuyetKhoanVay_Click(object sender, EventArgs e)
         {
+            
 
+        }
+
+        private void btnDuyetKhoanVay_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (string.IsNullOrWhiteSpace(txtKiHan.Text) || string.IsNullOrWhiteSpace(txtSoTien.Text))
+                {
+                    MessageBox.Show("Vui lòng nhập đầy đủ thông tin!");
+                    return;
+                }
+
+                if (txtTrangThai.Text == "Da duyet")
+                {
+                    MessageBox.Show("Khoản vay này đã được duyệt!");
+                    return;
+                }
+
+                if (!decimal.TryParse(txtSoTien.Text, out decimal soTienVay) || soTienVay <= 0)
+                {
+                    MessageBox.Show("Số tiền vay phải là số dương hợp lệ!");
+                    return;
+                }
+
+
+                if (!int.TryParse(txtKiHan.Text, out int kyhan) || kyhan <= 0)
+                {
+                    MessageBox.Show("Kỳ hạn phải là số nguyên hợp lệ!");
+                    return;
+                }
+
+
+                string laiSuatStr = txtLaiSuat.Text.TrimEnd('%');
+                if (!decimal.TryParse(laiSuatStr, out decimal laisuat) || laisuat <= 0)
+                {
+                    return;
+                }
+
+
+                if (!int.TryParse(txtSoTienDuKien.Text, out int soTienPhaiTra) || soTienPhaiTra <= 0)
+                {
+                    return;
+                }
+                string hoatdong = "Vay tien";
+                string trangthai = "Da duyet";
+
+                string maKhoanVay = txtMaKhoanVay.Text.Trim();
+
+                if (!int.TryParse(txtTaiKhoan.Text, out int soTaiKhoan) || soTaiKhoan <= 0)
+                {
+                    return;
+                }
+
+                DateTime thoiGian = DateTime.Now;
+
+
+                string sqlInsert = "update KhoanVay set TrangThai=@TrangThai where MaKhoanVay=@MaKhoanVay";
+
+
+                SqlParameter[] parameterskhoanvay = {
+        new SqlParameter("@MaKhoanVay", maKhoanVay),
+        new SqlParameter("@TrangThai", trangthai)
+    };
+
+
+                db.CapNhatDuLieu(sqlInsert, parameterskhoanvay);
+                string sqlInsertChiTiet = "INSERT INTO ChiTietKhoanVay (MaKhoanVay, HoatDong, SoTien, ThoiGianGiaoDich) " +
+                                   "VALUES (@MaKhoanVay, @HoatDong, @SoTien, @ThoiGian)";
+
+
+                SqlParameter[] parametersChiTiet = {
+        new SqlParameter("@MaKhoanVay", maKhoanVay),
+        new SqlParameter("@HoatDong",hoatdong ),
+        new SqlParameter("@SoTien", soTienVay),
+        new SqlParameter("@ThoiGian", thoiGian)
+    };
+                db.CapNhatDuLieu(sqlInsertChiTiet, parametersChiTiet);
+
+                string updateQueryGui = "UPDATE KhachHang SET SoDu = SoDu + @SoTien WHERE SoTaiKhoan = @SoTaiKhoan";
+
+                if (!string.IsNullOrEmpty(updateQueryGui))
+                {
+                    SqlParameter[] updateParameters = {
+            new SqlParameter("@SoTien", soTienVay),
+            new SqlParameter("@SoTaiKhoan",soTaiKhoan )
+        };
+                    db.CapNhatDuLieu(updateQueryGui, updateParameters);
+                }
+
+                MessageBox.Show("Đã duyệt khoản vay " + maKhoanVay);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            System.Data.DataTable dbKhoanVay = db.DocBang("select * from KhoanVay");
+            dgvKhoanVay.DataSource = dbKhoanVay;
+            dbKhoanVay.Dispose();
         }
     }
 }

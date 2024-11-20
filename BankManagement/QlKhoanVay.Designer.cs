@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnDuyetKhoanVay = new System.Windows.Forms.Button();
+            this.txtTrangThai = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnXuatExcel = new System.Windows.Forms.Button();
             this.btnTim = new System.Windows.Forms.Button();
             this.txtTim = new System.Windows.Forms.TextBox();
@@ -49,9 +52,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtTrangThai = new System.Windows.Forms.TextBox();
-            this.btnDuyetKhoanVay = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKhoanVay)).BeginInit();
             this.SuspendLayout();
@@ -88,6 +88,32 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(944, 526);
             this.panel2.TabIndex = 4;
+            // 
+            // btnDuyetKhoanVay
+            // 
+            this.btnDuyetKhoanVay.Location = new System.Drawing.Point(459, 220);
+            this.btnDuyetKhoanVay.Name = "btnDuyetKhoanVay";
+            this.btnDuyetKhoanVay.Size = new System.Drawing.Size(134, 34);
+            this.btnDuyetKhoanVay.TabIndex = 43;
+            this.btnDuyetKhoanVay.Text = "Duyệt khoản vay";
+            this.btnDuyetKhoanVay.UseVisualStyleBackColor = true;
+            this.btnDuyetKhoanVay.Click += new System.EventHandler(this.btnDuyetKhoanVay_Click_1);
+            // 
+            // txtTrangThai
+            // 
+            this.txtTrangThai.Location = new System.Drawing.Point(562, 186);
+            this.txtTrangThai.Name = "txtTrangThai";
+            this.txtTrangThai.Size = new System.Drawing.Size(171, 22);
+            this.txtTrangThai.TabIndex = 42;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(429, 189);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(67, 16);
+            this.label1.TabIndex = 41;
+            this.label1.Text = "Trạng thái";
             // 
             // btnXuatExcel
             // 
@@ -269,31 +295,6 @@
             this.label2.Size = new System.Drawing.Size(94, 16);
             this.label2.TabIndex = 0;
             this.label2.Text = "Mã  khoản vay";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(429, 189);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 16);
-            this.label1.TabIndex = 41;
-            this.label1.Text = "Trạng thái";
-            // 
-            // txtTrangThai
-            // 
-            this.txtTrangThai.Location = new System.Drawing.Point(562, 186);
-            this.txtTrangThai.Name = "txtTrangThai";
-            this.txtTrangThai.Size = new System.Drawing.Size(171, 22);
-            this.txtTrangThai.TabIndex = 42;
-            // 
-            // btnDuyetKhoanVay
-            // 
-            this.btnDuyetKhoanVay.Location = new System.Drawing.Point(459, 220);
-            this.btnDuyetKhoanVay.Name = "btnDuyetKhoanVay";
-            this.btnDuyetKhoanVay.Size = new System.Drawing.Size(134, 34);
-            this.btnDuyetKhoanVay.TabIndex = 43;
-            this.btnDuyetKhoanVay.Text = "Duyệt khoản vay";
-            this.btnDuyetKhoanVay.UseVisualStyleBackColor = true;
             // 
             // QlKhoanVay
             // 
