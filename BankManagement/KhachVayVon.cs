@@ -276,10 +276,10 @@ namespace BankManagement
                 }
 
                 DateTime thoiGian = DateTime.Now;
+                string trangthai = "Cho duyet";
 
-
-                string sqlInsert = "INSERT INTO KhoanVay (MaKhoanVay, SoTaiKhoan, SoTien, ThoiGian, KyHan, LaiSuat, SoTienPhaiTra) " +
-                                   "VALUES (@MaKhoanVay, @SoTaiKhoan, @SoTien, @ThoiGian, @KyHan, @LaiSuat, @SotienPhaiTra)";
+                string sqlInsert = "INSERT INTO KhoanVay (MaKhoanVay, SoTaiKhoan, SoTien, ThoiGian, KyHan, LaiSuat, SoTienPhaiTra,TrangThai) " +
+                                   "VALUES (@MaKhoanVay, @SoTaiKhoan, @SoTien, @ThoiGian, @KyHan, @LaiSuat, @SotienPhaiTra,@TrangThai)";
 
 
                 SqlParameter[] parameterskhoanvay = {
@@ -289,35 +289,15 @@ namespace BankManagement
         new SqlParameter("@ThoiGian", thoiGian),
         new SqlParameter("@KyHan", kyhan),
         new SqlParameter("@LaiSuat", laisuat),
-        new SqlParameter("@SoTienPhaiTra", soTienPhaiTra)
+        new SqlParameter("@SoTienPhaiTra", soTienPhaiTra),
+        new SqlParameter("@TrangThai", trangthai)
     };
 
 
                 db.CapNhatDuLieu(sqlInsert, parameterskhoanvay);
-                string sqlInsertChiTiet = "INSERT INTO ChiTietKhoanVay (MaKhoanVay, HoatDong, SoTien, ThoiGianGiaoDich) " +
-                                   "VALUES (@MaKhoanVay, @HoatDong, @SoTien, @ThoiGian)";
 
 
-                SqlParameter[] parametersChiTiet = {
-        new SqlParameter("@MaKhoanVay", maKhoanVay),
-        new SqlParameter("@HoatDong",hoatdong ),
-        new SqlParameter("@SoTien", soTienVay),
-        new SqlParameter("@ThoiGian", thoiGian)
-    };
-                db.CapNhatDuLieu(sqlInsertChiTiet, parametersChiTiet);
-
-                string updateQueryGui = "UPDATE KhachHang SET SoDu = SoDu + @SoTien WHERE SoTaiKhoan = @SoTaiKhoan";
-
-                if (!string.IsNullOrEmpty(updateQueryGui))
-                {
-                    SqlParameter[] updateParameters = {
-            new SqlParameter("@SoTien", soTienVay),
-            new SqlParameter("@SoTaiKhoan",soTaiKhoan )
-        };
-                    db.CapNhatDuLieu(updateQueryGui, updateParameters);
-                }
-
-                MessageBox.Show("Vay thành công!");
+                MessageBox.Show("Đã gửi khoản vay");
             }
             catch (Exception ex)
             {
@@ -368,7 +348,7 @@ namespace BankManagement
                 }
                 if (soTienTra > db.GetSoDuByTSoTaiKhoan(soTaiKhoan))
                 {
-                    MessageBox.Show("Khoong đủ tiền trả khoản vay này !");
+                    MessageBox.Show("Không đủ tiền trả khoản vay này !");
                     return;
                 }
                 // Thực hiện cập nhật số tiền trong tài khoản tiết kiệm

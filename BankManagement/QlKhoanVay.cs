@@ -24,6 +24,15 @@ namespace BankManagement
             System.Data.DataTable dbKhoanVay = db.DocBang("select * from KhoanVay");
             dgvKhoanVay.DataSource = dbKhoanVay;
             dbKhoanVay.Dispose();
+            txtMaKhoanVay.Enabled = false;
+            txtHoTen.Enabled = false;   
+            txtKiHan.Enabled = false;
+            txtLaiSuat.Enabled = false; 
+            txtSoTien.Enabled = false;
+            txtSoTienDuKien.Enabled = false;
+            txtTaiKhoan.Enabled = false;
+            txtTrangThai.Enabled = false;
+            dateNgayGiaoDich.Enabled = false;
         }
 
         private void btnTim_Click(object sender, EventArgs e)
@@ -78,7 +87,7 @@ namespace BankManagement
                     txtLaiSuat.Text = dgvKhoanVay.CurrentRow.Cells["LaiSuat"].Value.ToString();
                     txtSoTienDuKien.Text = dgvKhoanVay.CurrentRow.Cells["SoTienPhaiTra"].Value.ToString();
                     txtHoTen.Text = db.GetTenKhachHangByTSoTaiKhoan(txtTaiKhoan.Text);
-
+                    txtTrangThai.Text = dgvKhoanVay.CurrentRow.Cells["TrangThai"].Value.ToString();
 
                 }
 
@@ -89,6 +98,11 @@ namespace BankManagement
         {
             string sql = "SELECT * FROM KhoanVay";
             db.ExportDataToExcel(sql);
+        }
+
+        private void btnDuyetKhoanVay_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
