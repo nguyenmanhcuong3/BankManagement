@@ -81,7 +81,21 @@ namespace BankManagement
                     MessageBox.Show("Số CCCD phải có đúng 12 chữ số!");
                     return;
                 }
-
+                string querycheck = "SELECT COUNT(*) as Count FROM DangNhap WHERE TaiKhoan = @TaiKhoan";
+                SqlParameter[] parameterscheck = {
+                new SqlParameter("@TaiKhoan", taiKhoan)
+                    };
+                DataTable check = db.DocBang(querycheck, parameterscheck);
+                int count = 0;
+                if (check.Rows.Count > 0)
+                {
+                    count = Convert.ToInt32(check.Rows[0]["Count"]);
+                }
+                if (count > 0)
+                {
+                    MessageBox.Show("Tài khoản "+taiKhoan+" đã được sử dụng vui lòng chọn tài khoản đăng nhập khác!");
+                    return;
+                }
                 // Kiểm tra điều kiện số điện thoại (10 chữ số và bắt đầu bằng số 0)
                 if (!System.Text.RegularExpressions.Regex.IsMatch(soDienThoai, @"^0\d{9}$"))
                 {
@@ -95,6 +109,7 @@ namespace BankManagement
                     MessageBox.Show("Email phải có định dạng hợp lệ và có đuôi @gmail.com!");
                     return;
                 }
+
                 // Xử lý ảnh
                 if (!string.IsNullOrEmpty(imageFilePath))
                 {
@@ -111,7 +126,11 @@ namespace BankManagement
                     File.Copy(imageFilePath, saveImagePath, true);
                     duongDanAnh = imageFileName;
                 }
-
+                if(duongDanAnh == null)
+                {
+                    MessageBox.Show("Vui lòng tải ảnh lên !");
+                    return;
+                }
                 int soDu = 0;
                 // Câu lệnh SQL
                 string role = "User";
@@ -149,6 +168,7 @@ namespace BankManagement
             catch (Exception ex)
             {
                 MessageBox.Show("Có lỗi xảy ra: " + ex.Message);
+                return;
             }
             DangNhap_DangKi login= new DangNhap_DangKi();
             login.Show();
@@ -215,6 +235,11 @@ namespace BankManagement
             DangNhap_DangKi login = new DangNhap_DangKi();
             login.Show();
             this.Hide();
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
