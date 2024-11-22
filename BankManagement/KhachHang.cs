@@ -20,7 +20,9 @@ namespace BankManagement
         public QLKhachHang()
         {
             InitializeComponent();
-            this.txtTimKH.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTimKH_KeyDown);
+            this.txtTim.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTimKH_KeyDown);
+            txtTim.Text = "Nhập số tài khoản hoặc tên";
+            txtTim.ForeColor = System.Drawing.Color.Gray;
         }
 
         private void QLKhachHang_Load(object sender, EventArgs e)
@@ -38,7 +40,26 @@ namespace BankManagement
             txtEmail.Enabled = false;
             txttenKhachHang.Enabled = false;
             btnTaiAnhKH.Enabled = false;
+            btnCapNhatKH.Enabled = false;
+            dateNgaySinh.Enabled = false;
 
+        }
+        private void txtTim_Enter(object sender, EventArgs e)
+        {
+            if (txtTim.Text.Equals("Nhập số tài khoản hoặc tên"))
+            {
+                txtTim.Text = "";
+                txtTim.ForeColor = System.Drawing.Color.Black;
+            }
+        }
+
+        private void txtTim_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtTim.Text))
+            {
+                txtTim.Text = "Nhập số tài khoản hoặc tên";
+                txtTim.ForeColor = System.Drawing.Color.Gray;
+            }
         }
         private void txtTimKH_KeyDown(object sender, KeyEventArgs e)
         {
@@ -49,7 +70,7 @@ namespace BankManagement
         }
         private void btnTim_Click(object sender, EventArgs e)
         {
-            string searchValue = txtTimKH.Text.Trim();
+            string searchValue = txtTim.Text.Trim();
 
             if (string.IsNullOrEmpty(searchValue))
             {
@@ -150,6 +171,7 @@ namespace BankManagement
             txtEmail.Enabled = true;
             txttenKhachHang.Enabled = true;
             btnTaiAnhKH.Enabled = true;
+            btnCapNhatKH.Enabled = true;
         }
 
         private void btnXoaKH_Click(object sender, EventArgs e)
@@ -160,15 +182,12 @@ namespace BankManagement
                     System.Windows.Forms.DialogResult.Yes)
             {
                 
-                db.CapNhatDuLieu("delete KhachHang where TaiKhoan='" +
+                db.CapNhatDuLieu("delete KhachHang where TaiKhoan like N'" +
                txtTaiKhoan.Text + "'", null);
-                db.CapNhatDuLieu("delete DangNhap where TaiKhoan='" +
+                db.CapNhatDuLieu("delete DangNhap where TaiKhoan like N'" +
                txtTaiKhoan.Text + "'", null);
-
                 dgvKhachHang.DataSource = db.DocBang("Select * from KhachHang");
                 MessageBox.Show("Xóa khách hàng thành công !");
-
-                
             }
         }
 
@@ -200,9 +219,16 @@ namespace BankManagement
             string SoDu = txtSoDu.Text.Trim();
             string taiKhoan = txtTaiKhoan.Text.Trim();
             string duongDanAnh = null;
-
+            
             try
             {
+                if (string.IsNullOrEmpty(hoTen) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(soCCCD) ||
+    string.IsNullOrEmpty(soDienThoai) || string.IsNullOrEmpty(diaChi) || string.IsNullOrEmpty(ngheNghiep) ||
+    string.IsNullOrEmpty(taiKhoan))
+                {
+                    MessageBox.Show("Vui lòng điền đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 // Kiểm tra ảnh đại diện mới
                 if (!string.IsNullOrEmpty(imageFilePath))
                 {
@@ -223,6 +249,95 @@ namespace BankManagement
                     duongDanAnh = dgvKhachHang.CurrentRow.Cells["Anh"].Value?.ToString();
                 }
 
+                //ktraemail
+                string querycheckemail = @"
+                SELECT COUNT(*) as Count 
+                FROM KhachHang 
+                WHERE Email = @Email AND SoTaiKhoan <> @STK";
+
+                SqlParameter[] parameterscheckemail = {
+                  new SqlParameter("@Email", email),
+                  new SqlParameter("@STK", SoTaiKhoan)
+                };
+
+                System.Data.DataTable checkemail = db.DocBang(querycheckemail, parameterscheckemail);
+                int countemail = 0;
+                if (checkemail.Rows.Count > 0)
+                {
+                    countemail = Convert.ToInt32(checkemail.Rows[0]["Count"]);
+                }
+
+                if (countemail > 0)
+                {
+                    MessageBox.Show("Email này đã được sử dụng bởi khách hàng khác!");
+                    return;
+                }
+
+                //ktrasdt
+                string querychecksdt = @"
+                SELECT COUNT(*) as Count 
+                FROM KhachHang 
+                WHERE SoDienThoai = @Email AND SoTaiKhoan <> @STK";
+
+                SqlParameter[] parameterschecksdt = {
+                  new SqlParameter("@Email", soDienThoai),
+                  new SqlParameter("@STK", SoTaiKhoan)
+                };
+
+                System.Data.DataTable checksdt = db.DocBang(querychecksdt, parameterschecksdt);
+                int countsdt = 0;
+                if (checksdt.Rows.Count > 0)
+                {
+                    countsdt = Convert.ToInt32(checksdt.Rows[0]["Count"]);
+                }
+
+                if (countsdt > 0)
+                {
+                    MessageBox.Show("Số điện thoại này đã được sử dụng bởi khách hàng khác!");
+                    return;
+                }
+
+                //ktracccd
+                string querycheckcccd = @"
+                SELECT COUNT(*) as Count 
+                FROM KhachHang 
+                WHERE SoCCCD = @Email AND SoTaiKhoan <> @STK";
+
+                SqlParameter[] parameterscheckcccd = {
+                  new SqlParameter("@Email", soCCCD),
+                  new SqlParameter("@STK", SoTaiKhoan)
+                };
+
+                System.Data.DataTable checkcccd = db.DocBang(querycheckcccd, parameterscheckcccd);
+                int countcccd = 0;
+                if (checkcccd.Rows.Count > 0)
+                {
+                    countcccd = Convert.ToInt32(checkcccd.Rows[0]["Count"]);
+                }
+
+                if (countcccd > 0)
+                {
+                    MessageBox.Show("Số căn cước công dân này đã tồn tại!");
+                    return;
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(soCCCD, @"^\d{12}$"))
+                {
+                    MessageBox.Show("Số CCCD phải có đúng 12 chữ số!");
+                    return;
+                }
+                // Kiểm tra điều kiện số điện thoại (10 chữ số và bắt đầu bằng số 0)
+                if (!System.Text.RegularExpressions.Regex.IsMatch(soDienThoai, @"^0\d{9}$"))
+                {
+                    MessageBox.Show("Số điện thoại phải có 10 chữ số và bắt đầu bằng số 0!");
+                    return;
+                }
+
+                // Kiểm tra định dạng email
+                if (!System.Text.RegularExpressions.Regex.IsMatch(email, @"^[\w\.-]+@gmail\.com$"))
+                {
+                    MessageBox.Show("Email phải có định dạng hợp lệ và có đuôi @gmail.com!");
+                    return;
+                }
                 // Cập nhật thông tin khách hàng
                 string queryUpdate = "UPDATE KhachHang SET TenKhachHang = @TenKhachHang, SoCCCD = @SoCCCD, SoDienThoai = @SoDienThoai, SoDu = @SoDu, " +
                                      "GioiTinh = @GioiTinh, NgaySinh = @NgaySinh, Email = @Email, DiaChi = @DiaChi, NgheNghiep = @NgheNghiep, " +

@@ -58,18 +58,17 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1257, 160);
+            this.panel1.Size = new System.Drawing.Size(838, 104);
             this.panel1.TabIndex = 1;
             // 
             // plDiChuyen
             // 
             this.plDiChuyen.Dock = System.Windows.Forms.DockStyle.Top;
             this.plDiChuyen.Location = new System.Drawing.Point(0, 0);
-            this.plDiChuyen.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.plDiChuyen.Name = "plDiChuyen";
-            this.plDiChuyen.Size = new System.Drawing.Size(1257, 49);
+            this.plDiChuyen.Size = new System.Drawing.Size(838, 32);
             this.plDiChuyen.TabIndex = 34;
             this.plDiChuyen.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plDiChuyen_MouseDown);
             this.plDiChuyen.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plDiChuyen_MouseMove);
@@ -78,10 +77,10 @@
             // pcExit
             // 
             this.pcExit.Image = ((System.Drawing.Image)(resources.GetObject("pcExit.Image")));
-            this.pcExit.Location = new System.Drawing.Point(1212, 0);
-            this.pcExit.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.pcExit.Location = new System.Drawing.Point(808, 0);
+            this.pcExit.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pcExit.Name = "pcExit";
-            this.pcExit.Size = new System.Drawing.Size(45, 49);
+            this.pcExit.Size = new System.Drawing.Size(30, 32);
             this.pcExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pcExit.TabIndex = 27;
             this.pcExit.TabStop = false;
@@ -93,8 +92,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Ravie", 26.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(362, 49);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(241, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(466, 48);
             this.label1.TabIndex = 1;
@@ -106,9 +104,8 @@
             this.pictureBox1.BackColor = System.Drawing.SystemColors.HighlightText;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(189, 160);
+            this.pictureBox1.Size = new System.Drawing.Size(126, 104);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -123,20 +120,20 @@
             this.panel2.Controls.Add(this.btnGiaoDich);
             this.panel2.Controls.Add(this.btnTietKiem);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 160);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.panel2.Location = new System.Drawing.Point(0, 104);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(189, 663);
+            this.panel2.Size = new System.Drawing.Size(126, 431);
             this.panel2.TabIndex = 2;
             // 
             // btnVayVon
             // 
             this.btnVayVon.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnVayVon.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnVayVon.Location = new System.Drawing.Point(10, 300);
-            this.btnVayVon.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnVayVon.Location = new System.Drawing.Point(7, 195);
+            this.btnVayVon.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnVayVon.Name = "btnVayVon";
-            this.btnVayVon.Size = new System.Drawing.Size(172, 62);
+            this.btnVayVon.Size = new System.Drawing.Size(115, 40);
             this.btnVayVon.TabIndex = 10;
             this.btnVayVon.Text = "Vay vốn";
             this.btnVayVon.UseVisualStyleBackColor = false;
@@ -146,10 +143,10 @@
             // 
             this.btnLogin.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnLogin.Location = new System.Drawing.Point(14, 386);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnLogin.Location = new System.Drawing.Point(9, 251);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(172, 54);
+            this.btnLogin.Size = new System.Drawing.Size(115, 35);
             this.btnLogin.TabIndex = 8;
             this.btnLogin.Text = "Đăng xuất";
             this.btnLogin.UseVisualStyleBackColor = false;
@@ -159,10 +156,10 @@
             // 
             this.button1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.button1.Location = new System.Drawing.Point(10, 468);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.button1.Location = new System.Drawing.Point(7, 304);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(172, 54);
+            this.button1.Size = new System.Drawing.Size(115, 35);
             this.button1.TabIndex = 9;
             this.button1.Text = "Thoát";
             this.button1.UseVisualStyleBackColor = false;
@@ -172,10 +169,10 @@
             // 
             this.btnThongTin.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnThongTin.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnThongTin.Location = new System.Drawing.Point(10, 35);
-            this.btnThongTin.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnThongTin.Location = new System.Drawing.Point(7, 23);
+            this.btnThongTin.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnThongTin.Name = "btnThongTin";
-            this.btnThongTin.Size = new System.Drawing.Size(172, 62);
+            this.btnThongTin.Size = new System.Drawing.Size(115, 40);
             this.btnThongTin.TabIndex = 7;
             this.btnThongTin.Text = "Thông tin";
             this.btnThongTin.UseVisualStyleBackColor = false;
@@ -185,10 +182,10 @@
             // 
             this.btnGiaoDich.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnGiaoDich.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnGiaoDich.Location = new System.Drawing.Point(10, 123);
-            this.btnGiaoDich.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnGiaoDich.Location = new System.Drawing.Point(7, 80);
+            this.btnGiaoDich.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnGiaoDich.Name = "btnGiaoDich";
-            this.btnGiaoDich.Size = new System.Drawing.Size(172, 62);
+            this.btnGiaoDich.Size = new System.Drawing.Size(115, 40);
             this.btnGiaoDich.TabIndex = 4;
             this.btnGiaoDich.Text = "Giao dịch";
             this.btnGiaoDich.UseVisualStyleBackColor = false;
@@ -198,10 +195,10 @@
             // 
             this.btnTietKiem.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnTietKiem.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnTietKiem.Location = new System.Drawing.Point(10, 214);
-            this.btnTietKiem.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnTietKiem.Location = new System.Drawing.Point(7, 139);
+            this.btnTietKiem.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnTietKiem.Name = "btnTietKiem";
-            this.btnTietKiem.Size = new System.Drawing.Size(172, 62);
+            this.btnTietKiem.Size = new System.Drawing.Size(115, 40);
             this.btnTietKiem.TabIndex = 3;
             this.btnTietKiem.Text = "Tiết kiệm";
             this.btnTietKiem.UseVisualStyleBackColor = false;
@@ -209,27 +206,30 @@
             // 
             // pictureBoxKhach
             // 
-            this.pictureBoxKhach.Location = new System.Drawing.Point(189, 160);
+            this.pictureBoxKhach.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxKhach.Image")));
+            this.pictureBoxKhach.Location = new System.Drawing.Point(126, 104);
+            this.pictureBoxKhach.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBoxKhach.Name = "pictureBoxKhach";
-            this.pictureBoxKhach.Size = new System.Drawing.Size(1068, 663);
+            this.pictureBoxKhach.Size = new System.Drawing.Size(712, 431);
+            this.pictureBoxKhach.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxKhach.TabIndex = 3;
             this.pictureBoxKhach.TabStop = false;
             // 
             // Khach
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1257, 823);
+            this.ClientSize = new System.Drawing.Size(838, 535);
             this.ControlBox = false;
             this.Controls.Add(this.pictureBoxKhach);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "Khach";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Khach";
             this.Load += new System.EventHandler(this.Khach_Load);
             this.panel1.ResumeLayout(false);

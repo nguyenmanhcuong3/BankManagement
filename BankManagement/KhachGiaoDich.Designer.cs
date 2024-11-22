@@ -72,7 +72,7 @@
             this.panel2.Controls.Add(this.label2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(708, 427);
             this.panel2.TabIndex = 2;
@@ -81,7 +81,7 @@
             // 
             this.cbbTaiKhoanNhan.FormattingEnabled = true;
             this.cbbTaiKhoanNhan.Location = new System.Drawing.Point(365, 58);
-            this.cbbTaiKhoanNhan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbbTaiKhoanNhan.Margin = new System.Windows.Forms.Padding(2);
             this.cbbTaiKhoanNhan.Name = "cbbTaiKhoanNhan";
             this.cbbTaiKhoanNhan.Size = new System.Drawing.Size(129, 21);
             this.cbbTaiKhoanNhan.TabIndex = 31;
@@ -90,7 +90,7 @@
             // txtChuTaiKhoanNhan
             // 
             this.txtChuTaiKhoanNhan.Location = new System.Drawing.Point(365, 104);
-            this.txtChuTaiKhoanNhan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtChuTaiKhoanNhan.Margin = new System.Windows.Forms.Padding(2);
             this.txtChuTaiKhoanNhan.Name = "txtChuTaiKhoanNhan";
             this.txtChuTaiKhoanNhan.Size = new System.Drawing.Size(129, 20);
             this.txtChuTaiKhoanNhan.TabIndex = 30;
@@ -108,7 +108,7 @@
             // txtTaiKhoanGui
             // 
             this.txtTaiKhoanGui.Location = new System.Drawing.Point(96, 63);
-            this.txtTaiKhoanGui.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTaiKhoanGui.Margin = new System.Windows.Forms.Padding(2);
             this.txtTaiKhoanGui.Name = "txtTaiKhoanGui";
             this.txtTaiKhoanGui.Size = new System.Drawing.Size(132, 20);
             this.txtTaiKhoanGui.TabIndex = 27;
@@ -136,7 +136,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 200);
+            this.label1.Location = new System.Drawing.Point(73, 208);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 13);
@@ -146,19 +146,19 @@
             // dgvGiaoDich
             // 
             this.dgvGiaoDich.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvGiaoDich.Location = new System.Drawing.Point(-2, 223);
-            this.dgvGiaoDich.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvGiaoDich.Location = new System.Drawing.Point(76, 223);
+            this.dgvGiaoDich.Margin = new System.Windows.Forms.Padding(2);
             this.dgvGiaoDich.Name = "dgvGiaoDich";
             this.dgvGiaoDich.RowHeadersWidth = 51;
             this.dgvGiaoDich.RowTemplate.Height = 24;
-            this.dgvGiaoDich.Size = new System.Drawing.Size(708, 202);
+            this.dgvGiaoDich.Size = new System.Drawing.Size(547, 202);
             this.dgvGiaoDich.TabIndex = 2;
             // 
             // dateNgayGiaoDich
             // 
             this.dateNgayGiaoDich.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateNgayGiaoDich.Location = new System.Drawing.Point(365, 22);
-            this.dateNgayGiaoDich.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateNgayGiaoDich.Margin = new System.Windows.Forms.Padding(2);
             this.dateNgayGiaoDich.Name = "dateNgayGiaoDich";
             this.dateNgayGiaoDich.Size = new System.Drawing.Size(129, 20);
             this.dateNgayGiaoDich.TabIndex = 19;
@@ -167,7 +167,7 @@
             // 
             this.btnXuatExcel.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.btnXuatExcel.Location = new System.Drawing.Point(365, 160);
-            this.btnXuatExcel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnXuatExcel.Margin = new System.Windows.Forms.Padding(2);
             this.btnXuatExcel.Name = "btnXuatExcel";
             this.btnXuatExcel.Size = new System.Drawing.Size(69, 23);
             this.btnXuatExcel.TabIndex = 16;
@@ -179,7 +179,7 @@
             // 
             this.btnXacNhan.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.btnXacNhan.Location = new System.Drawing.Point(232, 160);
-            this.btnXacNhan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnXacNhan.Margin = new System.Windows.Forms.Padding(2);
             this.btnXacNhan.Name = "btnXacNhan";
             this.btnXacNhan.Size = new System.Drawing.Size(69, 23);
             this.btnXacNhan.TabIndex = 15;
@@ -191,9 +191,9 @@
             // 
             this.btnGiaoDichMoi.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.btnGiaoDichMoi.Location = new System.Drawing.Point(96, 160);
-            this.btnGiaoDichMoi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnGiaoDichMoi.Margin = new System.Windows.Forms.Padding(2);
             this.btnGiaoDichMoi.Name = "btnGiaoDichMoi";
-            this.btnGiaoDichMoi.Size = new System.Drawing.Size(82, 23);
+            this.btnGiaoDichMoi.Size = new System.Drawing.Size(95, 23);
             this.btnGiaoDichMoi.TabIndex = 13;
             this.btnGiaoDichMoi.Text = "Giao dịch mới";
             this.btnGiaoDichMoi.UseVisualStyleBackColor = true;
@@ -202,7 +202,7 @@
             // txtSoTien
             // 
             this.txtSoTien.Location = new System.Drawing.Point(96, 106);
-            this.txtSoTien.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSoTien.Margin = new System.Windows.Forms.Padding(2);
             this.txtSoTien.Name = "txtSoTien";
             this.txtSoTien.Size = new System.Drawing.Size(132, 20);
             this.txtSoTien.TabIndex = 10;
@@ -210,7 +210,7 @@
             // txtMaGiaoDich
             // 
             this.txtMaGiaoDich.Location = new System.Drawing.Point(96, 22);
-            this.txtMaGiaoDich.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtMaGiaoDich.Margin = new System.Windows.Forms.Padding(2);
             this.txtMaGiaoDich.Name = "txtMaGiaoDich";
             this.txtMaGiaoDich.Size = new System.Drawing.Size(132, 20);
             this.txtMaGiaoDich.TabIndex = 7;
@@ -251,7 +251,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(708, 427);
             this.Controls.Add(this.panel2);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "KhachGiaoDich";
             this.Text = "KhachGiaoDich";
             this.Load += new System.EventHandler(this.KhachGiaoDich_Load);

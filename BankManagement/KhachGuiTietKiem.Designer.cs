@@ -30,6 +30,7 @@
         {
             this.TietKiem = new System.Windows.Forms.TabControl();
             this.tabpageGuiTien = new System.Windows.Forms.TabPage();
+            this.btnLamMoiGui = new System.Windows.Forms.Button();
             this.txtHoatDongGuiTien = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.txtTienNhanSauLai = new System.Windows.Forms.TextBox();
@@ -70,7 +71,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.btnLamMoiGui = new System.Windows.Forms.Button();
             this.TietKiem.SuspendLayout();
             this.tabpageGuiTien.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGui)).BeginInit();
@@ -121,6 +121,17 @@
             this.tabpageGuiTien.TabIndex = 0;
             this.tabpageGuiTien.Text = "Gửi tiền";
             this.tabpageGuiTien.UseVisualStyleBackColor = true;
+            // 
+            // btnLamMoiGui
+            // 
+            this.btnLamMoiGui.Location = new System.Drawing.Point(93, 174);
+            this.btnLamMoiGui.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLamMoiGui.Name = "btnLamMoiGui";
+            this.btnLamMoiGui.Size = new System.Drawing.Size(83, 29);
+            this.btnLamMoiGui.TabIndex = 31;
+            this.btnLamMoiGui.Text = "Làm Mới";
+            this.btnLamMoiGui.UseVisualStyleBackColor = true;
+            this.btnLamMoiGui.Click += new System.EventHandler(this.btnLamMoiGui_Click);
             // 
             // txtHoatDongGuiTien
             // 
@@ -174,7 +185,7 @@
             this.btnXacNhanGui.Location = new System.Drawing.Point(378, 174);
             this.btnXacNhanGui.Margin = new System.Windows.Forms.Padding(2);
             this.btnXacNhanGui.Name = "btnXacNhanGui";
-            this.btnXacNhanGui.Size = new System.Drawing.Size(83, 19);
+            this.btnXacNhanGui.Size = new System.Drawing.Size(83, 29);
             this.btnXacNhanGui.TabIndex = 24;
             this.btnXacNhanGui.Text = "Xác nhận gửi";
             this.btnXacNhanGui.UseVisualStyleBackColor = true;
@@ -185,7 +196,7 @@
             this.btnKhoanGuiMoi.Location = new System.Drawing.Point(211, 174);
             this.btnKhoanGuiMoi.Margin = new System.Windows.Forms.Padding(2);
             this.btnKhoanGuiMoi.Name = "btnKhoanGuiMoi";
-            this.btnKhoanGuiMoi.Size = new System.Drawing.Size(102, 19);
+            this.btnKhoanGuiMoi.Size = new System.Drawing.Size(102, 29);
             this.btnKhoanGuiMoi.TabIndex = 23;
             this.btnKhoanGuiMoi.Text = "Khoản gửi mới";
             this.btnKhoanGuiMoi.UseVisualStyleBackColor = true;
@@ -390,7 +401,7 @@
             this.btnXacNhanRut.Location = new System.Drawing.Point(225, 181);
             this.btnXacNhanRut.Margin = new System.Windows.Forms.Padding(2);
             this.btnXacNhanRut.Name = "btnXacNhanRut";
-            this.btnXacNhanRut.Size = new System.Drawing.Size(83, 19);
+            this.btnXacNhanRut.Size = new System.Drawing.Size(83, 25);
             this.btnXacNhanRut.TabIndex = 26;
             this.btnXacNhanRut.Text = "Xác nhận rút";
             this.btnXacNhanRut.UseVisualStyleBackColor = true;
@@ -518,17 +529,6 @@
             this.label9.Size = new System.Drawing.Size(64, 13);
             this.label9.TabIndex = 0;
             this.label9.Text = "Mã tiết kiệm";
-            // 
-            // btnLamMoiGui
-            // 
-            this.btnLamMoiGui.Location = new System.Drawing.Point(93, 174);
-            this.btnLamMoiGui.Margin = new System.Windows.Forms.Padding(2);
-            this.btnLamMoiGui.Name = "btnLamMoiGui";
-            this.btnLamMoiGui.Size = new System.Drawing.Size(83, 19);
-            this.btnLamMoiGui.TabIndex = 31;
-            this.btnLamMoiGui.Text = "Làm Mới";
-            this.btnLamMoiGui.UseVisualStyleBackColor = true;
-            this.btnLamMoiGui.Click += new System.EventHandler(this.btnLamMoiGui_Click);
             // 
             // KhachGuiTietKiem
             // 

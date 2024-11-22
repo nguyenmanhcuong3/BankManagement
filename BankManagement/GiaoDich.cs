@@ -18,7 +18,8 @@ namespace BankManagement
         public GiaoDich()
         {
             InitializeComponent();
-
+            txtTim.Text = "Nhập số tài khoản";
+            txtTim.ForeColor = System.Drawing.Color.Gray;
 
         }
 
@@ -30,7 +31,23 @@ namespace BankManagement
             dbGiaoDich.Dispose();
         }
 
+        private void txtTim_Enter(object sender, EventArgs e)
+        {
+            if (txtTim.Text.Equals("Nhập số tài khoản"))
+            {
+                txtTim.Text = "";
+                txtTim.ForeColor = System.Drawing.Color.Black;
+            }
+        }
 
+        private void txtTim_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtTim.Text))
+            {
+                txtTim.Text = "Nhập số tài khoản";
+                txtTim.ForeColor = System.Drawing.Color.Gray;
+            }
+        }
         private void dgvGiaoDich_Click(object sender, EventArgs e)
         {
             if (dgvGiaoDich.CurrentRow != null)

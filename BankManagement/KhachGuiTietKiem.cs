@@ -44,6 +44,7 @@ namespace BankManagement
             cbbLaiSuat.Enabled = false;
             txtTienGui.Enabled = false;
             txtTienNhanSauLai.Enabled = false;
+            btnXacNhanGui.Enabled = false;                  
 
             // Rút tiền
             txtMaKhoanVayTra.Text = string.Empty;
@@ -101,6 +102,8 @@ namespace BankManagement
             cbbLaiSuat.Enabled = true;
             txtTienGui.Enabled = true;
             txtTienNhanSauLai.Enabled = false;
+            btnXacNhanGui.Enabled = true;
+            btnKhoanGuiMoi.Enabled = false; 
 
             if (decimal.TryParse(txtTienGui.Text, out decimal P) && cbbLaiSuat.SelectedItem != null && int.TryParse(cbbKiHan.SelectedItem.ToString(), out int n))
             {

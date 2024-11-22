@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnXuatExcel = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.btnTim = new System.Windows.Forms.Button();
             this.txtTim = new System.Windows.Forms.TextBox();
@@ -49,7 +50,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnXuatExcel = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTietKiem)).BeginInit();
             this.SuspendLayout();
@@ -80,10 +80,22 @@
             this.panel2.Controls.Add(this.label2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(708, 427);
             this.panel2.TabIndex = 3;
+            // 
+            // btnXuatExcel
+            // 
+            this.btnXuatExcel.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.btnXuatExcel.Location = new System.Drawing.Point(233, 191);
+            this.btnXuatExcel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnXuatExcel.Name = "btnXuatExcel";
+            this.btnXuatExcel.Size = new System.Drawing.Size(92, 28);
+            this.btnXuatExcel.TabIndex = 41;
+            this.btnXuatExcel.Text = "Xuất ra file excel";
+            this.btnXuatExcel.UseVisualStyleBackColor = true;
+            this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
             // 
             // label10
             // 
@@ -97,7 +109,7 @@
             // btnTim
             // 
             this.btnTim.Location = new System.Drawing.Point(290, 11);
-            this.btnTim.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTim.Margin = new System.Windows.Forms.Padding(2);
             this.btnTim.Name = "btnTim";
             this.btnTim.Size = new System.Drawing.Size(56, 19);
             this.btnTim.TabIndex = 39;
@@ -107,16 +119,18 @@
             // 
             // txtTim
             // 
-            this.txtTim.Location = new System.Drawing.Point(97, 11);
-            this.txtTim.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTim.Location = new System.Drawing.Point(60, 11);
+            this.txtTim.Margin = new System.Windows.Forms.Padding(2);
             this.txtTim.Name = "txtTim";
-            this.txtTim.Size = new System.Drawing.Size(148, 20);
+            this.txtTim.Size = new System.Drawing.Size(207, 20);
             this.txtTim.TabIndex = 38;
+            this.txtTim.Enter += new System.EventHandler(this.txtTim_Enter);
+            this.txtTim.Leave += new System.EventHandler(this.txtTim_Leave);
             // 
             // txtSoTienDuKien
             // 
             this.txtSoTienDuKien.Location = new System.Drawing.Point(365, 144);
-            this.txtSoTienDuKien.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSoTienDuKien.Margin = new System.Windows.Forms.Padding(2);
             this.txtSoTienDuKien.Name = "txtSoTienDuKien";
             this.txtSoTienDuKien.Size = new System.Drawing.Size(129, 20);
             this.txtSoTienDuKien.TabIndex = 36;
@@ -124,7 +138,7 @@
             // txtLaiSuat
             // 
             this.txtLaiSuat.Location = new System.Drawing.Point(365, 117);
-            this.txtLaiSuat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLaiSuat.Margin = new System.Windows.Forms.Padding(2);
             this.txtLaiSuat.Name = "txtLaiSuat";
             this.txtLaiSuat.Size = new System.Drawing.Size(129, 20);
             this.txtLaiSuat.TabIndex = 35;
@@ -132,7 +146,7 @@
             // txtKiHan
             // 
             this.txtKiHan.Location = new System.Drawing.Point(365, 83);
-            this.txtKiHan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtKiHan.Margin = new System.Windows.Forms.Padding(2);
             this.txtKiHan.Name = "txtKiHan";
             this.txtKiHan.Size = new System.Drawing.Size(129, 20);
             this.txtKiHan.TabIndex = 34;
@@ -140,7 +154,7 @@
             // txtHoTen
             // 
             this.txtHoTen.Location = new System.Drawing.Point(96, 117);
-            this.txtHoTen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtHoTen.Margin = new System.Windows.Forms.Padding(2);
             this.txtHoTen.Name = "txtHoTen";
             this.txtHoTen.Size = new System.Drawing.Size(132, 20);
             this.txtHoTen.TabIndex = 33;
@@ -188,7 +202,7 @@
             // txtTaiKhoan
             // 
             this.txtTaiKhoan.Location = new System.Drawing.Point(96, 83);
-            this.txtTaiKhoan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTaiKhoan.Margin = new System.Windows.Forms.Padding(2);
             this.txtTaiKhoan.Name = "txtTaiKhoan";
             this.txtTaiKhoan.Size = new System.Drawing.Size(132, 20);
             this.txtTaiKhoan.TabIndex = 27;
@@ -207,7 +221,7 @@
             // 
             this.dgvTietKiem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTietKiem.Location = new System.Drawing.Point(-2, 253);
-            this.dgvTietKiem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvTietKiem.Margin = new System.Windows.Forms.Padding(2);
             this.dgvTietKiem.Name = "dgvTietKiem";
             this.dgvTietKiem.RowHeadersWidth = 51;
             this.dgvTietKiem.RowTemplate.Height = 24;
@@ -219,7 +233,7 @@
             // 
             this.dateNgayGiaoDich.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateNgayGiaoDich.Location = new System.Drawing.Point(365, 49);
-            this.dateNgayGiaoDich.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateNgayGiaoDich.Margin = new System.Windows.Forms.Padding(2);
             this.dateNgayGiaoDich.Name = "dateNgayGiaoDich";
             this.dateNgayGiaoDich.Size = new System.Drawing.Size(129, 20);
             this.dateNgayGiaoDich.TabIndex = 19;
@@ -227,7 +241,7 @@
             // txtSoTien
             // 
             this.txtSoTien.Location = new System.Drawing.Point(96, 146);
-            this.txtSoTien.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSoTien.Margin = new System.Windows.Forms.Padding(2);
             this.txtSoTien.Name = "txtSoTien";
             this.txtSoTien.Size = new System.Drawing.Size(132, 20);
             this.txtSoTien.TabIndex = 10;
@@ -235,7 +249,7 @@
             // txtMaTietKiem
             // 
             this.txtMaTietKiem.Location = new System.Drawing.Point(96, 51);
-            this.txtMaTietKiem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtMaTietKiem.Margin = new System.Windows.Forms.Padding(2);
             this.txtMaTietKiem.Name = "txtMaTietKiem";
             this.txtMaTietKiem.Size = new System.Drawing.Size(132, 20);
             this.txtMaTietKiem.TabIndex = 7;
@@ -270,25 +284,13 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Mã  tiết kiệm";
             // 
-            // btnXuatExcel
-            // 
-            this.btnXuatExcel.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnXuatExcel.Location = new System.Drawing.Point(233, 191);
-            this.btnXuatExcel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnXuatExcel.Name = "btnXuatExcel";
-            this.btnXuatExcel.Size = new System.Drawing.Size(92, 28);
-            this.btnXuatExcel.TabIndex = 41;
-            this.btnXuatExcel.Text = "Xuất ra file excel";
-            this.btnXuatExcel.UseVisualStyleBackColor = true;
-            this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
-            // 
             // QLTietKiem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(708, 427);
             this.Controls.Add(this.panel2);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "QLTietKiem";
             this.Text = "QLTietKiem";
             this.Load += new System.EventHandler(this.QLTietKiem_Load);

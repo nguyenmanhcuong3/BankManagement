@@ -17,6 +17,8 @@ namespace BankManagement
         public QLTietKiem()
         {
             InitializeComponent();
+            txtTim.Text = "Nhập số tài khoản";
+            txtTim.ForeColor = System.Drawing.Color.Gray;
         }
 
         private void dgvTietKiem_Click(object sender, EventArgs e)
@@ -45,7 +47,23 @@ namespace BankManagement
 
             }
         }
+        private void txtTim_Enter(object sender, EventArgs e)
+        {
+            if (txtTim.Text.Equals("Nhập số tài khoản"))
+            {
+                txtTim.Text = "";
+                txtTim.ForeColor = System.Drawing.Color.Black;
+            }
+        }
 
+        private void txtTim_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtTim.Text))
+            {
+                txtTim.Text = "Nhập số tài khoản";
+                txtTim.ForeColor = System.Drawing.Color.Gray;
+            }
+        }
         private void btnTim_Click(object sender, EventArgs e)
         {
             string searchValue = txtTim.Text.Trim();

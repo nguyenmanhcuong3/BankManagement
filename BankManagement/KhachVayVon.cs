@@ -86,6 +86,7 @@ namespace BankManagement
             cbbLaiSuat.Enabled = false;
             txtTienVay.Enabled = false;
             txtTienPhaiTra.Enabled = false;
+            btnXacNhanVay.Enabled = false;
 
             //Tra no
             txtMaKhoanVayTra.Text = string.Empty;
@@ -143,6 +144,7 @@ namespace BankManagement
             btnLamMoi.Enabled = true;
             btnKhoanVayMoi.Enabled = false;
             btnXacNhanVay.Enabled = true;
+            
         }
 
         private void cbbKiHan_SelectedIndexChanged(object sender, EventArgs e)
@@ -154,22 +156,22 @@ namespace BankManagement
             switch (selectedKiHan)
             {
                 case "1":
-                    cbbLaiSuat.Items.Add("8%");
+                    cbbLaiSuat.Items.Add("10%");
                     break;
                 case "3":
-                    cbbLaiSuat.Items.Add("6%");
+                    cbbLaiSuat.Items.Add("9,5%");
                     break;
                 case "6":
-                    cbbLaiSuat.Items.Add("5,8%");
+                    cbbLaiSuat.Items.Add("9%");
                     break;
                 case "12":
-                    cbbLaiSuat.Items.Add("5,2%");
+                    cbbLaiSuat.Items.Add("8%");
                     break;
                 case "18":
-                    cbbLaiSuat.Items.Add("5%");
+                    cbbLaiSuat.Items.Add("7,5%");
                     break;
                 case "24":
-                    cbbLaiSuat.Items.Add("4,7%");
+                    cbbLaiSuat.Items.Add("7%");
                     break;
                 default:
                     MessageBox.Show("Không có lãi suất cho kỳ hạn này.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -448,6 +450,7 @@ new SqlParameter("@MaKhoanVay",maKhoanVay),
             btnKhoanVayMoi.Enabled = true;
             btnLamMoi.Enabled = false;
             btnXacNhanVay.Enabled = false;
+            
         }
     }
 }

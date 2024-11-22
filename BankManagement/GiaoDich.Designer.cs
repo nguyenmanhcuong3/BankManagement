@@ -152,7 +152,7 @@
             // 
             // btnTim
             // 
-            this.btnTim.Location = new System.Drawing.Point(392, 10);
+            this.btnTim.Location = new System.Drawing.Point(366, 7);
             this.btnTim.Name = "btnTim";
             this.btnTim.Size = new System.Drawing.Size(75, 23);
             this.btnTim.TabIndex = 25;
@@ -166,16 +166,18 @@
             this.txtTim.Name = "txtTim";
             this.txtTim.Size = new System.Drawing.Size(207, 22);
             this.txtTim.TabIndex = 24;
+            this.txtTim.Enter += new System.EventHandler(this.txtTim_Enter);
+            this.txtTim.Leave += new System.EventHandler(this.txtTim_Leave);
             // 
             // dgvGiaoDich
             // 
             this.dgvGiaoDich.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvGiaoDich.Location = new System.Drawing.Point(-2, 266);
+            this.dgvGiaoDich.Location = new System.Drawing.Point(67, 266);
             this.dgvGiaoDich.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dgvGiaoDich.Name = "dgvGiaoDich";
             this.dgvGiaoDich.RowHeadersWidth = 51;
             this.dgvGiaoDich.RowTemplate.Height = 24;
-            this.dgvGiaoDich.Size = new System.Drawing.Size(714, 165);
+            this.dgvGiaoDich.Size = new System.Drawing.Size(575, 165);
             this.dgvGiaoDich.TabIndex = 2;
             this.dgvGiaoDich.Click += new System.EventHandler(this.dgvGiaoDich_Click);
             // 

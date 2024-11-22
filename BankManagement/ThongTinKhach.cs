@@ -113,7 +113,53 @@ namespace BankManagement
                     MessageBox.Show("Số dư phải là số hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                //ktraemail
+                string querycheckemail = @"
+                SELECT COUNT(*) as Count 
+                FROM KhachHang 
+                WHERE Email = @Email AND SoTaiKhoan <> @STK";
 
+                            SqlParameter[] parameterscheckemail = {
+                  new SqlParameter("@Email", email),
+                  new SqlParameter("@STK", soTaiKhoan)
+                };
+
+                DataTable checkemail = db.DocBang(querycheckemail, parameterscheckemail);
+                int countemail = 0;
+                if (checkemail.Rows.Count > 0)
+                {
+                    countemail = Convert.ToInt32(checkemail.Rows[0]["Count"]);
+                }
+
+                if (countemail > 0)
+                {
+                    MessageBox.Show("Email này đã được sử dụng bởi khách hàng khác!");
+                    return;
+                }
+
+                //ktrasdt
+                string querychecksdt = @"
+                SELECT COUNT(*) as Count 
+                FROM KhachHang 
+                WHERE SoDienThoai = @Email AND SoTaiKhoan <> @STK";
+
+                SqlParameter[] parameterschecksdt = {
+                  new SqlParameter("@Email", soDienThoai),
+                  new SqlParameter("@STK", soTaiKhoan)
+                };
+
+                DataTable checksdt = db.DocBang(querychecksdt, parameterschecksdt);
+                int countsdt = 0;
+                if (checksdt.Rows.Count > 0)
+                {
+                    countsdt = Convert.ToInt32(checksdt.Rows[0]["Count"]);
+                }
+
+                if (countsdt > 0)
+                {
+                    MessageBox.Show("Số điện thoại này đã được sử dụng bởi khách hàng khác!");
+                    return;
+                }
                 // Kiểm tra định dạng số điện thoại
                 if (!System.Text.RegularExpressions.Regex.IsMatch(soDienThoai, @"^0\d{9}$"))
                 {

@@ -75,6 +75,18 @@ namespace BankManagement
                     MessageBox.Show("Số tài khoản phải là một số hợp lệ và không được để trống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                // Kiểm tra tuổi khách hàng phải >= 16
+                int tuoi = DateTime.Now.Year - ngaySinh.Year;
+                if (ngaySinh > DateTime.Now.AddYears(-tuoi))
+                {
+                    tuoi--; // Nếu ngày sinh chưa đến ngày hiện tại trong năm thì giảm tuổi xuống
+                }
+
+                if (tuoi < 16)
+                {
+                    MessageBox.Show("Khách hàng chưa đủ 16 tuổi, không thể đăng ký tài khoản!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 // Kiểm tra điều kiện số CCCD (12 chữ số)
                 if (!System.Text.RegularExpressions.Regex.IsMatch(soCCCD, @"^\d{12}$"))
                 {
@@ -85,15 +97,78 @@ namespace BankManagement
                 SqlParameter[] parameterscheck = {
                 new SqlParameter("@TaiKhoan", taiKhoan)
                     };
-                DataTable check = db.DocBang(querycheck, parameterscheck);
+                DataTable checktk = db.DocBang(querycheck, parameterscheck);
                 int count = 0;
-                if (check.Rows.Count > 0)
+                if (checktk.Rows.Count > 0)
                 {
-                    count = Convert.ToInt32(check.Rows[0]["Count"]);
+                    count = Convert.ToInt32(checktk.Rows[0]["Count"]);
                 }
                 if (count > 0)
                 {
                     MessageBox.Show("Tài khoản "+taiKhoan+" đã được sử dụng vui lòng chọn tài khoản đăng nhập khác!");
+                    return;
+                }
+                string querychecktk = "SELECT COUNT(*) as Count FROM KhachHang WHERE SoTaiKhoan = @SoTaiKhoan";
+                SqlParameter[] parameterschecktk = {
+                new SqlParameter("@SoTaiKhoan", soTaiKhoan)
+                    };
+                DataTable checkstk = db.DocBang(querychecktk, parameterschecktk);
+                int counttk = 0;
+                if (checkstk.Rows.Count > 0)
+                {
+                    counttk = Convert.ToInt32(checkstk.Rows[0]["Count"]);
+                }
+                if (counttk > 0)
+                {
+                    MessageBox.Show("Số tài khoản " + soTaiKhoan + " đã tồn tại vui lòng chọn số tài khoản khác!");
+                    return;
+                }
+                //ktraemail
+                string querycheckemail = "SELECT COUNT(*) as Count FROM KhachHang WHERE Email = @Email";
+                SqlParameter[] parameterscheckemail = {
+                new SqlParameter("@Email", email)
+                    };
+                DataTable checkemail = db.DocBang(querycheckemail, parameterscheckemail);
+                int countemail = 0;
+                if (checkemail.Rows.Count > 0)
+                {
+                    countemail = Convert.ToInt32(checkemail.Rows[0]["Count"]);
+                }
+                if (countemail > 0)
+                {
+                    MessageBox.Show("Email này đã được sử dụng!");
+                    return;
+                }
+                //ktrasdt
+                string querychecksdt = "SELECT COUNT(*) as Count FROM KhachHang WHERE SoDienThoai = @SoDienThoai";
+                SqlParameter[] parameterschecksdt = {
+                new SqlParameter("@SoDienThoai", soDienThoai)
+                    };
+                DataTable checksdt = db.DocBang(querychecksdt, parameterschecksdt);
+                int countsdt = 0;
+                if (checksdt.Rows.Count > 0)
+                {
+                    countsdt = Convert.ToInt32(checksdt.Rows[0]["Count"]);
+                }
+                if (countsdt > 0)
+                {
+                    MessageBox.Show("Số điện thoại đã được sử dụng!");
+                    return;
+                }
+                //ktracccd
+                string querycheckcccd = "SELECT COUNT(*) as Count FROM KhachHang WHERE SoCCCD = @SoCCCD";
+                SqlParameter[] parameterscheckcccd = {
+                new SqlParameter("@SoCCCD", soCCCD)
+                    };
+                DataTable checkcccd = db.DocBang(querycheckcccd, parameterscheckcccd);
+                int countcccd = 0;
+                if (checkcccd.Rows.Count > 0)
+                {
+                    countcccd = Convert.ToInt32(checkcccd.Rows[0]["Count"]);
+                }
+                if (countcccd > 0)
+                {
+                    MessageBox.Show("Số CCCD đã được sử dụng!");
                     return;
                 }
                 // Kiểm tra điều kiện số điện thoại (10 chữ số và bắt đầu bằng số 0)
@@ -131,6 +206,7 @@ namespace BankManagement
                     MessageBox.Show("Vui lòng tải ảnh lên !");
                     return;
                 }
+                
                 int soDu = 0;
                 // Câu lệnh SQL
                 string role = "User";

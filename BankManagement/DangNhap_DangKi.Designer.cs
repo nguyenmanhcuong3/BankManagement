@@ -55,9 +55,10 @@
             this.lbdn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbdn.Font = new System.Drawing.Font("Ravie", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbdn.ForeColor = System.Drawing.Color.MediumOrchid;
-            this.lbdn.Location = new System.Drawing.Point(222, 49);
+            this.lbdn.Location = new System.Drawing.Point(148, 32);
+            this.lbdn.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbdn.Name = "lbdn";
-            this.lbdn.Size = new System.Drawing.Size(212, 62);
+            this.lbdn.Size = new System.Drawing.Size(141, 40);
             this.lbdn.TabIndex = 1;
             this.lbdn.Text = "Đăng Nhập";
             this.lbdn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -68,11 +69,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNhapTk.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.txtNhapTk.Location = new System.Drawing.Point(82, 188);
-            this.txtNhapTk.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.txtNhapTk.Location = new System.Drawing.Point(55, 122);
+            this.txtNhapTk.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtNhapTk.Multiline = true;
             this.txtNhapTk.Name = "txtNhapTk";
-            this.txtNhapTk.Size = new System.Drawing.Size(523, 52);
+            this.txtNhapTk.Size = new System.Drawing.Size(350, 35);
             this.txtNhapTk.TabIndex = 23;
             this.txtNhapTk.TabStop = false;
             this.txtNhapTk.Enter += new System.EventHandler(this.txtNhapTk_Enter);
@@ -82,11 +83,11 @@
             // txtNhapMk
             // 
             this.txtNhapMk.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.txtNhapMk.Location = new System.Drawing.Point(82, 263);
-            this.txtNhapMk.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.txtNhapMk.Location = new System.Drawing.Point(55, 171);
+            this.txtNhapMk.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtNhapMk.Multiline = true;
             this.txtNhapMk.Name = "txtNhapMk";
-            this.txtNhapMk.Size = new System.Drawing.Size(523, 49);
+            this.txtNhapMk.Size = new System.Drawing.Size(350, 33);
             this.txtNhapMk.TabIndex = 24;
             this.txtNhapMk.TabStop = false;
             this.txtNhapMk.Enter += new System.EventHandler(this.txtNhapMk_Enter);
@@ -97,10 +98,10 @@
             // 
             this.btnDangNhap.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.btnDangNhap.ForeColor = System.Drawing.Color.MediumOrchid;
-            this.btnDangNhap.Location = new System.Drawing.Point(144, 358);
-            this.btnDangNhap.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnDangNhap.Location = new System.Drawing.Point(96, 233);
+            this.btnDangNhap.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnDangNhap.Name = "btnDangNhap";
-            this.btnDangNhap.Size = new System.Drawing.Size(142, 51);
+            this.btnDangNhap.Size = new System.Drawing.Size(95, 33);
             this.btnDangNhap.TabIndex = 31;
             this.btnDangNhap.Text = "Đăng nhập";
             this.btnDangNhap.UseVisualStyleBackColor = true;
@@ -110,10 +111,10 @@
             // 
             this.btnDangKi.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.btnDangKi.ForeColor = System.Drawing.Color.MediumPurple;
-            this.btnDangKi.Location = new System.Drawing.Point(318, 358);
-            this.btnDangKi.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnDangKi.Location = new System.Drawing.Point(212, 233);
+            this.btnDangKi.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnDangKi.Name = "btnDangKi";
-            this.btnDangKi.Size = new System.Drawing.Size(142, 51);
+            this.btnDangKi.Size = new System.Drawing.Size(95, 33);
             this.btnDangKi.TabIndex = 20;
             this.btnDangKi.Text = "Đăng kí";
             this.btnDangKi.UseVisualStyleBackColor = true;
@@ -122,9 +123,10 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(249, 437);
+            this.linkLabel1.Location = new System.Drawing.Point(166, 284);
+            this.linkLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(118, 20);
+            this.linkLabel1.Size = new System.Drawing.Size(80, 13);
             this.linkLabel1.TabIndex = 34;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Quên mật khẩu";
@@ -134,10 +136,10 @@
             // 
             this.pbNhapMkMo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pbNhapMkMo.Image = ((System.Drawing.Image)(resources.GetObject("pbNhapMkMo.Image")));
-            this.pbNhapMkMo.Location = new System.Drawing.Point(564, 266);
-            this.pbNhapMkMo.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.pbNhapMkMo.Location = new System.Drawing.Point(376, 173);
+            this.pbNhapMkMo.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pbNhapMkMo.Name = "pbNhapMkMo";
-            this.pbNhapMkMo.Size = new System.Drawing.Size(44, 49);
+            this.pbNhapMkMo.Size = new System.Drawing.Size(29, 32);
             this.pbNhapMkMo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbNhapMkMo.TabIndex = 29;
             this.pbNhapMkMo.TabStop = false;
@@ -147,10 +149,10 @@
             // 
             this.pcDongMk.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pcDongMk.Image = ((System.Drawing.Image)(resources.GetObject("pcDongMk.Image")));
-            this.pcDongMk.Location = new System.Drawing.Point(564, 266);
-            this.pcDongMk.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.pcDongMk.Location = new System.Drawing.Point(376, 173);
+            this.pcDongMk.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pcDongMk.Name = "pcDongMk";
-            this.pcDongMk.Size = new System.Drawing.Size(44, 46);
+            this.pcDongMk.Size = new System.Drawing.Size(29, 30);
             this.pcDongMk.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pcDongMk.TabIndex = 27;
             this.pcDongMk.TabStop = false;
@@ -159,10 +161,10 @@
             // pcExit
             // 
             this.pcExit.Image = ((System.Drawing.Image)(resources.GetObject("pcExit.Image")));
-            this.pcExit.Location = new System.Drawing.Point(586, -2);
-            this.pcExit.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.pcExit.Location = new System.Drawing.Point(391, -1);
+            this.pcExit.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pcExit.Name = "pcExit";
-            this.pcExit.Size = new System.Drawing.Size(45, 49);
+            this.pcExit.Size = new System.Drawing.Size(30, 32);
             this.pcExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pcExit.TabIndex = 26;
             this.pcExit.TabStop = false;
@@ -173,10 +175,10 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::BankManagement.Properties.Resources.Icons8_Windows_8_Security_Password_2;
-            this.pictureBox3.Location = new System.Drawing.Point(12, 263);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.pictureBox3.Location = new System.Drawing.Point(8, 171);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(45, 49);
+            this.pictureBox3.Size = new System.Drawing.Size(30, 32);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 12;
             this.pictureBox3.TabStop = false;
@@ -184,10 +186,10 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::BankManagement.Properties.Resources.user_icon_150670;
-            this.pictureBox2.Location = new System.Drawing.Point(12, 191);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.pictureBox2.Location = new System.Drawing.Point(8, 124);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(45, 49);
+            this.pictureBox2.Size = new System.Drawing.Size(30, 32);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 11;
             this.pictureBox2.TabStop = false;
@@ -195,10 +197,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(57, 17);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.pictureBox1.Location = new System.Drawing.Point(38, 11);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(124, 95);
+            this.pictureBox1.Size = new System.Drawing.Size(83, 62);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
@@ -207,9 +209,8 @@
             // 
             this.plDiChuyen.Dock = System.Windows.Forms.DockStyle.Top;
             this.plDiChuyen.Location = new System.Drawing.Point(0, 0);
-            this.plDiChuyen.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.plDiChuyen.Name = "plDiChuyen";
-            this.plDiChuyen.Size = new System.Drawing.Size(628, 48);
+            this.plDiChuyen.Size = new System.Drawing.Size(419, 31);
             this.plDiChuyen.TabIndex = 1;
             this.plDiChuyen.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plDiChuyen_MouseDown);
             this.plDiChuyen.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plDiChuyen_MouseMove);
@@ -217,9 +218,9 @@
             // 
             // DangNhap_DangKi
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(628, 500);
+            this.ClientSize = new System.Drawing.Size(419, 325);
             this.Controls.Add(this.plDiChuyen);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.btnDangNhap);
@@ -235,7 +236,9 @@
             this.Controls.Add(this.lbdn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "DangNhap_DangKi";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DangNhap_DangKi";
             this.Load += new System.EventHandler(this.DangNhap_DangKi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbNhapMkMo)).EndInit();

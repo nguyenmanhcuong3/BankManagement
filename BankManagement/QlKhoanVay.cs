@@ -17,6 +17,8 @@ namespace BankManagement
         public QlKhoanVay()
         {
             InitializeComponent();
+            txtTim.Text = "Nhập số tài khoản";
+            txtTim.ForeColor = System.Drawing.Color.Gray;
         }
 
         private void QlKhoanVay_Load(object sender, EventArgs e)
@@ -57,6 +59,23 @@ namespace BankManagement
             {
                 MessageBox.Show("Không tìm thấy kết quả nào phù hợp!");
                 dgvKhoanVay.DataSource = null;
+            }
+        }
+        private void txtTim_Enter(object sender, EventArgs e)
+        {
+            if (txtTim.Text.Equals("Nhập số tài khoản"))
+            {
+                txtTim.Text = "";
+                txtTim.ForeColor = System.Drawing.Color.Black;
+            }
+        }
+
+        private void txtTim_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtTim.Text))
+            {
+                txtTim.Text = "Nhập số tài khoản";
+                txtTim.ForeColor = System.Drawing.Color.Gray;
             }
         }
 

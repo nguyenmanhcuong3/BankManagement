@@ -34,6 +34,8 @@ namespace BankManagement
         private void DangNhap_DangKi_Load(object sender, EventArgs e)
         {
             plDiChuyen.SendToBack();
+            this.StartPosition = FormStartPosition.CenterScreen;
+
         }
 
         private void btnDangKi_Click(object sender, EventArgs e)
@@ -66,7 +68,7 @@ namespace BankManagement
             }
             else
             {
-                MessageBox.Show("Sai tài khoản hoặc mật khẩu!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Sai tài khoản hoặc mật khẩu! hoặc không để trống", "Lỗi đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtNhapMk.Focus();
             }
         }

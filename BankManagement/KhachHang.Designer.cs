@@ -36,13 +36,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnTim = new System.Windows.Forms.Button();
-            this.txtTimKH = new System.Windows.Forms.TextBox();
+            this.txtTim = new System.Windows.Forms.TextBox();
             this.dgvKhachHang = new System.Windows.Forms.DataGridView();
             this.btnXuatFile = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureKhachHang = new System.Windows.Forms.PictureBox();
             this.btnCapNhatKH = new System.Windows.Forms.Button();
-            this.btnXoaKH = new System.Windows.Forms.Button();
             this.txtNgheNghiep = new System.Windows.Forms.TextBox();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -79,12 +78,11 @@
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.btnTim);
-            this.panel2.Controls.Add(this.txtTimKH);
+            this.panel2.Controls.Add(this.txtTim);
             this.panel2.Controls.Add(this.dgvKhachHang);
             this.panel2.Controls.Add(this.btnXuatFile);
             this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Controls.Add(this.btnCapNhatKH);
-            this.panel2.Controls.Add(this.btnXoaKH);
             this.panel2.Controls.Add(this.txtNgheNghiep);
             this.panel2.Controls.Add(this.txtDiaChi);
             this.panel2.Controls.Add(this.txtEmail);
@@ -169,12 +167,14 @@
             this.btnTim.UseVisualStyleBackColor = true;
             this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
             // 
-            // txtTimKH
+            // txtTim
             // 
-            this.txtTimKH.Location = new System.Drawing.Point(87, 10);
-            this.txtTimKH.Name = "txtTimKH";
-            this.txtTimKH.Size = new System.Drawing.Size(220, 22);
-            this.txtTimKH.TabIndex = 30;
+            this.txtTim.Location = new System.Drawing.Point(87, 10);
+            this.txtTim.Name = "txtTim";
+            this.txtTim.Size = new System.Drawing.Size(220, 22);
+            this.txtTim.TabIndex = 30;
+            this.txtTim.Enter += new System.EventHandler(this.txtTim_Enter);
+            this.txtTim.Leave += new System.EventHandler(this.txtTim_Leave);
             // 
             // dgvKhachHang
             // 
@@ -192,7 +192,7 @@
             // btnXuatFile
             // 
             this.btnXuatFile.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnXuatFile.Location = new System.Drawing.Point(449, 252);
+            this.btnXuatFile.Location = new System.Drawing.Point(429, 252);
             this.btnXuatFile.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnXuatFile.Name = "btnXuatFile";
             this.btnXuatFile.Size = new System.Drawing.Size(92, 28);
@@ -227,7 +227,7 @@
             // btnCapNhatKH
             // 
             this.btnCapNhatKH.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnCapNhatKH.Location = new System.Drawing.Point(300, 252);
+            this.btnCapNhatKH.Location = new System.Drawing.Point(124, 252);
             this.btnCapNhatKH.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnCapNhatKH.Name = "btnCapNhatKH";
             this.btnCapNhatKH.Size = new System.Drawing.Size(92, 28);
@@ -235,18 +235,6 @@
             this.btnCapNhatKH.Text = "Cập nhật";
             this.btnCapNhatKH.UseVisualStyleBackColor = true;
             this.btnCapNhatKH.Click += new System.EventHandler(this.btnCapNhatKH_Click);
-            // 
-            // btnXoaKH
-            // 
-            this.btnXoaKH.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.btnXoaKH.Location = new System.Drawing.Point(158, 252);
-            this.btnXoaKH.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnXoaKH.Name = "btnXoaKH";
-            this.btnXoaKH.Size = new System.Drawing.Size(92, 28);
-            this.btnXoaKH.TabIndex = 25;
-            this.btnXoaKH.Text = "Xóa";
-            this.btnXoaKH.UseVisualStyleBackColor = true;
-            this.btnXoaKH.Click += new System.EventHandler(this.btnXoaKH_Click);
             // 
             // txtNgheNghiep
             // 
@@ -478,10 +466,9 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnXuatFile;
         private System.Windows.Forms.Button btnCapNhatKH;
-        private System.Windows.Forms.Button btnXoaKH;
         public System.Windows.Forms.DataGridView dgvKhachHang;
         private System.Windows.Forms.Button btnTim;
-        private System.Windows.Forms.TextBox txtTimKH;
+        private System.Windows.Forms.TextBox txtTim;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtTaiKhoan;
         private System.Windows.Forms.Label label11;
