@@ -1,0 +1,242 @@
+﻿namespace BankManagement
+{
+    partial class DangNhap_DangKi
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DangNhap_DangKi));
+            this.lbdn = new System.Windows.Forms.Label();
+            this.txtNhapTk = new System.Windows.Forms.TextBox();
+            this.txtNhapMk = new System.Windows.Forms.TextBox();
+            this.btnDangNhap = new System.Windows.Forms.Button();
+            this.btnDangKi = new System.Windows.Forms.Button();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.pbNhapMkMo = new System.Windows.Forms.PictureBox();
+            this.pcDongMk = new System.Windows.Forms.PictureBox();
+            this.pcExit = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbNhapMkMo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcDongMk)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcExit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // lbdn
+            // 
+            this.lbdn.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lbdn.Font = new System.Drawing.Font("Ravie", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbdn.ForeColor = System.Drawing.Color.MediumOrchid;
+            this.lbdn.Location = new System.Drawing.Point(198, 40);
+            this.lbdn.Name = "lbdn";
+            this.lbdn.Size = new System.Drawing.Size(188, 49);
+            this.lbdn.TabIndex = 1;
+            this.lbdn.Text = "Đăng Nhập";
+            this.lbdn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtNhapTk
+            // 
+            this.txtNhapTk.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNhapTk.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.txtNhapTk.Location = new System.Drawing.Point(73, 150);
+            this.txtNhapTk.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtNhapTk.Multiline = true;
+            this.txtNhapTk.Name = "txtNhapTk";
+            this.txtNhapTk.Size = new System.Drawing.Size(465, 42);
+            this.txtNhapTk.TabIndex = 23;
+            this.txtNhapTk.TabStop = false;
+            // 
+            // txtNhapMk
+            // 
+            this.txtNhapMk.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.txtNhapMk.Location = new System.Drawing.Point(73, 210);
+            this.txtNhapMk.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtNhapMk.Multiline = true;
+            this.txtNhapMk.Name = "txtNhapMk";
+            this.txtNhapMk.Size = new System.Drawing.Size(465, 40);
+            this.txtNhapMk.TabIndex = 24;
+            this.txtNhapMk.TabStop = false;
+            // 
+            // btnDangNhap
+            // 
+            this.btnDangNhap.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.btnDangNhap.ForeColor = System.Drawing.Color.MediumOrchid;
+            this.btnDangNhap.Location = new System.Drawing.Point(128, 287);
+            this.btnDangNhap.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnDangNhap.Name = "btnDangNhap";
+            this.btnDangNhap.Size = new System.Drawing.Size(127, 41);
+            this.btnDangNhap.TabIndex = 31;
+            this.btnDangNhap.Text = "Đăng nhập";
+            this.btnDangNhap.UseVisualStyleBackColor = true;
+            this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
+            // 
+            // btnDangKi
+            // 
+            this.btnDangKi.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.btnDangKi.ForeColor = System.Drawing.Color.MediumPurple;
+            this.btnDangKi.Location = new System.Drawing.Point(282, 287);
+            this.btnDangKi.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnDangKi.Name = "btnDangKi";
+            this.btnDangKi.Size = new System.Drawing.Size(127, 41);
+            this.btnDangKi.TabIndex = 20;
+            this.btnDangKi.Text = "Đăng kí";
+            this.btnDangKi.UseVisualStyleBackColor = true;
+            this.btnDangKi.Click += new System.EventHandler(this.btnDangKi_Click);
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(221, 350);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(96, 16);
+            this.linkLabel1.TabIndex = 34;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Quên mật khẩu";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // pbNhapMkMo
+            // 
+            this.pbNhapMkMo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pbNhapMkMo.Image = ((System.Drawing.Image)(resources.GetObject("pbNhapMkMo.Image")));
+            this.pbNhapMkMo.Location = new System.Drawing.Point(500, 208);
+            this.pbNhapMkMo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pbNhapMkMo.Name = "pbNhapMkMo";
+            this.pbNhapMkMo.Size = new System.Drawing.Size(39, 39);
+            this.pbNhapMkMo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbNhapMkMo.TabIndex = 29;
+            this.pbNhapMkMo.TabStop = false;
+            // 
+            // pcDongMk
+            // 
+            this.pcDongMk.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pcDongMk.Image = ((System.Drawing.Image)(resources.GetObject("pcDongMk.Image")));
+            this.pcDongMk.Location = new System.Drawing.Point(500, 208);
+            this.pcDongMk.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pcDongMk.Name = "pcDongMk";
+            this.pcDongMk.Size = new System.Drawing.Size(39, 39);
+            this.pcDongMk.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcDongMk.TabIndex = 27;
+            this.pcDongMk.TabStop = false;
+            // 
+            // pcExit
+            // 
+            this.pcExit.Image = ((System.Drawing.Image)(resources.GetObject("pcExit.Image")));
+            this.pcExit.Location = new System.Drawing.Point(521, -1);
+            this.pcExit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pcExit.Name = "pcExit";
+            this.pcExit.Size = new System.Drawing.Size(40, 39);
+            this.pcExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcExit.TabIndex = 26;
+            this.pcExit.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::BankManagement.Properties.Resources.Icons8_Windows_8_Security_Password_2;
+            this.pictureBox3.Location = new System.Drawing.Point(11, 210);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(40, 39);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 12;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::BankManagement.Properties.Resources.user_icon_150670;
+            this.pictureBox2.Location = new System.Drawing.Point(11, 153);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(40, 39);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 11;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(50, 13);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(111, 76);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
+            // DangNhap_DangKi
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(559, 400);
+            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.btnDangNhap);
+            this.Controls.Add(this.pbNhapMkMo);
+            this.Controls.Add(this.pcDongMk);
+            this.Controls.Add(this.pcExit);
+            this.Controls.Add(this.txtNhapMk);
+            this.Controls.Add(this.txtNhapTk);
+            this.Controls.Add(this.btnDangKi);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.lbdn);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Name = "DangNhap_DangKi";
+            this.Text = "DangNhap_DangKi";
+            this.Load += new System.EventHandler(this.DangNhap_DangKi_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pbNhapMkMo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcDongMk)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcExit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Label lbdn;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.TextBox txtNhapTk;
+        private System.Windows.Forms.TextBox txtNhapMk;
+        private System.Windows.Forms.PictureBox pcExit;
+        private System.Windows.Forms.PictureBox pcDongMk;
+        private System.Windows.Forms.PictureBox pbNhapMkMo;
+        private System.Windows.Forms.Button btnDangNhap;
+        private System.Windows.Forms.Button btnDangKi;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+    }
+}

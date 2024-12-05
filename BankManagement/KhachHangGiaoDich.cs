@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace BankManagement
 {
-    public partial class NhanVien : Form
+    public partial class KhachHangGiaoDich : Form
     {
-        public NhanVien()
+        public KhachHangGiaoDich()
         {
             InitializeComponent();
         }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace BankManagement
 {
-    public partial class ThongTin : Form
+    public partial class TinDung : Form
     {
-        public ThongTin()
+        public TinDung()
         {
             InitializeComponent();
         }
